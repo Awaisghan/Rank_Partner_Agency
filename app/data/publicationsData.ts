@@ -18,6 +18,8 @@ export interface Publication {
   doFollow: "Yes" | "No";
   hasExample: boolean;
   llmAeo: "Yes" | "No";
+  url?: string;
+  exampleUrl?: string;
   niches: {
     age18?: boolean;
     heart?: boolean;
@@ -32,6 +34,7 @@ export const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: "pub-1",
     name: "Daily Scanner",
+    url: "dailyscanner.com",
     logoText: "DS",
     logoBg: "#000000",
     logoTextColor: "#ffffff",
@@ -52,6 +55,7 @@ export const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: "pub-2",
     name: "Josepvinaixa",
+    url: "josepvinaixa.com",
     logoText: "repvir",
     logoBg: "#e63939",
     logoTextColor: "#ffffff",
@@ -73,6 +77,7 @@ export const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: "pub-3",
     name: "Hood Critic",
+    url: "hoodcriticmagazine.com",
     logoText: "HC",
     logoBg: "#111111",
     logoTextColor: "#ffffff",
@@ -92,6 +97,7 @@ export const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: "pub-4",
     name: "European Financial Review",
+    url: "europeanfinancialreview.com",
     logoText: "EFR",
     logoBg: "#c98a2c",
     logoTextColor: "#ffffff",
@@ -111,6 +117,7 @@ export const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: "pub-5",
     name: "Cali Post",
+    url: "calipost.com",
     logoText: "CaliPost",
     logoBg: "#0088cc",
     logoTextColor: "#ffffff",
@@ -130,6 +137,7 @@ export const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: "pub-6",
     name: "Medium",
+    url: "medium.com",
     logoText: "M",
     logoBg: "#000000",
     logoTextColor: "#ffffff",
@@ -149,6 +157,7 @@ export const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: "pub-7",
     name: "NY Times Mag",
+    url: "nytimes.com",
     logoText: "NYT",
     logoBg: "#222222",
     logoTextColor: "#ffffff",

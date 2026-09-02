@@ -34,8 +34,8 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Hide Navbar on /login and /pricing pages
-  if (pathname === "/login" || pathname === "/pricing") {
+  // Hide Navbar on /login, /pricing, and all /admin/* pages
+  if (pathname === "/login" || pathname === "/pricing" || pathname.startsWith("/admin")) {
     return null;
   }
 

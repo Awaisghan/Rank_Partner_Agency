@@ -1,0 +1,238 @@
+// ============================================================
+// Rank Partner — Prisma Schema
+// All 8 Models: User + 7 Admin Sections
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// ENUMS
+// ============================================================
+
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+// ============================================================
+// 1. USER MODEL
+// ============================================================
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(CLIENT)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+}
+
+// ============================================================
+// 2. PUBLICATION MODEL
+// ============================================================
+
+model Publication {
+  id             String   @id @default(uuid())
+  name           String
+  domain         String?
+  logoText       String
+  logoBg         String   @default("#000000")
+  logoTextColor  String   @default("#ffffff")
+  isNew          Boolean  @default(false)
+  tag            String?
+  price          Int
+  da             Int
+  dr             Int
+  tat            String
+  region         String[]
+  genres         String[]
+  sponsored      Boolean  @default(false)
+  indexed        Boolean  @default(true)
+  doFollow       Boolean  @default(false)
+  exampleUrl     String?
+  llmAeo         Boolean  @default(false)
+  nicheAge18     Boolean  @default(false)
+  nicheHeart     Boolean  @default(false)
+  nicheCannabis  Boolean  @default(false)
+  nicheCopyright Boolean  @default(false)
+  nicheCasino    Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([price])
+  @@index([da])
+}
+
+// ============================================================
+// 3. BROADCAST TELEVISION MODEL
+// ============================================================
+
+model BroadcastTelevision {
+  id            String   @id @default(uuid())
+  affiliate     String
+  exampleUrl    String?
+  calls         String
+  state         String
+  market        String
+  dma           String
+  segmentType   String
+  recordingType String
+  time          String
+  rate          String
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([affiliate])
+}
+
+// ============================================================
+// 4. DIGITAL TELEVISION MODEL
+// ============================================================
+
+model DigitalTelevision {
+  id            String   @id @default(uuid())
+  callSign      String
+  station       String
+  rate          String
+  tat           String
+  sponsored     Boolean  @default(true)
+  indexed       Boolean  @default(true)
+  segmentLength String
+  location      String
+  programName   String
+  interviewType String
+  exampleUrl    String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([callSign])
+}
+
+// ============================================================
+// 5. LISTICLE MODEL
+// ============================================================
+
+model Listicle {
+  id            String   @id @default(uuid())
+  name          String
+  domain        String
+  tag           String?
+  logoText      String
+  logoBg        String   @default("#000000")
+  logoTextColor String   @default("#ffffff")
+  genres        String[]
+  top5Price     String
+  top10Price    String
+  da            Int
+  dr            Int
+  tat           String
+  region        String[]
+  sponsored     Boolean  @default(false)
+  indexed       Boolean  @default(true)
+  doFollow      Boolean  @default(false)
+  exampleUrl    String?
+  llmAeo        Boolean  @default(false)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([name])
+}
+
+// ============================================================
+// 6. BEST SELLER MODEL
+// ============================================================
+
+model BestSeller {
+  id             String   @id @default(uuid())
+  name           String
+  domain         String
+  logoText       String
+  logoBg         String   @default("#000000")
+  logoTextColor  String   @default("#ffffff")
+  genres         String[]
+  price          String
+  da             Int
+  dr             Int
+  tat            String
+  region         String[]
+  sponsored      String   @default("Discrete")
+  indexed        Boolean  @default(true)
+  doFollow       Boolean  @default(false)
+  exampleUrl     String?
+  llmAeo         Boolean  @default(false)
+  nicheAge18     Boolean  @default(false)
+  nicheHeart     Boolean  @default(false)
+  nicheCannabis  Boolean  @default(false)
+  nicheCopyright Boolean  @default(false)
+  nicheCasino    Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([name])
+}
+
+// ============================================================
+// 7. PRINT MAGAZINE MODEL
+// ============================================================
+
+model PrintMagazine {
+  id            String   @id @default(uuid())
+  title         String
+  domain        String
+  websiteUrl    String?
+  fullPagePrice String?
+  spreadPrice   String?
+  turnaround    String
+  circulation   String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([title])
+}
+
+// ============================================================
+// 8. SOCIAL POST MODEL
+// ============================================================
+
+model SocialPost {
+  id            String   @id @default(uuid())
+  name          String
+  category      String
+  logoText      String
+  logoBg        String   @default("#000000")
+  logoTextColor String   @default("#ffffff")
+  platforms     String[]
+  price         String
+  tat           String
+  exampleUrl    String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([category])
+}

@@ -376,7 +376,7 @@ export default function PricingPage() {
                       </span>
                     </th>
                     <th className="py-2.5 px-1.5 text-center border-r border-slate-200">
-                      EXAMPLE
+                      EXAMPLE LINK
                     </th>
                     <th className="py-2.5 px-1.5 text-center border-r border-slate-200">
                       <span className="inline-flex items-center gap-0.5 justify-center">
@@ -413,16 +413,21 @@ export default function PricingPage() {
                                 {pub.logoText}
                               </div>
 
-                              {/* Title & New Badge */}
+                              {/* Title, URL Subtext & New Badge */}
                               <div className="flex flex-col min-w-0">
-                                <span className="font-semibold text-slate-900 text-[13px] leading-tight truncate">
-                                  {pub.name}
-                                </span>
-                                {pub.isNew && (
-                                  <span className="inline-block bg-[#28a745] text-white text-[8.5px] font-bold px-1.5 py-0.2 rounded w-fit mt-0.5">
-                                    New
+                                <div className="flex items-center gap-1.5">
+                                  <span className="font-semibold text-slate-900 text-[13px] leading-tight truncate">
+                                    {pub.name}
                                   </span>
-                                )}
+                                  {pub.isNew && (
+                                    <span className="inline-block bg-[#28a745] text-white text-[8.5px] font-bold px-1.5 py-0.2 rounded w-fit">
+                                      New
+                                    </span>
+                                  )}
+                                </div>
+                                <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">
+                                  {pub.url || `${pub.name.toLowerCase().replace(/\s+/g, "")}.com`}
+                                </span>
                               </div>
                             </div>
 
