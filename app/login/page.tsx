@@ -9,14 +9,35 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setTimeout(() => {
+    setError("");
+    
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Login failed");
+        setIsLoading(false);
+        return;
+      }
+
+      // If login is successful, router will handle navigation to admin
+      router.push("/admin/publications");
+      router.refresh(); // Refresh to update session context in middleware/layout
+    } catch (err) {
+      setError("An unexpected error occurred");
       setIsLoading(false);
-      router.push("/pricing");
-    }, 400);
+    }
   };
 
   return (
@@ -59,6 +80,12 @@ export default function LoginPage() {
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           
+          {error && (
+            <div className="bg-red-50 text-red-600 text-sm p-3 rounded-md border border-red-200">
+              {error}
+            </div>
+          )}
+
           {/* EMAIL Input */}
           <div>
             <label className="block text-[11px] font-extrabold tracking-wider text-slate-800 uppercase mb-1.5">
