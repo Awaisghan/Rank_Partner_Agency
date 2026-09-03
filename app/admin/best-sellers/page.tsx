@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import useSWR from "swr";
 import {
   TrendingUp,
   Plus,
@@ -45,71 +46,12 @@ interface BestSellerPublication {
   };
 }
 
-const INITIAL_DATA: BestSellerPublication[] = [
-  {
-    id: "bs-1",
-    name: "Miami Weekly",
-    url: "miamiweekly.com",
-    logoText: "MIAMI",
-    logoBg: "#000000",
-    logoTextColor: "#ffffff",
-    genres: ["News"],
-    price: "$100",
-    da: 57,
-    dr: 41,
-    tat: "1 Day",
-    region: ["Florida", "United States"],
-    sponsored: "Discrete",
-    indexed: "Yes",
-    doFollow: "No",
-    exampleUrl: "https://miamiweekly.com",
-    llmAeo: "Yes",
-    niches: { age18: true, heart: true, cannabis: true, copyright: true, casino: true },
-  },
-  {
-    id: "bs-2",
-    name: "USA Today Books",
-    url: "usatoday.com/books",
-    logoText: "USA",
-    logoBg: "#0088cc",
-    logoTextColor: "#ffffff",
-    genres: ["Business", "Culture"],
-    price: "$12,500",
-    da: 92,
-    dr: 90,
-    tat: "3 Weeks",
-    region: ["United States", "Global"],
-    sponsored: "Discrete",
-    indexed: "Yes",
-    doFollow: "Yes",
-    exampleUrl: "https://usatoday.com",
-    llmAeo: "Yes",
-    niches: { age18: false, heart: true, cannabis: false, copyright: true, casino: false },
-  },
-  {
-    id: "bs-3",
-    name: "Wall Street Journal Best-Seller",
-    url: "wsj.com/books",
-    logoText: "WSJ",
-    logoBg: "#222222",
-    logoTextColor: "#ffffff",
-    genres: ["Business", "Finance"],
-    price: "$18,500",
-    da: 95,
-    dr: 93,
-    tat: "4 Weeks",
-    region: ["United States", "Global"],
-    sponsored: "Discrete",
-    indexed: "Yes",
-    doFollow: "Yes",
-    exampleUrl: "https://wsj.com",
-    llmAeo: "Yes",
-    niches: { age18: false, heart: true, cannabis: false, copyright: true, casino: false },
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function BestSellersAdminPage() {
-  const [items, setItems] = useState<BestSellerPublication[]>(INITIAL_DATA);
+  const { data: apiResponse, error, isLoading, mutate } = useSWR<{items: BestSellerPublication[], pagination: any}>("/api/best-sellers", fetcher);
+  const items = apiResponse?.items || [];
+
   const [search, setSearch] = useState("");
   const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
   const [currentItem, setCurrentItem] = useState<BestSellerPublication | null>(null);
@@ -201,44 +143,66 @@ export default function BestSellersAdminPage() {
     setModalMode("edit");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.name || !form.url) return;
-    const newItem: BestSellerPublication = {
-      id: currentItem ? currentItem.id : `bs-${Date.now()}`,
+    
+    const built = {
+      id: currentItem?.id ?? "",
       name: form.name,
-      url: form.url,
-      logoText: form.logoText || form.name.slice(0, 3).toUpperCase(),
+      domain: form.url, // Map url → domain per schema
+      logoText: (form.logoText || form.name.slice(0, 4)).toUpperCase().slice(0, 4),
       logoBg: form.logoBg,
       logoTextColor: form.logoTextColor,
       genres: form.genres.split(",").map((g) => g.trim()).filter(Boolean),
       price: form.price,
-      da: Number(form.da),
-      dr: Number(form.dr),
+      da: Number(form.da) || 0,
+      dr: Number(form.dr) || 0,
       tat: form.tat,
       region: form.region.split(",").map((r) => r.trim()).filter(Boolean),
-      sponsored: form.sponsored,
-      indexed: form.indexed,
-      doFollow: form.doFollow,
+      sponsored: form.sponsored, // schema expects string for best-sellers
+      indexed: String(form.indexed) === "true",
+      doFollow: String(form.doFollow) === "true",
       exampleUrl: form.exampleUrl.trim() || undefined,
-      llmAeo: form.llmAeo,
-      niches: {
-        age18: form.nicheAge18,
-        heart: form.nicheHeart,
-        cannabis: form.nicheCannabis,
-        copyright: form.nicheCopyright,
-        casino: form.nicheCasino,
-      },
+      llmAeo: String(form.llmAeo) === "true",
+      nicheAge18: Boolean(form.nicheAge18),
+      nicheHeart: Boolean(form.nicheHeart),
+      nicheCannabis: Boolean(form.nicheCannabis),
+      nicheCopyright: Boolean(form.nicheCopyright),
+      nicheCasino: Boolean(form.nicheCasino),
     };
 
-    if (modalMode === "add") setItems([newItem, ...items]);
-    else setItems(items.map((i) => (i.id === newItem.id ? newItem : i)));
-    setModalMode(null);
+    if (!built.id) delete (built as any).id;
+
+    try {
+      const isAdd = modalMode === "add";
+      const url = isAdd ? "/api/best-sellers" : `/api/best-sellers/${built.id}`;
+      const method = isAdd ? "POST" : "PUT";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(built),
+      });
+
+      if (!res.ok) throw new Error("Failed to save");
+      
+      await mutate();
+      setModalMode(null);
+    } catch (err) {
+      alert("Error saving item");
+    }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!deleteTarget) return;
-    setItems(items.filter((i) => i.id !== deleteTarget.id));
-    setDeleteTarget(null);
+    try {
+      const res = await fetch(`/api/best-sellers/${deleteTarget.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      await mutate();
+      setDeleteTarget(null);
+    } catch (err) {
+      alert("Error deleting item");
+    }
   };
 
   return (
@@ -290,6 +254,14 @@ export default function BestSellersAdminPage() {
 
       {/* Table (Exact Screenshot Match) */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+        {isLoading ? (
+          <div className="py-20 flex flex-col items-center justify-center">
+             <div className="w-8 h-8 border-4 border-slate-200 border-t-[#e63939] rounded-full animate-spin"></div>
+             <p className="text-slate-500 text-sm font-semibold mt-4">Loading from database...</p>
+          </div>
+        ) : error ? (
+          <div className="py-12 text-center text-red-600 font-medium">Failed to load data.</div>
+        ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse border border-slate-200">
             <thead>
@@ -409,17 +381,17 @@ export default function BestSellersAdminPage() {
 
                   {/* SPONSORED (Discrete / Yes / No) */}
                   <td className="px-3 py-3 text-center font-bold text-slate-800 text-[12px]">
-                    {pub.sponsored}
+                    {pub.sponsored ? "Yes" : "No"}
                   </td>
 
                   {/* INDEXED */}
                   <td className="px-3 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.indexed}
+                    {pub.indexed ? "Yes" : "No"}
                   </td>
 
                   {/* DO FOLLOW */}
                   <td className="px-3.5 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.doFollow}
+                    {pub.doFollow ? "Yes" : "No"}
                   </td>
 
                   {/* EXAMPLE LINK */}
@@ -441,27 +413,27 @@ export default function BestSellersAdminPage() {
 
                   {/* LLM/AEO */}
                   <td className="px-3.5 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.llmAeo}
+                    {pub.llmAeo ? "Yes" : "No"}
                   </td>
 
                   {/* NICHES */}
                   <td className="px-3.5 py-3 text-center">
                     <div className="flex items-center justify-center gap-1">
-                      {pub.niches.age18 && (
+                      {(pub as any).nicheAge18 && (
                         <span className="w-4 h-4 rounded-full border border-slate-400 flex items-center justify-center text-[7px] font-bold text-slate-600 shrink-0" title="18+">
                           18+
                         </span>
                       )}
-                      {pub.niches.heart && (
+                      {(pub as any).nicheHeart && (
                         <span title="Dating"><Heart className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
-                      {pub.niches.cannabis && (
+                      {(pub as any).nicheCannabis && (
                         <span title="Cannabis"><Leaf className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
-                      {pub.niches.copyright && (
+                      {(pub as any).nicheCopyright && (
                         <span title="Copyright"><Copyright className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
-                      {pub.niches.casino && (
+                      {(pub as any).nicheCasino && (
                         <span title="Casino"><Dices className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
                     </div>
@@ -491,6 +463,7 @@ export default function BestSellersAdminPage() {
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* Add/Edit Modal */}

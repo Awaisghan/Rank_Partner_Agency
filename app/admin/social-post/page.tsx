@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import useSWR from "swr";
 import {
   Share2,
   Plus,
@@ -45,55 +46,12 @@ interface SocialPostPublication {
   exampleUrl?: string;
 }
 
-const INITIAL_SOCIAL_POSTS: SocialPostPublication[] = [
-  {
-    id: "sp-1",
-    name: "The Gazette",
-    category: "News",
-    logoText: "CS",
-    logoBg: "#0284c7",
-    logoTextColor: "#ffffff",
-    platforms: ["facebook"],
-    price: "$750",
-    tat: "3-5 Days",
-  },
-  {
-    id: "sp-2",
-    name: "Variety (400,000 Impressions)",
-    category: "Entertainment",
-    logoText: "V",
-    logoBg: "#000000",
-    logoTextColor: "#ffffff",
-    platforms: ["instagram", "x", "facebook", "linkedin"],
-    price: "$10,000",
-    tat: "2 Weeks",
-  },
-  {
-    id: "sp-3",
-    name: "Geekwire",
-    category: "Business",
-    logoText: "GW",
-    logoBg: "#ea580c",
-    logoTextColor: "#ffffff",
-    platforms: ["x", "facebook"],
-    price: "$1,500",
-    tat: "1 Week",
-  },
-  {
-    id: "sp-4",
-    name: "Muscle & Fitness (Includes Social Post)",
-    category: "Sports",
-    logoText: "M&F",
-    logoBg: "#1e293b",
-    logoTextColor: "#ffffff",
-    platforms: ["instagram", "x", "facebook"],
-    price: "$5,000",
-    tat: "1 Week",
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function SocialPostAdminPage() {
-  const [items, setItems] = useState<SocialPostPublication[]>(INITIAL_SOCIAL_POSTS);
+  const { data: apiResponse, error, isLoading, mutate } = useSWR<{items: SocialPostPublication[], pagination: any}>("/api/social-posts", fetcher);
+  const items = apiResponse?.items || [];
+
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
@@ -152,13 +110,14 @@ export default function SocialPostAdminPage() {
     setModalMode("edit");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.name || !form.price) return;
-    const newItem: SocialPostPublication = {
-      id: currentItem ? currentItem.id : `sp-${Date.now()}`,
+    
+    const built = {
+      id: currentItem?.id ?? "",
       name: form.name,
       category: form.category,
-      logoText: form.logoText || form.name.slice(0, 2).toUpperCase(),
+      logoText: (form.logoText || form.name.slice(0, 4)).toUpperCase().slice(0, 4),
       logoBg: form.logoBg,
       logoTextColor: form.logoTextColor,
       platforms: form.platforms,
@@ -167,15 +126,38 @@ export default function SocialPostAdminPage() {
       exampleUrl: form.exampleUrl.trim() || undefined,
     };
 
-    if (modalMode === "add") setItems([newItem, ...items]);
-    else setItems(items.map((i) => (i.id === newItem.id ? newItem : i)));
-    setModalMode(null);
+    if (!built.id) delete (built as any).id;
+
+    try {
+      const isAdd = modalMode === "add";
+      const url = isAdd ? "/api/social-posts" : `/api/social-posts/${built.id}`;
+      const method = isAdd ? "POST" : "PUT";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(built),
+      });
+
+      if (!res.ok) throw new Error("Failed to save");
+      
+      await mutate();
+      setModalMode(null);
+    } catch (err) {
+      alert("Error saving item");
+    }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!deleteTarget) return;
-    setItems(items.filter((i) => i.id !== deleteTarget.id));
-    setDeleteTarget(null);
+    try {
+      const res = await fetch(`/api/social-posts/${deleteTarget.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      await mutate();
+      setDeleteTarget(null);
+    } catch (err) {
+      alert("Error deleting item");
+    }
   };
 
   const togglePlatform = (p: "facebook" | "instagram" | "x" | "linkedin") => {
@@ -266,6 +248,14 @@ export default function SocialPostAdminPage() {
 
       {/* Table */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+        {isLoading ? (
+          <div className="py-20 flex flex-col items-center justify-center">
+             <div className="w-8 h-8 border-4 border-slate-200 border-t-[#e63939] rounded-full animate-spin"></div>
+             <p className="text-slate-500 text-sm font-semibold mt-4">Loading from database...</p>
+          </div>
+        ) : error ? (
+          <div className="py-12 text-center text-red-600 font-medium">Failed to load data.</div>
+        ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse border border-slate-200">
             <thead>
@@ -380,6 +370,7 @@ export default function SocialPostAdminPage() {
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* Add/Edit Modal */}

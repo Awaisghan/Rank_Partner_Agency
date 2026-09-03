@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import useSWR from "swr";
 import {
   List,
   Plus,
@@ -35,73 +36,12 @@ interface ListiclePublication {
   llmAeo: "Yes" | "No";
 }
 
-const INITIAL_LISTICLES_DATA: ListiclePublication[] = [
-  {
-    id: "list-1",
-    name: "Elite Daily",
-    url: "elitedaily.com",
-    logoText: "ED",
-    logoBg: "#000000",
-    logoTextColor: "#ffffff",
-    genres: ["Luxury", "News"],
-    top5Price: "$2,000",
-    top10Price: "$3,000",
-    da: 88,
-    dr: 82,
-    tat: "1-2 Weeks",
-    region: ["United States", "Global"],
-    sponsored: "No",
-    indexed: "Yes",
-    doFollow: "Yes",
-    exampleUrl: "https://elitedaily.com",
-    llmAeo: "Yes",
-  },
-  {
-    id: "list-2",
-    name: "High Net Worth Magazine",
-    url: "highnetworthmag.com",
-    tag: "Staff",
-    logoText: "HNW",
-    logoBg: "#111111",
-    logoTextColor: "#ffffff",
-    genres: ["News"],
-    top5Price: "$450",
-    top10Price: "$600",
-    da: 18,
-    dr: 31,
-    tat: "1 Day",
-    region: ["United States"],
-    sponsored: "No",
-    indexed: "Yes",
-    doFollow: "Yes",
-    exampleUrl: "https://highnetworthmag.com",
-    llmAeo: "Yes",
-  },
-  {
-    id: "list-3",
-    name: "Muscle & Fitness (Includes Social Post)",
-    url: "muscleandfitness.com",
-    tag: "Includes Social Posts",
-    logoText: "M&F",
-    logoBg: "#222222",
-    logoTextColor: "#ffffff",
-    genres: ["News", "Sports"],
-    top5Price: "$2,750",
-    top10Price: "$4,000",
-    da: 84,
-    dr: 76,
-    tat: "1 Week",
-    region: ["United States"],
-    sponsored: "Yes",
-    indexed: "Yes",
-    doFollow: "Yes",
-    exampleUrl: "https://muscleandfitness.com",
-    llmAeo: "Yes",
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function ListiclesAdminPage() {
-  const [items, setItems] = useState<ListiclePublication[]>(INITIAL_LISTICLES_DATA);
+  const { data: apiResponse, error, isLoading, mutate } = useSWR<{items: ListiclePublication[], pagination: any}>("/api/listicles", fetcher);
+  const items = apiResponse?.items || [];
+
   const [search, setSearch] = useState("");
   const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
   const [currentItem, setCurrentItem] = useState<ListiclePublication | null>(null);
@@ -184,39 +124,62 @@ export default function ListiclesAdminPage() {
     setModalMode("edit");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.name || !form.url) return;
-    const newItem: ListiclePublication = {
-      id: currentItem ? currentItem.id : `list-${Date.now()}`,
+    
+    const built = {
+      id: currentItem?.id ?? "",
       name: form.name,
-      url: form.url,
-      tag: form.tag.trim() || undefined,
-      logoText: form.logoText || form.name.slice(0, 2).toUpperCase(),
+      domain: form.url, // Map url → domain per schema
+      logoText: (form.logoText || form.name.slice(0, 4)).toUpperCase().slice(0, 4),
       logoBg: form.logoBg,
       logoTextColor: form.logoTextColor,
       genres: form.genres.split(",").map((g) => g.trim()).filter(Boolean),
       top5Price: form.top5Price,
       top10Price: form.top10Price,
-      da: Number(form.da),
-      dr: Number(form.dr),
+      da: Number(form.da) || 0,
+      dr: Number(form.dr) || 0,
       tat: form.tat,
       region: form.region.split(",").map((r) => r.trim()).filter(Boolean),
-      sponsored: form.sponsored,
-      indexed: form.indexed,
-      doFollow: form.doFollow,
+      sponsored: String(form.sponsored) === "true",
+      indexed: String(form.indexed) === "true",
+      doFollow: String(form.doFollow) === "true",
       exampleUrl: form.exampleUrl.trim() || undefined,
-      llmAeo: form.llmAeo,
+      llmAeo: String(form.llmAeo) === "true",
     };
 
-    if (modalMode === "add") setItems([newItem, ...items]);
-    else setItems(items.map((i) => (i.id === newItem.id ? newItem : i)));
-    setModalMode(null);
+    if (!built.id) delete (built as any).id;
+
+    try {
+      const isAdd = modalMode === "add";
+      const url = isAdd ? "/api/listicles" : `/api/listicles/${built.id}`;
+      const method = isAdd ? "POST" : "PUT";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(built),
+      });
+
+      if (!res.ok) throw new Error("Failed to save");
+      
+      await mutate();
+      setModalMode(null);
+    } catch (err) {
+      alert("Error saving item");
+    }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!deleteTarget) return;
-    setItems(items.filter((i) => i.id !== deleteTarget.id));
-    setDeleteTarget(null);
+    try {
+      const res = await fetch(`/api/listicles/${deleteTarget.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      await mutate();
+      setDeleteTarget(null);
+    } catch (err) {
+      alert("Error deleting item");
+    }
   };
 
   return (
@@ -268,6 +231,14 @@ export default function ListiclesAdminPage() {
 
       {/* Table (Exact Screenshot Match) */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+        {isLoading ? (
+          <div className="py-20 flex flex-col items-center justify-center">
+             <div className="w-8 h-8 border-4 border-slate-200 border-t-[#e63939] rounded-full animate-spin"></div>
+             <p className="text-slate-500 text-sm font-semibold mt-4">Loading from database...</p>
+          </div>
+        ) : error ? (
+          <div className="py-12 text-center text-red-600 font-medium">Failed to load data.</div>
+        ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse border border-slate-200">
             <thead>
@@ -395,17 +366,17 @@ export default function ListiclesAdminPage() {
 
                   {/* SPONSORED */}
                   <td className="px-3 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.sponsored}
+                    {pub.sponsored ? "Yes" : "No"}
                   </td>
 
                   {/* INDEXED */}
                   <td className="px-3 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.indexed}
+                    {pub.indexed ? "Yes" : "No"}
                   </td>
 
                   {/* DO FOLLOW */}
                   <td className="px-3.5 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.doFollow}
+                    {pub.doFollow ? "Yes" : "No"}
                   </td>
 
                   {/* EXAMPLE LINK */}
@@ -427,7 +398,7 @@ export default function ListiclesAdminPage() {
 
                   {/* LLM/AEO */}
                   <td className="px-3.5 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.llmAeo}
+                    {pub.llmAeo ? "Yes" : "No"}
                   </td>
 
                   {/* ACTIONS */}
@@ -454,6 +425,7 @@ export default function ListiclesAdminPage() {
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* Add/Edit Modal */}

@@ -14,6 +14,14 @@ export default function PageTransition({
   const prevPathname = useRef(pathname);
 
   useEffect(() => {
+    // Skip fade transition for admin routes to prevent black flash
+    if (pathname.startsWith("/admin")) {
+      setDisplayChildren(children);
+      setTransitionStage("fadeIn");
+      prevPathname.current = pathname;
+      return;
+    }
+
     if (prevPathname.current !== pathname) {
       // Start fade out
       setTransitionStage("fadeOut");
@@ -30,6 +38,14 @@ export default function PageTransition({
       setDisplayChildren(children);
     }
   }, [pathname, children]);
+
+  if (pathname.startsWith("/admin")) {
+    return (
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: "100%" }}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div

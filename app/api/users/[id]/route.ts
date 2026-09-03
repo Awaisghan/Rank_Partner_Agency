@@ -1,16 +1,19 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/backend/auth/session";
-import { updateSocialPostSchema } from "@/backend/validation/socialPostSchemas";
-import { getSocialPostById, updateSocialPost, deleteSocialPost } from "@/backend/services/socialPostService";
+import { updateUserSchema } from "@/backend/validation/userSchemas";
+import { getUserById, updateUser, deleteUser } from "@/backend/services/userService";
 
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const session = await getSession();
+    if (!session || session.role !== "ADMIN") return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await params;
-    const item = await getSocialPostById(id);
-    if (!item) return NextResponse.json({ error: "Item not found" }, { status: 404 });
-    return NextResponse.json(item, { status: 200 });
+    const user = await getUserById(id);
+    if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    return NextResponse.json(user, { status: 200 });
   } catch (error: any) {
-    console.error("GET /api/social-posts/[id] error:", error);
+    console.error("GET /api/users/[id] error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -22,14 +25,13 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
 
     const { id } = await params;
     const body = await request.json();
-    const result = updateSocialPostSchema.safeParse(body);
+    const result = updateUserSchema.safeParse(body);
     if (!result.success) return NextResponse.json({ error: "Validation failed", details: result.error.format() }, { status: 400 });
 
-    const item = await updateSocialPost(id, result.data);
-    return NextResponse.json({ message: "Social Post updated successfully", item }, { status: 200 });
+    const user = await updateUser(id, result.data);
+    return NextResponse.json({ message: "User updated successfully", user }, { status: 200 });
   } catch (error: any) {
-    console.error("PUT /api/social-posts/[id] error:", error);
-    if (error.code === "P2025") return NextResponse.json({ error: "Item not found" }, { status: 404 });
+    console.error("PUT /api/users/[id] error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -40,13 +42,12 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     if (!session || session.role !== "ADMIN") return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { id } = await params;
-    const url = new URL(request.url);
-    const hardDelete = url.searchParams.get("hard") === "true";
-    await deleteSocialPost(id, !hardDelete);
-    return NextResponse.json({ message: `Social Post ${hardDelete ? "deleted" : "deactivated"}` }, { status: 200 });
+    const { searchParams } = new URL(request.url);
+    const hardDelete = searchParams.get("hard") === "true";
+    await deleteUser(id, !hardDelete);
+    return NextResponse.json({ message: hardDelete ? "User deleted" : "User deactivated" }, { status: 200 });
   } catch (error: any) {
-    console.error("DELETE /api/social-posts/[id] error:", error);
-    if (error.code === "P2025") return NextResponse.json({ error: "Item not found" }, { status: 404 });
+    console.error("DELETE /api/users/[id] error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

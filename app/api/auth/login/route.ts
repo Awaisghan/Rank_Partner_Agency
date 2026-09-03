@@ -3,26 +3,10 @@ import { prisma } from "@/backend/db/prisma";
 import { comparePassword } from "@/backend/auth/password";
 import { setSessionCookie } from "@/backend/auth/session";
 import { loginSchema } from "@/backend/validation/authSchemas";
-import { checkRateLimit } from "@/backend/security/rateLimit";
 
 export async function POST(request: Request) {
   try {
-    // 1. Get Client IP (for rate limiting)
-    const ip =
-      request.headers.get("x-forwarded-for") ??
-      request.headers.get("x-real-ip") ??
-      "unknown-ip";
-
-    // 2. Check Rate Limit
-    const rateLimit = checkRateLimit(ip);
-    if (!rateLimit.allowed) {
-      return NextResponse.json(
-        { error: `Too many login attempts. Try again in ${rateLimit.retryAfterSeconds} seconds.` },
-        { status: 429 }
-      );
-    }
-
-    // 3. Parse and Validate Body
+    // 1. Parse and Validate Body
     const body = await request.json();
     const result = loginSchema.safeParse(body);
     

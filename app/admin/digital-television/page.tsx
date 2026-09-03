@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import useSWR from "swr";
 import {
   Monitor,
   Plus,
@@ -27,81 +28,12 @@ interface DigitalTVItem {
   exampleUrl?: string;
 }
 
-const INITIAL_DATA: DigitalTVItem[] = [
-  {
-    id: "dtv-1",
-    callSign: "KDAF",
-    station: "Dallas Area Fox",
-    rate: "$750",
-    tat: "1 Week",
-    sponsored: "Yes",
-    indexed: "Yes",
-    segmentLength: "5-10 Minutes",
-    location: "Texas,",
-    programName: "Innovator's Journey",
-    interviewType: "Video Call",
-    exampleUrl: "https://kdaf.com",
-  },
-  {
-    id: "dtv-2",
-    callSign: "WPIX",
-    station: "New York CW Affiliate",
-    rate: "$1,200",
-    tat: "3-5 Days",
-    sponsored: "Yes",
-    indexed: "Yes",
-    segmentLength: "4-6 Minutes",
-    location: "New York,",
-    programName: "NYC Tech Spotlight",
-    interviewType: "In-Studio / Video",
-    exampleUrl: "https://pix11.com",
-  },
-  {
-    id: "dtv-3",
-    callSign: "KTLA",
-    station: "Los Angeles CW 5",
-    rate: "$1,500",
-    tat: "1 Week",
-    sponsored: "Yes",
-    indexed: "Yes",
-    segmentLength: "5 Minutes",
-    location: "California,",
-    programName: "LA Business Today",
-    interviewType: "Video Call",
-    exampleUrl: "https://ktla.com",
-  },
-  {
-    id: "dtv-4",
-    callSign: "WGN",
-    station: "Chicago News Nation",
-    rate: "$950",
-    tat: "1 Week",
-    sponsored: "No",
-    indexed: "Yes",
-    segmentLength: "3-5 Minutes",
-    location: "Illinois,",
-    programName: "Midwest Leaders",
-    interviewType: "Remote Zoom",
-    exampleUrl: "https://wgntv.com",
-  },
-  {
-    id: "dtv-5",
-    callSign: "KRON",
-    station: "San Francisco Bay Area",
-    rate: "$1,100",
-    tat: "2 Weeks",
-    sponsored: "Yes",
-    indexed: "Yes",
-    segmentLength: "5-8 Minutes",
-    location: "California,",
-    programName: "Silicon Valley Hour",
-    interviewType: "Video Call",
-    exampleUrl: "https://kron4.com",
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function DigitalTelevisionAdminPage() {
-  const [items, setItems] = useState<DigitalTVItem[]>(INITIAL_DATA);
+  const { data: apiResponse, error, isLoading, mutate } = useSWR<{items: DigitalTVItem[], pagination: any}>("/api/digital-television", fetcher);
+  const items = apiResponse?.items || [];
+
   const [search, setSearch] = useState("");
   const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
   const [currentItem, setCurrentItem] = useState<DigitalTVItem | null>(null);
@@ -164,16 +96,17 @@ export default function DigitalTelevisionAdminPage() {
     setModalMode("edit");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.callSign || !form.station) return;
-    const newItem: DigitalTVItem = {
-      id: currentItem ? currentItem.id : `dtv-${Date.now()}`,
+    
+    const built = {
+      id: currentItem?.id ?? "",
       callSign: form.callSign,
       station: form.station,
       rate: form.rate,
       tat: form.tat,
-      sponsored: form.sponsored,
-      indexed: form.indexed,
+      sponsored: String(form.sponsored) === "true",
+      indexed: String(form.indexed) === "true",
       segmentLength: form.segmentLength,
       location: form.location,
       programName: form.programName,
@@ -181,15 +114,38 @@ export default function DigitalTelevisionAdminPage() {
       exampleUrl: form.exampleUrl.trim() || undefined,
     };
 
-    if (modalMode === "add") setItems([newItem, ...items]);
-    else setItems(items.map((i) => (i.id === newItem.id ? newItem : i)));
-    setModalMode(null);
+    if (!built.id) delete (built as any).id;
+
+    try {
+      const isAdd = modalMode === "add";
+      const url = isAdd ? "/api/digital-television" : `/api/digital-television/${built.id}`;
+      const method = isAdd ? "POST" : "PUT";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(built),
+      });
+
+      if (!res.ok) throw new Error("Failed to save");
+      
+      await mutate();
+      setModalMode(null);
+    } catch (err) {
+      alert("Error saving item");
+    }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!deleteTarget) return;
-    setItems(items.filter((i) => i.id !== deleteTarget.id));
-    setDeleteTarget(null);
+    try {
+      const res = await fetch(`/api/digital-television/${deleteTarget.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      await mutate();
+      setDeleteTarget(null);
+    } catch (err) {
+      alert("Error deleting item");
+    }
   };
 
   return (
@@ -241,6 +197,14 @@ export default function DigitalTelevisionAdminPage() {
 
       {/* Table (Exact Screenshot Match) */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+        {isLoading ? (
+          <div className="py-20 flex flex-col items-center justify-center">
+             <div className="w-8 h-8 border-4 border-slate-200 border-t-[#e63939] rounded-full animate-spin"></div>
+             <p className="text-slate-500 text-sm font-semibold mt-4">Loading from database...</p>
+          </div>
+        ) : error ? (
+          <div className="py-12 text-center text-red-600 font-medium">Failed to load data.</div>
+        ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse border border-slate-200">
             <thead>
@@ -284,12 +248,12 @@ export default function DigitalTelevisionAdminPage() {
 
                   {/* SPONSORED */}
                   <td className="px-3 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {item.sponsored}
+                    {item.sponsored ? "Yes" : "No"}
                   </td>
 
                   {/* INDEXED */}
                   <td className="px-3 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {item.indexed}
+                    {item.indexed ? "Yes" : "No"}
                   </td>
 
                   {/* SEGMENT LENGTH */}
@@ -355,6 +319,7 @@ export default function DigitalTelevisionAdminPage() {
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* Add/Edit Modal */}

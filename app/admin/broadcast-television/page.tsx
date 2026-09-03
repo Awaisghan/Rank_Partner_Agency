@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import useSWR from "swr";
 import {
   Tv,
   Plus,
@@ -27,50 +28,12 @@ interface TVBroadcastItem {
   rate: string;
 }
 
-const INITIAL_TV_DATA: TVBroadcastItem[] = [
-  {
-    id: "tv-1",
-    affiliate: "Bloomberg",
-    exampleUrl: "https://bloomberg.com",
-    calls: "Bloomberg (In-Person Interview)",
-    state: "Global",
-    market: "News",
-    dma: 1,
-    segmentType: "Business Minute",
-    recordingType: "Satellite,",
-    time: "2-4 min",
-    rate: "Inquire",
-  },
-  {
-    id: "tv-2",
-    affiliate: "ABC News National",
-    exampleUrl: "https://abcnews.com",
-    calls: "ABC Morning Spotlight (In-Studio)",
-    state: "United States",
-    market: "Entertainment",
-    dma: 2,
-    segmentType: "Feature Story",
-    recordingType: "In-Person",
-    time: "3 min",
-    rate: "$3,500",
-  },
-  {
-    id: "tv-3",
-    affiliate: "FOX Business Network",
-    exampleUrl: "https://foxbusiness.com",
-    calls: "FOX Tech & Markets Interview",
-    state: "United States",
-    market: "Business",
-    dma: 5,
-    segmentType: "Market Update",
-    recordingType: "Zoom & In-Person",
-    time: "2 min",
-    rate: "$4,800",
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function BroadcastTelevisionAdminPage() {
-  const [items, setItems] = useState<TVBroadcastItem[]>(INITIAL_TV_DATA);
+  const { data: apiResponse, error, isLoading, mutate } = useSWR<{items: TVBroadcastItem[], pagination: any}>("/api/broadcast-television", fetcher);
+  const items = apiResponse?.items || [];
+
   const [search, setSearch] = useState("");
   const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
   const [currentItem, setCurrentItem] = useState<TVBroadcastItem | null>(null);
@@ -130,34 +93,55 @@ export default function BroadcastTelevisionAdminPage() {
     setModalMode("edit");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.affiliate || !form.calls) return;
-    const newItem: TVBroadcastItem = {
-      id: currentItem ? currentItem.id : `tv-${Date.now()}`,
+
+    const built = {
+      id: currentItem?.id ?? "",
       affiliate: form.affiliate,
       exampleUrl: form.exampleUrl.trim() || undefined,
       calls: form.calls,
       state: form.state,
       market: form.market,
-      dma: form.dma,
+      dma: form.dma, // Schema expects string
       segmentType: form.segmentType,
       recordingType: form.recordingType,
       time: form.time,
       rate: form.rate,
     };
 
-    if (modalMode === "add") {
-      setItems([newItem, ...items]);
-    } else {
-      setItems(items.map((i) => (i.id === newItem.id ? newItem : i)));
+    if (!built.id) delete (built as any).id;
+
+    try {
+      const isAdd = modalMode === "add";
+      const url = isAdd ? "/api/broadcast-television" : `/api/broadcast-television/${built.id}`;
+      const method = isAdd ? "POST" : "PUT";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(built),
+      });
+
+      if (!res.ok) throw new Error("Failed to save");
+      
+      await mutate();
+      setModalMode(null);
+    } catch (err) {
+      alert("Error saving item");
     }
-    setModalMode(null);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!deleteTarget) return;
-    setItems(items.filter((i) => i.id !== deleteTarget.id));
-    setDeleteTarget(null);
+    try {
+      const res = await fetch(`/api/broadcast-television/${deleteTarget.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      await mutate();
+      setDeleteTarget(null);
+    } catch (err) {
+      alert("Error deleting item");
+    }
   };
 
   return (
@@ -214,6 +198,14 @@ export default function BroadcastTelevisionAdminPage() {
 
       {/* Table */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+        {isLoading ? (
+          <div className="py-20 flex flex-col items-center justify-center">
+             <div className="w-8 h-8 border-4 border-slate-200 border-t-[#e63939] rounded-full animate-spin"></div>
+             <p className="text-slate-500 text-sm font-semibold mt-4">Loading from database...</p>
+          </div>
+        ) : error ? (
+          <div className="py-12 text-center text-red-600 font-medium">Failed to load data.</div>
+        ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse border border-slate-200">
             <thead>
@@ -324,6 +316,7 @@ export default function BroadcastTelevisionAdminPage() {
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* Add/Edit Modal */}

@@ -11,6 +11,7 @@ import {
   Printer,
   Share2,
   LogOut,
+  Users,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -49,13 +50,23 @@ const NAV_ITEMS = [
     href: "/admin/social-post",
     icon: Share2,
   },
+  {
+    label: "Users",
+    href: "/admin/users",
+    icon: Users,
+  },
 ];
 
 export default function AdminSidebar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch (e) {
+      console.error("Logout failed", e);
+    }
     router.push("/login");
   };
 

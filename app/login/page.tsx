@@ -31,9 +31,13 @@ export default function LoginPage() {
         return;
       }
 
-      // If login is successful, router will handle navigation to admin
-      router.push("/admin/publications");
-      router.refresh(); // Refresh to update session context in middleware/layout
+      // Redirect based on role
+      if (data.user?.role === "ADMIN") {
+        router.push("/admin/publications");
+      } else {
+        router.push("/pricing");
+      }
+      router.refresh();
     } catch (err) {
       setError("An unexpected error occurred");
       setIsLoading(false);

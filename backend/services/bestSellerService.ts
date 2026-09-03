@@ -88,6 +88,7 @@ export async function createBestSeller(data: BestSellerInput) {
   return prisma.bestSeller.create({
     data: {
       ...data,
+      domain: data.domain || "",
       exampleUrl: data.exampleUrl || null,
     },
   });
@@ -98,6 +99,7 @@ export async function updateBestSeller(id: string, data: UpdateBestSellerInput) 
     where: { id },
     data: {
       ...data,
+      ...(data.domain === null || data.domain === undefined ? {} : { domain: data.domain }),
       ...(data.exampleUrl === "" ? { exampleUrl: null } : {}),
     },
   });

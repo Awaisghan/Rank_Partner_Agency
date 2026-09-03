@@ -69,6 +69,7 @@ export async function createPrintMagazine(data: PrintMagazineInput) {
   return prisma.printMagazine.create({
     data: {
       ...data,
+      domain: data.domain || "",
       websiteUrl: data.websiteUrl || null,
     },
   });
@@ -79,6 +80,7 @@ export async function updatePrintMagazine(id: string, data: UpdatePrintMagazineI
     where: { id },
     data: {
       ...data,
+      ...(data.domain === null || data.domain === undefined ? {} : { domain: data.domain }),
       ...(data.websiteUrl === "" ? { websiteUrl: null } : {}),
     },
   });

@@ -1,11 +1,8 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import {
-  MOCK_PUBLICATIONS,
-  GENRE_OPTIONS,
-  REGION_OPTIONS,
-} from "../../data/publicationsData";
+import useSWR from "swr";
+import { GENRE_OPTIONS, REGION_OPTIONS } from "../../data/publicationsData";
 import type { Publication } from "../../data/publicationsData";
 import {
   Plus,
@@ -119,12 +116,12 @@ function pubToForm(pub: Publication): PubForm {
     doFollow: pub.doFollow,
     hasExample: pub.hasExample,
     llmAeo: pub.llmAeo,
-    nicheAge18: pub.niches.age18 ?? false,
-    nicheHeart: pub.niches.heart ?? false,
-    nicheCannabis: pub.niches.cannabis ?? false,
-    nicheCopyright: pub.niches.copyright ?? false,
-    nicheCasino: pub.niches.casino ?? false,
-    nicheMultiplier: pub.niches.multiplier ?? "",
+    nicheAge18: (pub as any).nicheAge18 ?? false,
+    nicheHeart: (pub as any).nicheHeart ?? false,
+    nicheCannabis: (pub as any).nicheCannabis ?? false,
+    nicheCopyright: (pub as any).nicheCopyright ?? false,
+    nicheCasino: (pub as any).nicheCasino ?? false,
+    nicheMultiplier: (pub as any).nicheMultiplier ?? "",
   };
 }
 
@@ -221,15 +218,15 @@ function FormCheckbox({
 // ─────────────────────────────────────────────────────────────
 // Main Page
 // ─────────────────────────────────────────────────────────────
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 export default function AdminPublicationsPage() {
   // ── State ──────────────────────────────────────────────────
-  const [publications, setPublications] = useState<Publication[]>(
-    MOCK_PUBLICATIONS as Publication[]
-  );
+  const { data: apiResponse, error, isLoading, mutate } = useSWR<{ items: Publication[]; pagination: any }>("/api/publications", fetcher);
+  const publications = apiResponse?.items || [];
+
   const [search, setSearch] = useState("");
-  const [sortField, setSortField] = useState<"price" | "da" | "dr" | "name">(
-    "price"
-  );
+  const [sortField, setSortField] = useState<"price" | "da" | "dr" | "name">("price");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
 
   // Modal state
@@ -301,16 +298,17 @@ export default function AdminPublicationsPage() {
     return true;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setFormError("");
     if (!validateForm()) return;
 
-    const built: Publication = {
-      id: editingPub?.id ?? `pub-${Date.now()}`,
+    // Use empty string for id if adding, so the backend generates a real UUID
+    const built = {
+      id: editingPub?.id ?? "",
       name: form.name.trim(),
-      url: form.url.trim() || undefined,
+      domain: form.url.trim() || undefined, // Map form.url to DB domain
       exampleUrl: form.exampleUrl.trim() || undefined,
-      logoText: form.logoText.trim().slice(0, 8).toUpperCase(),
+      logoText: form.logoText.trim().slice(0, 4).toUpperCase(), // Schema max is 4
       logoBg: form.logoBg,
       logoTextColor: form.logoTextColor,
       isNew: form.isNew,
@@ -320,39 +318,60 @@ export default function AdminPublicationsPage() {
       tat: form.tat,
       region: form.region.split(",").map((r) => r.trim()).filter(Boolean),
       genres: form.genres.split(",").map((g) => g.trim()).filter(Boolean),
-      genreCount: form.genreCount ? Number(form.genreCount) : undefined,
-      sponsored: form.sponsored,
-      indexed: form.indexed,
-      doFollow: form.doFollow,
-      hasExample: form.hasExample,
-      llmAeo: form.llmAeo,
-      niches: {
-        age18: form.nicheAge18 || undefined,
-        heart: form.nicheHeart || undefined,
-        cannabis: form.nicheCannabis || undefined,
-        copyright: form.nicheCopyright || undefined,
-        casino: form.nicheCasino || undefined,
-        multiplier: form.nicheMultiplier.trim() || undefined,
-      },
+      sponsored: String(form.sponsored) === "true",
+      indexed: String(form.indexed) === "true",
+      doFollow: String(form.doFollow) === "true",
+      llmAeo: String(form.llmAeo) === "true",
+      nicheAge18: form.nicheAge18,
+      nicheHeart: form.nicheHeart,
+      nicheCannabis: form.nicheCannabis,
+      nicheCopyright: form.nicheCopyright,
+      nicheCasino: form.nicheCasino,
     };
 
-    if (modalMode === "add") {
-      setPublications((prev) => [built, ...prev]);
-      showSuccess("Publication added successfully!");
-    } else {
-      setPublications((prev) =>
-        prev.map((p) => (p.id === built.id ? built : p))
-      );
-      showSuccess("Publication updated successfully!");
+    if (!built.id) {
+      delete (built as any).id; // Remove empty ID so Prisma/Zod doesn't complain
     }
-    closeModal();
+
+    try {
+      const isAdd = modalMode === "add";
+      const url = isAdd ? "/api/publications" : `/api/publications/${built.id}`;
+      const method = isAdd ? "POST" : "PUT";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(built),
+      });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        if (errData.details) {
+          console.error("Validation Details:", errData.details);
+          throw new Error(`Validation failed: ${JSON.stringify(errData.details)}`);
+        }
+        throw new Error(errData.error || "Failed to save publication");
+      }
+
+      await mutate();
+      showSuccess(isAdd ? "Publication added successfully!" : "Publication updated successfully!");
+      closeModal();
+    } catch (err: any) {
+      setFormError(err.message || "An error occurred.");
+    }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!deleteTarget) return;
-    setPublications((prev) => prev.filter((p) => p.id !== deleteTarget.id));
-    setDeleteTarget(null);
-    showSuccess("Publication deleted.");
+    try {
+      const res = await fetch(`/api/publications/${deleteTarget.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      await mutate();
+      setDeleteTarget(null);
+      showSuccess("Publication deleted.");
+    } catch (err) {
+      alert("Error deleting publication");
+    }
   };
 
   const showSuccess = (msg: string) => {
@@ -442,6 +461,16 @@ export default function AdminPublicationsPage() {
 
       {/* ── Table (Matching Screenshot Columns exactly) ── */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+        {isLoading ? (
+          <div className="py-20 flex flex-col items-center justify-center">
+             <div className="w-8 h-8 border-4 border-slate-200 border-t-[#e63939] rounded-full animate-spin"></div>
+             <p className="text-slate-500 text-sm font-semibold mt-4">Loading publications from database...</p>
+          </div>
+        ) : error ? (
+          <div className="py-12 text-center text-red-600 font-medium">
+             Failed to load publications. Please check your connection.
+          </div>
+        ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse border border-slate-200">
             <thead>
@@ -588,24 +617,24 @@ export default function AdminPublicationsPage() {
 
                   {/* 8. SPONSORED */}
                   <td className="px-2.5 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.sponsored}
+                    {pub.sponsored ? "Yes" : "No"}
                   </td>
 
                   {/* 9. INDEXED */}
                   <td className="px-2.5 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.indexed}
+                    {pub.indexed ? "Yes" : "No"}
                   </td>
 
                   {/* 10. DO FOLLOW */}
                   <td className="px-3 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.doFollow}
+                    {pub.doFollow ? "Yes" : "No"}
                   </td>
 
                   {/* 11. EXAMPLE LINK */}
                   <td className="px-3 py-3 text-center whitespace-nowrap">
-                    {pub.hasExample ? (
+                    {pub.exampleUrl ? (
                       <a
-                        href={pub.exampleUrl || "#"}
+                        href={pub.exampleUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 font-bold text-[#28a745] hover:underline text-[12px]"
@@ -620,27 +649,27 @@ export default function AdminPublicationsPage() {
 
                   {/* 12. LLM/AEO */}
                   <td className="px-3 py-3 text-center font-medium text-slate-700 text-[12px]">
-                    {pub.llmAeo}
+                    {pub.llmAeo ? "Yes" : "No"}
                   </td>
 
                   {/* 13. NICHES */}
                   <td className="px-3 py-3 text-center">
                     <div className="flex items-center justify-center gap-1.5">
-                      {pub.niches.age18 && (
+                      {(pub as any).nicheAge18 && (
                         <span className="w-4.5 h-4.5 rounded-full border border-slate-400 flex items-center justify-center text-[7.5px] font-bold text-slate-600 relative shrink-0" title="18+">
                           18+
                         </span>
                       )}
-                      {pub.niches.heart && (
+                      {(pub as any).nicheHeart && (
                         <span title="Dating"><Heart className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
-                      {pub.niches.cannabis && (
+                      {(pub as any).nicheCannabis && (
                         <span title="Cannabis"><Leaf className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
-                      {pub.niches.copyright && (
+                      {(pub as any).nicheCopyright && (
                         <span title="Copyright"><Copyright className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
-                      {pub.niches.casino && (
+                      {(pub as any).nicheCasino && (
                         <span title="Casino"><Dices className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
                       )}
                     </div>
@@ -683,6 +712,7 @@ export default function AdminPublicationsPage() {
             </div>
           )}
         </div>
+        )}
       </div>
 
       {/* ─────────────────────────────────────────────────────

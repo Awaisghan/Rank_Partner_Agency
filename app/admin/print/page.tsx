@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import useSWR from "swr";
 import {
   Printer,
   Plus,
@@ -23,68 +24,12 @@ interface PrintMagazine {
   circulation?: string;
 }
 
-const INITIAL_MAGAZINES: PrintMagazine[] = [
-  {
-    id: "mag-1",
-    title: "Billboard USA",
-    domain: "billboard.com",
-    websiteUrl: "https://billboard.com",
-    fullPagePrice: "$7,500",
-    spreadPrice: "$15,000",
-    turnaround: "Turnaround 1-2 Months",
-  },
-  {
-    id: "mag-2",
-    title: "Billboard Argentina",
-    domain: "billboard.ar",
-    websiteUrl: "https://billboard.ar",
-    fullPagePrice: "$1,000",
-    turnaround: "Turnaround 1-2 Months",
-  },
-  {
-    id: "mag-3",
-    title: "Hamptons Magazine",
-    domain: "mlhamptons.com",
-    websiteUrl: "https://mlhamptons.com",
-    fullPagePrice: "$5,000",
-    spreadPrice: "$10,000",
-    turnaround: "Turnaround 1-2 Months",
-    circulation: "50,000+ circulation",
-  },
-  {
-    id: "mag-4",
-    title: "Riveria Magazine",
-    domain: "mlriviera.com",
-    websiteUrl: "https://mlriviera.com",
-    fullPagePrice: "$5,000",
-    spreadPrice: "$10,000",
-    turnaround: "Turnaround 1-2 Months",
-    circulation: "40,000+ circulation",
-  },
-  {
-    id: "mag-5",
-    title: "San Diego Magazine",
-    domain: "mlsandiegomag.com",
-    websiteUrl: "https://mlsandiegomag.com",
-    fullPagePrice: "$4,375",
-    spreadPrice: "$8,750",
-    turnaround: "Turnaround 1-2 Months",
-    circulation: "35,000+ circulation",
-  },
-  {
-    id: "mag-6",
-    title: "Angeleno Magazine",
-    domain: "mlangeleno.com",
-    websiteUrl: "https://mlangeleno.com",
-    fullPagePrice: "$6,000",
-    spreadPrice: "$12,000",
-    turnaround: "Turnaround 1-2 Months",
-    circulation: "50,000+ circulation",
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function PrintAdminPage() {
-  const [magazines, setMagazines] = useState<PrintMagazine[]>(INITIAL_MAGAZINES);
+  const { data: apiResponse, error, isLoading, mutate } = useSWR<{items: PrintMagazine[], pagination: any}>("/api/print-magazines", fetcher);
+  const magazines = apiResponse?.items || [];
+
   const [search, setSearch] = useState("");
   const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
   const [currentMag, setCurrentMag] = useState<PrintMagazine | null>(null);
@@ -134,28 +79,52 @@ export default function PrintAdminPage() {
     setModalMode("edit");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.title || !form.domain) return;
-    const newMag: PrintMagazine = {
-      id: currentMag ? currentMag.id : `mag-${Date.now()}`,
+    
+    const built = {
+      id: currentMag?.id ?? "",
       title: form.title,
-      domain: form.domain,
+      domain: form.domain || undefined,
       websiteUrl: form.websiteUrl.trim() || undefined,
-      fullPagePrice: form.fullPagePrice.trim() || undefined,
-      spreadPrice: form.spreadPrice.trim() || undefined,
+      fullPagePrice: form.fullPagePrice.trim(),   // required by schema
+      spreadPrice: form.spreadPrice.trim(),       // required by schema
       turnaround: form.turnaround,
-      circulation: form.circulation.trim() || undefined,
+      circulation: form.circulation.trim(),       // required by schema
     };
 
-    if (modalMode === "add") setMagazines([newMag, ...magazines]);
-    else setMagazines(magazines.map((m) => (m.id === newMag.id ? newMag : m)));
-    setModalMode(null);
+    if (!built.id) delete (built as any).id;
+
+    try {
+      const isAdd = modalMode === "add";
+      const url = isAdd ? "/api/print-magazines" : `/api/print-magazines/${built.id}`;
+      const method = isAdd ? "POST" : "PUT";
+
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(built),
+      });
+
+      if (!res.ok) throw new Error("Failed to save");
+      
+      await mutate();
+      setModalMode(null);
+    } catch (err) {
+      alert("Error saving item");
+    }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!deleteTarget) return;
-    setMagazines(magazines.filter((m) => m.id !== deleteTarget.id));
-    setDeleteTarget(null);
+    try {
+      const res = await fetch(`/api/print-magazines/${deleteTarget.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      await mutate();
+      setDeleteTarget(null);
+    } catch (err) {
+      alert("Error deleting item");
+    }
   };
 
   return (
@@ -208,6 +177,14 @@ export default function PrintAdminPage() {
       </div>
 
       {/* Magazine Cards Grid (Exact Screenshot Replica) */}
+      {isLoading ? (
+        <div className="py-20 flex flex-col items-center justify-center col-span-full">
+           <div className="w-8 h-8 border-4 border-slate-200 border-t-[#e63939] rounded-full animate-spin"></div>
+           <p className="text-slate-500 text-sm font-semibold mt-4">Loading from database...</p>
+        </div>
+      ) : error ? (
+        <div className="py-12 text-center text-red-600 font-medium col-span-full">Failed to load data.</div>
+      ) : (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {filtered.map((mag) => (
           <div
@@ -284,6 +261,7 @@ export default function PrintAdminPage() {
           </div>
         ))}
       </div>
+      )}
 
       {/* Add/Edit Modal */}
       {modalMode && (
