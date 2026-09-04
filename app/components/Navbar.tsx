@@ -53,7 +53,7 @@ export default function Navbar() {
         <div ref={dropdownRef} onMouseLeave={() => setActiveDropdown(null)}>
           {/* Main Floating Navbar Container */}
           <nav
-            className={`w-full flex items-center justify-between px-5 sm:px-8 transition-all duration-300 ${
+            className={`w-full flex items-center justify-between px-3.5 sm:px-5 lg:px-8 transition-all duration-300 ${
               isWhiteNav
                 ? "bg-[#f4f5f8] border border-slate-200/80 shadow-lg text-slate-900 rounded-t-3xl rounded-b-none border-b-0 py-3"
                 : "bg-[#040d21] border border-[#162d5a] shadow-xl text-white rounded-full py-2.5"
@@ -87,14 +87,14 @@ export default function Navbar() {
                 </div>
                 <div className="flex items-center font-sans tracking-tight">
                   <span
-                    className={`font-black text-lg sm:text-xl tracking-wider transition-colors duration-300 ${
+                    className={`font-black text-[15px] sm:text-lg lg:text-xl tracking-wider transition-colors duration-300 ${
                       isWhiteNav ? "text-slate-950" : "text-white"
                     }`}
                   >
                     RANK_
                   </span>
                   <span
-                    className={`font-medium text-lg sm:text-xl tracking-wider ml-0.5 transition-colors duration-300 ${
+                    className={`font-medium text-[15px] sm:text-lg lg:text-xl tracking-wider ml-0.5 transition-colors duration-300 ${
                       isWhiteNav ? "text-slate-600" : "text-slate-300"
                     }`}
                   >
@@ -207,10 +207,10 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Hamburger Button */}
-            <div className="flex md:hidden items-center gap-2 shrink-0">
+            <div className="flex md:hidden items-center gap-2 sm:gap-3 shrink-0">
               <Link
                 href="/#get-in-touch"
-                className="bg-[#9bf389] text-[#030919] text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap"
+                className="hidden min-[360px]:block bg-[#9bf389] text-[#030919] text-[11px] sm:text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap"
                 onClick={closeMobile}
               >
                 Contact us
@@ -341,7 +341,7 @@ export default function Navbar() {
           onClick={closeMobile}
         >
           <div
-            className="absolute top-16 left-4 right-4 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden max-h-[80vh] overflow-y-auto"
+            className="absolute top-20 sm:top-24 left-4 right-4 sm:left-6 sm:right-6 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden max-h-[80vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-4 space-y-1 text-slate-800">

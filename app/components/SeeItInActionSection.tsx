@@ -111,7 +111,7 @@ export default function SeeItInActionSection() {
           <div className="w-full max-w-[860px] mx-auto bg-[#040d21] border border-slate-800/90 rounded-[32px] p-6 sm:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.5)] relative overflow-hidden text-white font-sans">
             
             {/* Console Header Row */}
-            <div className="flex items-center justify-between pb-6 border-b border-slate-800/80 mb-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 pb-6 border-b border-slate-800/80 mb-6">
               <div>
                 <div className="text-[#4ade80] font-mono text-[11px] font-bold tracking-[0.2em] uppercase mb-1">
                   AGENCY CONSOLE
@@ -151,9 +151,9 @@ export default function SeeItInActionSection() {
                   key={idx}
                   className="bg-[#071738]/70 border border-slate-800/80 rounded-2xl p-4 sm:p-4.5 flex flex-col gap-3 group transition-all duration-300 hover:border-slate-700"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-slate-800/80 text-slate-300 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-slate-800/80 text-slate-300 flex items-center justify-center shrink-0">
                         <Building2 className="w-4 h-4" />
                       </div>
                       <span className="text-white font-bold text-sm sm:text-base">
@@ -161,7 +161,7 @@ export default function SeeItInActionSection() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pl-11 sm:pl-0">
                       <span className="text-slate-400 text-xs font-medium">
                         {row.placements}
                       </span>
@@ -188,11 +188,11 @@ export default function SeeItInActionSection() {
             {/* Bottom Divider */}
             <div className="border-t border-slate-800/80 pt-6 mb-6">
               {/* Bottom 3 Count-Up Stats */}
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 text-center sm:text-left">
                 
                 {/* Stat 1: 4 Active clients */}
                 <div className="space-y-1">
-                  <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                  <div className="text-4xl font-extrabold text-white tracking-tight">
                     {activeClientsCount}
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-[0.16em] uppercase">
@@ -202,7 +202,7 @@ export default function SeeItInActionSection() {
 
                 {/* Stat 2: 43 Placements delivered */}
                 <div className="space-y-1">
-                  <div className="text-3xl sm:text-4xl font-extrabold text-[#4ade80] tracking-tight">
+                  <div className="text-4xl font-extrabold text-[#4ade80] tracking-tight">
                     {placementsCount}
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-[0.16em] uppercase">
@@ -212,7 +212,7 @@ export default function SeeItInActionSection() {
 
                 {/* Stat 3: +15 Avg. DR lift */}
                 <div className="space-y-1">
-                  <div className="text-3xl sm:text-4xl font-extrabold text-[#4ade80] tracking-tight">
+                  <div className="text-4xl font-extrabold text-[#4ade80] tracking-tight">
                     +{avgLiftCount}
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-[0.16em] uppercase">
@@ -227,12 +227,12 @@ export default function SeeItInActionSection() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
               <button
                 onClick={startAnimation}
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm transition-all duration-300 shadow-[0_0_22px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95 cursor-pointer w-fit"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 sm:py-3 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm transition-all duration-300 shadow-[0_0_22px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95 cursor-pointer"
               >
                 Run it again
               </button>
 
-              <p className="text-slate-400 text-xs font-normal max-w-md">
+              <p className="text-slate-400 text-xs font-normal max-w-md text-center sm:text-left">
                 Interactive demo. Client names and figures are illustrative; the 3,000+ agency network is real.
               </p>
             </div>

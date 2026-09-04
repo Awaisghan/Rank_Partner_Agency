@@ -38,8 +38,7 @@ export default function ForPublishersHeroSection() {
 
   return (
     <section
-      className="relative z-10 w-full flex flex-col justify-center overflow-hidden font-sans pt-12 lg:pt-14 pb-4"
-      style={{ height: "90vh" }}
+      className="relative z-10 w-full flex flex-col overflow-hidden font-sans pt-36 pb-10 sm:pt-40 sm:pb-12 lg:justify-center lg:pt-14 lg:pb-4 lg:h-[90vh]"
     >
       <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         
@@ -80,10 +79,10 @@ export default function ForPublishersHeroSection() {
 
             {/* CTA Buttons */}
             <ScrollReveal delay={350}>
-              <div className="flex items-center gap-4 pt-1">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1">
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
                 >
                   <span>Partner with us</span>
                   <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -91,7 +90,7 @@ export default function ForPublishersHeroSection() {
 
                 <Link
                   href="#how-it-works"
-                  className="inline-flex items-center justify-center px-7 py-4 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 text-white font-bold text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="inline-flex items-center justify-center px-7 py-3.5 sm:py-4 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 text-white font-bold text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   <span>See how it works</span>
                 </Link>
@@ -103,7 +102,7 @@ export default function ForPublishersHeroSection() {
           {/* ============================================================ */}
           {/* RIGHT COLUMN — Network Hub Graphic with 7 Animated Lines     */}
           {/* ============================================================ */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-end items-center relative w-full pt-6 lg:pt-0">
+          <div className="hidden lg:flex lg:col-span-6 justify-end items-center relative w-full pt-6 lg:pt-0">
             <ScrollReveal delay={200}>
               <div className="relative w-[540px] h-[440px] flex items-center justify-center">
 

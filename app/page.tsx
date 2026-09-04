@@ -19,13 +19,12 @@ export default function Home() {
         <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-purple-500/5 blur-[160px] rounded-full" />
       </div>
 
-      {/* Hero Section — exactly 100vh, no scroll */}
+      {/* Hero Section — Responsive height */}
       <section
-        className="relative z-10 w-full overflow-hidden"
-        style={{ height: "100vh" }}
+        className="relative z-10 w-full overflow-hidden min-h-[100vh] lg:h-[100vh] flex items-center pt-28 pb-16 lg:pt-16 lg:pb-0"
       >
-        {/* Content centered with top padding for fixed navbar */}
-        <div className="h-full max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center pt-16">
+        {/* Content centered */}
+        <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center w-full">
 
             {/* LEFT SIDE CONTENT */}

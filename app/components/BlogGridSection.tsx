@@ -104,9 +104,9 @@ export default function BlogGridSection() {
       <div className="w-full max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         
         {/* Top Controls Bar: Filter Pills + Article Count */}
-        <div className="flex items-center justify-between gap-4 pb-6 mb-10 border-b border-slate-200/80">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-8 sm:mb-10 border-b border-slate-200/80">
           {/* Category Pills */}
-          <div className="flex items-center gap-2.5 overflow-x-auto scrollbar-none py-1">
+          <div className="flex items-center gap-2.5 w-full sm:w-auto overflow-x-auto scrollbar-none py-1 pr-4 sm:pr-0">
             {filterTabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -191,7 +191,7 @@ export default function BlogGridSection() {
               </div>
 
               {/* Right Column Dark Graphic Box (5 cols) */}
-              <div className="lg:col-span-5 bg-[#040c1e] p-8 lg:p-12 relative overflow-hidden flex flex-col justify-between min-h-[260px] lg:min-h-[360px]">
+              <div className="hidden lg:col-span-5 bg-[#040c1e] p-8 lg:p-12 relative overflow-hidden lg:flex flex-col justify-between min-h-[260px] lg:min-h-[360px]">
                 {/* Background Ambient Radial Glow */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
 

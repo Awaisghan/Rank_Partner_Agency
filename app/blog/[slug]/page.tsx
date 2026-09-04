@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { ChevronRight, FileText, Search, CheckCircle2, Tv } from "lucide-react";
 import { getArticleBySlug } from "../../data/blogArticles";
@@ -59,8 +58,6 @@ export default function ArticleDetailPage() {
 
   return (
     <main className="min-h-screen bg-white text-slate-900 font-sans relative">
-      {/* Top Floating Navbar */}
-      <Navbar />
 
       {/* Top Dark Header Banner */}
       <header className="w-full bg-[#040d21] text-white pt-32 pb-16 sm:pb-20 px-6 sm:px-10 lg:px-16 xl:px-20 relative overflow-hidden">

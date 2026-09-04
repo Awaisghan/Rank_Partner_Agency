@@ -162,11 +162,11 @@ export default function HowItWorksSection() {
                   <div
                     key={idx}
                     onClick={() => setActiveStep(idx)}
-                    className="cursor-pointer group flex flex-col items-start transition-all duration-300"
+                    className="cursor-pointer group flex flex-row sm:flex-col items-start gap-4 sm:gap-0 transition-all duration-300"
                   >
                     {/* Icon circle */}
                     <div
-                      className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 transition-all duration-500 border ${
+                      className={`w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full flex items-center justify-center sm:mb-4 transition-all duration-500 border ${
                         isActive
                           ? "bg-[#0c2a1d] border-[#4ade80] text-[#4ade80] shadow-[0_0_24px_rgba(74,222,128,0.5)] scale-110"
                           : isPassed
@@ -174,23 +174,25 @@ export default function HowItWorksSection() {
                           : "bg-[#07142a]/90 border-slate-800 text-slate-500 group-hover:border-slate-700"
                       }`}
                     >
-                      <Icon className={`w-5 h-5 stroke-[2] transition-transform duration-300 ${isActive ? "scale-110" : ""}`} />
+                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 stroke-[2] transition-transform duration-300 ${isActive ? "scale-110" : ""}`} />
                     </div>
 
-                    {/* Number */}
-                    <span className={`text-xs font-bold tracking-widest mb-1.5 transition-colors duration-300 ${isPassed ? "text-[#4ade80]" : "text-slate-500"}`}>
-                      {step.number}
-                    </span>
+                    <div className="flex flex-col">
+                      {/* Number */}
+                      <span className={`text-[10px] sm:text-xs font-bold tracking-widest mb-1 sm:mb-1.5 transition-colors duration-300 ${isPassed ? "text-[#4ade80]" : "text-slate-500"}`}>
+                        {step.number}
+                      </span>
 
-                    {/* Title */}
-                    <h3 className={`text-base sm:text-lg font-bold mb-2 tracking-tight transition-colors duration-300 ${isActive ? "text-[#4ade80]" : isPassed ? "text-white" : "text-slate-300"}`}>
-                      {step.title}
-                    </h3>
+                      {/* Title */}
+                      <h3 className={`text-base sm:text-lg font-bold mb-1 sm:mb-2 tracking-tight transition-colors duration-300 ${isActive ? "text-[#4ade80]" : isPassed ? "text-white" : "text-slate-300"}`}>
+                        {step.title}
+                      </h3>
 
-                    {/* Description */}
-                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
-                      {step.description}
-                    </p>
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                        {step.description}
+                      </p>
+                    </div>
                   </div>
                 );
               })}

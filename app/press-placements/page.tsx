@@ -2,7 +2,6 @@
 
 import React, { useState, useCallback } from "react";
 import Link from "next/link";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 import CoverageMomentumSection from "../components/CoverageMomentumSection";
@@ -20,8 +19,6 @@ export default function PressPlacementsPage() {
 
   return (
     <main className="min-h-screen bg-[#040d21] text-white overflow-hidden relative font-sans">
-      {/* Top Floating Navbar */}
-      <Navbar />
 
       {/* Hero Background Ambient Glows */}
       <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />
@@ -30,12 +27,9 @@ export default function PressPlacementsPage() {
       {/* =========================================================== */}
       {/* HERO SECTION — 100vh, items vertically centered              */}
       {/* =========================================================== */}
-      <section
-        className="relative z-10 w-full flex items-center overflow-hidden"
-        style={{ height: "90vh" }}
-      >
+      <section className="relative z-10 w-full flex items-center overflow-hidden min-h-[100vh] lg:min-h-[90vh] pt-32 pb-20 lg:py-0">
         <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
             {/* ============================================================ */}
             {/* LEFT COLUMN — Text & CTAs (col-span-5)                        */}

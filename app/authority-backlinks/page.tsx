@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 import WhatYouGetAuthoritySection from "../components/WhatYouGetAuthoritySection";
@@ -17,11 +16,6 @@ export default function AuthorityBacklinksPage() {
     <main className="min-h-screen bg-[#040d21] text-white overflow-hidden relative font-sans">
 
       {/* ========================================================= */}
-      {/* NAVBAR */}
-      {/* ========================================================= */}
-      <Navbar />
-
-      {/* ========================================================= */}
       {/* HERO AMBIENT GLOWS */}
       {/* ========================================================= */}
       <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />
@@ -32,8 +26,7 @@ export default function AuthorityBacklinksPage() {
       {/* HERO */}
       {/* ========================================================= */}
       <section
-        className="relative z-10 w-full flex items-center overflow-hidden"
-        style={{ height: "90vh" }}
+        className="relative z-10 w-full flex items-center overflow-hidden min-h-[100vh] lg:min-h-0 lg:h-[90vh] pt-32 pb-20 lg:py-0"
       >
         <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
 
@@ -103,7 +96,7 @@ export default function AuthorityBacklinksPage() {
             {/* ===================================================== */}
             {/* RIGHT COLUMN */}
             {/* ===================================================== */}
-            <div className="lg:col-span-6 flex justify-center lg:justify-end items-center relative w-full pt-10 lg:pt-0">
+            <div className="hidden lg:flex lg:col-span-6 justify-center lg:justify-end items-center relative w-full pt-10 lg:pt-0">
 
               <ScrollReveal delay={200}>
 

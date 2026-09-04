@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ForPublishersHeroSection from "../components/ForPublishersHeroSection";
 import WhatWeBuySection from "../components/WhatWeBuySection";
@@ -13,8 +12,6 @@ import PublishersCTASection from "../components/PublishersCTASection";
 export default function ForPublishersPage() {
   return (
     <main className="min-h-screen bg-[#040d21] text-white overflow-hidden relative font-sans">
-      {/* Top Floating Navbar */}
-      <Navbar />
 
       {/* Hero Ambient Glows */}
       <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />

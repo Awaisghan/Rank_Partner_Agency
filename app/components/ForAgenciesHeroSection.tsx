@@ -52,8 +52,7 @@ export default function ForAgenciesHeroSection() {
 
   return (
     <section
-      className="relative z-10 w-full flex flex-col justify-center overflow-hidden font-sans pt-12 lg:pt-14 pb-4"
-      style={{ height: "90vh" }}
+      className="relative z-10 w-full flex flex-col overflow-hidden font-sans pt-36 pb-10 sm:pt-40 sm:pb-12 lg:justify-center lg:pt-14 lg:pb-4 lg:h-[90vh]"
     >
       <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
 
@@ -94,10 +93,10 @@ export default function ForAgenciesHeroSection() {
 
             {/* CTA Buttons */}
             <ScrollReveal delay={350}>
-              <div className="flex items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
                 >
                   <span>Talk to us</span>
                   <ArrowRight className="w-4.5 h-4.5 stroke-[2.5]" />
@@ -105,7 +104,7 @@ export default function ForAgenciesHeroSection() {
 
                 <Link
                   href="#how-it-works"
-                  className="inline-flex items-center justify-center px-7 py-4 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 text-white font-bold text-base transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="inline-flex items-center justify-center px-7 py-3.5 sm:py-4 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 text-white font-bold text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   <span>See how it works</span>
                 </Link>
@@ -151,7 +150,7 @@ export default function ForAgenciesHeroSection() {
                   </div>
 
                   {/* ── BAR CHART CONTAINER (COMPACT HEIGHT) ────────────── */}
-                  <div className="bg-[#051126]/90 border border-slate-700/60 rounded-2xl p-5 flex flex-col justify-between h-[190px] relative overflow-hidden">
+                  <div className="bg-[#051126]/90 border border-slate-700/60 rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-[160px] sm:h-[190px] relative overflow-hidden">
 
                     {/* Top Bar Chart Labels */}
                     <div className="flex items-center justify-between text-xs sm:text-[13px] font-semibold">
@@ -162,7 +161,7 @@ export default function ForAgenciesHeroSection() {
                     </div>
 
                     {/* 6 ANIMATED SOLID/GRADIENT BARS */}
-                    <div className="flex items-end justify-between gap-3 sm:gap-4 h-[115px] pt-2">
+                    <div className="flex items-end justify-between gap-2 sm:gap-4 h-[90px] sm:h-[115px] pt-2">
                       {barHeights.map((targetH, idx) => (
                         <div
                           key={idx}
@@ -185,7 +184,7 @@ export default function ForAgenciesHeroSection() {
                   <div className="grid grid-cols-3 gap-3.5">
 
                     {/* Stat 1: AVG. DR (0 -> 71) */}
-                    <div className="bg-[#051126]/90 border border-slate-700/60 rounded-2xl p-4 flex flex-col justify-center">
+                    <div className="bg-[#051126]/90 border border-slate-700/60 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col justify-center">
                       <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                         {avgDr}
                       </div>
@@ -195,7 +194,7 @@ export default function ForAgenciesHeroSection() {
                     </div>
 
                     {/* Stat 2: DR LIFT (0 -> +23) */}
-                    <div className="bg-[#051126]/90 border border-slate-700/60 rounded-2xl p-4 flex flex-col justify-center">
+                    <div className="bg-[#051126]/90 border border-slate-700/60 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col justify-center">
                       <div className="text-2xl sm:text-3xl font-extrabold text-[#4ade80] tracking-tight">
                         +{drLift}
                       </div>
@@ -205,7 +204,7 @@ export default function ForAgenciesHeroSection() {
                     </div>
 
                     {/* Stat 3: PLACED (0 -> 43) */}
-                    <div className="bg-[#051126]/90 border border-slate-700/60 rounded-2xl p-4 flex flex-col justify-center">
+                    <div className="bg-[#051126]/90 border border-slate-700/60 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col justify-center">
                       <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                         {placed}
                       </div>

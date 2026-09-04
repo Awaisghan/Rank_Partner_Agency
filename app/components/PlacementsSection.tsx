@@ -142,7 +142,7 @@ export default function PlacementsSection() {
         {/* ========================================================================= */}
         {/* LEFT CARD: DARK NAVY PIPELINE (lg:col-span-8)                             */}
         {/* ========================================================================= */}
-        <div className="lg:col-span-8 bg-[#07132b] rounded-3xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl border border-slate-800/80 min-h-[540px]">
+        <div className="lg:col-span-8 bg-[#07132b] rounded-3xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl border border-slate-800/80 min-h-[450px] lg:min-h-[540px]">
           {/* Header Text */}
           <div className="mb-6">
             <h3 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold text-white tracking-tight leading-[1.15] mb-3">
@@ -184,11 +184,11 @@ export default function PlacementsSection() {
                   return (
                     <div
                       key={`row1-${brand1.name}`}
-                      className="flex items-center gap-4 py-2.5 border-b border-slate-800/60 h-[66px]"
+                      className="flex items-center gap-3 sm:gap-4 py-2.5 border-b border-slate-800/60 h-[66px]"
                     >
                       {/* Avatar */}
                       <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0"
+                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm flex-shrink-0"
                         style={{
                           backgroundColor: brand1.bg,
                           color: brand1.color,
@@ -202,17 +202,17 @@ export default function PlacementsSection() {
                       <div className="flex-1 min-w-0 flex flex-col gap-1.5">
                         {/* Top Line: Name + DR + Status Badge */}
                         <div className="flex items-center justify-between gap-2">
-                          <div className="flex items-center gap-2">
-                            <span className="text-white font-bold text-base tracking-tight">{brand1.name}</span>
-                            <span className="text-[10px] font-medium text-slate-400 bg-slate-800/90 px-2 py-0.5 rounded border border-slate-700/60">
+                          <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
+                            <span className="text-white font-bold text-sm sm:text-base tracking-tight truncate">{brand1.name}</span>
+                            <span className="text-[9px] sm:text-[10px] font-medium text-slate-400 bg-slate-800/90 px-1.5 sm:px-2 py-0.5 rounded border border-slate-700/60 flex-shrink-0">
                               DR {brand1.dr}
                             </span>
                           </div>
 
                           {/* Status Badge on Right */}
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                             <div
-                              className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 border ${currentStageInfo.bg} ${currentStageInfo.color} ${currentStageInfo.border}`}
+                              className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold flex items-center gap-1 sm:gap-1.5 transition-all duration-300 border ${currentStageInfo.bg} ${currentStageInfo.color} ${currentStageInfo.border}`}
                             >
                               <span
                                 className={`w-1.5 h-1.5 rounded-full ${
@@ -263,9 +263,9 @@ export default function PlacementsSection() {
                 })()}
 
                 {/* --- ROW 2 --- */}
-                <div key={`row2-${brand2.name}`} className="flex items-center gap-4 py-2.5 border-b border-slate-800/60 h-[66px]">
+                <div key={`row2-${brand2.name}`} className="flex items-center gap-3 sm:gap-4 py-2.5 border-b border-slate-800/60 h-[66px]">
                   <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm flex-shrink-0"
                     style={{
                       backgroundColor: brand2.bg,
                       color: brand2.color,
@@ -277,14 +277,14 @@ export default function PlacementsSection() {
 
                   <div className="flex-1 min-w-0 flex flex-col gap-1.5">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-white font-bold text-base tracking-tight">{brand2.name}</span>
-                        <span className="text-[10px] font-medium text-slate-400 bg-slate-800/90 px-2 py-0.5 rounded border border-slate-700/60">
+                      <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
+                        <span className="text-white font-bold text-sm sm:text-base tracking-tight truncate">{brand2.name}</span>
+                        <span className="text-[9px] sm:text-[10px] font-medium text-slate-400 bg-slate-800/90 px-1.5 sm:px-2 py-0.5 rounded border border-slate-700/60 flex-shrink-0">
                           DR {brand2.dr}
                         </span>
                       </div>
 
-                      <div className="px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 bg-slate-800/80 text-slate-400 border border-slate-700/60">
+                      <div className="px-2 py-1 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold flex items-center gap-1 sm:gap-1.5 bg-slate-800/80 text-slate-400 border border-slate-700/60 flex-shrink-0">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
                         <span>Pitched</span>
                       </div>
@@ -307,9 +307,9 @@ export default function PlacementsSection() {
                 </div>
 
                 {/* --- ROW 3 --- */}
-                <div key={`row3-${brand3.name}`} className="flex items-center gap-4 py-2.5 border-b border-slate-800/60 h-[66px]">
+                <div key={`row3-${brand3.name}`} className="flex items-center gap-3 sm:gap-4 py-2.5 border-b border-slate-800/60 h-[66px]">
                   <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm flex-shrink-0"
                     style={{
                       backgroundColor: brand3.bg,
                       color: brand3.color,
@@ -321,14 +321,14 @@ export default function PlacementsSection() {
 
                   <div className="flex-1 min-w-0 flex flex-col gap-1.5">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-white font-bold text-base tracking-tight">{brand3.name}</span>
-                        <span className="text-[10px] font-medium text-slate-400 bg-slate-800/90 px-2 py-0.5 rounded border border-slate-700/60">
+                      <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
+                        <span className="text-white font-bold text-sm sm:text-base tracking-tight truncate">{brand3.name}</span>
+                        <span className="text-[9px] sm:text-[10px] font-medium text-slate-400 bg-slate-800/90 px-1.5 sm:px-2 py-0.5 rounded border border-slate-700/60 flex-shrink-0">
                           DR {brand3.dr}
                         </span>
                       </div>
 
-                      <div className="px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 bg-slate-800/80 text-slate-400 border border-slate-700/60">
+                      <div className="px-2 py-1 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold flex items-center gap-1 sm:gap-1.5 bg-slate-800/80 text-slate-400 border border-slate-700/60 flex-shrink-0">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
                         <span>Pitched</span>
                       </div>
@@ -351,9 +351,9 @@ export default function PlacementsSection() {
                 </div>
 
                 {/* --- ROW 4 (Incoming item sliding smoothly from bottom) --- */}
-                <div key={`row4-${brand4.name}`} className="flex items-center gap-4 py-2.5 h-[66px]">
+                <div key={`row4-${brand4.name}`} className="flex items-center gap-3 sm:gap-4 py-2.5 h-[66px]">
                   <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm flex-shrink-0"
                     style={{
                       backgroundColor: brand4.bg,
                       color: brand4.color,
@@ -365,14 +365,14 @@ export default function PlacementsSection() {
 
                   <div className="flex-1 min-w-0 flex flex-col gap-1.5">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-white font-bold text-base tracking-tight">{brand4.name}</span>
-                        <span className="text-[10px] font-medium text-slate-400 bg-slate-800/90 px-2 py-0.5 rounded border border-slate-700/60">
+                      <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
+                        <span className="text-white font-bold text-sm sm:text-base tracking-tight truncate">{brand4.name}</span>
+                        <span className="text-[9px] sm:text-[10px] font-medium text-slate-400 bg-slate-800/90 px-1.5 sm:px-2 py-0.5 rounded border border-slate-700/60 flex-shrink-0">
                           DR {brand4.dr}
                         </span>
                       </div>
 
-                      <div className="px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 bg-slate-800/80 text-slate-400 border border-slate-700/60">
+                      <div className="px-2 py-1 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold flex items-center gap-1 sm:gap-1.5 bg-slate-800/80 text-slate-400 border border-slate-700/60 flex-shrink-0">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
                         <span>Pitched</span>
                       </div>
@@ -399,15 +399,15 @@ export default function PlacementsSection() {
 
             {/* Bottom Bar */}
             <div className="flex flex-wrap items-center justify-between pt-4 border-t border-slate-700/50 text-xs sm:text-sm">
-              <div className="flex items-center gap-2">
-                <span className="text-slate-400 font-semibold tracking-wider uppercase text-[11px]">
+              <div className="flex items-center gap-2 mb-2 sm:mb-0 w-full sm:w-auto overflow-hidden">
+                <span className="text-slate-400 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px] shrink-0">
                   UP NEXT
                 </span>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 flex-1 min-w-0 overflow-x-auto scrollbar-none">
                   {[upNext1, upNext2, upNext3].map((brand) => (
                     <span
                       key={brand}
-                      className="bg-slate-800/90 text-slate-300 px-3 py-1 rounded-full text-xs border border-slate-700/50"
+                      className="bg-slate-800/90 text-slate-300 px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs border border-slate-700/50 whitespace-nowrap"
                     >
                       {brand}
                     </span>
@@ -426,7 +426,7 @@ export default function PlacementsSection() {
         {/* ========================================================================= */}
         {/* RIGHT CARD: LIGHT GRAY AUTHORITY CHART (Re-animates every 4 Seconds!)       */}
         {/* ========================================================================= */}
-        <div className="lg:col-span-4 bg-[#f8fafc] rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-slate-200/80 shadow-sm min-h-[540px]">
+        <div className="lg:col-span-4 bg-[#f8fafc] rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-slate-200/80 shadow-sm min-h-[400px] lg:min-h-[540px]">
           {/* Header Text */}
           <div className="mb-4">
             <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight leading-[1.2] mb-2">

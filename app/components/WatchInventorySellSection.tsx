@@ -212,14 +212,14 @@ export default function WatchInventorySellSection() {
               </div>
 
               {/* 5 Rows of 11 Circles - Spans Full Section Width with Large Circles */}
-              <div className="w-full grid grid-cols-11 gap-1.5 sm:gap-2.5 justify-items-center">
+              <div className="w-full grid grid-cols-11 gap-1 sm:gap-2.5 justify-items-center">
                 {Array.from({ length: TOTAL_CIRCLES }).map((_, idx) => {
                   const isFilled = idx < filledCircles;
 
                   return (
                     <div
                       key={idx}
-                      className={`w-7 h-7 sm:w-12 sm:h-12 lg:w-[56px] lg:h-[56px] rounded-full transition-all duration-300 ${
+                      className={`w-4 h-4 min-[380px]:w-5 min-[380px]:h-5 sm:w-8 sm:h-8 md:w-12 md:h-12 lg:w-[56px] lg:h-[56px] rounded-full transition-all duration-300 ${
                         isFilled
                           ? "bg-[#9ef08b] shadow-[0_0_14px_rgba(158,240,139,0.5)] scale-100"
                           : "bg-slate-800/80 border border-slate-700/40 scale-95"
@@ -232,33 +232,33 @@ export default function WatchInventorySellSection() {
 
             {/* ── SECTION 4: BOTTOM STATS & INTERACTIVE RUN AGAIN BUTTON ── */}
             <div className="border-t border-slate-800/80 pt-6 mt-8">
-              <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 mb-8 sm:mb-6 text-center sm:text-left">
                 {/* Stat 1 */}
                 <div>
-                  <div className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                     {pctSold}%
                   </div>
-                  <div className="text-slate-400 text-xs sm:text-sm font-medium">
+                  <div className="text-slate-400 text-xs sm:text-sm font-medium mt-0.5">
                     Inventory sold
                   </div>
                 </div>
 
                 {/* Stat 2 */}
                 <div>
-                  <div className="text-2xl sm:text-4xl font-extrabold text-[#9ef08b] tracking-tight">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#9ef08b] tracking-tight">
                     {agenciesReached.toLocaleString()}
                   </div>
-                  <div className="text-slate-400 text-xs sm:text-sm font-medium">
+                  <div className="text-slate-400 text-xs sm:text-sm font-medium mt-0.5">
                     Agencies reached
                   </div>
                 </div>
 
                 {/* Stat 3 */}
                 <div>
-                  <div className="text-2xl sm:text-4xl font-extrabold text-[#9ef08b] tracking-tight">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#9ef08b] tracking-tight">
                     ${revenueBooked.toLocaleString()}
                   </div>
-                  <div className="text-slate-400 text-xs sm:text-sm font-medium">
+                  <div className="text-slate-400 text-xs sm:text-sm font-medium mt-0.5">
                     Revenue booked
                   </div>
                 </div>

@@ -48,7 +48,7 @@ export default function ContactSection() {
         
         {/* Full-Width Dark Navy Card Container with Large Rounded Corners */}
         <div
-          className="rounded-[2.5rem] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-2xl border border-slate-800/80"
+          className="rounded-[2.5rem] p-5 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-2xl border border-slate-800/80"
           style={{
             background: "linear-gradient(145deg, #050d21 0%, #081635 60%, #040a1b 100%)",
           }}
@@ -76,7 +76,7 @@ export default function ContactSection() {
 
                 {/* Main Headline */}
                 <ScrollReveal delay={150}>
-                  <h2 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.08]">
+                  <h2 className="text-3xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.08]">
                     Ready to plan <br />
                     your{" "}
                     <span className="italic font-serif font-normal text-[#4ade80]">
@@ -133,7 +133,7 @@ export default function ContactSection() {
                   <span className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase block mb-3">
                     PLACEMENTS IN
                   </span>
-                  <div className="flex flex-wrap items-center gap-6 text-slate-400 font-serif text-base sm:text-lg font-bold">
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-slate-400 font-serif text-sm sm:text-lg font-bold">
                     <span>TIME</span>
                     <span>Forbes</span>
                     <span className="font-sans font-black tracking-tight text-sm">CNBC</span>
@@ -150,7 +150,7 @@ export default function ContactSection() {
             {/* ========================================================================= */}
             <div className="lg:col-span-6">
               <ScrollReveal delay={200}>
-                <div className="bg-white rounded-[2rem] p-6 sm:p-10 text-slate-900 shadow-2xl border border-slate-100 relative min-h-[480px] flex flex-col justify-between">
+                <div className="bg-white rounded-[2rem] p-5 sm:p-10 text-slate-900 shadow-2xl border border-slate-100 relative min-h-[400px] lg:min-h-[480px] flex flex-col justify-between">
                   
                   {isSubmitted ? (
                     /* Submission Success Screen */

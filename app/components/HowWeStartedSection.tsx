@@ -10,7 +10,7 @@ export default function HowWeStartedSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* LEFT COLUMN: Sticky Header Block */}
-          <div className="lg:col-span-5 sticky top-28 self-start h-fit">
+          <div className="lg:col-span-5 relative lg:sticky lg:top-28 self-start h-fit">
             <ScrollReveal>
               {/* Tagline Badge */}
               <div className="flex items-center gap-2.5 mb-2">

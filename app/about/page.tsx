@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import AboutHeroSection from "../components/AboutHeroSection";
 import HowWeStartedSection from "../components/HowWeStartedSection";
 import WhatWeBelieveSection from "../components/WhatWeBelieveSection";
@@ -12,8 +11,6 @@ import Footer from "../components/Footer";
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#040d21] text-white relative font-sans">
-      {/* Floating Header Navbar */}
-      <Navbar />
 
       {/* Hero Section with 90vh height & animated counters */}
       <AboutHeroSection />

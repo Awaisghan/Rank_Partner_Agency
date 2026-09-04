@@ -8,8 +8,7 @@ import ScrollReveal from "./ScrollReveal";
 export default function BlogHeroSection() {
   return (
     <section
-      style={{ height: "70vh" }}
-      className="w-full relative z-10 flex flex-col justify-center font-sans pt-20 px-6 sm:px-10 lg:px-16 xl:px-20"
+      className="w-full relative z-10 flex flex-col justify-center font-sans pt-32 pb-12 sm:pt-40 lg:pt-20 lg:pb-0 px-6 sm:px-10 lg:px-16 xl:px-20 min-h-[100dvh] lg:min-h-0 lg:h-[70vh]"
     >
       <div className="w-full max-w-[1360px] mx-auto">
         {/* Breadcrumbs */}

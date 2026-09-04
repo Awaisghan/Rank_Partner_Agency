@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 import WhatYouGetTvInterviewsSection from "../components/WhatYouGetTvInterviewsSection";
@@ -15,8 +14,6 @@ import { ArrowRight, Play } from "lucide-react";
 export default function TvInterviewsPage() {
   return (
     <main className="min-h-screen bg-[#040d21] text-white overflow-hidden relative font-sans">
-      {/* Top Floating Navbar */}
-      <Navbar />
 
       {/* Hero Ambient Glows */}
       <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />
@@ -26,8 +23,7 @@ export default function TvInterviewsPage() {
       {/* HERO SECTION — 90vh height, vertically centered               */}
       {/* =========================================================== */}
       <section
-        className="relative z-10 w-full flex items-center overflow-hidden"
-        style={{ height: "90vh" }}
+        className="relative z-10 w-full flex items-center overflow-hidden min-h-[100vh] lg:min-h-0 lg:h-[90vh] pt-32 pb-20 lg:py-0"
       >
         <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -94,7 +90,7 @@ export default function TvInterviewsPage() {
                 <div className="w-full max-w-[680px] sm:max-w-[720px] bg-[#071630]/95 border border-slate-700/70 rounded-[28px] p-5 sm:p-6 shadow-[0_30px_80px_rgba(0,0,0,0.65)] relative overflow-hidden flex flex-col justify-between">
 
                   {/* ── VIDEO BROADCAST WIDESCREEN AREA (16:9 aspect ratio) ─ */}
-                  <div className="w-full aspect-[16/9.5] min-h-[260px] bg-[#040e21] border border-slate-700/80 rounded-2xl relative p-5 sm:p-6 flex flex-col justify-between overflow-hidden group">
+                  <div className="w-full aspect-[16/9.5] min-h-[160px] sm:min-h-[260px] bg-[#040e21] border border-slate-700/80 rounded-2xl relative p-4 sm:p-6 flex flex-col justify-between overflow-hidden group">
 
                     {/* Ambient Green Spotlight Glow in Center */}
                     <div className="absolute inset-0 bg-emerald-500/12 blur-[100px] rounded-full pointer-events-none" />
@@ -102,22 +98,22 @@ export default function TvInterviewsPage() {
                     {/* Top Status Header */}
                     <div className="flex items-center justify-between relative z-10">
                       {/* LIVE Badge */}
-                      <div className="inline-flex items-center gap-2 bg-[#0c241d] border border-emerald-500/40 text-[#4ade80] text-[11px] font-bold px-3 py-1 rounded-md tracking-wider uppercase shadow-sm">
-                        <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
+                      <div className="inline-flex items-center gap-1 sm:gap-2 bg-[#0c241d] border border-emerald-500/40 text-[#4ade80] text-[9px] sm:text-[11px] font-bold px-2 sm:px-3 py-1 rounded-md tracking-wider uppercase shadow-sm">
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#4ade80] animate-pulse" />
                         <span>LIVE</span>
                       </div>
 
                       {/* Video Duration / Timer */}
-                      <div className="bg-[#07172e]/90 text-slate-300 font-mono text-xs font-medium px-3 py-1 rounded-md border border-slate-800/80">
+                      <div className="bg-[#07172e]/90 text-slate-300 font-mono text-[10px] sm:text-xs font-medium px-2 sm:px-3 py-1 rounded-md border border-slate-800/80">
                         04:12
                       </div>
                     </div>
 
                     {/* Center Double-Ring Play Button */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-16 h-16 rounded-full border border-emerald-500/35 flex items-center justify-center p-1.5 shadow-[0_0_35px_rgba(74,222,128,0.25)] group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-emerald-500/35 flex items-center justify-center p-1 sm:p-1.5 shadow-[0_0_35px_rgba(74,222,128,0.25)] group-hover:scale-110 transition-transform duration-300">
                         <div className="w-full h-full rounded-full bg-[#0a1b2e]/95 border border-emerald-500/60 text-[#4ade80] flex items-center justify-center cursor-pointer shadow-inner">
-                          <Play className="w-5 h-5 fill-[#4ade80] stroke-none ml-1" />
+                          <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-[#4ade80] stroke-none ml-1" />
                         </div>
                       </div>
                     </div>

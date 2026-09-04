@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ForAgenciesHeroSection from "../components/ForAgenciesHeroSection";
 import SeeItInActionSection from "../components/SeeItInActionSection";
@@ -14,8 +13,6 @@ import AgenciesCTASection from "../components/AgenciesCTASection";
 export default function ForAgenciesPage() {
   return (
     <main className="min-h-screen bg-[#040d21] text-white overflow-hidden relative font-sans">
-      {/* Top Floating Navbar */}
-      <Navbar />
 
       {/* Hero Ambient Glows */}
       <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />

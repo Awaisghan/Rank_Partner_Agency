@@ -1,0 +1,9 @@
+<svg viewBox="0 0 220 40" width="880" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="220" height="40" rx="20" fill="#040d21" />
+  <svg x="12" y="4" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 3L3 29H10.5L16 17.5L21.5 29H29L16 3Z" fill="white" />
+    <path d="M16 12.5L12 20.5H20L16 12.5Z" fill="#040d21" />
+  </svg>
+  <text x="48" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="18" fill="white" letter-spacing="0.05em">RANK_</text>
+  <text x="114" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="18" fill="#cbd5e1" letter-spacing="0.05em">PARTNER</text>
+</svg>
