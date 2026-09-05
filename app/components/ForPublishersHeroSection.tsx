@@ -118,19 +118,19 @@ export default function ForPublishersHeroSection() {
                     <style>{`
                       @keyframes greenDashFlow {
                         from {
-                          stroke-dashoffset: 24;
+                          stroke-dashoffset: 24px;
                         }
                         to {
-                          stroke-dashoffset: 0;
+                          stroke-dashoffset: 0px;
                         }
                       }
                       .pub-dash-line {
                         stroke: #4ade80;
                         stroke-width: 2.5;
-                        stroke-dasharray: 12 12;
+                        stroke-dasharray: 12px 12px;
                         stroke-linecap: round;
                         fill: none;
-                        filter: url(#greenGlow);
+                        filter: drop-shadow(0px 0px 3px rgba(74,222,128,0.85));
                         animation: greenDashFlow 1.2s linear infinite;
                       }
                     `}</style>

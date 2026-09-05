@@ -66,22 +66,24 @@ export async function getPrintMagazineById(id: string) {
 }
 
 export async function createPrintMagazine(data: PrintMagazineInput) {
+  const { domain, websiteUrl, ...rest } = data;
   return prisma.printMagazine.create({
     data: {
-      ...data,
-      domain: data.domain || "",
-      websiteUrl: data.websiteUrl || null,
+      ...rest,
+      domain: domain || "",
+      websiteUrl: websiteUrl || null,
     },
   });
 }
 
 export async function updatePrintMagazine(id: string, data: UpdatePrintMagazineInput) {
+  const { domain, websiteUrl, ...rest } = data;
   return prisma.printMagazine.update({
     where: { id },
     data: {
-      ...data,
-      ...(data.domain === null || data.domain === undefined ? {} : { domain: data.domain }),
-      ...(data.websiteUrl === "" ? { websiteUrl: null } : {}),
+      ...rest,
+      ...(domain !== undefined && domain !== null ? { domain } : {}),
+      ...(websiteUrl !== undefined ? { websiteUrl: websiteUrl === "" ? null : websiteUrl } : {}),
     },
   });
 }

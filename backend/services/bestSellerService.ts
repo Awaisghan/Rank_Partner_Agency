@@ -85,22 +85,24 @@ export async function getBestSellerById(id: string) {
 }
 
 export async function createBestSeller(data: BestSellerInput) {
+  const { domain, exampleUrl, ...rest } = data;
   return prisma.bestSeller.create({
     data: {
-      ...data,
-      domain: data.domain || "",
-      exampleUrl: data.exampleUrl || null,
+      ...rest,
+      domain: domain || "",
+      exampleUrl: exampleUrl || null,
     },
   });
 }
 
 export async function updateBestSeller(id: string, data: UpdateBestSellerInput) {
+  const { domain, exampleUrl, ...rest } = data;
   return prisma.bestSeller.update({
     where: { id },
     data: {
-      ...data,
-      ...(data.domain === null || data.domain === undefined ? {} : { domain: data.domain }),
-      ...(data.exampleUrl === "" ? { exampleUrl: null } : {}),
+      ...rest,
+      ...(domain !== undefined && domain !== null ? { domain } : {}),
+      ...(exampleUrl !== undefined ? { exampleUrl: exampleUrl === "" ? null : exampleUrl } : {}),
     },
   });
 }

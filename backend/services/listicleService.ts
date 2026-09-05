@@ -88,20 +88,24 @@ export async function getListicleById(id: string) {
 }
 
 export async function createListicle(data: ListicleInput) {
+  const { domain, exampleUrl, ...rest } = data;
   return prisma.listicle.create({
     data: {
-      ...data,
-      exampleUrl: data.exampleUrl || null,
+      ...rest,
+      domain: domain || "",
+      exampleUrl: exampleUrl || null,
     },
   });
 }
 
 export async function updateListicle(id: string, data: UpdateListicleInput) {
+  const { domain, exampleUrl, ...rest } = data;
   return prisma.listicle.update({
     where: { id },
     data: {
-      ...data,
-      ...(data.exampleUrl === "" ? { exampleUrl: null } : {}),
+      ...rest,
+      ...(domain !== undefined && domain !== null ? { domain } : {}),
+      ...(exampleUrl !== undefined ? { exampleUrl: exampleUrl === "" ? null : exampleUrl } : {}),
     },
   });
 }

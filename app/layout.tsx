@@ -16,8 +16,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RANK_PARTNER",
-  description: "Rank Partner Agency Services",
+  metadataBase: new URL("https://rankpartner.com"),
+  title: {
+    template: "%s | Rank Partner",
+    default: "Rank Partner | Award-Winning PR & SEO Agency",
+  },
+  description: "Rank Partner is an award-winning PR and SEO agency specializing in guaranteed press placements, authority backlinks, and high-tier media mentions.",
+  keywords: ["PR Agency", "SEO Agency", "Press Placements", "Authority Backlinks", "Digital PR", "Rank Partner", "Forbes Placement", "Guaranteed PR"],
+  openGraph: {
+    title: "Rank Partner | Premium PR & SEO Agency",
+    description: "Guaranteed press placements and high-authority backlinks to scale your brand.",
+    url: "https://rankpartner.com",
+    siteName: "Rank Partner",
+    images: [
+      {
+        url: "/og-image.jpg", // Add an actual image to the public folder later
+        width: 1200,
+        height: 630,
+        alt: "Rank Partner Agency",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rank Partner | Premium PR & SEO",
+    description: "Guaranteed press placements and high-authority backlinks to scale your brand.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

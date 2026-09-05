@@ -188,6 +188,8 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-4 sm:gap-5 text-sm shrink-0">
               <Link
                 href="/login"
+                target="_blank" 
+                rel="noopener noreferrer"
                 className={`font-medium transition-colors ${
                   isWhiteNav
                     ? "text-slate-800 hover:text-black"
@@ -460,6 +462,8 @@ export default function Navbar() {
 
               <Link
                 href="/login"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={closeMobile}
                 className="flex items-center px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 rounded-xl transition-colors"
               >

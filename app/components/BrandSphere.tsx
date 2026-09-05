@@ -46,6 +46,9 @@ export default function BrandSphere() {
 
     if (!canvas || !pointContainer || !sceneContainer) return;
 
+    // Do not run the 3D animation on mobile/tablet devices for better performance
+    if (window.innerWidth < 1024) return;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -308,7 +311,7 @@ export default function BrandSphere() {
       <div
         ref={sceneContainerRef}
         id="scene-container"
-        className="relative w-[1000px] h-[1000px] cursor-grab active:cursor-grabbing select-none scale-[0.75] lg:scale-[1.1] xl:scale-[1.25] translate-x-0 lg:translate-x-[70px] xl:translate-x-[30px] translate-y-[60px] lg:translate-y-[100px] xl:translate-y-[170px] transition-transform duration-300"
+        className="relative w-[1000px] h-[1000px] cursor-grab active:cursor-grabbing select-none scale-[0.75] lg:scale-[1.1] xl:scale-[1.25] 2xl:scale-[1.3] min-[1920px]:scale-[1.6] min-[2560px]:scale-[2.0] min-[3840px]:scale-[2.8] translate-x-0 lg:translate-x-[70px] xl:translate-x-[30px] 2xl:translate-x-[150px] min-[1920px]:translate-x-[350px] min-[2560px]:translate-x-[700px] min-[3840px]:translate-x-[1500px] translate-y-[60px] lg:translate-y-[100px] xl:translate-y-[170px] 2xl:translate-y-[190px] min-[1920px]:translate-y-[250px] min-[2560px]:translate-y-[350px] min-[3840px]:translate-y-[600px] transition-transform duration-300"
       >
         <canvas
           ref={canvasRef}
