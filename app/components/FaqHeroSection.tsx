@@ -17,8 +17,7 @@ const topics = [
 export default function FaqHeroSection() {
   return (
     <section
-      style={{ height: "70vh" }}
-      className="w-full relative z-10 flex flex-col justify-center font-sans pt-20 px-6 sm:px-10 lg:px-16 xl:px-20"
+      className="w-full relative z-10 flex flex-col justify-center font-sans min-h-[60vh] lg:min-h-[70vh] py-24 lg:py-0 px-4 sm:px-10 lg:px-16 xl:px-20"
     >
       <div className="w-full max-w-[1360px] mx-auto">
         {/* Tagline Badge */}
@@ -46,7 +45,7 @@ export default function FaqHeroSection() {
 
         {/* Subtitle Paragraph */}
         <ScrollReveal delay={150}>
-          <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal mb-8">
+          <p className="text-slate-400 text-sm sm:text-lg leading-relaxed max-w-2xl font-normal mb-8">
             How white-label PR and SEO works at Ascend, what agencies and publishers can expect, and how to get started. If your question is not here, talk to us.
           </p>
         </ScrollReveal>

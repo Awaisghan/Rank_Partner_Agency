@@ -188,9 +188,9 @@ export default function FaqAccordionSection() {
   };
 
   return (
-    <section className="w-full bg-[#fcfdfe] py-16 sm:py-24 relative z-10 font-sans border-t border-slate-200/60">
-      <div className="w-full max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section className="w-full bg-[#fcfdfe] py-12 sm:py-24 relative z-10 font-sans border-t border-slate-200/60">
+      <div className="w-full max-w-[1360px] mx-auto px-4 sm:px-10 lg:px-16 xl:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
           {/* Left Column: Sticky BROWSE TOPICS Sidebar (4 cols) */}
           <aside className="lg:col-span-4 hidden lg:block sticky top-28 self-start h-fit pr-4 z-20">
@@ -311,10 +311,10 @@ export default function FaqAccordionSection() {
                             {/* Accordion Button */}
                             <button
                               onClick={() => toggleQuestion(questionId)}
-                              className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer outline-none group"
+                              className="w-full p-4 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer outline-none group"
                             >
                               <span
-                                className={`font-bold text-base sm:text-lg transition-colors ${
+                                className={`font-bold text-sm sm:text-lg transition-colors leading-snug ${
                                   isOpen
                                     ? "text-[#3b82f6]"
                                     : "text-slate-900 group-hover:text-[#3b82f6]"
@@ -341,7 +341,7 @@ export default function FaqAccordionSection() {
 
                             {/* Answer Text */}
                             {isOpen && (
-                              <div className="px-5 sm:px-6 pb-6 pt-0 text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+                              <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-0 text-slate-600 text-xs sm:text-base leading-relaxed font-normal">
                                 <p>{item.a}</p>
                               </div>
                             )}

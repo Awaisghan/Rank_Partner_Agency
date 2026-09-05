@@ -186,7 +186,7 @@ export default function BeyondTheSegmentSection() {
           {/* ============================================================ */}
           <div className="lg:col-span-7 flex justify-center lg:justify-end">
             <ScrollReveal delay={200}>
-              <div className="w-full min-w-[560px] bg-white rounded-3xl border border-slate-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)] p-6 sm:p-8 flex flex-col justify-between">
+              <div className="w-full sm:min-w-[560px] bg-white rounded-3xl border border-slate-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)] p-5 sm:p-8 flex flex-col justify-between">
 
                 {/* Top Active Segment Card */}
                 <div className="bg-[#fafafa] border border-slate-200/90 rounded-2xl p-4 flex items-center justify-between mb-4 shadow-sm">
@@ -250,7 +250,7 @@ export default function BeyondTheSegmentSection() {
                 </div>
 
                 {/* Bottom Divider & Animated Count-Up Stats */}
-                <div className="border-t border-slate-100 pt-6 flex items-center gap-12 sm:gap-16">
+                <div className="border-t border-slate-100 pt-6 flex flex-wrap items-center gap-8 sm:gap-16">
 
                   {/* Stat 1: Clips Delivered (0 -> 9) */}
                   <div className="space-y-1">

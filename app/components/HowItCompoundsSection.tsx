@@ -109,15 +109,15 @@ export default function HowItCompoundsSection() {
             key={r}
             className="bg-blue-50/90 border border-blue-200/90 rounded-2xl p-3.5 flex items-center justify-between shadow-[0_6px_20px_rgba(59,130,246,0.15)] transition-all duration-700 ease-in-out transform translate-y-0"
           >
-            <div className="flex items-center gap-3.5">
-              <span className="font-extrabold text-blue-600 text-sm w-4 text-center">
+            <div className="flex items-center gap-2 sm:gap-3.5 flex-1 mr-2">
+              <span className="font-extrabold text-blue-600 text-xs sm:text-sm w-3 sm:w-4 text-center">
                 {r}
               </span>
-              <div className="w-7 h-7 rounded-lg bg-blue-600 shadow-sm" />
-              <div className="w-36 sm:w-44 h-3.5 bg-blue-600/80 rounded-full" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-blue-600 shadow-sm shrink-0" />
+              <div className="w-16 sm:w-44 h-2.5 sm:h-3.5 bg-blue-600/80 rounded-full" />
             </div>
 
-            <div className="bg-blue-100/90 text-blue-700 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200">
+            <div className="bg-blue-100/90 text-blue-700 text-[9px] sm:text-[10px] font-extrabold px-2 sm:px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200 shrink-0">
               YOUR CLIENT
             </div>
           </div>
@@ -129,14 +129,14 @@ export default function HowItCompoundsSection() {
             key={r}
             className="p-3 flex items-center justify-between rounded-xl transition-all duration-500 opacity-60 hover:opacity-100"
           >
-            <div className="flex items-center gap-3.5">
-              <span className="font-semibold text-slate-400 text-sm w-4 text-center">
+            <div className="flex items-center gap-2 sm:gap-3.5 flex-1 overflow-hidden">
+              <span className="font-semibold text-slate-400 text-xs sm:text-sm w-3 sm:w-4 text-center">
                 {r}
               </span>
-              <div className="w-7 h-7 rounded-lg bg-slate-100" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-slate-100 shrink-0" />
               <div
-                className="h-3 bg-slate-100 rounded-full"
-                style={{ width: `${140 + (r % 3) * 30}px` }}
+                className="h-2 sm:h-3 bg-slate-100 rounded-full"
+                style={{ width: `min(100%, ${140 + (r % 3) * 30}px)` }}
               />
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function HowItCompoundsSection() {
                 </div>
 
                 {/* Bottom Divider & Animated Count-Up Stats */}
-                <div className="border-t border-slate-100 pt-6 flex items-center justify-between">
+                <div className="border-t border-slate-100 pt-6 flex flex-wrap items-center justify-between gap-4">
 
                   {/* Stat 1: Domain Rating (0 -> 58) */}
                   <div className="space-y-1">
