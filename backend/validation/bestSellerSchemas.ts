@@ -27,6 +27,11 @@ export const bestSellerSchema = z.object({
   nicheCannabis: z.boolean().default(false),
   nicheCopyright: z.boolean().default(false),
   nicheCasino: z.boolean().default(false),
+  nicheAge18Multiplier: z.string().optional().nullable().or(z.literal("")),
+  nicheHeartMultiplier: z.string().optional().nullable().or(z.literal("")),
+  nicheCannabisMultiplier: z.string().optional().nullable().or(z.literal("")),
+  nicheCopyrightMultiplier: z.string().optional().nullable().or(z.literal("")),
+  nicheCasinoMultiplier: z.string().optional().nullable().or(z.literal("")),
   isActive: z.boolean().default(true),
 });
 

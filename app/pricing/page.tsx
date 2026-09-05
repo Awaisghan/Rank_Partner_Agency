@@ -204,6 +204,18 @@ const ViewLink = ({ url }: { url?: string }) =>
     <span className="text-slate-300">—</span>
   );
 
+// ─── Niche Icon with Multiplier Badge ──────────────────────────────────────────
+const NicheIcon = ({ children, multiplier }: { children: React.ReactNode, multiplier?: string }) => (
+  <div className="relative inline-flex items-center justify-center p-0.5">
+    {children}
+    {multiplier && (
+      <span className="absolute -top-1.5 -right-2 bg-[#f8d7da] text-[#a94442] text-[8.5px] font-black px-1.5 py-0.5 rounded-full leading-none shadow-xs z-10">
+        {multiplier}
+      </span>
+    )}
+  </div>
+);
+
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function PricingPage() {
@@ -299,7 +311,7 @@ export default function PricingPage() {
     } catch (e) {
       console.error("Logout failed", e);
     }
-    router.push("/login");
+    window.location.href = "/login";
   };
 
   const TH = "py-2.5 px-2 border-r border-slate-200 text-center";
@@ -513,12 +525,14 @@ export default function PricingPage() {
                            </td>
                            <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.llmAeo ? "Yes" : "No"}</td>
                            <td className="py-2.5 px-2 text-center">
-                             <div className="flex items-center justify-center gap-1">
-                               {(pub as any).nicheAge18 && <span className="text-[8px] font-bold border rounded-full w-4 h-4 flex items-center justify-center text-slate-600">18+</span>}
-                               {(pub as any).nicheHeart && <Heart className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
-                               {(pub as any).nicheCannabis && <Leaf className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
-                               {(pub as any).nicheCopyright && <Copyright className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
-                               {(pub as any).nicheCasino && <Dices className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
+                             <div className="flex flex-col items-center justify-center gap-1">
+                               <div className="flex items-center justify-center gap-3">
+                                 {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
+                                 {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                 {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                 {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                 {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                               </div>
                              </div>
                            </td>
                          </tr>
@@ -738,12 +752,14 @@ export default function PricingPage() {
                          <td className="py-2.5 px-2 text-center border-r border-slate-200"><ViewLink url={pub.exampleUrl} /></td>
                          <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.llmAeo ? "Yes" : "No"}</td>
                          <td className="py-2.5 px-2 text-center">
-                           <div className="flex items-center justify-center gap-1">
-                             {(pub as any).nicheAge18 && <span className="text-[8px] font-bold border rounded-full w-4 h-4 flex items-center justify-center text-slate-600">18+</span>}
-                             {(pub as any).nicheHeart && <Heart className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
-                             {(pub as any).nicheCannabis && <Leaf className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
-                             {(pub as any).nicheCopyright && <Copyright className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
-                             {(pub as any).nicheCasino && <Dices className="w-3.5 h-3.5 stroke-[1.8] text-slate-600" />}
+                           <div className="flex flex-col items-center justify-center gap-1">
+                             <div className="flex items-center justify-center gap-3">
+                               {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
+                               {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                               {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                               {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                               {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                             </div>
                            </div>
                          </td>
                        </tr>

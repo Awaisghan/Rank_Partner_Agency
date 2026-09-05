@@ -71,7 +71,7 @@ export default function ListiclesAdminPage() {
   const filtered = items.filter(
     (i) =>
       i.name.toLowerCase().includes(search.toLowerCase()) ||
-      i.url.toLowerCase().includes(search.toLowerCase())
+      (i as any).domain?.toLowerCase().includes(search.toLowerCase())
   );
 
   const openAdd = () => {
@@ -103,7 +103,7 @@ export default function ListiclesAdminPage() {
     setCurrentItem(item);
     setForm({
       name: item.name,
-      url: item.url,
+      url: (item as any).domain || "",
       tag: item.tag ?? "",
       logoText: item.logoText,
       logoBg: item.logoBg,
@@ -141,11 +141,11 @@ export default function ListiclesAdminPage() {
       dr: Number(form.dr) || 0,
       tat: form.tat,
       region: form.region.split(",").map((r) => r.trim()).filter(Boolean),
-      sponsored: String(form.sponsored) === "true",
-      indexed: String(form.indexed) === "true",
-      doFollow: String(form.doFollow) === "true",
+      sponsored: form.sponsored === "Yes",
+      indexed: form.indexed === "Yes",
+      doFollow: form.doFollow === "Yes",
       exampleUrl: form.exampleUrl.trim() || undefined,
-      llmAeo: String(form.llmAeo) === "true",
+      llmAeo: form.llmAeo === "Yes",
     };
 
     if (!built.id) delete (built as any).id;
@@ -173,7 +173,7 @@ export default function ListiclesAdminPage() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const res = await fetch(`/api/listicles/${deleteTarget.id}`, { method: "DELETE" });
+      const res = await fetch(`/api/listicles/${deleteTarget.id}?hard=true`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete");
       await mutate();
       setDeleteTarget(null);
@@ -298,7 +298,7 @@ export default function ListiclesAdminPage() {
                           {pub.name}
                         </span>
                         <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">
-                          {pub.url}
+                          {(pub as any).domain}
                         </span>
                         {pub.tag && (
                           <span className="bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-md w-fit mt-1">

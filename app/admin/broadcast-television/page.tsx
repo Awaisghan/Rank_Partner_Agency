@@ -135,7 +135,7 @@ export default function BroadcastTelevisionAdminPage() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const res = await fetch(`/api/broadcast-television/${deleteTarget.id}`, { method: "DELETE" });
+      const res = await fetch(`/api/broadcast-television/${deleteTarget.id}?hard=true`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete");
       await mutate();
       setDeleteTarget(null);

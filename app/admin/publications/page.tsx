@@ -48,11 +48,15 @@ interface PubForm {
   hasExample: boolean;
   llmAeo: "Yes" | "No";
   nicheAge18: boolean;
+  nicheAge18Multiplier: string;
   nicheHeart: boolean;
+  nicheHeartMultiplier: string;
   nicheCannabis: boolean;
+  nicheCannabisMultiplier: string;
   nicheCopyright: boolean;
+  nicheCopyrightMultiplier: string;
   nicheCasino: boolean;
-  nicheMultiplier: string;
+  nicheCasinoMultiplier: string;
 }
 
 const EMPTY_FORM: PubForm = {
@@ -76,11 +80,15 @@ const EMPTY_FORM: PubForm = {
   hasExample: true,
   llmAeo: "Yes",
   nicheAge18: false,
+  nicheAge18Multiplier: "",
   nicheHeart: false,
+  nicheHeartMultiplier: "",
   nicheCannabis: false,
+  nicheCannabisMultiplier: "",
   nicheCopyright: false,
+  nicheCopyrightMultiplier: "",
   nicheCasino: false,
-  nicheMultiplier: "",
+  nicheCasinoMultiplier: "",
 };
 
 const TAT_OPTIONS = [
@@ -117,11 +125,15 @@ function pubToForm(pub: Publication): PubForm {
     hasExample: pub.hasExample,
     llmAeo: pub.llmAeo,
     nicheAge18: (pub as any).nicheAge18 ?? false,
+    nicheAge18Multiplier: (pub as any).nicheAge18Multiplier ?? "",
     nicheHeart: (pub as any).nicheHeart ?? false,
+    nicheHeartMultiplier: (pub as any).nicheHeartMultiplier ?? "",
     nicheCannabis: (pub as any).nicheCannabis ?? false,
+    nicheCannabisMultiplier: (pub as any).nicheCannabisMultiplier ?? "",
     nicheCopyright: (pub as any).nicheCopyright ?? false,
+    nicheCopyrightMultiplier: (pub as any).nicheCopyrightMultiplier ?? "",
     nicheCasino: (pub as any).nicheCasino ?? false,
-    nicheMultiplier: (pub as any).nicheMultiplier ?? "",
+    nicheCasinoMultiplier: (pub as any).nicheCasinoMultiplier ?? "",
   };
 }
 
@@ -151,6 +163,19 @@ function StatCard({
       <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
         {label}
       </span>
+    </div>
+  );
+}
+
+function NicheIcon({ children, multiplier }: { children: React.ReactNode; multiplier?: string }) {
+  return (
+    <div className="relative inline-flex items-center justify-center">
+      {children}
+      {multiplier && (
+        <div className="absolute -top-1.5 -right-2 bg-[#f8d7da] border border-[#f5c2c7] text-[#842029] text-[7px] font-black tracking-wide px-1 rounded-full shadow-sm z-10 leading-[10px]">
+          {multiplier}
+        </div>
+      )}
     </div>
   );
 }
@@ -323,10 +348,15 @@ export default function AdminPublicationsPage() {
       doFollow: String(form.doFollow) === "true",
       llmAeo: String(form.llmAeo) === "true",
       nicheAge18: form.nicheAge18,
+      nicheAge18Multiplier: form.nicheAge18Multiplier.trim() || undefined,
       nicheHeart: form.nicheHeart,
+      nicheHeartMultiplier: form.nicheHeartMultiplier.trim() || undefined,
       nicheCannabis: form.nicheCannabis,
+      nicheCannabisMultiplier: form.nicheCannabisMultiplier.trim() || undefined,
       nicheCopyright: form.nicheCopyright,
+      nicheCopyrightMultiplier: form.nicheCopyrightMultiplier.trim() || undefined,
       nicheCasino: form.nicheCasino,
+      nicheCasinoMultiplier: form.nicheCasinoMultiplier.trim() || undefined,
     };
 
     if (!built.id) {
@@ -364,7 +394,7 @@ export default function AdminPublicationsPage() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const res = await fetch(`/api/publications/${deleteTarget.id}`, { method: "DELETE" });
+      const res = await fetch(`/api/publications/${deleteTarget.id}?hard=true`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete");
       await mutate();
       setDeleteTarget(null);
@@ -656,21 +686,31 @@ export default function AdminPublicationsPage() {
                   <td className="px-3 py-3 text-center">
                     <div className="flex items-center justify-center gap-1.5">
                       {(pub as any).nicheAge18 && (
-                        <span className="w-4.5 h-4.5 rounded-full border border-slate-400 flex items-center justify-center text-[7.5px] font-bold text-slate-600 relative shrink-0" title="18+">
-                          18+
-                        </span>
+                        <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}>
+                          <span className="w-4 h-4 rounded-full border border-slate-400 flex items-center justify-center text-[7px] font-bold text-slate-600 shrink-0" title="18+">
+                            18+
+                          </span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheHeart && (
-                        <span title="Dating"><Heart className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}>
+                          <span title="Dating"><Heart className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheCannabis && (
-                        <span title="Cannabis"><Leaf className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}>
+                          <span title="Cannabis"><Leaf className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheCopyright && (
-                        <span title="Copyright"><Copyright className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}>
+                          <span title="Copyright"><Copyright className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheCasino && (
-                        <span title="Casino"><Dices className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}>
+                          <span title="Casino"><Dices className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                     </div>
                   </td>
@@ -977,24 +1017,37 @@ export default function AdminPublicationsPage() {
                 <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest mb-3 pb-1 border-b border-slate-100">
                   5 — Niches
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3">
-                  <FormCheckbox checked={form.nicheAge18} onChange={(v) => f("nicheAge18", v)} label="18+ Content" />
-                  <FormCheckbox checked={form.nicheHeart} onChange={(v) => f("nicheHeart", v)} label="Dating / Romance" />
-                  <FormCheckbox checked={form.nicheCannabis} onChange={(v) => f("nicheCannabis", v)} label="Cannabis / CBD" />
-                  <FormCheckbox checked={form.nicheCopyright} onChange={(v) => f("nicheCopyright", v)} label="Copyright / Brand" />
-                  <FormCheckbox checked={form.nicheCasino} onChange={(v) => f("nicheCasino", v)} label="Gambling / Casino" />
-                </div>
-                <div className="max-w-xs">
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wide mb-1">
-                    Niche Multiplier (optional, e.g. x2)
-                  </label>
-                  <input
-                    type="text"
-                    value={form.nicheMultiplier}
-                    onChange={(e) => f("nicheMultiplier", e.target.value)}
-                    placeholder="x2"
-                    className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#e63939] focus:ring-1 focus:ring-[#e63939] transition-all"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3 mb-3">
+                  <div className="flex items-center gap-2">
+                    <FormCheckbox checked={form.nicheAge18} onChange={(v) => f("nicheAge18", v)} label="18+ Content" />
+                    {form.nicheAge18 && (
+                      <input type="text" value={form.nicheAge18Multiplier} onChange={(e) => f("nicheAge18Multiplier", e.target.value)} placeholder="e.g. x2" className="w-16 h-7 text-xs border border-slate-200 rounded px-2 bg-white text-black" />
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FormCheckbox checked={form.nicheHeart} onChange={(v) => f("nicheHeart", v)} label="Dating / Romance" />
+                    {form.nicheHeart && (
+                      <input type="text" value={form.nicheHeartMultiplier} onChange={(e) => f("nicheHeartMultiplier", e.target.value)} placeholder="e.g. x3" className="w-16 h-7 text-xs border border-slate-200 rounded px-2 bg-white text-black" />
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FormCheckbox checked={form.nicheCannabis} onChange={(v) => f("nicheCannabis", v)} label="Cannabis / CBD" />
+                    {form.nicheCannabis && (
+                      <input type="text" value={form.nicheCannabisMultiplier} onChange={(e) => f("nicheCannabisMultiplier", e.target.value)} placeholder="e.g. x2.5" className="w-16 h-7 text-xs border border-slate-200 rounded px-2 bg-white text-black" />
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FormCheckbox checked={form.nicheCopyright} onChange={(v) => f("nicheCopyright", v)} label="Copyright / Brand" />
+                    {form.nicheCopyright && (
+                      <input type="text" value={form.nicheCopyrightMultiplier} onChange={(e) => f("nicheCopyrightMultiplier", e.target.value)} placeholder="e.g. x4" className="w-16 h-7 text-xs border border-slate-200 rounded px-2 bg-white text-black" />
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FormCheckbox checked={form.nicheCasino} onChange={(v) => f("nicheCasino", v)} label="Gambling / Casino" />
+                    {form.nicheCasino && (
+                      <input type="text" value={form.nicheCasinoMultiplier} onChange={(e) => f("nicheCasinoMultiplier", e.target.value)} placeholder="e.g. x2" className="w-16 h-7 text-xs border border-slate-200 rounded px-2 bg-white text-black" />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

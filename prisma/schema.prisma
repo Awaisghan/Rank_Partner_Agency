@@ -68,6 +68,11 @@ model Publication {
   nicheCannabis  Boolean  @default(false)
   nicheCopyright Boolean  @default(false)
   nicheCasino    Boolean  @default(false)
+  nicheAge18Multiplier String?
+  nicheHeartMultiplier String?
+  nicheCannabisMultiplier String?
+  nicheCopyrightMultiplier String?
+  nicheCasinoMultiplier String?
   isActive       Boolean  @default(true)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
@@ -185,6 +190,11 @@ model BestSeller {
   nicheCannabis  Boolean  @default(false)
   nicheCopyright Boolean  @default(false)
   nicheCasino    Boolean  @default(false)
+  nicheAge18Multiplier String?
+  nicheHeartMultiplier String?
+  nicheCannabisMultiplier String?
+  nicheCopyrightMultiplier String?
+  nicheCasinoMultiplier String?
   isActive       Boolean  @default(true)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt

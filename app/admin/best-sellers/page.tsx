@@ -22,7 +22,7 @@ import {
 interface BestSellerPublication {
   id: string;
   name: string;
-  url: string;
+  domain: string;
   logoText: string;
   logoBg: string;
   logoTextColor: string;
@@ -39,11 +39,29 @@ interface BestSellerPublication {
   llmAeo: "Yes" | "No";
   niches: {
     age18?: boolean;
+    age18Multiplier?: string;
     heart?: boolean;
+    heartMultiplier?: string;
     cannabis?: boolean;
+    cannabisMultiplier?: string;
     copyright?: boolean;
+    copyrightMultiplier?: string;
     casino?: boolean;
+    casinoMultiplier?: string;
   };
+}
+
+function NicheIcon({ children, multiplier }: { children: React.ReactNode; multiplier?: string }) {
+  return (
+    <div className="relative inline-flex items-center justify-center">
+      {children}
+      {multiplier && (
+        <div className="absolute -top-1.5 -right-2 bg-[#f8d7da] border border-[#f5c2c7] text-[#842029] text-[7px] font-black tracking-wide px-1 rounded-full shadow-sm z-10 leading-[10px]">
+          {multiplier}
+        </div>
+      )}
+    </div>
+  );
 }
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -74,17 +92,22 @@ export default function BestSellersAdminPage() {
     doFollow: "No" as "Yes" | "No",
     exampleUrl: "",
     llmAeo: "Yes" as "Yes" | "No",
-    nicheAge18: true,
-    nicheHeart: true,
-    nicheCannabis: true,
-    nicheCopyright: true,
-    nicheCasino: true,
+    nicheAge18: false,
+    nicheAge18Multiplier: "",
+    nicheHeart: false,
+    nicheHeartMultiplier: "",
+    nicheCannabis: false,
+    nicheCannabisMultiplier: "",
+    nicheCopyright: false,
+    nicheCopyrightMultiplier: "",
+    nicheCasino: false,
+    nicheCasinoMultiplier: "",
   });
 
   const filtered = items.filter(
     (i) =>
       i.name.toLowerCase().includes(search.toLowerCase()) ||
-      i.url.toLowerCase().includes(search.toLowerCase())
+      i.domain?.toLowerCase().includes(search.toLowerCase())
   );
 
   const openAdd = () => {
@@ -105,11 +128,16 @@ export default function BestSellersAdminPage() {
       doFollow: "No",
       exampleUrl: "",
       llmAeo: "Yes",
-      nicheAge18: true,
-      nicheHeart: true,
-      nicheCannabis: true,
-      nicheCopyright: true,
-      nicheCasino: true,
+      nicheAge18: false,
+      nicheAge18Multiplier: "",
+      nicheHeart: false,
+      nicheHeartMultiplier: "",
+      nicheCannabis: false,
+      nicheCannabisMultiplier: "",
+      nicheCopyright: false,
+      nicheCopyrightMultiplier: "",
+      nicheCasino: false,
+      nicheCasinoMultiplier: "",
     });
     setCurrentItem(null);
     setModalMode("add");
@@ -119,7 +147,7 @@ export default function BestSellersAdminPage() {
     setCurrentItem(item);
     setForm({
       name: item.name,
-      url: item.url,
+      url: item.domain,
       logoText: item.logoText,
       logoBg: item.logoBg,
       logoTextColor: item.logoTextColor,
@@ -134,11 +162,16 @@ export default function BestSellersAdminPage() {
       doFollow: item.doFollow,
       exampleUrl: item.exampleUrl ?? "",
       llmAeo: item.llmAeo,
-      nicheAge18: item.niches.age18 ?? false,
-      nicheHeart: item.niches.heart ?? false,
-      nicheCannabis: item.niches.cannabis ?? false,
-      nicheCopyright: item.niches.copyright ?? false,
-      nicheCasino: item.niches.casino ?? false,
+      nicheAge18: (item as any).nicheAge18 ?? false,
+      nicheAge18Multiplier: (item as any).nicheAge18Multiplier ?? "",
+      nicheHeart: (item as any).nicheHeart ?? false,
+      nicheHeartMultiplier: (item as any).nicheHeartMultiplier ?? "",
+      nicheCannabis: (item as any).nicheCannabis ?? false,
+      nicheCannabisMultiplier: (item as any).nicheCannabisMultiplier ?? "",
+      nicheCopyright: (item as any).nicheCopyright ?? false,
+      nicheCopyrightMultiplier: (item as any).nicheCopyrightMultiplier ?? "",
+      nicheCasino: (item as any).nicheCasino ?? false,
+      nicheCasinoMultiplier: (item as any).nicheCasinoMultiplier ?? "",
     });
     setModalMode("edit");
   };
@@ -165,10 +198,15 @@ export default function BestSellersAdminPage() {
       exampleUrl: form.exampleUrl.trim() || undefined,
       llmAeo: String(form.llmAeo) === "true",
       nicheAge18: Boolean(form.nicheAge18),
+      nicheAge18Multiplier: form.nicheAge18Multiplier.trim() || undefined,
       nicheHeart: Boolean(form.nicheHeart),
+      nicheHeartMultiplier: form.nicheHeartMultiplier.trim() || undefined,
       nicheCannabis: Boolean(form.nicheCannabis),
+      nicheCannabisMultiplier: form.nicheCannabisMultiplier.trim() || undefined,
       nicheCopyright: Boolean(form.nicheCopyright),
+      nicheCopyrightMultiplier: form.nicheCopyrightMultiplier.trim() || undefined,
       nicheCasino: Boolean(form.nicheCasino),
+      nicheCasinoMultiplier: form.nicheCasinoMultiplier.trim() || undefined,
     };
 
     if (!built.id) delete (built as any).id;
@@ -196,7 +234,7 @@ export default function BestSellersAdminPage() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const res = await fetch(`/api/best-sellers/${deleteTarget.id}`, { method: "DELETE" });
+      const res = await fetch(`/api/best-sellers/${deleteTarget.id}?hard=true`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete");
       await mutate();
       setDeleteTarget(null);
@@ -325,7 +363,7 @@ export default function BestSellersAdminPage() {
                           <Info className="w-3.5 h-3.5 text-slate-400 shrink-0 cursor-pointer" />
                         </div>
                         <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">
-                          {pub.url}
+                          {pub.domain}
                         </span>
                       </div>
                     </div>
@@ -420,21 +458,31 @@ export default function BestSellersAdminPage() {
                   <td className="px-3.5 py-3 text-center">
                     <div className="flex items-center justify-center gap-1">
                       {(pub as any).nicheAge18 && (
-                        <span className="w-4 h-4 rounded-full border border-slate-400 flex items-center justify-center text-[7px] font-bold text-slate-600 shrink-0" title="18+">
-                          18+
-                        </span>
+                        <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}>
+                          <span className="w-4 h-4 rounded-full border border-slate-400 flex items-center justify-center text-[7px] font-bold text-slate-600 shrink-0" title="18+">
+                            18+
+                          </span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheHeart && (
-                        <span title="Dating"><Heart className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}>
+                          <span title="Dating"><Heart className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheCannabis && (
-                        <span title="Cannabis"><Leaf className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}>
+                          <span title="Cannabis"><Leaf className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheCopyright && (
-                        <span title="Copyright"><Copyright className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}>
+                          <span title="Copyright"><Copyright className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                       {(pub as any).nicheCasino && (
-                        <span title="Casino"><Dices className="w-3.5 h-3.5 text-slate-600 stroke-[1.8]" /></span>
+                        <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}>
+                          <span title="Casino"><Dices className="w-4 h-4 text-slate-600 stroke-2" /></span>
+                        </NicheIcon>
                       )}
                     </div>
                   </td>
@@ -481,7 +529,7 @@ export default function BestSellersAdminPage() {
                 <X className="w-4 h-4" />
               </button>
             </div>
-            <div className="space-y-3 text-xs">
+            <div className="space-y-3 text-xs max-h-[70vh] overflow-y-auto pr-2">
               <div>
                 <label className="block font-bold text-slate-700 mb-1 uppercase">Publication Name *</label>
                 <input
@@ -577,6 +625,33 @@ export default function BestSellersAdminPage() {
                   className="w-full border rounded-lg px-3 py-2 text-slate-900"
                   placeholder="https://miamiweekly.com"
                 />
+              </div>
+              
+              {/* Niches */}
+              <div>
+                <label className="block font-bold text-slate-700 mb-2 uppercase border-b pb-1 mt-2">Niches</label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div className="flex items-center gap-2">
+                    <label className="flex items-center gap-1.5 text-slate-800"><input type="checkbox" checked={form.nicheAge18} onChange={(e) => setForm({ ...form, nicheAge18: e.target.checked })} /> <span className="text-slate-800 font-medium">18+</span></label>
+                    {form.nicheAge18 && <input type="text" value={form.nicheAge18Multiplier} onChange={(e) => setForm({ ...form, nicheAge18Multiplier: e.target.value })} placeholder="x2" className="w-12 h-6 border rounded px-1 bg-white text-black" />}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className="flex items-center gap-1.5 text-slate-800"><input type="checkbox" checked={form.nicheHeart} onChange={(e) => setForm({ ...form, nicheHeart: e.target.checked })} /> <span className="text-slate-800 font-medium">Dating</span></label>
+                    {form.nicheHeart && <input type="text" value={form.nicheHeartMultiplier} onChange={(e) => setForm({ ...form, nicheHeartMultiplier: e.target.value })} placeholder="x3" className="w-12 h-6 border rounded px-1 bg-white text-black" />}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className="flex items-center gap-1.5 text-slate-800"><input type="checkbox" checked={form.nicheCannabis} onChange={(e) => setForm({ ...form, nicheCannabis: e.target.checked })} /> <span className="text-slate-800 font-medium">Cannabis</span></label>
+                    {form.nicheCannabis && <input type="text" value={form.nicheCannabisMultiplier} onChange={(e) => setForm({ ...form, nicheCannabisMultiplier: e.target.value })} placeholder="x2.5" className="w-12 h-6 border rounded px-1 bg-white text-black" />}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className="flex items-center gap-1.5 text-slate-800"><input type="checkbox" checked={form.nicheCopyright} onChange={(e) => setForm({ ...form, nicheCopyright: e.target.checked })} /> <span className="text-slate-800 font-medium">Copyright</span></label>
+                    {form.nicheCopyright && <input type="text" value={form.nicheCopyrightMultiplier} onChange={(e) => setForm({ ...form, nicheCopyrightMultiplier: e.target.value })} placeholder="x4" className="w-12 h-6 border rounded px-1 bg-white text-black" />}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label className="flex items-center gap-1.5 text-slate-800"><input type="checkbox" checked={form.nicheCasino} onChange={(e) => setForm({ ...form, nicheCasino: e.target.checked })} /> <span className="text-slate-800 font-medium">Casino</span></label>
+                    {form.nicheCasino && <input type="text" value={form.nicheCasinoMultiplier} onChange={(e) => setForm({ ...form, nicheCasinoMultiplier: e.target.value })} placeholder="x2" className="w-12 h-6 border rounded px-1 bg-white text-black" />}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex justify-end gap-2 border-t pt-3">
