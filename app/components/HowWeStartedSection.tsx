@@ -14,8 +14,8 @@ export default function HowWeStartedSection() {
             <ScrollReveal>
               {/* Tagline Badge */}
               <div className="flex items-center gap-2.5 mb-2">
-                <span className="w-5 h-[2px] bg-[#3b82f6] rounded-full" />
-                <span className="font-bold tracking-[0.18em] text-[#3b82f6] uppercase text-[11px] sm:text-xs">
+                <span className="w-5 h-[2px] bg-[#6d28d9] rounded-full" />
+                <span className="font-bold tracking-[0.18em] text-[#6d28d9] uppercase text-[11px] sm:text-xs">
                   HOW WE STARTED
                 </span>
               </div>
@@ -23,7 +23,7 @@ export default function HowWeStartedSection() {
               {/* Main Headline */}
               <h2 className="font-extrabold tracking-tight leading-[1.2] text-slate-900 text-2xl sm:text-3xl lg:text-[32px] max-w-sm my-2">
                 Built by operators tired of{" "}
-                <span className="italic font-serif font-normal text-[#3b82f6]">
+                <span className="italic font-serif font-normal text-[#6d28d9]">
                   paying for promises.
                 </span>
               </h2>

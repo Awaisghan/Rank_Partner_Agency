@@ -406,7 +406,7 @@ export default function ListiclesAdminPage() {
                     <div className="flex items-center justify-center gap-1">
                       <button
                         onClick={() => openEdit(pub)}
-                        className="p-1 rounded-lg bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-500 transition-all cursor-pointer"
+                        className="p-1 rounded-lg bg-slate-100 hover:bg-violet-50 hover:text-[#6d28d9] text-slate-500 transition-all cursor-pointer"
                         title="Edit"
                       >
                         <Pencil className="w-3.5 h-3.5" />

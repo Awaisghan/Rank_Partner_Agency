@@ -8,27 +8,27 @@ export default function WhyAgenciesChooseSection() {
   const cards = [
     {
       icon: Building2,
-      title: "Fully white-label",
+      title: "White-label opportunities",
       description:
-        "Everything runs under your own name, from the first order to the final report.",
+        "Offer press placements and authority backlinks under your own agency brand.",
     },
     {
       icon: CheckCircle2,
-      title: "Guaranteed delivery",
+      title: "Quality publishing options",
       description:
-        "Every placement and backlink you order is guaranteed and delivered under your brand, campaign after campaign.",
+        "Browse a curated selection of publishers and choose opportunities that fit your clients’ goals.",
     },
     {
       icon: Tag,
-      title: "Reseller pricing",
+      title: "Transparent pricing",
       description:
-        "Flat per-placement rates with margin built in, so every order has room to profit.",
+        "Review placement pricing upfront, so you know the cost before submitting an order.",
     },
     {
       icon: Gauge,
-      title: "Metrics you can show",
+      title: "Metrics you can review",
       description:
-        "Live Domain Rating and traffic on every outlet, ready to drop into client reports.",
+        "Compare key publisher and SEO metrics to make informed placement decisions for your clients.",
     },
   ];
 
@@ -39,9 +39,9 @@ export default function WhyAgenciesChooseSection() {
         {/* Top Tagline */}
         <ScrollReveal>
           <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
-              WHY AGENCIES CHOOSE ASCEND
+            <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
+              WHY AGENCIES CHOOSE RANKPARTNER.IO
             </span>
           </div>
         </ScrollReveal>
@@ -50,8 +50,8 @@ export default function WhyAgenciesChooseSection() {
         <ScrollReveal delay={150}>
           <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px] mb-14">
             Everything you need to{" "}
-            <span className="italic font-serif font-normal text-blue-600">
-              resell it as your own.
+            <span className="italic font-serif font-normal text-[#6d28d9]">
+              offer more.
             </span>
           </h2>
         </ScrollReveal>
@@ -65,7 +65,7 @@ export default function WhyAgenciesChooseSection() {
                 <div className="bg-white rounded-2xl p-7 sm:p-8 border border-slate-200/90 shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group">
                   <div>
                     {/* Light Blue Icon Square Badge */}
-                    <div className="w-12 h-12 rounded-xl bg-blue-50/90 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-violet-50/90 text-[#6d28d9] flex items-center justify-center mb-6 group-hover:bg-violet-700 group-hover:text-white transition-colors duration-300">
                       <Icon className="w-5 h-5 stroke-[2.2]" />
                     </div>
 

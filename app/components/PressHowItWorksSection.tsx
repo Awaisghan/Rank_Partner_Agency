@@ -3,27 +3,27 @@
 import React from "react";
 import ScrollReveal from "./ScrollReveal";
 
-export default function TvHowItWorksSection() {
+export default function PressHowItWorksSection() {
   const steps = [
     {
       num: "01",
-      title: "Choose the right opportunity",
-      desc: "Explore available TV and streaming opportunities and review the details to find the right fit for your client.",
+      title: "Choose your publisher",
+      desc: "Browse available publishers, review their details and metrics, and select the right placement for your client.",
     },
     {
       num: "02",
-      title: "Share your content",
-      desc: "Provide the required client information, story details, and content needed for the selected opportunity.",
+      title: "Submit your content",
+      desc: "Send us your article on our email and the required information through your RankPartner.io account.",
     },
     {
       num: "03",
       title: "Order review",
-      desc: "Our team reviews your submission and confirms that the provided information meets the requirements of the selected opportunity.",
+      desc: "Our team reviews your submission and confirms that the content meets the selected publisher’s requirements.",
     },
     {
       num: "04",
-      title: "Get featured",
-      desc: "Once confirmed, your client receives the agreed media opportunity and gains valuable exposure through the selected program.",
+      title: "Get published",
+      desc: "Once approved, your article goes live on the selected publication with the agreed placement and backlink.",
     },
   ];
 
@@ -50,9 +50,9 @@ export default function TvHowItWorksSection() {
           {/* Main Heading */}
           <ScrollReveal delay={150}>
             <h2 className="font-extrabold tracking-tight leading-tight text-white text-3xl sm:text-4xl lg:text-[44px] mb-12">
-              From first step to{" "}
+              From the first step to the{" "}
               <span className="italic font-serif font-normal text-[#f59e0b]">
-                media opportunity.
+                right publisher.
               </span>
             </h2>
           </ScrollReveal>

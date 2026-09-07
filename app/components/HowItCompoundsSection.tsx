@@ -78,21 +78,21 @@ export default function HowItCompoundsSection() {
   const bullets = [
     {
       icon: Globe,
-      title: "Authority at the source",
+      title: "Authority from reputable domains",
       description:
-        "A link from a high-DR domain is Google's version of trust, transferred straight to your client's website.",
+        "Backlinks from established, authoritative publications can strengthen your client’s website authority and support their overall SEO efforts.",
     },
     {
       icon: Link2,
-      title: "Placed in real, relevant content",
+      title: "Placed within published content",
       description:
-        "Every link sits inside indexed, live content on a legitimate publication. It's not buried in a footer or planted on a network site.",
+        "Each backlink is placed within an article published on the selected publication, creating a relevant and credible connection to your client’s website.",
     },
     {
       icon: TrendingUp,
-      title: "A ranking signal that spreads",
+      title: "A lasting SEO asset",
       description:
-        "That trust flows across your client's domain, giving page after page a better shot at climbing the results.",
+        "A quality backlink can continue providing value after publication, supporting your client’s backlink profile and long-term search visibility.",
     },
   ];
 
@@ -107,17 +107,17 @@ export default function HowItCompoundsSection() {
         rows.push(
           <div
             key={r}
-            className="bg-blue-50/90 border border-blue-200/90 rounded-2xl p-3.5 flex items-center justify-between shadow-[0_6px_20px_rgba(59,130,246,0.15)] transition-all duration-700 ease-in-out transform translate-y-0"
+            className="bg-violet-50/90 border border-violet-200/90 rounded-2xl p-3.5 flex items-center justify-between shadow-[0_6px_20px_rgba(109,40,217,0.15)] transition-all duration-700 ease-in-out transform translate-y-0"
           >
             <div className="flex items-center gap-2 sm:gap-3.5 flex-1 mr-2">
-              <span className="font-extrabold text-blue-600 text-xs sm:text-sm w-3 sm:w-4 text-center">
+              <span className="font-extrabold text-[#6d28d9] text-xs sm:text-sm w-3 sm:w-4 text-center">
                 {r}
               </span>
-              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-blue-600 shadow-sm shrink-0" />
-              <div className="w-16 sm:w-44 h-2.5 sm:h-3.5 bg-blue-600/80 rounded-full" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-violet-700 shadow-sm shrink-0" />
+              <div className="w-16 sm:w-44 h-2.5 sm:h-3.5 bg-violet-700/80 rounded-full" />
             </div>
 
-            <div className="bg-blue-100/90 text-blue-700 text-[9px] sm:text-[10px] font-extrabold px-2 sm:px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200 shrink-0">
+            <div className="bg-violet-100/90 text-[#6d28d9] text-[9px] sm:text-[10px] font-extrabold px-2 sm:px-3 py-1 rounded-full uppercase tracking-wider border border-violet-200 shrink-0">
               YOUR CLIENT
             </div>
           </div>
@@ -162,8 +162,8 @@ export default function HowItCompoundsSection() {
             {/* Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
+                <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
                   HOW IT COMPOUNDS
                 </span>
               </div>
@@ -172,9 +172,9 @@ export default function HowItCompoundsSection() {
             {/* Main Headline */}
             <ScrollReveal delay={150}>
               <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px]">
-                One strong link{" "}
-                <span className="italic font-serif font-normal text-blue-600">
-                  lifts the whole site.
+                One strong backlink can add{" "}
+                <span className="italic font-serif font-normal text-[#6d28d9]">
+                  lasting value.
                 </span>
               </h2>
             </ScrollReveal>
@@ -182,7 +182,7 @@ export default function HowItCompoundsSection() {
             {/* Paragraph Subtitle */}
             <ScrollReveal delay={250}>
               <p className="text-slate-500 font-normal text-sm sm:text-base leading-relaxed max-w-xl pb-2">
-                Authority isn't spent in one place; it flows through the whole website. A link from a domain Google already trusts passes that trust directly to your client, and it keeps compounding as Google crawls more of their site.
+                Quality backlinks can strengthen your client’s backlink profile and support their broader SEO strategy. When placed on reputable publications, each link can contribute to stronger authority and long-term online visibility.
               </p>
             </ScrollReveal>
 
@@ -194,7 +194,7 @@ export default function HowItCompoundsSection() {
                   <ScrollReveal key={idx} delay={300 + idx * 100}>
                     <div className="flex items-start gap-4 group">
                       {/* Light Blue Icon Square */}
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                      <div className="w-10 h-10 rounded-xl bg-violet-50 text-[#6d28d9] flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-violet-700 group-hover:text-white transition-colors duration-300">
                         <Icon className="w-5 h-5 stroke-[2.2]" />
                       </div>
 
@@ -238,7 +238,7 @@ export default function HowItCompoundsSection() {
 
                   {/* Stat 1: Domain Rating (0 -> 58) */}
                   <div className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-[#2563eb]">
+                    <div className="flex items-center gap-1.5 text-[#6d28d9]">
                       <span className="text-sm font-bold">↗</span>
                       <span className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
                         {drCount}
@@ -251,7 +251,7 @@ export default function HowItCompoundsSection() {
 
                   {/* Stat 2: Referring Domains (0 -> 240) */}
                   <div className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-[#2563eb]">
+                    <div className="flex items-center gap-1.5 text-[#6d28d9]">
                       <span className="text-sm font-bold">↗</span>
                       <span className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
                         {rdCount}

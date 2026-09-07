@@ -12,13 +12,13 @@ export default function AboutCtaSection() {
         <ScrollReveal>
           <div className="w-full bg-[#040e21] border border-slate-800/90 rounded-3xl p-8 sm:p-10 lg:p-12 text-center relative overflow-hidden shadow-2xl">
             {/* Background Ambient Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[250px] bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[250px] bg-amber-500/10 blur-[100px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center">
               {/* Tagline Badge */}
               <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="w-5 h-[2px] bg-[#4ade80] rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-[11px] sm:text-xs">
+                <span className="w-5 h-[2px] bg-[#f59e0b] rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-[11px] sm:text-xs">
                   WORK WITH US
                 </span>
               </div>
@@ -26,7 +26,7 @@ export default function AboutCtaSection() {
               {/* Main Headline */}
               <h2 className="font-extrabold tracking-tight leading-[1.2] text-white text-2xl sm:text-3xl lg:text-[40px] my-2">
                 Let&apos;s plan your{" "}
-                <span className="italic font-serif font-normal text-[#4ade80]">
+                <span className="italic font-serif font-normal text-[#f59e0b]">
                   ascent.
                 </span>
               </h2>
@@ -40,7 +40,7 @@ export default function AboutCtaSection() {
               <div className="flex flex-wrap items-center justify-center gap-3.5">
                 <Link
                   href="/#get-in-touch"
-                  className="px-6 py-3 rounded-full bg-[#4ade80] hover:bg-[#3be074] text-[#050b1e] font-extrabold text-xs sm:text-sm transition-all shadow-md active:scale-95 flex items-center gap-1.5 cursor-pointer"
+                  className="px-6 py-3 rounded-full bg-[#f59e0b] hover:bg-[#3be074] text-[#050b1e] font-extrabold text-xs sm:text-sm transition-all shadow-md active:scale-95 flex items-center gap-1.5 cursor-pointer"
                 >
                   <span>Talk to us</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

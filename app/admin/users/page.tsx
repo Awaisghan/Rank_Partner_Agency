@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import useSWR from "swr";
-import { Plus, Search, Check, X, Shield, User, Edit, Users } from "lucide-react";
+import { Plus, Search, Check, X, Shield, User, Edit, Users, AlertTriangle } from "lucide-react";
 
 interface UserModel {
   id: string;
@@ -252,7 +252,7 @@ export default function AdminUsersPage() {
                   <tr key={user.id} className="hover:bg-slate-50 transition-colors group">
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
-                        <div className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 border ${user.role === 'ADMIN' ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-blue-50 border-blue-200 text-blue-600'}`}>
+                        <div className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 border ${user.role === 'ADMIN' ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-violet-50 border-violet-200 text-[#6d28d9]'}`}>
                           {user.role === 'ADMIN' ? <Shield className="w-4 h-4" /> : <User className="w-4 h-4" />}
                         </div>
                         <div>
@@ -272,7 +272,7 @@ export default function AdminUsersPage() {
                       <button
                         onClick={() => toggleActive(user)}
                         className={`inline-flex items-center justify-center w-7 h-7 rounded transition-colors ${
-                          user.isActive ? "bg-emerald-50 text-emerald-600 hover:bg-emerald-100 border border-emerald-200" : "bg-slate-100 text-slate-400 hover:bg-slate-200 border border-slate-200"
+                          user.isActive ? "bg-amber-50 text-amber-600 hover:bg-amber-100 border border-amber-200" : "bg-slate-100 text-slate-400 hover:bg-slate-200 border border-slate-200"
                         }`}
                         title={user.isActive ? "Deactivate User" : "Activate User"}
                       >
@@ -285,7 +285,7 @@ export default function AdminUsersPage() {
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => openEditModal(user)}
-                        className="inline-flex items-center justify-center w-7 h-7 rounded text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded text-slate-400 hover:text-[#6d28d9] hover:bg-violet-50 transition-colors"
                         title="Edit User"
                       >
                         <Edit className="w-3.5 h-3.5" />
@@ -326,7 +326,7 @@ export default function AdminUsersPage() {
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-violet-700 focus:ring-1 focus:ring-violet-700 transition-colors"
                   placeholder="John Doe"
                 />
               </div>
@@ -338,7 +338,7 @@ export default function AdminUsersPage() {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   disabled={modalMode === "edit"}
-                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors disabled:bg-slate-100 disabled:text-slate-500"
+                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-violet-700 focus:ring-1 focus:ring-violet-700 transition-colors disabled:bg-slate-100 disabled:text-slate-500"
                   placeholder="john@example.com"
                 />
                 {modalMode === "edit" && <p className="text-[10px] text-slate-500 font-semibold mt-1">Email cannot be changed.</p>}
@@ -352,7 +352,7 @@ export default function AdminUsersPage() {
                   type="password"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
-                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-violet-700 focus:ring-1 focus:ring-violet-700 transition-colors"
                   placeholder={modalMode === "add" ? "Minimum 6 characters" : "Leave blank to keep current password"}
                 />
               </div>
@@ -362,7 +362,7 @@ export default function AdminUsersPage() {
                 <select
                   value={form.role}
                   onChange={(e) => setForm({ ...form, role: e.target.value as "ADMIN" | "CLIENT" })}
-                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-violet-700 focus:ring-1 focus:ring-violet-700 transition-colors"
                 >
                   <option value="CLIENT">Client</option>
                   <option value="ADMIN">Administrator</option>

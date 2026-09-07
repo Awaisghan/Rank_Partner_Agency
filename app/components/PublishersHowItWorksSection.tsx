@@ -19,26 +19,26 @@ export default function PublishersHowItWorksSection() {
     {
       num: "1",
       icon: Layers,
-      title: "We buy your inventory",
-      desc: "We agree rates together, then purchase your available ad and sponsored-content inventory outright.",
+      title: "List your opportunities",
+      desc: "Share your available publishing placements, including relevant details and requirements.",
     },
     {
       num: "2",
       icon: Network,
-      title: "We fill it from the network",
-      desc: "Your inventory is sold across our network of more than 3,000 agencies and their clients.",
+      title: "Get discovered by agencies",
+      desc: "Make your publishing opportunities available to agencies looking for suitable placements for their clients.",
     },
     {
       num: "3",
       icon: Send,
-      title: "We send you the content",
-      desc: "Finished, brand-safe content comes straight to you with first right of refusal. There is no platform and no logins to manage.",
+      title: "Review placement details",
+      desc: "Provide the information agencies need to evaluate your publication and choose the right opportunity.",
     },
     {
       num: "4",
       icon: Wallet,
-      title: "You publish and get paid",
-      desc: "Run it on your schedule for predictable revenue, with zero sales overhead on your side.",
+      title: "Publish the content",
+      desc: "Once a placement is confirmed and the content meets your requirements, publish it on your publication.",
     },
   ];
 
@@ -108,14 +108,14 @@ export default function PublishersHowItWorksSection() {
         <div className="bg-[#050e26] border border-slate-800/80 rounded-[32px] p-8 sm:p-12 lg:p-14 shadow-[0_25px_80px_rgba(0,0,0,0.6)] relative overflow-hidden text-white">
 
           {/* Ambient Glows */}
-          <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-emerald-500/10 blur-[140px] rounded-full pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-blue-600/10 blur-[130px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-amber-500/10 blur-[140px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-violet-700/10 blur-[130px] rounded-full pointer-events-none" />
 
           {/* Top Tagline Badge */}
           <ScrollReveal>
             <div className="flex items-center gap-2.5 mb-4 relative z-10">
-              <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-              <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+              <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+              <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
                 HOW WE WORK TOGETHER
               </span>
             </div>
@@ -125,8 +125,8 @@ export default function PublishersHowItWorksSection() {
           <ScrollReveal delay={150}>
             <h2 className="font-extrabold tracking-tight leading-tight text-white text-3xl sm:text-4xl lg:text-[44px] mb-4 relative z-10">
               From your inventory to{" "}
-              <span className="italic font-serif font-normal text-[#4ade80]">
-                your payout.
+              <span className="italic font-serif font-normal text-[#f59e0b]">
+                new opportunities.
               </span>
             </h2>
           </ScrollReveal>
@@ -134,7 +134,7 @@ export default function PublishersHowItWorksSection() {
           {/* Subtitle */}
           <ScrollReveal delay={200}>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mb-14 font-normal relative z-10">
-              Four steps, one simple deal. We buy your inventory and bring the demand, then send you the content with first right of refusal. You publish and get paid.
+              Connect your publishing inventory with agencies looking for quality placements through a simple, straightforward process.
             </p>
           </ScrollReveal>
 
@@ -155,7 +155,7 @@ export default function PublishersHowItWorksSection() {
             {/* Animated green progress line (Desktop) */}
             {iconCenters.length === steps.length && (
               <div
-                className="hidden lg:block absolute top-[28px] h-[2px] bg-[#4ade80] z-0 pointer-events-none transition-all duration-700 ease-out shadow-[0_0_10px_#4ade80]"
+                className="hidden lg:block absolute top-[28px] h-[2px] bg-[#f59e0b] z-0 pointer-events-none transition-all duration-700 ease-out shadow-[0_0_10px_#f59e0b]"
                 style={{
                   left: lineLeft,
                   width: lineWidth,
@@ -166,7 +166,7 @@ export default function PublishersHowItWorksSection() {
             {/* Glowing pulser dot traveling along line (Desktop) */}
             {iconCenters.length === steps.length && (
               <div
-                className="hidden lg:block absolute top-[22px] w-3 h-3 rounded-full bg-[#4ade80] shadow-[0_0_14px_#4ade80] z-10 pointer-events-none transition-all duration-700 ease-out"
+                className="hidden lg:block absolute top-[22px] w-3 h-3 rounded-full bg-[#f59e0b] shadow-[0_0_14px_#f59e0b] z-10 pointer-events-none transition-all duration-700 ease-out"
                 style={{ left: dotLeft }}
               />
             )}
@@ -193,9 +193,9 @@ export default function PublishersHowItWorksSection() {
                         ref={(el) => { iconRefs.current[idx] = el; }}
                         className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 border ${
                           isActive
-                            ? "bg-[#0b291d] border-[#4ade80] text-[#4ade80] shadow-[0_0_24px_rgba(74,222,128,0.5)] scale-110"
+                            ? "bg-[#0b291d] border-[#f59e0b] text-[#f59e0b] shadow-[0_0_24px_rgba(245,158,11,0.5)] scale-110"
                             : isPassed
-                            ? "bg-[#071f16] border-emerald-500/60 text-[#4ade80]"
+                            ? "bg-[#071f16] border-amber-500/60 text-[#f59e0b]"
                             : "bg-[#091530]/90 border-slate-800 text-slate-500 group-hover:border-slate-700"
                         }`}
                       >
@@ -206,7 +206,7 @@ export default function PublishersHowItWorksSection() {
                       <div
                         className={`absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full font-extrabold text-[11px] flex items-center justify-center transition-all duration-500 ${
                           isPassed
-                            ? "bg-[#4ade80] text-[#062c19] shadow-[0_0_10px_rgba(74,222,128,0.5)]"
+                            ? "bg-[#f59e0b] text-[#062c19] shadow-[0_0_10px_rgba(245,158,11,0.5)]"
                             : "bg-slate-800 text-slate-400"
                         }`}
                       >
@@ -217,7 +217,7 @@ export default function PublishersHowItWorksSection() {
                     {/* Title */}
                     <h3
                       className={`font-bold text-base sm:text-lg mb-2 leading-snug transition-colors duration-300 ${
-                        isActive ? "text-[#4ade80]" : isPassed ? "text-white" : "text-slate-300"
+                        isActive ? "text-[#f59e0b]" : isPassed ? "text-white" : "text-slate-300"
                       }`}
                     >
                       {step.title}

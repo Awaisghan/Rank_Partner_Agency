@@ -113,8 +113,8 @@ export default function OurTeamSection() {
         {/* Header Tagline & Title */}
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-3">
-            <span className="w-6 h-[2px] bg-[#3b82f6] rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-[#3b82f6] uppercase text-xs sm:text-sm">
+            <span className="w-6 h-[2px] bg-[#6d28d9] rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
               OUR TEAM
             </span>
           </div>
@@ -123,7 +123,7 @@ export default function OurTeamSection() {
         <ScrollReveal delay={100}>
           <h2 className="font-extrabold tracking-tight leading-[1.15] text-slate-900 text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] max-w-3xl mb-4">
             The people{" "}
-            <span className="italic font-serif font-normal text-[#3b82f6]">
+            <span className="italic font-serif font-normal text-[#6d28d9]">
               behind the placements.
             </span>
           </h2>
@@ -138,8 +138,8 @@ export default function OurTeamSection() {
         {/* Subsection Tagline: LEADERSHIP */}
         <ScrollReveal delay={180}>
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-6 h-[2px] bg-[#3b82f6] rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-[#3b82f6] uppercase text-xs">
+            <span className="w-6 h-[2px] bg-[#6d28d9] rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs">
               LEADERSHIP
             </span>
           </div>
@@ -166,7 +166,7 @@ export default function OurTeamSection() {
                     {member.name}
                   </h3>
 
-                  <p className="text-[#4ade80] font-extrabold text-[11px] tracking-wider uppercase mb-3">
+                  <p className="text-[#f59e0b] font-extrabold text-[11px] tracking-wider uppercase mb-3">
                     {member.role}
                   </p>
 
@@ -183,8 +183,8 @@ export default function OurTeamSection() {
         {/* Subsection Tagline: THE WIDER TEAM */}
         <ScrollReveal delay={240}>
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-6 h-[2px] bg-[#3b82f6] rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-[#3b82f6] uppercase text-xs">
+            <span className="w-6 h-[2px] bg-[#6d28d9] rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs">
               THE WIDER TEAM
             </span>
           </div>
@@ -211,7 +211,7 @@ export default function OurTeamSection() {
                     {member.name}
                   </h4>
 
-                  <p className="text-[#4ade80] font-extrabold text-[9px] sm:text-[10px] tracking-wider uppercase leading-tight">
+                  <p className="text-[#f59e0b] font-extrabold text-[9px] sm:text-[10px] tracking-wider uppercase leading-tight">
                     {member.role}
                   </p>
                 </div>

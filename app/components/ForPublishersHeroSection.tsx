@@ -53,8 +53,8 @@ export default function ForPublishersHeroSection() {
             {/* Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+                <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
                   FOR PUBLISHERS
                 </span>
               </div>
@@ -63,9 +63,9 @@ export default function ForPublishersHeroSection() {
             {/* Main Headline */}
             <ScrollReveal delay={150}>
               <h1 className="font-bold tracking-tight leading-[1.1] text-white text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px]">
-                Your inventory,{" "}
-                <span className="italic font-serif font-normal text-[#4ade80]">
-                  always in demand.
+                Turn your publishing inventory into new{" "}
+                <span className="italic font-serif font-normal text-[#f59e0b]">
+                  opportunities.
                 </span>
               </h1>
             </ScrollReveal>
@@ -73,7 +73,7 @@ export default function ForPublishersHeroSection() {
             {/* Subtitle Paragraph */}
             <ScrollReveal delay={250}>
               <p className="text-slate-300 font-normal text-sm sm:text-base leading-relaxed max-w-xl">
-                Ascend buys your unsold advertising and sponsored-content inventory outright, then fills it from our network of more than 3,000 agencies. You always get first right of refusal on the finished, brand-safe content before it runs. One reliable buyer, and none of the sales overhead.
+                Connect your available publishing opportunities with agencies looking for quality placements. Work with RankPartner.io to reach agency clients and create a reliable channel for sponsored content and press placements.
               </p>
             </ScrollReveal>
 
@@ -82,7 +82,7 @@ export default function ForPublishersHeroSection() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1">
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
                 >
                   <span>Partner with us</span>
                   <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -113,7 +113,7 @@ export default function ForPublishersHeroSection() {
                 >
                   <defs>
                     <filter id="greenGlow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#4ade80" floodOpacity="0.85" />
+                      <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#f59e0b" floodOpacity="0.85" />
                     </filter>
                     <style>{`
                       @keyframes greenDashFlow {
@@ -125,12 +125,12 @@ export default function ForPublishersHeroSection() {
                         }
                       }
                       .pub-dash-line {
-                        stroke: #4ade80;
+                        stroke: #f59e0b;
                         stroke-width: 2.5;
                         stroke-dasharray: 12px 12px;
                         stroke-linecap: round;
                         fill: none;
-                        filter: drop-shadow(0px 0px 3px rgba(74,222,128,0.85));
+                        filter: drop-shadow(0px 0px 3px rgba(245,158,11,0.85));
                         animation: greenDashFlow 1.2s linear infinite;
                       }
                     `}</style>
@@ -138,45 +138,45 @@ export default function ForPublishersHeroSection() {
 
                   {/* Line 1: Top Node -> Center Card Top */}
                   <path d="M 270 52 L 270 92" className="pub-dash-line" />
-                  <circle cx="270" cy="52" r="3.5" fill="#4ade80" />
-                  <circle cx="270" cy="92" r="3.5" fill="#4ade80" />
+                  <circle cx="270" cy="52" r="3.5" fill="#f59e0b" />
+                  <circle cx="270" cy="92" r="3.5" fill="#f59e0b" />
 
                   {/* Line 2: Top-Right Node -> Center Card Top-Right */}
                   <path d="M 456 76 L 382 114" className="pub-dash-line" />
-                  <circle cx="456" cy="76" r="3.5" fill="#4ade80" />
-                  <circle cx="382" cy="114" r="3.5" fill="#4ade80" />
+                  <circle cx="456" cy="76" r="3.5" fill="#f59e0b" />
+                  <circle cx="382" cy="114" r="3.5" fill="#f59e0b" />
 
                   {/* Line 3: Right Node -> Center Card Right Edge */}
                   <path d="M 488 220 L 382 220" className="pub-dash-line" />
-                  <circle cx="488" cy="220" r="3.5" fill="#4ade80" />
-                  <circle cx="382" cy="220" r="3.5" fill="#4ade80" />
+                  <circle cx="488" cy="220" r="3.5" fill="#f59e0b" />
+                  <circle cx="382" cy="220" r="3.5" fill="#f59e0b" />
 
                   {/* Line 4: Bottom-Right Node -> Center Card Bottom-Right */}
                   <path d="M 456 364 L 382 326" className="pub-dash-line" />
-                  <circle cx="456" cy="364" r="3.5" fill="#4ade80" />
-                  <circle cx="382" cy="326" r="3.5" fill="#4ade80" />
+                  <circle cx="456" cy="364" r="3.5" fill="#f59e0b" />
+                  <circle cx="382" cy="326" r="3.5" fill="#f59e0b" />
 
                   {/* Line 5: Bottom-Left Node -> Center Card Bottom-Left */}
                   <path d="M 84 364 L 158 326" className="pub-dash-line" />
-                  <circle cx="84" cy="364" r="3.5" fill="#4ade80" />
-                  <circle cx="158" cy="326" r="3.5" fill="#4ade80" />
+                  <circle cx="84" cy="364" r="3.5" fill="#f59e0b" />
+                  <circle cx="158" cy="326" r="3.5" fill="#f59e0b" />
 
                   {/* Line 6: Left Node -> Center Card Left Edge */}
                   <path d="M 52 220 L 158 220" className="pub-dash-line" />
-                  <circle cx="52" cy="220" r="3.5" fill="#4ade80" />
-                  <circle cx="158" cy="220" r="3.5" fill="#4ade80" />
+                  <circle cx="52" cy="220" r="3.5" fill="#f59e0b" />
+                  <circle cx="158" cy="220" r="3.5" fill="#f59e0b" />
 
                   {/* Line 7: Top-Left Node -> Center Card Top-Left */}
                   <path d="M 84 76 L 158 114" className="pub-dash-line" />
-                  <circle cx="84" cy="76" r="3.5" fill="#4ade80" />
-                  <circle cx="158" cy="114" r="3.5" fill="#4ade80" />
+                  <circle cx="84" cy="76" r="3.5" fill="#f59e0b" />
+                  <circle cx="158" cy="114" r="3.5" fill="#f59e0b" />
                 </svg>
 
                 {/* ── CENTER HUB CARD (3,000+ AGENCIES IN NETWORK) ─────── */}
-                <div className="w-56 h-[256px] bg-[#071638]/95 backdrop-blur-xl border border-slate-700/80 rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-[0_25px_70px_rgba(0,0,0,0.65)] relative z-20 group hover:border-[#4ade80]/60 transition-all duration-300">
+                <div className="w-56 h-[256px] bg-[#071638]/95 backdrop-blur-xl border border-slate-700/80 rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-[0_25px_70px_rgba(0,0,0,0.65)] relative z-20 group hover:border-[#f59e0b]/60 transition-all duration-300">
                   
                   {/* Network Icon */}
-                  <div className="w-10 h-10 rounded-xl bg-[#0c2a21] border border-[#4ade80]/40 text-[#4ade80] flex items-center justify-center mb-2.5 shadow-[0_0_18px_rgba(74,222,128,0.25)]">
+                  <div className="w-10 h-10 rounded-xl bg-[#0c2a21] border border-[#f59e0b]/40 text-[#f59e0b] flex items-center justify-center mb-2.5 shadow-[0_0_18px_rgba(245,158,11,0.25)]">
                     <Network className="w-5 h-5 stroke-[2.2]" />
                   </div>
 
@@ -196,50 +196,50 @@ export default function ForPublishersHeroSection() {
 
                 {/* Top Node */}
                 <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20">
-                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-emerald-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:scale-110 transition-transform">
-                    <Building2 className="w-5 h-5 text-[#4ade80]" />
+                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-amber-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 text-[#f59e0b]" />
                   </div>
                 </div>
 
                 {/* Top-Right Node */}
                 <div className="absolute top-8 right-10 z-20">
-                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-emerald-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:scale-110 transition-transform">
-                    <Building2 className="w-5 h-5 text-[#4ade80]" />
+                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-amber-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 text-[#f59e0b]" />
                   </div>
                 </div>
 
                 {/* Right Node */}
                 <div className="absolute top-1/2 -translate-y-1/2 right-2 z-20">
-                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-emerald-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:scale-110 transition-transform">
-                    <Building2 className="w-5 h-5 text-[#4ade80]" />
+                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-amber-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 text-[#f59e0b]" />
                   </div>
                 </div>
 
                 {/* Bottom-Right Node */}
                 <div className="absolute bottom-8 right-10 z-20">
-                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-emerald-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:scale-110 transition-transform">
-                    <Building2 className="w-5 h-5 text-[#4ade80]" />
+                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-amber-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 text-[#f59e0b]" />
                   </div>
                 </div>
 
                 {/* Bottom-Left Node */}
                 <div className="absolute bottom-8 left-10 z-20">
-                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-emerald-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:scale-110 transition-transform">
-                    <Building2 className="w-5 h-5 text-[#4ade80]" />
+                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-amber-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 text-[#f59e0b]" />
                   </div>
                 </div>
 
                 {/* Left Node */}
                 <div className="absolute top-1/2 -translate-y-1/2 left-2 z-20">
-                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-emerald-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:scale-110 transition-transform">
-                    <Building2 className="w-5 h-5 text-[#4ade80]" />
+                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-amber-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 text-[#f59e0b]" />
                   </div>
                 </div>
 
                 {/* Top-Left Node */}
                 <div className="absolute top-8 left-10 z-20">
-                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-emerald-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:scale-110 transition-transform">
-                    <Building2 className="w-5 h-5 text-[#4ade80]" />
+                  <div className="w-11 h-11 bg-[#0a1836]/95 backdrop-blur-md border border-amber-500/50 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 text-[#f59e0b]" />
                   </div>
                 </div>
 
@@ -258,7 +258,7 @@ export default function ForPublishersHeroSection() {
               
               {/* Metric 1: 3,000+ Agencies in the network */}
               <div className="md:pr-6 flex flex-col justify-center space-y-0.5">
-                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#4ade80] tracking-tight">
+                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#f59e0b] tracking-tight">
                   {agenciesCount.toLocaleString()}+
                 </div>
                 <p className="text-slate-300 font-medium text-xs sm:text-sm">
@@ -268,7 +268,7 @@ export default function ForPublishersHeroSection() {
 
               {/* Metric 2: 1,500+ Publications we work with */}
               <div className="pt-4 md:pt-0 md:px-6 flex flex-col justify-center space-y-0.5">
-                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#4ade80] tracking-tight">
+                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#f59e0b] tracking-tight">
                   {pubsCount.toLocaleString()}+
                 </div>
                 <p className="text-slate-300 font-medium text-xs sm:text-sm">
@@ -278,7 +278,7 @@ export default function ForPublishersHeroSection() {
 
               {/* Metric 3: 100% First right of refusal */}
               <div className="pt-4 md:pt-0 md:pl-6 flex flex-col justify-center space-y-0.5">
-                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#4ade80] tracking-tight">
+                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#f59e0b] tracking-tight">
                   {refusalPct}%
                 </div>
                 <p className="text-slate-300 font-medium text-xs sm:text-sm">

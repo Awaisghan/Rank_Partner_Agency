@@ -38,8 +38,8 @@ export default function WhatWeBelieveSection() {
         {/* Header Block */}
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+            <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
               WHAT WE BELIEVE
             </span>
           </div>
@@ -48,7 +48,7 @@ export default function WhatWeBelieveSection() {
         <ScrollReveal delay={100}>
           <h2 className="font-extrabold tracking-tight leading-[1.15] text-white text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] max-w-4xl mb-12 sm:mb-16">
             Make serious press and search visibility something{" "}
-            <span className="italic font-serif font-normal text-[#4ade80]">
+            <span className="italic font-serif font-normal text-[#f59e0b]">
               any agency can resell under their own brand,
             </span>{" "}
             at a price you can see.
@@ -67,7 +67,7 @@ export default function WhatWeBelieveSection() {
                 >
                   {/* Icon Box */}
                   <div className="w-10 h-10 rounded-lg bg-[#0b2447] border border-slate-700/60 flex items-center justify-center mb-6 shrink-0">
-                    <Icon className="w-5 h-5 text-[#4ade80]" />
+                    <Icon className="w-5 h-5 text-[#f59e0b]" />
                   </div>
 
                   {/* Title */}

@@ -68,8 +68,8 @@ export default function CoverageMomentumSection() {
             {/* Section Tagline */}
             <ScrollReveal>
               <div className="flex items-center gap-3 mb-5">
-                <span className="w-7 h-[2px] bg-[#3b82f6] rounded-full" />
-                <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[#3b82f6] uppercase">
+                <span className="w-7 h-[2px] bg-[#6d28d9] rounded-full" />
+                <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[#6d28d9] uppercase">
                   WHY IT WORKS
                 </span>
               </div>
@@ -78,9 +78,9 @@ export default function CoverageMomentumSection() {
             {/* Heading */}
             <ScrollReveal delay={100}>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold text-[#0a0f1d] tracking-tight leading-[1.15] mb-5">
-                Coverage that keeps{" "}
-                <span className="italic font-serif font-normal text-[#3b82f6]">
-                  working for you.
+                Press coverage that builds{" "}
+                <span className="italic font-serif font-normal text-[#6d28d9]">
+                  lasting value.
                 </span>
               </h2>
             </ScrollReveal>
@@ -88,59 +88,59 @@ export default function CoverageMomentumSection() {
             {/* Subtitle Paragraph */}
             <ScrollReveal delay={180}>
               <p className="text-[15px] sm:text-base text-[#64748b] leading-relaxed max-w-xl mb-10 font-normal">
-                A placement in a trusted outlet is not a one-day spike. It vouches for your client, keeps ranking in search, and gives every pitch and product page proof that lasts.
+                A quality press placement can do more than create a moment of visibility. It can strengthen your client’s credibility, support their online presence, and give them a published story they can continue to reference.
               </p>
             </ScrollReveal>
 
             {/* Feature List Items */}
             <div className="space-y-7">
 
-              {/* Item 1 — Third-party trust */}
+              {/* Item 1 — Third-party credibility */}
               <ScrollReveal delay={240}>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[#eff6ff] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-5 h-5 text-[#3b82f6] stroke-[2]" />
+                    <CheckCircle2 className="w-5 h-5 text-[#6d28d9] stroke-[2]" />
                   </div>
                   <div>
                     <h3 className="text-[17px] font-bold text-[#0f172a] mb-1 tracking-tight">
-                      Third-party trust
+                      Third-party credibility
                     </h3>
                     <p className="text-[14.5px] text-[#64748b] leading-relaxed font-normal">
-                      A respected outlet vouching for your client carries more weight than any ad ever could.
+                      Being featured by an established publication gives your client independent credibility that can strengthen how customers, partners, and prospects perceive their brand.
                     </p>
                   </div>
                 </div>
               </ScrollReveal>
 
-              {/* Item 2 — Lasting visibility */}
+              {/* Item 2 — Lasting online visibility */}
               <ScrollReveal delay={320}>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[#eff6ff] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Search className="w-5 h-5 text-[#3b82f6] stroke-[2]" />
+                    <Search className="w-5 h-5 text-[#6d28d9] stroke-[2]" />
                   </div>
                   <div>
                     <h3 className="text-[17px] font-bold text-[#0f172a] mb-1 tracking-tight">
-                      Lasting visibility
+                      Lasting online visibility
                     </h3>
                     <p className="text-[14.5px] text-[#64748b] leading-relaxed font-normal">
-                      Featured articles keep ranking and sending readers long after the day they run.
+                      Published articles can remain accessible long after they go live, giving your clients a lasting piece of online coverage to share and reference.
                     </p>
                   </div>
                 </div>
               </ScrollReveal>
 
-              {/* Item 3 — Proof that sells */}
+              {/* Item 3 — Proof that builds trust */}
               <ScrollReveal delay={400}>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[#eff6ff] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-5 h-5 text-[#3b82f6] stroke-[2]" />
+                    <CheckCircle2 className="w-5 h-5 text-[#6d28d9] stroke-[2]" />
                   </div>
                   <div>
                     <h3 className="text-[17px] font-bold text-[#0f172a] mb-1 tracking-tight">
-                      Proof that sells
+                      Proof that builds trust
                     </h3>
                     <p className="text-[14.5px] text-[#64748b] leading-relaxed font-normal">
-                      An as featured in badge shortens the path from first look to a confident yes.
+                      Use published coverage as social proof across websites, presentations, social media, and marketing materials to help turn attention into confidence.
                     </p>
                   </div>
                 </div>
@@ -160,13 +160,13 @@ export default function CoverageMomentumSection() {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-[#eff6ff] flex items-center justify-center">
-                      <Newspaper className="w-4 h-4 text-[#3b82f6]" />
+                      <Newspaper className="w-4 h-4 text-[#6d28d9]" />
                     </div>
                     <span className="font-bold text-[#0f172a] text-sm sm:text-base tracking-tight">
                       Coverage momentum
                     </span>
                   </div>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#3b82f6] bg-[#eff6ff] px-3 py-1 rounded-full">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#6d28d9] bg-[#eff6ff] px-3 py-1 rounded-full">
                     <TrendingUp className="w-3.5 h-3.5" />
                     <span>Building</span>
                   </div>
@@ -181,8 +181,8 @@ export default function CoverageMomentumSection() {
                   >
                     <defs>
                       <linearGradient id="coverageGraphGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.22" />
-                        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
+                        <stop offset="0%" stopColor="#6d28d9" stopOpacity="0.22" />
+                        <stop offset="100%" stopColor="#6d28d9" stopOpacity="0.0" />
                       </linearGradient>
                     </defs>
 
@@ -197,7 +197,7 @@ export default function CoverageMomentumSection() {
                     {/* Blue Animated Line */}
                     <path
                       d="M 0,125 C 80,118 160,105 240,85 C 320,65 380,42 450,28"
-                      stroke="#3b82f6"
+                      stroke="#6d28d9"
                       strokeWidth="3.5"
                       strokeLinecap="round"
                       style={{
@@ -228,7 +228,7 @@ export default function CoverageMomentumSection() {
                   <div>
                     <div className="text-3xl sm:text-[34px] font-extrabold text-[#0f172a] tracking-tight">
                       {readersCount}
-                      <span className="text-[#3b82f6]">K</span>
+                      <span className="text-[#6d28d9]">K</span>
                     </div>
                     <div className="text-[11px] font-bold text-slate-400 tracking-[0.14em] uppercase mt-1">
                       READERS / MO

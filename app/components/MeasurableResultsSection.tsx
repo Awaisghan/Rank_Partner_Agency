@@ -20,8 +20,8 @@ export default function MeasurableResultsSection() {
             {/* Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
+                <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
                   MEASURABLE RESULTS
                 </span>
               </div>
@@ -30,9 +30,9 @@ export default function MeasurableResultsSection() {
             {/* Main Headline */}
             <ScrollReveal delay={150}>
               <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px]">
-                Every link is{" "}
-                <span className="italic font-serif font-normal text-blue-600">
-                  tracked and measurable.
+                Know the authority behind{" "}
+                <span className="italic font-serif font-normal text-[#6d28d9]">
+                  every link.
                 </span>
               </h2>
             </ScrollReveal>
@@ -40,7 +40,7 @@ export default function MeasurableResultsSection() {
             {/* Subtitle Paragraph */}
             <ScrollReveal delay={250}>
               <p className="text-slate-500 font-normal text-sm sm:text-base leading-relaxed max-w-xl pb-2">
-                Your strategist tracks Domain Rating, referring domains, and organic traffic throughout the campaign, so you always know what your investment is delivering.
+                Review key SEO metrics before you order, including Domain Rating, referring domains, and organic traffic. Make informed decisions with transparent data for every placement.
               </p>
             </ScrollReveal>
 
@@ -49,7 +49,7 @@ export default function MeasurableResultsSection() {
               <div>
                 <Link
                   href="#check-domain"
-                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(37,99,235,0.3)] hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-violet-700 hover:bg-violet-800 text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(109,40,217,0.3)] hover:scale-105 active:scale-95"
                 >
                   <span>Check any domain free</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />

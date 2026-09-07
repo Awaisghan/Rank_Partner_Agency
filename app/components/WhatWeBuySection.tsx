@@ -10,19 +10,19 @@ export default function WhatWeBuySection() {
       icon: Megaphone,
       title: "Display advertising",
       description:
-        "Banner and display slots across your site, bought in bulk and filled with brand-safe campaigns.",
+        "Offer available banner and display placements to agencies seeking targeted advertising opportunities.",
     },
     {
       icon: FileText,
       title: "Sponsored content",
       description:
-        "Sponsored posts and partner articles, purchased outright and matched to brand-safe demand.",
+        "Make sponsored posts and partner articles available for relevant brand and agency campaigns.",
     },
     {
       icon: Edit3,
       title: "Branded content",
       description:
-        "Native, on-brand features written to fit your audience and ready to publish as your own.",
+        "Create valuable, on-brand content opportunities that fit naturally with your publication and audience.",
     },
   ];
 
@@ -33,9 +33,9 @@ export default function WhatWeBuySection() {
         {/* Top Tagline Badge */}
         <ScrollReveal>
           <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
-              WHAT WE BUY
+            <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
+              WHAT WE OFFER
             </span>
           </div>
         </ScrollReveal>
@@ -43,9 +43,9 @@ export default function WhatWeBuySection() {
         {/* Main Heading */}
         <ScrollReveal delay={150}>
           <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px] mb-4">
-            We buy the inventory you{" "}
-            <span className="italic font-serif font-normal text-blue-600">
-              already have.
+            Turn your available inventory into new{" "}
+            <span className="italic font-serif font-normal text-[#6d28d9]">
+              opportunities.
             </span>
           </h2>
         </ScrollReveal>
@@ -53,7 +53,7 @@ export default function WhatWeBuySection() {
         {/* Subtitle Paragraph */}
         <ScrollReveal delay={200}>
           <p className="text-slate-500 font-normal text-base sm:text-lg leading-relaxed max-w-2xl mb-12 sm:mb-16">
-            Whatever ad and sponsored space you cannot fill yourself, we buy outright and match with brand-safe demand from the network.
+            Connect your publishing inventory with agencies looking for quality placements through RankPartner.io.
           </p>
         </ScrollReveal>
 
@@ -66,7 +66,7 @@ export default function WhatWeBuySection() {
                 <div className="bg-white rounded-2xl p-7 sm:p-8 border border-slate-200/80 shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group">
                   <div>
                     {/* Soft Blue Square Icon Badge */}
-                    <div className="w-11 h-11 rounded-xl bg-blue-50/90 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                    <div className="w-11 h-11 rounded-xl bg-violet-50/90 text-[#6d28d9] flex items-center justify-center mb-6 group-hover:bg-violet-700 group-hover:text-white transition-colors duration-300">
                       <Icon className="w-5 h-5 stroke-[2.2]" />
                     </div>
 

@@ -18,9 +18,9 @@ export default function SeeBeforeYouBuySection() {
             {/* Section Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-3 mb-5">
-                <span className="w-7 h-[2px] bg-[#3b82f6] rounded-full" />
-                <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[#3b82f6] uppercase">
-                  SEE BEFORE YOU BUY
+                <span className="w-7 h-[2px] bg-[#6d28d9] rounded-full" />
+                <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[#6d28d9] uppercase">
+                  SEE BEFORE YOU ORDER
                 </span>
               </div>
             </ScrollReveal>
@@ -28,11 +28,11 @@ export default function SeeBeforeYouBuySection() {
             {/* Main Section Heading */}
             <ScrollReveal delay={100}>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold text-[#0a0f1d] tracking-tight leading-[1.14] mb-5">
-                The metrics on{" "}
+                The details behind{" "}
                 <span className="block sm:inline">
                   every{" "}
-                  <span className="italic font-serif font-normal text-[#3b82f6]">
-                    outlet.
+                  <span className="italic font-serif font-normal text-[#6d28d9]">
+                    publisher.
                   </span>
                 </span>
               </h2>
@@ -41,7 +41,7 @@ export default function SeeBeforeYouBuySection() {
             {/* Subtitle Paragraph */}
             <ScrollReveal delay={180}>
               <p className="text-[15px] sm:text-base text-[#64748b] leading-relaxed max-w-lg font-normal">
-                See third-party authority scores, content rules, turnaround time and the flat price on every publication before you commit.
+                Review key authority metrics, content requirements, estimated turnaround times, and placement pricing before submitting your order. Make informed decisions by comparing the available publishing opportunities in one place.
               </p>
             </ScrollReveal>
 

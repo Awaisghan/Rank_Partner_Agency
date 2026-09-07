@@ -8,27 +8,27 @@ export default function WhatYouGetAuthoritySection() {
   const cards = [
     {
       icon: TrendingUp,
-      title: "Authority that compounds",
+      title: "High-authority publishing opportunities",
       description:
-        "Links from high-Domain-Rating domains don't just help one page. They lift your client's whole site, across every page on Google.",
+        "Choose backlinks from reputable publications and review their authority metrics to find placements that fit your client’s SEO strategy.",
     },
     {
       icon: ShieldCheck,
-      title: "Real pages, guaranteed live",
+      title: "Real publication placements",
       description:
-        "Every link is placed on a real, indexed page on an established publication, with third-party metrics you can verify yourself.",
+        "Get backlinks placed within published articles on established publications, giving your clients a credible source to support their online presence.",
     },
     {
       icon: Gauge,
-      title: "Measured before you order",
+      title: "Review metrics before you order",
       description:
-        "Domain Rating, referring domains, and organic traffic are shown for every link, so there's no guesswork about what you're getting.",
+        "Compare Domain Rating, referring domains, organic traffic, and other key metrics before choosing a backlink placement.",
     },
     {
       icon: CheckCircle2,
-      title: "Pay per link, nothing hidden",
+      title: "Simple, transparent pricing",
       description:
-        "One flat price per link. You're never billed for the effort behind the scenes.",
+        "Choose the backlinks you need with clear pricing for each placement, so you know the cost before you order.",
     },
   ];
 
@@ -39,8 +39,8 @@ export default function WhatYouGetAuthoritySection() {
         {/* Top Tagline */}
         <ScrollReveal>
           <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
+            <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
               THE PROGRAM
             </span>
           </div>
@@ -48,12 +48,19 @@ export default function WhatYouGetAuthoritySection() {
 
         {/* Main Heading */}
         <ScrollReveal delay={150}>
-          <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px] mb-14">
+          <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px] mb-4">
             What you get with{" "}
-            <span className="italic font-serif font-normal text-blue-600">
+            <span className="italic font-serif font-normal text-[#6d28d9]">
               Authority Backlinks.
             </span>
           </h2>
+        </ScrollReveal>
+
+        {/* Subtitle */}
+        <ScrollReveal delay={200}>
+          <p className="text-slate-500 font-normal text-sm sm:text-base leading-relaxed max-w-2xl mb-14">
+            Build stronger backlink profiles with placements on reputable publications, backed by transparent metrics and straightforward pricing.
+          </p>
         </ScrollReveal>
 
         {/* 4 Feature Cards Grid */}
@@ -61,11 +68,11 @@ export default function WhatYouGetAuthoritySection() {
           {cards.map((card, idx) => {
             const Icon = card.icon;
             return (
-              <ScrollReveal key={idx} delay={200 + idx * 100}>
+              <ScrollReveal key={idx} delay={250 + idx * 100}>
                 <div className="bg-white rounded-2xl p-7 sm:p-8 border border-slate-200/90 shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group">
                   <div>
                     {/* Light Blue Icon Square Badge */}
-                    <div className="w-12 h-12 rounded-xl bg-blue-50/90 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-violet-50/90 text-[#6d28d9] flex items-center justify-center mb-6 group-hover:bg-violet-700 group-hover:text-white transition-colors duration-300">
                       <Icon className="w-5 h-5 stroke-[2.2]" />
                     </div>
 

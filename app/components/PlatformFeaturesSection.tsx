@@ -31,7 +31,7 @@ export default function PlatformFeaturesSection() {
   return (
     <section className="w-full bg-white py-10 px-4 sm:px-8 lg:px-12 relative z-10">
       <div className="max-w-[1550px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        
+
         {/* ========================================================================= */}
         {/* LEFT CARD: TRACK EVERY ORDER (lg:col-span-4) - Compact Height & Width     */}
         {/* ========================================================================= */}
@@ -40,8 +40,8 @@ export default function PlatformFeaturesSection() {
           <div className="mb-4">
             <ScrollReveal>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.18]">
-                Track every order from{" "}
-                <span className="italic font-serif font-normal text-blue-600 block sm:inline">
+                Monitor every placement from{" "}
+                <span className="italic font-serif font-normal text-[#6d28d9] block sm:inline">
                   start to finish
                 </span>
               </h3>
@@ -52,7 +52,7 @@ export default function PlatformFeaturesSection() {
           <div className="relative w-full flex-1 flex items-end justify-center pt-2">
             {/* Mockup Image Container with macOS Browser Header Bar */}
             <div className="w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200/90 bg-white relative transform transition-transform duration-500 group-hover:scale-[1.01]">
-              
+
               {/* Browser macOS URL Header Bar */}
               <div className="bg-[#f1f5f9] px-3.5 py-2 border-b border-slate-200 flex items-center gap-3 select-none">
                 <div className="flex items-center gap-1.5">
@@ -78,10 +78,10 @@ export default function PlatformFeaturesSection() {
               <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-3.5 shadow-[0_8px_24px_rgba(0,0,0,0.12)] border border-slate-200/90 min-w-[160px] sm:min-w-[190px] transition-all duration-300">
                 <div className="flex items-center gap-2.5 mb-2">
                   {/* Blue Icon Box */}
-                  <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-2xs flex-shrink-0">
+                  <div className="w-7 h-7 rounded-lg bg-violet-50 border border-violet-100 flex items-center justify-center text-[#6d28d9] shadow-2xs flex-shrink-0">
                     <IconComponent className="w-3.5 h-3.5 transition-transform duration-300" />
                   </div>
-                  
+
                   {/* Status Header & Dynamic Label */}
                   <div>
                     <span className="text-[9px] font-bold tracking-[0.16em] text-slate-400 uppercase block leading-none mb-0.5">
@@ -100,11 +100,10 @@ export default function PlatformFeaturesSection() {
                     return (
                       <div
                         key={barIndex}
-                        className={`h-1 rounded-full transition-all duration-500 ${
-                          isActive
-                            ? "bg-blue-600 shadow-[0_0_4px_rgba(37,99,235,0.4)]"
-                            : "bg-slate-200/80"
-                        }`}
+                        className={`h-1 rounded-full transition-all duration-500 ${isActive
+                          ? "bg-[#6d28d9] shadow-[0_0_4px_rgba(109,40,217,0.4)]"
+                          : "bg-slate-200/80"
+                          }`}
                       />
                     );
                   })}
@@ -120,23 +119,22 @@ export default function PlatformFeaturesSection() {
         {/* ========================================================================= */}
         <div className="lg:col-span-8 bg-[#f4f5f7] rounded-3xl p-5 sm:p-6 flex flex-col justify-between border border-slate-200/80 shadow-sm min-h-[450px] relative overflow-hidden group">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center h-full">
-            
+
             {/* Left Text Column inside Right Card */}
             <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
               <div>
                 <ScrollReveal>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.18] mb-3">
-                    See the numbers{" "}
-                    <span className="italic font-serif font-normal text-blue-600 block">
-                      before you buy
+                    See the details{" "}
+                    <span className="italic font-serif font-normal text-[#6d28d9] block">
+                      before you order
                     </span>
                   </h3>
                 </ScrollReveal>
 
                 <ScrollReveal delay={150}>
                   <p className="text-slate-500 text-xs sm:text-sm leading-relaxed font-normal">
-                    Third-party metrics, content guidelines, turnaround times and flat
-                    pricing on every outlet, before you place a single order.
+                    Review publication metrics, content requirements, turnaround times, and pricing before ordering. Know exactly what you're getting before your campaign begins.
                   </p>
                 </ScrollReveal>
               </div>
@@ -145,19 +143,19 @@ export default function PlatformFeaturesSection() {
               <ScrollReveal delay={250}>
                 <div className="flex flex-col gap-2 pt-1">
                   <div className="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-xs w-fit text-xs font-bold text-slate-800">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <CheckCircle2 className="w-4 h-4 text-[#6d28d9]" />
                     <span>Ahrefs DR</span>
                   </div>
                   <div className="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-xs w-fit text-xs font-bold text-slate-800">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <CheckCircle2 className="w-4 h-4 text-[#6d28d9]" />
                     <span>Moz DA</span>
                   </div>
                   <div className="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-xs w-fit text-xs font-bold text-slate-800">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <CheckCircle2 className="w-4 h-4 text-[#6d28d9]" />
                     <span>Majestic TF</span>
                   </div>
                   <div className="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-xs w-fit text-xs font-bold text-slate-800">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <CheckCircle2 className="w-4 h-4 text-[#6d28d9]" />
                     <span>Semrush AS</span>
                   </div>
                 </div>
@@ -167,7 +165,7 @@ export default function PlatformFeaturesSection() {
               <ScrollReveal delay={350}>
                 <div className="pt-2">
                   <div className="inline-flex items-center gap-2 bg-[#081428] text-white px-4 py-2.5 rounded-full text-xs font-semibold shadow-md border border-slate-800">
-                    <Tag className="w-4 h-4 text-emerald-400" />
+                    <Tag className="w-4 h-4 text-amber-400" />
                     <span>One flat price per placement</span>
                   </div>
                 </div>
@@ -177,7 +175,7 @@ export default function PlatformFeaturesSection() {
             {/* Right Image Column inside Right Card (With macOS Browser Header Bar) */}
             <div className="lg:col-span-7 relative w-full h-full flex items-center justify-center transform transition-transform duration-500 group-hover:scale-[1.01]">
               <div className="w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
-                
+
                 {/* Browser macOS URL Header Bar */}
                 <div className="bg-[#f1f5f9] px-4 py-2.5 border-b border-slate-200 flex items-center gap-3 select-none">
                   {/* 3 Browser Dots */}

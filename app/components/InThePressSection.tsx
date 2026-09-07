@@ -42,8 +42,8 @@ export default function InThePressSection() {
         {/* Tagline & Header */}
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-3">
-            <span className="w-6 h-[2px] bg-[#3b82f6] rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-[#3b82f6] uppercase text-xs sm:text-sm">
+            <span className="w-6 h-[2px] bg-[#6d28d9] rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
               IN THE PRESS
             </span>
           </div>
@@ -52,7 +52,7 @@ export default function InThePressSection() {
         <ScrollReveal delay={100}>
           <h2 className="font-extrabold tracking-tight leading-[1.15] text-slate-900 text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] max-w-2xl mb-4">
             When we&apos;re{" "}
-            <span className="italic font-serif font-normal text-[#3b82f6]">
+            <span className="italic font-serif font-normal text-[#6d28d9]">
               the story.
             </span>
           </h2>
@@ -75,7 +75,7 @@ export default function InThePressSection() {
                 <div className="max-w-3xl">
                   {/* Meta: Source & Date */}
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="font-extrabold text-[#3b82f6] text-xs tracking-wider uppercase">
+                    <span className="font-extrabold text-[#6d28d9] text-xs tracking-wider uppercase">
                       {item.source}
                     </span>
                     <span className="text-slate-300">•</span>
@@ -88,8 +88,8 @@ export default function InThePressSection() {
                   <h3
                     className={`font-extrabold text-lg sm:text-xl lg:text-[21px] leading-snug transition-colors ${
                       item.isActive
-                        ? "text-[#3b82f6]"
-                        : "text-slate-900 group-hover:text-[#3b82f6]"
+                        ? "text-[#6d28d9]"
+                        : "text-slate-900 group-hover:text-[#6d28d9]"
                     }`}
                   >
                     {item.title}
@@ -97,7 +97,7 @@ export default function InThePressSection() {
                 </div>
 
                 {/* Read Article Action */}
-                <div className="flex items-center gap-1 text-[#3b82f6] font-bold text-xs tracking-widest uppercase shrink-0">
+                <div className="flex items-center gap-1 text-[#6d28d9] font-bold text-xs tracking-widest uppercase shrink-0">
                   <span>READ ARTICLE</span>
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>

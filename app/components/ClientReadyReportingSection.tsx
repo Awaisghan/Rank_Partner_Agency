@@ -18,8 +18,8 @@ export default function ClientReadyReportingSection() {
             {/* Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
+                <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
                   CLIENT-READY REPORTING
                 </span>
               </div>
@@ -28,9 +28,9 @@ export default function ClientReadyReportingSection() {
             {/* Main Headline */}
             <ScrollReveal delay={150}>
               <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px]">
-                Reporting you can{" "}
-                <span className="italic font-serif font-normal text-blue-600 block">
-                  put your name on.
+                Present your placements{" "}
+                <span className="italic font-serif font-normal text-[#6d28d9] block">
+                  with confidence.
                 </span>
               </h2>
             </ScrollReveal>
@@ -38,7 +38,7 @@ export default function ClientReadyReportingSection() {
             {/* Subtitle Paragraph */}
             <ScrollReveal delay={250}>
               <p className="text-slate-500 font-normal text-sm sm:text-base leading-relaxed max-w-lg">
-                Track placements, links and authority for every client, with clear reports you can share under your own brand.
+                Use published coverage, publisher details, and placement information to give your clients clear, professional updates under your own agency brand.
               </p>
             </ScrollReveal>
 
@@ -63,7 +63,7 @@ export default function ClientReadyReportingSection() {
                   {/* URL Bar Text */}
                   <div className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
                     <span className="text-xs sm:text-[13px] font-medium text-[#94a3b8] font-sans tracking-tight">
-                      portal.ascendagency.com/publications
+                      portal.rankpartner.io/publications
                     </span>
                   </div>
                 </div>

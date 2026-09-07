@@ -103,8 +103,8 @@ export default function WatchInventorySellSection() {
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <ScrollReveal>
             <div className="flex items-center justify-center gap-2.5 mb-4">
-              <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-              <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
+              <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+              <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
                 SEE IT IN ACTION
               </span>
             </div>
@@ -113,15 +113,15 @@ export default function WatchInventorySellSection() {
           <ScrollReveal delay={150}>
             <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px] mb-5">
               Watch your inventory{" "}
-              <span className="italic font-serif font-normal text-blue-600">
-                sell across the network.
+              <span className="italic font-serif font-normal text-[#6d28d9]">
+                reach new buyers.
               </span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={250}>
             <p className="text-slate-500 font-normal text-base sm:text-lg leading-relaxed">
-              We buy your inventory and fill it across our network of more than 3,000 agencies, then send you the finished content to run. Watch a month of inventory fill up.
+              Connect your publishing inventory with agencies looking for quality placements and sponsored content through RankPartner.io.
             </p>
           </ScrollReveal>
         </div>
@@ -131,22 +131,22 @@ export default function WatchInventorySellSection() {
           <div className="bg-[#050e26] rounded-3xl p-6 sm:p-9 border border-slate-800 shadow-[0_30px_90px_rgba(0,0,0,0.55)] max-w-4xl mx-auto text-white relative overflow-hidden">
             
             {/* Ambient Background Glow inside Console */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 blur-[120px] pointer-events-none rounded-full" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 blur-[120px] pointer-events-none rounded-full" />
 
             {/* Console Header */}
             <div className="flex items-start justify-between mb-8 pb-6 border-b border-slate-800/80">
               <div>
-                <span className="text-[11px] font-extrabold tracking-[0.22em] text-emerald-400 uppercase block mb-1">
+                <span className="text-[11px] font-extrabold tracking-[0.22em] text-amber-400 uppercase block mb-1">
                   INVENTORY ENGINE
                 </span>
                 <p className="text-slate-400 text-xs sm:text-sm font-normal">
-                  We buy your inventory and place it across the network.
+                  Connect your available publishing inventory with agencies looking for quality placement opportunities.
                 </p>
               </div>
 
               {/* Status Badge */}
-              <div className="inline-flex items-center gap-2 bg-[#0c2a1d] border border-emerald-500/40 text-emerald-400 text-xs font-bold px-3.5 py-1.5 rounded-full shadow-[0_0_16px_rgba(74,222,128,0.2)]">
-                <span className={`w-2 h-2 rounded-full bg-emerald-400 ${isAnimating ? "animate-ping" : ""}`} />
+              <div className="inline-flex items-center gap-2 bg-[#0c2a1d] border border-amber-500/40 text-amber-400 text-xs font-bold px-3.5 py-1.5 rounded-full shadow-[0_0_16px_rgba(245,158,11,0.2)]">
+                <span className={`w-2 h-2 rounded-full bg-amber-400 ${isAnimating ? "animate-ping" : ""}`} />
                 <span>{isAnimating ? "Selling" : "Active"}</span>
               </div>
             </div>
@@ -155,11 +155,11 @@ export default function WatchInventorySellSection() {
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2 text-slate-300 font-semibold text-sm sm:text-base">
-                  <Layers className="w-4 h-4 text-emerald-400" />
+                  <Layers className="w-4 h-4 text-amber-400" />
                   <span>Your inventory</span>
                 </div>
                 <div className="text-xs sm:text-sm text-slate-400 font-medium">
-                  <span className="text-emerald-400 font-bold">{filledRectangles}</span>/12 placements sold
+                  <span className="text-amber-400 font-bold">{filledRectangles}</span>/12 placements sold
                 </div>
               </div>
 
@@ -174,9 +174,9 @@ export default function WatchInventorySellSection() {
                       key={idx}
                       className={`h-12 sm:h-14 rounded-xl border transition-all duration-300 flex items-center justify-center ${
                         isFilled
-                          ? "bg-[#9ef08b] border-[#9ef08b] text-[#062c19] shadow-[0_0_15px_rgba(158,240,139,0.35)] scale-100"
+                          ? "bg-[#f59e0b] border-[#f59e0b] text-[#062c19] shadow-[0_0_15px_rgba(245,158,11,0.35)] scale-100"
                           : isCurrentFilling
-                          ? "bg-[#4a8044]/60 border-emerald-500/60 text-emerald-200 animate-pulse"
+                          ? "bg-[#4a8044]/60 border-amber-500/60 text-amber-200 animate-pulse"
                           : "bg-slate-900/80 border-slate-800 text-transparent"
                       }`}
                     >
@@ -187,15 +187,15 @@ export default function WatchInventorySellSection() {
               </div>
             </div>
 
-            {/* ── SECTION 2: ASCEND CENTER DIVIDER BADGE ───────────────── */}
+            {/* ── SECTION 2: RANKPARTNER CENTER DIVIDER BADGE ───────────────── */}
             <div className="relative my-8 flex items-center justify-center">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-slate-800" />
               </div>
               
-              <div className="relative z-10 bg-[#092218] border border-emerald-500/40 text-emerald-400 px-5 py-2 rounded-full flex items-center gap-2 text-xs font-extrabold shadow-[0_0_20px_rgba(74,222,128,0.25)]">
+              <div className="relative z-10 bg-[#092218] border border-amber-500/40 text-amber-400 px-5 py-2 rounded-full flex items-center gap-2 text-xs font-extrabold shadow-[0_0_20px_rgba(245,158,11,0.25)]">
                 <Network className="w-4 h-4 stroke-[2.5]" />
-                <span className="tracking-widest">ASCEND</span>
+                <span className="tracking-widest">RANKPARTNER.IO</span>
               </div>
             </div>
 
@@ -203,7 +203,7 @@ export default function WatchInventorySellSection() {
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2 text-slate-300 font-semibold text-sm sm:text-base">
-                  <Network className="w-4 h-4 text-emerald-400" />
+                  <Network className="w-4 h-4 text-amber-400" />
                   <span>Agency network</span>
                 </div>
                 <div className="text-xs sm:text-sm text-slate-400 font-medium">
@@ -221,7 +221,7 @@ export default function WatchInventorySellSection() {
                       key={idx}
                       className={`w-4 h-4 min-[380px]:w-5 min-[380px]:h-5 sm:w-8 sm:h-8 md:w-12 md:h-12 lg:w-[56px] lg:h-[56px] rounded-full transition-all duration-300 ${
                         isFilled
-                          ? "bg-[#9ef08b] shadow-[0_0_14px_rgba(158,240,139,0.5)] scale-100"
+                          ? "bg-[#f59e0b] shadow-[0_0_14px_rgba(245,158,11,0.5)] scale-100"
                           : "bg-slate-800/80 border border-slate-700/40 scale-95"
                       }`}
                     />
@@ -245,7 +245,7 @@ export default function WatchInventorySellSection() {
 
                 {/* Stat 2 */}
                 <div>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-[#9ef08b] tracking-tight">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#f59e0b] tracking-tight">
                     {agenciesReached.toLocaleString()}
                   </div>
                   <div className="text-slate-400 text-xs sm:text-sm font-medium mt-0.5">
@@ -255,7 +255,7 @@ export default function WatchInventorySellSection() {
 
                 {/* Stat 3 */}
                 <div>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-[#9ef08b] tracking-tight">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#f59e0b] tracking-tight">
                     ${revenueBooked.toLocaleString()}
                   </div>
                   <div className="text-slate-400 text-xs sm:text-sm font-medium mt-0.5">
@@ -269,14 +269,14 @@ export default function WatchInventorySellSection() {
                 <button
                   onClick={startAnimation}
                   disabled={isAnimating}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#9ef08b] hover:bg-[#88e373] active:scale-95 text-[#062c19] font-extrabold px-6 py-2.5 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-[0_0_20px_rgba(158,240,139,0.3)] disabled:opacity-75 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#f59e0b] hover:bg-[#88e373] active:scale-95 text-[#062c19] font-extrabold px-6 py-2.5 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.3)] disabled:opacity-75 disabled:cursor-not-allowed"
                 >
                   <RefreshCw className={`w-4 h-4 stroke-[2.5] ${isAnimating ? "animate-spin" : ""}`} />
                   <span>{isAnimating ? "Selling..." : "Run again"}</span>
                 </button>
 
                 <p className="text-slate-500 text-xs text-center sm:text-right font-normal">
-                  Interactive demo. Revenue is illustrative; the 3,000+ agency network is real.
+                  Interactive demo. Revenue figures and other metrics shown are for illustration purposes only.
                 </p>
               </div>
 

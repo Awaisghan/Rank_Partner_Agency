@@ -5,7 +5,7 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 import CoverageMomentumSection from "../components/CoverageMomentumSection";
-import HowItWorksSection from "../components/HowItWorksSection";
+import PressHowItWorksSection from "../components/PressHowItWorksSection";
 import SeeBeforeYouBuySection from "../components/SeeBeforeYouBuySection";
 import GetStartedCTASection from "../components/GetStartedCTASection";
 import { ArrowRight, CheckCircle2, FileText, RotateCcw, Newspaper, Gauge, Clock, BadgeDollarSign } from "lucide-react";
@@ -21,8 +21,8 @@ export default function PressPlacementsPage() {
     <main className="min-h-screen bg-[#040d21] text-white overflow-hidden relative font-sans">
 
       {/* Hero Background Ambient Glows */}
-      <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/8 blur-[200px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-violet-700/12 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-500/8 blur-[200px] rounded-full pointer-events-none" />
 
       {/* =========================================================== */}
       {/* HERO SECTION — 100vh, items vertically centered              */}
@@ -39,9 +39,9 @@ export default function PressPlacementsPage() {
               {/* Tagline Badge */}
               <ScrollReveal>
                 <div className="flex items-center gap-2.5">
-                  <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
+                  <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
                   <span
-                    className="font-bold tracking-[0.2em] text-[#4ade80] uppercase"
+                    className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase"
                     style={{ fontSize: "clamp(10px, 0.75vw, 12px)" }}
                   >
                     PRESS PLACEMENTS
@@ -56,8 +56,8 @@ export default function PressPlacementsPage() {
                   style={{ fontSize: "clamp(2rem, 3.5vw, 4rem)" }}
                 >
                   Get your clients featured where it{" "}
-                  <span className="italic font-serif font-normal text-[#4ade80]">
-                    counts.
+                  <span className="italic font-serif font-normal text-[#f59e0b]">
+                    matters.
                   </span>
                 </h1>
               </ScrollReveal>
@@ -68,9 +68,7 @@ export default function PressPlacementsPage() {
                   className="text-slate-300 font-normal leading-relaxed max-w-lg"
                   style={{ fontSize: "clamp(0.82rem, 1vw, 1.05rem)" }}
                 >
-                  Get your clients featured in the publications their customers
-                  and investors actually read, with a flat price per placement
-                  agreed before any work begins.
+                  Put your clients in front of relevant audiences through trusted publishing opportunities. Choose the right publication, review the details upfront, and get their content published with a professional press placement.
                 </p>
               </ScrollReveal>
 
@@ -80,7 +78,7 @@ export default function PressPlacementsPage() {
                   {/* Primary CTA */}
                   <Link
                     href="#get-in-touch"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm transition-all duration-300 shadow-[0_0_22px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm transition-all duration-300 shadow-[0_0_22px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
                   >
                     <span>Contact us</span>
                     <ArrowRight className="w-4 h-4" />
@@ -108,18 +106,18 @@ export default function PressPlacementsPage() {
                 <div className="w-full max-w-[620px] ml-auto bg-[#071638]/95 backdrop-blur-xl rounded-[2rem] p-5 sm:p-6 border border-slate-700/70 shadow-[0_30px_80px_rgba(0,0,0,0.55)] relative">
 
                   {/* Green Check Badge — top-right corner */}
-                  <div className="absolute -top-4 -right-4 w-11 h-11 rounded-full bg-[#0c2a21] border-2 border-[#4ade80] flex items-center justify-center text-[#4ade80] shadow-[0_0_24px_rgba(74,222,128,0.45)] z-20">
+                  <div className="absolute -top-4 -right-4 w-11 h-11 rounded-full bg-[#0c2a21] border-2 border-[#f59e0b] flex items-center justify-center text-[#f59e0b] shadow-[0_0_24px_rgba(245,158,11,0.45)] z-20">
                     <CheckCircle2 className="w-5 h-5 stroke-[2.5]" />
                   </div>
 
                   {/* ── CARD HEADER ROW ─────────────────────────────── */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2 bg-emerald-950/70 border border-emerald-500/30 px-3.5 py-1.5 rounded-full">
-                      <FileText className="w-3.5 h-3.5 text-[#4ade80]" />
-                      <span className="text-xs font-semibold text-[#4ade80]">Featured story</span>
+                    <div className="flex items-center gap-2 bg-amber-950/70 border border-amber-500/30 px-3.5 py-1.5 rounded-full">
+                      <FileText className="w-3.5 h-3.5 text-[#f59e0b]" />
+                      <span className="text-xs font-semibold text-[#f59e0b]">Featured story</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse" />
                       <span className="text-xs font-semibold text-slate-300">Published</span>
                     </div>
                   </div>
@@ -130,12 +128,12 @@ export default function PressPlacementsPage() {
                     style={{ height: "clamp(150px, 16vh, 200px)" }}
                   >
                     {/* TIER-ONE OUTLET badge */}
-                    <div className="w-fit bg-[#061430] border border-emerald-500/30 px-3 py-1 rounded-md text-[10px] font-extrabold tracking-widest text-[#4ade80] uppercase">
+                    <div className="w-fit bg-[#061430] border border-amber-500/30 px-3 py-1 rounded-md text-[10px] font-extrabold tracking-widest text-[#f59e0b] uppercase">
                       TIER-ONE OUTLET
                     </div>
 
                     {/* Subtle radial glow inside mockup */}
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(59,130,246,0.08),transparent_60%)] pointer-events-none" />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(109,40,217,0.08),transparent_60%)] pointer-events-none" />
 
                     {/* Dot-grid texture */}
                     <div
@@ -153,7 +151,7 @@ export default function PressPlacementsPage() {
                     {/* Track */}
                     <div className="w-full h-3.5 rounded-full bg-slate-800/90 overflow-hidden border border-slate-700/50 p-0.5">
                       <div
-                        className="h-full rounded-full bg-[#9ef08b] shadow-[0_0_16px_rgba(158,240,139,0.7)]"
+                        className="h-full rounded-full bg-[#f59e0b] shadow-[0_0_16px_rgba(245,158,11,0.7)]"
                         style={{
                           animation:
                             "ppFillBar 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards",
@@ -215,8 +213,8 @@ export default function PressPlacementsPage() {
           {/* Section Label */}
           <ScrollReveal>
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-7 h-[2px] bg-[#3b82f6] rounded-full" />
-              <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[#3b82f6] uppercase">
+              <span className="w-7 h-[2px] bg-[#6d28d9] rounded-full" />
+              <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.22em] text-[#6d28d9] uppercase">
                 THE PROGRAM
               </span>
             </div>
@@ -224,73 +222,80 @@ export default function PressPlacementsPage() {
 
           {/* Main Section Heading */}
           <ScrollReveal delay={100}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-[#0a0f1d] tracking-tight leading-[1.15] mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-[#0a0f1d] tracking-tight leading-[1.15] mb-4">
               What you get with{" "}
-              <span className="italic font-serif font-normal text-[#3b82f6]">
+              <span className="italic font-serif font-normal text-[#6d28d9]">
                 Press Placements.
               </span>
             </h2>
           </ScrollReveal>
 
+          {/* Subtitle */}
+          <ScrollReveal delay={150}>
+            <p className="text-[15px] sm:text-base text-[#64748b] leading-relaxed max-w-2xl mb-12 sm:mb-16 font-normal">
+              Everything you need to offer professional press placement opportunities to your clients through a simple, transparent process.
+            </p>
+          </ScrollReveal>
+
           {/* 4-Column Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {/* Card 1 — Tier-one outlets */}
+            {/* Card 1 — Quality publishing opportunities */}
             <ScrollReveal delay={120}>
-              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-blue-200 transition-all duration-300 group">
+              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-violet-200 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-xl bg-[#eff6ff] flex items-center justify-center mb-6 group-hover:bg-[#dbeafe] transition-colors duration-300">
-                  <Newspaper className="w-5 h-5 text-[#3b82f6] stroke-[2]" />
+                  <Newspaper className="w-5 h-5 text-[#6d28d9] stroke-[2]" />
                 </div>
                 <h3 className="text-[18px] font-bold text-[#0f172a] mb-2.5 tracking-tight">
-                  Tier-one outlets
+                  Quality publishing opportunities
                 </h3>
                 <p className="text-[14.5px] text-[#64748b] leading-[1.65] font-normal">
-                  Forbes, Bloomberg, Reuters and hundreds more, each with a real audience behind it.
+                  Access a curated selection of publishers with key details and authority metrics to help you choose the right placement.
                 </p>
               </div>
             </ScrollReveal>
 
             {/* Card 2 — Pay per placement */}
             <ScrollReveal delay={200}>
-              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-blue-200 transition-all duration-300 group">
+              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-violet-200 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-xl bg-[#eff6ff] flex items-center justify-center mb-6 group-hover:bg-[#dbeafe] transition-colors duration-300">
-                  <CheckCircle2 className="w-5 h-5 text-[#3b82f6] stroke-[2]" />
+                  <CheckCircle2 className="w-5 h-5 text-[#6d28d9] stroke-[2]" />
                 </div>
                 <h3 className="text-[18px] font-bold text-[#0f172a] mb-2.5 tracking-tight">
                   Pay per placement
                 </h3>
                 <p className="text-[14.5px] text-[#64748b] leading-[1.65] font-normal">
-                  You only pay for coverage that runs, not for the pitching behind it.
+                  Choose the placements you need and pay based on the selected publishing opportunity, with pricing available upfront.
                 </p>
               </div>
             </ScrollReveal>
 
-            {/* Card 3 — Authority you can verify */}
+            {/* Card 3 — Authority you can review */}
             <ScrollReveal delay={280}>
-              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-blue-200 transition-all duration-300 group">
+              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-violet-200 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-xl bg-[#eff6ff] flex items-center justify-center mb-6 group-hover:bg-[#dbeafe] transition-colors duration-300">
-                  <Gauge className="w-5 h-5 text-[#3b82f6] stroke-[2]" />
+                  <Gauge className="w-5 h-5 text-[#6d28d9] stroke-[2]" />
                 </div>
                 <h3 className="text-[18px] font-bold text-[#0f172a] mb-2.5 tracking-tight">
-                  Authority you can verify
+                  Authority you can review
                 </h3>
                 <p className="text-[14.5px] text-[#64748b] leading-[1.65] font-normal">
-                  Every outlet shows its Domain Rating, so you know the SEO value before you buy.
+                  See important publisher metrics and placement details before you order, so you can make informed decisions for your clients.
                 </p>
               </div>
             </ScrollReveal>
 
-            {/* Card 4 — Live in days */}
+            {/* Card 4 — Simple publication process */}
             <ScrollReveal delay={360}>
-              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-blue-200 transition-all duration-300 group">
+              <div className="bg-white rounded-[1.25rem] border border-[#e2e8f0] p-7 sm:p-8 h-full flex flex-col justify-start hover:shadow-xl hover:shadow-slate-100 hover:border-violet-200 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-xl bg-[#eff6ff] flex items-center justify-center mb-6 group-hover:bg-[#dbeafe] transition-colors duration-300">
-                  <Clock className="w-5 h-5 text-[#3b82f6] stroke-[2]" />
+                  <Clock className="w-5 h-5 text-[#6d28d9] stroke-[2]" />
                 </div>
                 <h3 className="text-[18px] font-bold text-[#0f172a] mb-2.5 tracking-tight">
-                  Live in days
+                  Simple publication process
                 </h3>
                 <p className="text-[14.5px] text-[#64748b] leading-[1.65] font-normal">
-                  Most placements go live within days, with drafting and approvals handled for you.
+                  Submit your content through our email and let our team handle the review and coordinate the publication with the selected publisher.
                 </p>
               </div>
             </ScrollReveal>
@@ -307,7 +312,7 @@ export default function PressPlacementsPage() {
       {/* =========================================================== */}
       {/* HOW IT WORKS: From first step to published                  */}
       {/* =========================================================== */}
-      <HowItWorksSection />
+      <PressHowItWorksSection />
 
       {/* =========================================================== */}
       {/* SEE BEFORE YOU BUY: The metrics on every outlet.            */}

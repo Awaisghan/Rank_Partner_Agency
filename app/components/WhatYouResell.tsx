@@ -7,9 +7,9 @@ export default function WhatYouResell() {
         {/* Tagline / Accent Line */}
         <ScrollReveal>
           <div className="flex items-center gap-3">
-            <span className="w-6 h-[2px] bg-[#3b82f6] rounded-full" />
+            <span className="w-6 h-[2px] bg-[#6d28d9] rounded-full" />
             <span
-              className="font-semibold tracking-[0.2em] text-[#3b82f6] uppercase"
+              className="font-semibold tracking-[0.2em] text-[#6d28d9] uppercase"
               style={{ fontSize: "clamp(10px, 0.75vw, 12px)" }}
             >
               WHAT YOU RESELL
@@ -24,7 +24,7 @@ export default function WhatYouResell() {
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.8rem)" }}
           >
             Press coverage and rankings that{" "}
-            <span className="italic font-serif text-[#3b82f6] font-normal block sm:inline mt-1 sm:mt-0">
+            <span className="italic font-serif text-[#6d28d9] font-normal block sm:inline mt-1 sm:mt-0">
               work together.
             </span>
           </h2>
@@ -36,9 +36,7 @@ export default function WhatYouResell() {
             className="text-slate-500 font-normal leading-relaxed max-w-2xl sm:max-w-3xl pt-1"
             style={{ fontSize: "clamp(0.88rem, 1.05vw, 1.08rem)" }}
           >
-            Guaranteed press placements and high-authority backlinks, delivered under
-            your own brand. Everything your clients need to build credibility and
-            climb search, in one white-label product.
+            Give clients more visibility and authority with RankPartner.io’s white-label press placements and high-authority backlinks. We handle fulfillment while you grow your brand.
           </p>
         </ScrollReveal>
       </div>

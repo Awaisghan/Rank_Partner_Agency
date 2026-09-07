@@ -70,8 +70,8 @@ export default function RecognizedAwardsSection() {
           <div className="flex-1">
             <ScrollReveal>
               <div className="flex items-center gap-3 mb-3">
-                <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+                <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
                   AWARDS
                 </span>
               </div>
@@ -80,7 +80,7 @@ export default function RecognizedAwardsSection() {
             <ScrollReveal delay={100}>
               <h2 className="font-extrabold tracking-tight leading-[1.15] text-white text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] max-w-2xl mb-4">
                 Recognized for the{" "}
-                <span className="italic font-serif font-normal text-[#4ade80]">
+                <span className="italic font-serif font-normal text-[#f59e0b]">
                   results we deliver.
                 </span>
               </h2>
@@ -95,7 +95,7 @@ export default function RecognizedAwardsSection() {
             <ScrollReveal delay={180}>
               <a
                 href="#inc-profile"
-                className="inline-flex items-center gap-1.5 text-[#4ade80] hover:text-white font-extrabold text-xs tracking-widest uppercase transition-colors"
+                className="inline-flex items-center gap-1.5 text-[#f59e0b] hover:text-white font-extrabold text-xs tracking-widest uppercase transition-colors"
               >
                 <span>VIEW OUR INC. PROFILE</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -130,7 +130,7 @@ export default function RecognizedAwardsSection() {
           <div className="w-full bg-[#071733]/60 border border-slate-800/90 backdrop-blur-md rounded-2xl grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 mb-16 overflow-hidden shadow-2xl">
             <div className="p-8 flex flex-col justify-between">
               <div>
-                <span className="w-6 h-[2px] bg-[#4ade80] rounded-full block mb-3" />
+                <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full block mb-3" />
                 <div className="font-extrabold tracking-tight text-white text-3xl sm:text-4xl mb-2">
                   10,617%
                 </div>
@@ -142,7 +142,7 @@ export default function RecognizedAwardsSection() {
 
             <div className="p-8 flex flex-col justify-between">
               <div>
-                <span className="w-6 h-[2px] bg-[#4ade80] rounded-full block mb-3" />
+                <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full block mb-3" />
                 <div className="font-extrabold tracking-tight text-white text-3xl sm:text-4xl mb-2">
                   No. 1,061
                 </div>
@@ -154,7 +154,7 @@ export default function RecognizedAwardsSection() {
 
             <div className="p-8 flex flex-col justify-between">
               <div>
-                <span className="w-6 h-[2px] bg-[#4ade80] rounded-full block mb-3" />
+                <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full block mb-3" />
                 <div className="font-extrabold tracking-tight text-white text-3xl sm:text-4xl mb-2">
                   No. 2
                 </div>
@@ -180,7 +180,7 @@ export default function RecognizedAwardsSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
                   {/* Left Column: Year, Title & Source */}
                   <div className="lg:col-span-5">
-                    <span className="text-[#4ade80] font-extrabold text-xs tracking-wider uppercase block mb-1">
+                    <span className="text-[#f59e0b] font-extrabold text-xs tracking-wider uppercase block mb-1">
                       {award.year}
                     </span>
                     <h3 className="font-extrabold text-white text-lg sm:text-xl leading-snug mb-1">

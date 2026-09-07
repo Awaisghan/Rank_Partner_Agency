@@ -62,8 +62,8 @@ export default function ArticleDetailPage() {
       {/* Top Dark Header Banner */}
       <header className="w-full bg-[#040d21] text-white pt-32 pb-16 sm:pb-20 px-6 sm:px-10 lg:px-16 xl:px-20 relative overflow-hidden">
         {/* Ambient Radial Glows */}
-        <div className="absolute top-1/3 left-1/4 w-[600px] h-[400px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 blur-[200px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 w-[600px] h-[400px] bg-violet-700/12 blur-[180px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 blur-[200px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto relative z-10">
           {/* Breadcrumbs */}
@@ -83,7 +83,7 @@ export default function ArticleDetailPage() {
 
           {/* Category Badge */}
           <div className="mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#071d36] text-[#4ade80] border border-emerald-500/30">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#071d36] text-[#f59e0b] border border-amber-500/30">
               <CategoryIcon className="w-3.5 h-3.5" />
               <span>{article.category}</span>
             </span>
@@ -118,7 +118,7 @@ export default function ArticleDetailPage() {
           {/* Left Column: Sticky ON THIS PAGE Sidebar (4 cols) */}
           <aside className="lg:col-span-4 hidden lg:block sticky top-28 self-start h-fit pr-6 z-20">
             <div>
-              <span className="font-bold tracking-[0.2em] text-[#3b82f6] uppercase text-xs block mb-5">
+              <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs block mb-5">
                 ON THIS PAGE
               </span>
 
@@ -141,7 +141,7 @@ export default function ArticleDetailPage() {
                       }}
                       className={`block transition-all duration-200 relative ${
                         isCurrent
-                          ? "text-[#3b82f6] font-bold -ml-[17px] pl-[13px] border-l-2 border-[#3b82f6]"
+                          ? "text-[#6d28d9] font-bold -ml-[17px] pl-[13px] border-l-2 border-[#6d28d9]"
                           : "text-slate-500 hover:text-slate-900"
                       }`}
                     >
@@ -205,7 +205,7 @@ export default function ArticleDetailPage() {
 
               <Link
                 href="/blog"
-                className="text-xs font-bold text-[#3b82f6] hover:underline"
+                className="text-xs font-bold text-[#6d28d9] hover:underline"
               >
                 ← Back to all articles
               </Link>

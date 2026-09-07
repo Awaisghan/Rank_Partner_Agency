@@ -87,28 +87,28 @@ export default function BeyondTheSegmentSection() {
   const bullets = [
     {
       icon: Tv,
-      title: "Authority on camera",
+      title: "Credibility on camera",
       description:
-        "Seeing your client on a program people know builds trust faster than words on a page.",
+        "Being featured in a recognized program can give your client’s brand added credibility and help build trust with potential customers.",
     },
     {
       icon: FileText,
-      title: "Clips that keep working",
+      title: "Content with lasting value",
       description:
-        "Every segment becomes social cuts, website proof, and sales assets you own outright.",
+        "A media appearance can become valuable content for your client’s website, social media, presentations, and other marketing channels.",
     },
     {
       icon: CheckCircle2,
-      title: "Booked end to end",
+      title: "Exposure that builds recognition",
       description:
-        "We handle the pitch, the prep, and the schedule, so your client just has to show up.",
+        "Relevant TV and streaming opportunities can help your clients reach new audiences and strengthen their presence beyond traditional digital marketing.",
     },
   ];
 
   const distributionItems = [
     { id: 1, label: "Website embed", icon: Globe },
-    { id: 2, label: "Social clips", icon: Share2 },
-    { id: 3, label: "Sales deck", icon: FileText },
+    { id: 2, label: "Social content", icon: Share2 },
+    { id: 3, label: "Sales presentation", icon: FileText },
     { id: 4, label: "Email feature", icon: Mail },
   ];
 
@@ -128,8 +128,8 @@ export default function BeyondTheSegmentSection() {
             {/* Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
+                <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
                   BEYOND THE SEGMENT
                 </span>
               </div>
@@ -138,9 +138,9 @@ export default function BeyondTheSegmentSection() {
             {/* Main Headline */}
             <ScrollReveal delay={150}>
               <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px]">
-                One booking becomes a{" "}
-                <span className="italic font-serif font-normal text-blue-600">
-                  library of proof.
+                Turn media exposure into{" "}
+                <span className="italic font-serif font-normal text-[#6d28d9]">
+                  lasting brand value.
                 </span>
               </h2>
             </ScrollReveal>
@@ -148,7 +148,7 @@ export default function BeyondTheSegmentSection() {
             {/* Paragraph Subtitle */}
             <ScrollReveal delay={250}>
               <p className="text-slate-500 font-normal text-sm sm:text-base leading-relaxed max-w-xl pb-2">
-                A booked segment is just the start. We hand back footage your client can cut into clips, embed on their site, and drop into every sales conversation.
+                A TV or streaming appearance can give your clients more than a moment on screen. Use credible media exposure to strengthen their reputation, increase visibility, and create content opportunities across their marketing channels.
               </p>
             </ScrollReveal>
 
@@ -160,7 +160,7 @@ export default function BeyondTheSegmentSection() {
                   <ScrollReveal key={idx} delay={300 + idx * 100}>
                     <div className="flex items-start gap-4 group">
                       {/* Light Blue Icon Square */}
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                      <div className="w-10 h-10 rounded-xl bg-violet-50 text-[#6d28d9] flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-violet-700 group-hover:text-white transition-colors duration-300">
                         <Icon className="w-5 h-5 stroke-[2.2]" />
                       </div>
 
@@ -192,7 +192,7 @@ export default function BeyondTheSegmentSection() {
                 <div className="bg-[#fafafa] border border-slate-200/90 rounded-2xl p-4 flex items-center justify-between mb-4 shadow-sm">
                   <div className="flex items-center gap-3.5">
                     {/* Blue Play Square */}
-                    <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md flex-shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-violet-700 text-white flex items-center justify-center shadow-md flex-shrink-0">
                       <Play className="w-5 h-5 fill-white stroke-none ml-0.5" />
                     </div>
                     <div>
@@ -200,7 +200,7 @@ export default function BeyondTheSegmentSection() {
                         On-air segment
                       </h4>
                       <p className="text-slate-400 text-xs font-normal">
-                        One booking, reused everywhere
+                        One appearance, multiple opportunities.
                       </p>
                     </div>
                   </div>
@@ -226,7 +226,7 @@ export default function BeyondTheSegmentSection() {
                         }`}
                       >
                         <div className="flex items-center gap-3.5">
-                          <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                          <div className="w-9 h-9 rounded-xl bg-violet-50 text-[#6d28d9] flex items-center justify-center flex-shrink-0">
                             <ItemIcon className="w-4 h-4 stroke-[2.2]" />
                           </div>
                           <span className="font-bold text-gray-900 text-sm">
@@ -242,7 +242,7 @@ export default function BeyondTheSegmentSection() {
                               : "scale-50 opacity-0"
                           }`}
                         >
-                          <CheckCircle className="w-5 h-5 text-blue-600 fill-blue-600 stroke-white" />
+                          <CheckCircle className="w-5 h-5 text-[#6d28d9] fill-violet-700 stroke-white" />
                         </div>
                       </div>
                     );
@@ -252,23 +252,23 @@ export default function BeyondTheSegmentSection() {
                 {/* Bottom Divider & Animated Count-Up Stats */}
                 <div className="border-t border-slate-100 pt-6 flex flex-wrap items-center gap-8 sm:gap-16">
 
-                  {/* Stat 1: Clips Delivered (0 -> 9) */}
+                  {/* Stat 1: Content Opportunities (0 -> 9) */}
                   <div className="space-y-1">
                     <div className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
                       {clipsCount}
                     </div>
                     <div className="text-[10px] font-bold text-slate-400 tracking-[0.18em] uppercase">
-                      CLIPS DELIVERED
+                      CONTENT OPPORTUNITIES
                     </div>
                   </div>
 
-                  {/* Stat 2: Channels (0 -> 4) */}
+                  {/* Stat 2: Marketing Channels (0 -> 4) */}
                   <div className="space-y-1">
                     <div className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
                       {channelsCount}
                     </div>
                     <div className="text-[10px] font-bold text-slate-400 tracking-[0.18em] uppercase">
-                      CHANNELS
+                      MARKETING CHANNELS
                     </div>
                   </div>
 

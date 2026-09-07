@@ -20,25 +20,25 @@ const faqData = [
   {
     id: "the-basics",
     category: "The basics",
-    subtitle: "What Ascend is and how white-label works.",
+    subtitle: "What RankPartner.io is and how its white-label platform works.",
     icon: Sparkles,
     count: 4,
     questions: [
       {
-        q: "What does Ascend do?",
-        a: "Ascend is a behind-the-scenes partner for PR and SEO. Agencies use our platform to produce great press coverage and improve search rankings for their clients, then present that work as their own. While you handle the client relationship, we take care of the heavy lifting, such as securing media spots and building high-quality backlinks.",
+        q: "What does RankPartner.io do?",
+        a: "RankPartner.io is a white-label platform that helps agencies access press placements, authority backlinks, and TV interview opportunities for their clients. Agencies manage the client relationship while RankPartner.io provides access to publishing opportunities and handles the placement review and publication process.",
       },
       {
         q: "What does white-label actually mean here?",
-        a: "Everything is white-labeled under your brand. You pitch and bill your clients under your own agency name, while our team handles content production, editorial coordination, and placement delivery with zero Ascend branding.",
+        a: "It means you can offer RankPartner.io’s press placements, authority backlinks, and TV interview opportunities under your own agency brand. You manage the client relationship and pricing, while RankPartner.io provides the platform and handles the placement process behind the scenes.",
       },
       {
-        q: "Who uses Ascend?",
-        a: "Digital marketing agencies, SEO consultancies, PR firms, executive branding specialists, and online publishers use Ascend to deliver tier-1 media placements and authority backlinks to their clients.",
+        q: "Who uses RankPartner.io?",
+        a: "RankPartner.io is built for marketing, PR, and SEO agencies that want to offer quality press placements, authority backlinks, and media opportunities without managing every part of the fulfillment process in-house. We also work with publishers looking to connect their available publishing opportunities with agencies.",
       },
       {
         q: "How is this different from a typical PR or link-building vendor?",
-        a: "Unlike traditional PR agencies that charge massive monthly retainers without guaranteed outcomes, Ascend offers flat-rate, guaranteed placements across vetted media outlets with zero minimum commitments.",
+        a: "RankPartner.io brings press placements, authority backlinks, and TV interview opportunities together in one platform built for agencies. You can review opportunities, compare key details and pricing, and choose the placements that fit your clients’ goals—all while managing the client relationship under your own brand.",
       },
     ],
   },
@@ -46,51 +46,51 @@ const faqData = [
     id: "press-coverage",
     category: "Press placements & coverage",
     shortName: "Press & coverage",
-    subtitle: "Placements, timelines, and what stays live.",
+    subtitle: "Placements, timelines, and everything you need to know about getting published.",
     icon: FileText,
     count: 4,
     questions: [
       {
         q: "What kinds of placements can you get?",
-        a: "Our network includes major national news outlets, tier-1 tech publications, finance journals, lifestyle magazines, and high-authority niche blogs across 50+ industries.",
+        a: "RankPartner.io offers press placements across news, business, lifestyle, and industry-focused publications, along with TV and streaming interview opportunities. Browse available opportunities and choose the placements that best fit your client’s goals.",
       },
       {
-        q: "Who writes the content for the placements?",
-        a: "Our in-house team of professional journalists and editors writes brand-safe, publication-ready articles. Alternatively, you can submit pre-written drafts for editorial review.",
+        q: "Are placements guaranteed?",
+        a: "Each placement has its own requirements, availability, and publishing process. We provide the relevant details upfront so you can understand what to expect before submitting your order.",
       },
       {
-        q: "Do we get to approve content before it goes live?",
-        a: "Yes. You have full first right of refusal. Content is submitted to your workspace for review and approval before being sent to the publisher.",
+        q: "How long do placements take?",
+        a: "Turnaround times vary by publication and placement. Review the estimated timeline for each opportunity before ordering, so you can choose an option that fits your client’s schedule.",
       },
       {
-        q: "How long does a press placement take to go live?",
-        a: "Turnaround times vary by publication but typically range between 3 to 10 business days from content approval.",
+        q: "Do the placements stay live?",
+        a: "Published content is intended to remain available on the selected publication, but ongoing availability ultimately depends on the publisher’s policies and decisions. RankPartner.io does not guarantee how long a publication will keep an article or backlink live.",
       },
     ],
   },
   {
     id: "backlinks-seo",
-    category: "Backlinks & SEO authority",
+    category: "Authority backlinks & SEO",
     shortName: "Backlinks & SEO",
-    subtitle: "Link attributes, DR impact, and indexation.",
+    subtitle: "How backlinks support authority, visibility, and long-term SEO growth.",
     icon: Link2,
     count: 4,
     questions: [
       {
-        q: "Are the backlinks dofollow or nofollow?",
-        a: "Placement details explicitly list the link attribute (dofollow or nofollow) for each outlet before you order. Both link types deliver significant organic search authority and trust signals.",
+        q: "What are authority backlinks?",
+        a: "Authority backlinks are links from reputable publications that point to your client’s website. When placed within relevant published content, these links can strengthen the site’s backlink profile and support its overall SEO strategy.",
       },
       {
-        q: "How do authority placements impact domain metrics?",
-        a: "High-tier press backlinks improve domain trust, brand entity recognition, and organic rankings by passing strong editorial link equity to your target pages.",
+        q: "Will this hurt my client's SEO?",
+        a: "RankPartner.io provides placements on established publications with publisher and SEO metrics you can review before ordering. As with any SEO activity, results depend on the quality, relevance, and overall context of the backlink—not simply the domain’s authority metrics.",
       },
       {
-        q: "Can we choose the anchor text and target URL?",
-        a: "Yes. You specify the target URL and preferred anchor text when submitting order assets.",
+        q: "Can I check a domain's authority before we start?",
+        a: "Yes. You can review key publisher and SEO metrics available on RankPartner.io, including metrics such as Domain Rating, referring domains, and organic traffic, before choosing a placement.",
       },
       {
-        q: "Will the published articles stay online permanently?",
-        a: "Yes. Placements are permanent editorial articles published on the media outlet's live domain.",
+        q: "How does PR connect to SEO with RankPartner.io?",
+        a: "Press coverage can build credibility and visibility, while a relevant backlink within published content can support your client’s SEO strategy. With RankPartner.io, agencies can access both press placements and authority backlinks through one platform.",
       },
     ],
   },
@@ -98,21 +98,21 @@ const faqData = [
     id: "for-agencies",
     category: "For agencies",
     shortName: "For agencies",
-    subtitle: "Reselling, client reporting, and team access.",
+    subtitle: "Reselling, branding, and pricing made simple.",
     icon: Building2,
     count: 3,
     questions: [
       {
-        q: "How do agencies resell Ascend placements to clients?",
-        a: "Agencies markup placement prices and bundle them into PR packages, SEO retainers, or executive branding programs under their own agency branding.",
+        q: "Can I really resell this under my own brand?",
+        a: "Yes. RankPartner.io is built for agencies that want to offer press placements, authority backlinks, and TV interview opportunities under their own brand. You manage the client relationship and pricing while using RankPartner.io to access and fulfill selected opportunities.",
       },
       {
-        q: "Do you provide white-label client reports?",
-        a: "Yes. Once an article goes live, you receive a clean reporting link featuring placement metrics, publication badges, and live URLs that you can present directly to clients.",
+        q: "Do I need my own PR or SEO team to use RankPartner.io?",
+        a: "No. RankPartner.io gives agencies access to publishing opportunities without requiring them to manage every part of the placement process themselves. You can focus on your clients while RankPartner.io handles the review and publication process for selected placements.",
       },
       {
-        q: "Is there multi-user access for agency teams?",
-        a: "Yes. Agency accounts support team seats and client organization folders to manage campaign assets efficiently.",
+        q: "How is pricing structured?",
+        a: "Pricing is based on the individual placement you choose. You can review the price and key details for each opportunity before submitting an order, making it easier to manage your costs and set your own client pricing.",
       },
     ],
   },
@@ -120,17 +120,17 @@ const faqData = [
     id: "for-publishers",
     category: "For publishers",
     shortName: "For publishers",
-    subtitle: "Monetizing inventory and editorial guidelines.",
+    subtitle: "Connect your publishing inventory with agencies looking for quality placement opportunities.",
     icon: BookOpen,
     count: 2,
     questions: [
       {
-        q: "How does Ascend monetize publisher inventory?",
-        a: "We buy unused ad and sponsored content inventory outright from publishers, bringing steady, high-margin revenue without sales overhead.",
+        q: "I run a publication. How do I work with RankPartner.io?",
+        a: "RankPartner.io helps publishers connect their available publishing opportunities with agencies looking for quality placements. Share your publication details, available opportunities, requirements, and pricing so agencies can review and choose placements that fit their clients.",
       },
       {
-        q: "How do you ensure content meets editorial standards?",
-        a: "All content undergoes rigorous editorial quality control to match publication voice, brand guidelines, and legal compliance before submission.",
+        q: "Do I have to approve each piece or manage a queue?",
+        a: "Yes. Publishers remain responsible for reviewing submitted content and ensuring it meets their publication’s editorial standards and requirements. Once the content is approved, you can publish it according to the agreed placement terms.",
       },
     ],
   },
@@ -138,17 +138,17 @@ const faqData = [
     id: "getting-started",
     category: "Getting started",
     shortName: "Getting started",
-    subtitle: "Account setup, billing, and first orders.",
+    subtitle: "First steps and how to access RankPartner.io.",
     icon: Rocket,
     count: 2,
     questions: [
       {
-        q: "How do I sign up for an agency or publisher account?",
-        a: "Click 'Agency login' or 'Contact us' to create your account instantly with zero onboarding calls required.",
+        q: "How do I get started?",
+        a: "Contact us through our contact form and tell us about your agency, publication, or the services you’re interested in. We’ll provide the next steps and help you get access to RankPartner.io.",
       },
       {
-        q: "How quickly can we place our first order?",
-        a: "Immediately upon account creation. Browse publication metrics, select outlets, upload your brief, and checkout in minutes.",
+        q: "Can I try something for free first?",
+        a: "You can explore the SEO and publisher metrics available on RankPartner.io before choosing a placement. Review the available information and compare opportunities to find the options that best fit your needs.",
       },
     ],
   },
@@ -195,7 +195,7 @@ export default function FaqAccordionSection() {
           {/* Left Column: Sticky BROWSE TOPICS Sidebar (4 cols) */}
           <aside className="lg:col-span-4 hidden lg:block sticky top-28 self-start h-fit pr-4 z-20">
             {/* Tagline Header */}
-            <span className="font-bold tracking-[0.2em] text-[#3b82f6] uppercase text-[11px] block mb-4">
+            <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-[11px] block mb-4">
               BROWSE TOPICS
             </span>
 
@@ -221,7 +221,7 @@ export default function FaqAccordionSection() {
                     }}
                     className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? "bg-[#edf4ff] border border-blue-200/80 text-[#3b82f6] font-bold shadow-sm"
+                        ? "bg-[#edf4ff] border border-violet-200/80 text-[#6d28d9] font-bold shadow-sm"
                         : "bg-transparent text-slate-700 font-semibold hover:bg-slate-100/80"
                     }`}
                   >
@@ -229,7 +229,7 @@ export default function FaqAccordionSection() {
                       <div
                         className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
                           isActive
-                            ? "bg-white text-[#3b82f6] shadow-xs"
+                            ? "bg-white text-[#6d28d9] shadow-xs"
                             : "bg-slate-100 text-slate-500"
                         }`}
                       >
@@ -240,7 +240,7 @@ export default function FaqAccordionSection() {
 
                     <span
                       className={`text-xs font-bold ${
-                        isActive ? "text-[#3b82f6]" : "text-slate-400"
+                        isActive ? "text-[#6d28d9]" : "text-slate-400"
                       }`}
                     >
                       {group.count}
@@ -252,18 +252,18 @@ export default function FaqAccordionSection() {
 
             {/* Bottom Sticky Card: Still Not Sure? */}
             <div className="bg-[#f8fafc] border border-slate-200/80 rounded-2xl p-5">
-              <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#3b82f6] border border-blue-100 flex items-center justify-center mb-3">
+              <div className="w-9 h-9 rounded-xl bg-violet-50 text-[#6d28d9] border border-violet-100 flex items-center justify-center mb-3">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <h4 className="font-bold text-slate-900 text-sm mb-1">
                 Still not sure?
               </h4>
               <p className="text-slate-500 text-xs leading-relaxed font-normal mb-3">
-                Tell us about your agency or publication and we will point you in the right direction.
+                Tell us about your agency or publication, and we’ll help you find the right way to get started with RankPartner.io.
               </p>
               <Link
                 href="/#get-in-touch"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3b82f6] hover:text-blue-700 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6d28d9] hover:text-[#6d28d9] transition-colors"
               >
                 <span>Contact us</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -282,7 +282,7 @@ export default function FaqAccordionSection() {
                   {/* Group Header */}
                   <ScrollReveal>
                     <div className="flex items-center gap-3.5 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#3b82f6] border border-blue-100 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-violet-50 text-[#6d28d9] border border-violet-100 flex items-center justify-center shrink-0">
                         <GroupIcon className="w-5 h-5 stroke-[2]" />
                       </div>
                       <div>
@@ -316,8 +316,8 @@ export default function FaqAccordionSection() {
                               <span
                                 className={`font-bold text-sm sm:text-lg transition-colors leading-snug ${
                                   isOpen
-                                    ? "text-[#3b82f6]"
-                                    : "text-slate-900 group-hover:text-[#3b82f6]"
+                                    ? "text-[#6d28d9]"
+                                    : "text-slate-900 group-hover:text-[#6d28d9]"
                                 }`}
                               >
                                 {item.q}
@@ -327,7 +327,7 @@ export default function FaqAccordionSection() {
                               <div
                                 className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
                                   isOpen
-                                    ? "bg-[#3b82f6] text-white shadow-sm"
+                                    ? "bg-[#6d28d9] text-white shadow-sm"
                                     : "border border-slate-200/90 text-slate-400 group-hover:border-slate-300 group-hover:text-slate-600"
                                 }`}
                               >

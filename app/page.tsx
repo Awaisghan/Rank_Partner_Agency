@@ -12,11 +12,11 @@ import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="bg-[#040d21] text-white font-sans selection:bg-[#d1a6f4] selection:text-[#050b1e]">
+    <div className="bg-[#040d21] text-white font-sans selection:bg-[#f59e0b] selection:text-[#050b1e]">
       {/* Background Decorative Ambient Glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 left-1/4 w-[600px] h-[400px] bg-blue-600/10 blur-[140px] rounded-full" />
-        <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-purple-500/5 blur-[160px] rounded-full" />
+        <div className="absolute -top-40 left-1/4 w-[600px] h-[400px] bg-violet-700/10 blur-3xl md:blur-[140px] rounded-full" />
+        <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-purple-500/5 blur-3xl md:blur-[160px] rounded-full" />
       </div>
 
       {/* Hero Section — Responsive height */}
@@ -32,18 +32,12 @@ export default function Home() {
               {/* Tagline */}
               <ScrollReveal>
                 <div className="flex items-center gap-2.5">
-                  <span className="w-6 h-[2px] bg-[#d1a6f4] rounded-full" />
+                  <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
                   <span
-                    className="font-semibold tracking-[0.18em] text-[#d1a6f4] uppercase"
+                    className="font-semibold tracking-[0.18em] text-[#f59e0b] uppercase"
                     style={{ fontSize: "clamp(10px, 0.8vw, 13px)" }}
                   >
-                    AWARD-WINNING &nbsp;/&nbsp;
-                  </span>
-                  <span
-                    className="font-semibold tracking-[0.18em] text-slate-300 uppercase"
-                    style={{ fontSize: "clamp(10px, 0.8vw, 13px)" }}
-                  >
-                    WHITE-LABEL PR &amp; SEO
+                    WHITE-LABEL PR &amp; SEO SOLUTIONS
                   </span>
                 </div>
               </ScrollReveal>
@@ -54,10 +48,10 @@ export default function Home() {
                   className="font-extrabold tracking-tight leading-[1.1] text-white"
                   style={{ fontSize: "clamp(2.2rem, 4.3vw, 4.6rem)" }}
                 >
-                  Get featured. <br />
-                  Rank. <br />
-                  <span className="italic font-serif text-[#d1a6f4] font-normal inline-block mt-0.5">
-                    Partner.
+                  Get Featured. <br />
+                  Build Authority. <br />
+                  <span className="italic font-serif text-[#f59e0b] font-normal inline-block mt-0.5">
+                    Rank Higher.
                   </span>
                 </h1>
               </ScrollReveal>
@@ -68,16 +62,14 @@ export default function Home() {
                   className="text-slate-300 max-w-lg font-normal leading-relaxed"
                   style={{ fontSize: "clamp(0.82rem, 1vw, 1.05rem)" }}
                 >
-                  The white-label platform for agencies that want real results. Press
-                  placements in publications that actually stick, and authority backlinks that
-                  rank on Google. No guesswork, just a{" "}
+                  The white-label platform built for agencies that want to deliver real PR and SEO results. Secure press placements in trusted publications and build high-authority backlinks that strengthen your clients’ online presence. With transparent,{" "}
                   <a
                     href="#get-in-touch"
-                    className="text-white font-semibold underline decoration-[#d1a6f4] decoration-2 underline-offset-4 hover:text-[#d1a6f4] transition-colors"
+                    className="text-white font-semibold underline decoration-[#f59e0b] decoration-2 underline-offset-4 hover:text-[#f59e0b] transition-colors"
                   >
-                    flat price per placement
-                  </a>{" "}
-                  before your article goes live.
+                    flat-rate pricing for every placement
+                  </a>
+                  , you know the cost before your client’s article goes live.
                 </p>
               </ScrollReveal>
 
@@ -86,7 +78,7 @@ export default function Home() {
                 <div className="flex flex-wrap items-center gap-3.5 pt-2">
                   <a
                     href="#get-in-touch"
-                    className="px-7 py-3.5 rounded-full bg-[#d1a6f4] hover:bg-[#dfc6f4] text-[#050b1e] font-bold transition-all duration-200 shadow-lg active:scale-95 text-sm sm:text-base"
+                    className="px-7 py-3.5 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#050b1e] font-bold transition-all duration-200 shadow-lg active:scale-95 text-sm sm:text-base"
                   >
                     Contact us
                   </a>

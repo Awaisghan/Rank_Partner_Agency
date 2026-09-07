@@ -54,7 +54,7 @@ export default function ContactSection() {
           }}
         >
           {/* Background Ambient Glow */}
-          <div className="absolute -bottom-20 left-10 w-[600px] h-[400px] bg-blue-600/10 blur-[170px] rounded-full pointer-events-none" />
+          <div className="absolute -bottom-20 left-10 w-[600px] h-[400px] bg-violet-700/10 blur-[170px] rounded-full pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
             
@@ -67,8 +67,8 @@ export default function ContactSection() {
                 {/* Tagline Badge */}
                 <ScrollReveal>
                   <div className="flex items-center gap-2.5">
-                    <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-                    <span className="text-xs font-bold tracking-[0.2em] text-[#4ade80] uppercase">
+                    <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+                    <span className="text-xs font-bold tracking-[0.2em] text-[#f59e0b] uppercase">
                       GET IN TOUCH
                     </span>
                   </div>
@@ -77,10 +77,10 @@ export default function ContactSection() {
                 {/* Main Headline */}
                 <ScrollReveal delay={150}>
                   <h2 className="text-3xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.08]">
-                    Ready to plan <br />
-                    your{" "}
-                    <span className="italic font-serif font-normal text-[#4ade80]">
-                      ascent?
+                    Ready to grow your <br />
+                    publishing{" "}
+                    <span className="italic font-serif font-normal text-[#f59e0b]">
+                      opportunities?
                     </span>
                   </h2>
                 </ScrollReveal>
@@ -88,30 +88,39 @@ export default function ContactSection() {
                 {/* Description */}
                 <ScrollReveal delay={250}>
                   <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed max-w-lg">
-                    Tell us a bit about your agency and the clients you work with. We&apos;ll get
-                    you set up to offer press placements and authority backlinks under your own brand.
+                    Tell us about your agency and the clients you work with. We&apos;ll help you get access to RankPartner.io and explore press placements and authority backlinks for your clients.
                   </p>
                 </ScrollReveal>
 
                 {/* Green Checkmarks List */}
                 <ScrollReveal delay={350}>
-                  <div className="flex flex-col gap-3 pt-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-[#4ade80]/20 text-[#4ade80] flex items-center justify-center flex-shrink-0">
+                  <div className="flex flex-col gap-3.5 pt-2">
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#f59e0b]/20 text-[#f59e0b] flex items-center justify-center flex-shrink-0 mt-0.5">
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
                       </div>
-                      <span className="text-sm font-semibold text-white">
-                        Fully white-label, sold under your brand
-                      </span>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-white">
+                          Fully white-label
+                        </span>
+                        <span className="text-xs text-slate-300 font-normal">
+                          Deliver placements under your own brand.
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-[#4ade80]/20 text-[#4ade80] flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#f59e0b]/20 text-[#f59e0b] flex items-center justify-center flex-shrink-0 mt-0.5">
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
                       </div>
-                      <span className="text-sm font-semibold text-white">
-                        Pay per placement, at one flat price
-                      </span>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-white">
+                          Simple pricing
+                        </span>
+                        <span className="text-xs text-slate-300 font-normal">
+                          Pay per placement with clear pricing upfront.
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -119,9 +128,9 @@ export default function ContactSection() {
                 {/* Divider Line */}
                 <div className="pt-2 border-t border-slate-800/80 max-w-md">
                   <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                    A real person reads every message.{" "}
+                    A real person reviews every inquiry.{" "}
                     <span className="text-white font-semibold">
-                      You&apos;ll hear back within one business day.
+                      Our team will get back to you as soon as possible.
                     </span>
                   </p>
                 </div>
@@ -155,13 +164,13 @@ export default function ContactSection() {
                   {isSubmitted ? (
                     /* Submission Success Screen */
                     <div className="my-auto flex flex-col items-center text-center space-y-4 py-8">
-                      <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center">
                         <CheckCircle2 className="w-10 h-10" />
                       </div>
                       <h3 className="text-2xl font-bold text-slate-900">Thank you, {formData.name || "there"}!</h3>
                       <p className="text-slate-500 text-sm max-w-sm">
                         Your request has been received. Our team will contact you at{" "}
-                        <span className="font-semibold text-slate-800">{formData.email}</span> within one business day.
+                        <span className="font-semibold text-slate-800">{formData.email}</span> as soon as possible.
                       </p>
                       <button
                         onClick={() => {
@@ -181,10 +190,10 @@ export default function ContactSection() {
                         {/* Form Top Header */}
                         <div>
                           <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-1">
-                            Let&apos;s get you placed.
+                            Let&apos;s get you started.
                           </h3>
                           <p className="text-slate-400 text-xs sm:text-sm font-normal">
-                            Three quick steps, under a minute.
+                            Get started with RankPartner.io in three simple steps.
                           </p>
                         </div>
 
@@ -206,7 +215,7 @@ export default function ContactSection() {
                             <div
                               className={`h-1.5 rounded-full transition-all duration-300 ${
                                 formStep === 1
-                                  ? "bg-[#2563eb]"
+                                  ? "bg-[#6d28d9]"
                                   : formStep > 1
                                   ? "bg-[#0b1b3d]"
                                   : "bg-slate-200"
@@ -215,7 +224,7 @@ export default function ContactSection() {
                             <div
                               className={`h-1.5 rounded-full transition-all duration-300 ${
                                 formStep === 2
-                                  ? "bg-[#2563eb]"
+                                  ? "bg-[#6d28d9]"
                                   : formStep > 2
                                   ? "bg-[#0b1b3d]"
                                   : "bg-slate-200"
@@ -223,7 +232,7 @@ export default function ContactSection() {
                             />
                             <div
                               className={`h-1.5 rounded-full transition-all duration-300 ${
-                                formStep === 3 ? "bg-[#2563eb]" : "bg-slate-200"
+                                formStep === 3 ? "bg-[#6d28d9]" : "bg-slate-200"
                               }`}
                             />
                           </div>
@@ -241,7 +250,7 @@ export default function ContactSection() {
                                 placeholder="Name"
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                className="w-full px-4 py-3.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 transition-all"
+                                className="w-full px-4 py-3.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-700/30 focus:border-violet-700 transition-all"
                               />
                               <input
                                 type="email"
@@ -249,7 +258,7 @@ export default function ContactSection() {
                                 placeholder="Work email"
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                className="w-full px-4 py-3.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 transition-all"
+                                className="w-full px-4 py-3.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-700/30 focus:border-violet-700 transition-all"
                               />
                             </div>
 
@@ -258,7 +267,7 @@ export default function ContactSection() {
                               placeholder="Company or website (optional)"
                               value={formData.company}
                               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                              className="w-full px-4 py-3.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 transition-all"
+                              className="w-full px-4 py-3.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-700/30 focus:border-violet-700 transition-all"
                             />
                           </div>
                         )}
@@ -279,7 +288,7 @@ export default function ContactSection() {
                                     onClick={() => setFormData({ ...formData, serviceNeeded: opt })}
                                     className={`w-full py-4 px-5 rounded-2xl text-left text-sm font-semibold transition-all duration-200 border ${
                                       isSelected
-                                        ? "bg-white border-blue-600 text-slate-900 ring-2 ring-blue-600/20 shadow-sm"
+                                        ? "bg-white border-violet-700 text-slate-900 ring-2 ring-violet-700/20 shadow-sm"
                                         : "bg-[#f8fafc] border-slate-200/80 text-slate-700 hover:bg-slate-100/80"
                                     }`}
                                   >
@@ -325,7 +334,7 @@ export default function ContactSection() {
                               placeholder="Tell us about your goals (optional)"
                               value={formData.goals}
                               onChange={(e) => setFormData({ ...formData, goals: e.target.value })}
-                              className="w-full px-4 py-3.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 transition-all resize-none"
+                              className="w-full px-4 py-3.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-700/30 focus:border-violet-700 transition-all resize-none"
                             />
                           </div>
                         )}
@@ -347,7 +356,7 @@ export default function ContactSection() {
 
                           <button
                             type="submit"
-                            className="flex-1 py-3.5 px-6 rounded-2xl bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all duration-200"
+                            className="flex-1 py-3.5 px-6 rounded-2xl bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all duration-200"
                           >
                             <span>{formStep === 3 ? "Plan my ascent" : "Next"}</span>
                             <ArrowRight className="w-4 h-4 text-[#062c19]" />

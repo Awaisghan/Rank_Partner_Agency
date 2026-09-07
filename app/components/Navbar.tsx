@@ -202,7 +202,7 @@ export default function Navbar() {
               {/* Lavender Contact Us Button */}
               <Link
                 href="/#get-in-touch"
-                className="bg-[#d8b4fe] hover:bg-[#e9d5ff] text-[#030919] font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 sm:py-2 rounded-full transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap"
+                className="bg-[#f59e0b] hover:bg-[#d97706] text-[#030919] font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 sm:py-2 rounded-full transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap"
               >
                 Contact us
               </Link>
@@ -212,7 +212,7 @@ export default function Navbar() {
             <div className="flex md:hidden items-center gap-2 sm:gap-3 shrink-0">
               <Link
                 href="/#get-in-touch"
-                className="hidden min-[360px]:block bg-[#9bf389] text-[#030919] text-[11px] sm:text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap"
+                className="hidden min-[360px]:block bg-[#f59e0b] text-[#030919] text-[11px] sm:text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap"
                 onClick={closeMobile}
               >
                 Contact us
@@ -244,7 +244,7 @@ export default function Navbar() {
                   className="group bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-between"
                 >
                   <div className="space-y-1">
-                    <h3 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-slate-900 text-base group-hover:text-[#6d28d9] transition-colors">
                       Press Placements
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed">
@@ -261,14 +261,14 @@ export default function Navbar() {
                   className="group bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-between"
                 >
                   <div className="space-y-1">
-                    <h3 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-slate-900 text-base group-hover:text-[#6d28d9] transition-colors">
                       Authority Backlinks
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed">
                       Contextual links on DR 40-90+ sites
                     </p>
                   </div>
-                  <div className="ml-4 p-2.5 rounded-xl bg-blue-50/70 text-blue-600 group-hover:scale-110 group-hover:bg-blue-100 transition-all shrink-0">
+                  <div className="ml-4 p-2.5 rounded-xl bg-violet-50/70 text-[#6d28d9] group-hover:scale-110 group-hover:bg-violet-100 transition-all shrink-0">
                     <LinkIcon className="w-6 h-6" />
                   </div>
                 </Link>
@@ -278,14 +278,14 @@ export default function Navbar() {
                   className="group bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-between"
                 >
                   <div className="space-y-1">
-                    <h3 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-slate-900 text-base group-hover:text-[#6d28d9] transition-colors">
                       TV Interviews
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed">
                       Secured broadcast appearances
                     </p>
                   </div>
-                  <div className="ml-4 p-2.5 rounded-xl bg-emerald-50/70 text-emerald-600 group-hover:scale-110 group-hover:bg-emerald-100 transition-all shrink-0">
+                  <div className="ml-4 p-2.5 rounded-xl bg-amber-50/70 text-amber-600 group-hover:scale-110 group-hover:bg-amber-100 transition-all shrink-0">
                     <Tv className="w-6 h-6" />
                   </div>
                 </Link>
@@ -302,14 +302,14 @@ export default function Navbar() {
                   className="group bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-between"
                 >
                   <div className="space-y-1">
-                    <h3 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-slate-900 text-base group-hover:text-[#6d28d9] transition-colors">
                       For Agencies
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed">
                       White-label PR &amp; SEO at scale
                     </p>
                   </div>
-                  <div className="ml-4 p-2.5 rounded-xl bg-blue-50/70 text-blue-600 group-hover:scale-110 group-hover:bg-blue-100 transition-all shrink-0">
+                  <div className="ml-4 p-2.5 rounded-xl bg-violet-50/70 text-[#6d28d9] group-hover:scale-110 group-hover:bg-violet-100 transition-all shrink-0">
                     <Users className="w-6 h-6" />
                   </div>
                 </Link>
@@ -319,14 +319,14 @@ export default function Navbar() {
                   className="group bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-between"
                 >
                   <div className="space-y-1">
-                    <h3 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-slate-900 text-base group-hover:text-[#6d28d9] transition-colors">
                       For Publishers
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed">
                       Monetize unsold inventory
                     </p>
                   </div>
-                  <div className="ml-4 p-2.5 rounded-xl bg-emerald-50/70 text-emerald-600 group-hover:scale-110 group-hover:bg-emerald-100 transition-all shrink-0">
+                  <div className="ml-4 p-2.5 rounded-xl bg-amber-50/70 text-amber-600 group-hover:scale-110 group-hover:bg-amber-100 transition-all shrink-0">
                     <Newspaper className="w-6 h-6" />
                   </div>
                 </Link>
@@ -378,18 +378,18 @@ export default function Navbar() {
                     <Link
                       href="/authority-backlinks"
                       onClick={closeMobile}
-                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-violet-50 hover:text-[#6d28d9] transition-colors"
                     >
-                      <LinkIcon className="w-4 h-4 text-blue-500 shrink-0" />
+                      <LinkIcon className="w-4 h-4 text-[#6d28d9] shrink-0" />
                       Authority Backlinks
                     </Link>
                     <div className="h-px bg-slate-100 mx-4" />
                     <Link
                       href="/tv-interviews"
                       onClick={closeMobile}
-                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-600 transition-colors"
                     >
-                      <Tv className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <Tv className="w-4 h-4 text-amber-500 shrink-0" />
                       TV Interviews
                     </Link>
                   </div>
@@ -418,18 +418,18 @@ export default function Navbar() {
                     <Link
                       href="/for-agencies"
                       onClick={closeMobile}
-                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-violet-50 hover:text-[#6d28d9] transition-colors"
                     >
-                      <Users className="w-4 h-4 text-blue-500 shrink-0" />
+                      <Users className="w-4 h-4 text-[#6d28d9] shrink-0" />
                       For Agencies
                     </Link>
                     <div className="h-px bg-slate-100 mx-4" />
                     <Link
                       href="/for-publishers"
                       onClick={closeMobile}
-                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-600 transition-colors"
                     >
-                      <Newspaper className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <Newspaper className="w-4 h-4 text-amber-500 shrink-0" />
                       For Publishers
                     </Link>
                   </div>
@@ -472,7 +472,7 @@ export default function Navbar() {
               <Link
                 href="/#get-in-touch"
                 onClick={closeMobile}
-                className="block w-full text-center mt-2 px-6 py-3 rounded-xl bg-[#030919] text-white font-bold text-sm transition-all duration-200 hover:bg-[#07132e] active:scale-95"
+                className="block w-full text-center mt-2 px-6 py-3 rounded-xl bg-[#f59e0b] text-[#062c19] font-bold text-sm transition-all duration-200 hover:bg-[#d97706] active:scale-95"
               >
                 Contact us
               </Link>

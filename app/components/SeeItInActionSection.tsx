@@ -66,10 +66,10 @@ export default function SeeItInActionSection() {
   }, []);
 
   const clientRows = [
-    { name: "Acme Studio", placements: "12 placements", dr: "+18 DR", fillPct: 100, delay: 100 },
-    { name: "Vertex Labs", placements: "9 placements", dr: "+12 DR", fillPct: 100, delay: 250 },
-    { name: "Harbor & Co", placements: "15 placements", dr: "+22 DR", fillPct: 100, delay: 400 },
-    { name: "Northwind", placements: "7 placements", dr: "+9 DR", fillPct: 100, delay: 550 },
+    { name: "Publisher One", placements: "12 placements", dr: "DR 72", fillPct: 100, delay: 100 },
+    { name: "Publisher Two", placements: "9 placements", dr: "DR 68", fillPct: 100, delay: 250 },
+    { name: "Publisher Three", placements: "15 placements", dr: "DR 81", fillPct: 100, delay: 400 },
+    { name: "Publisher Four", placements: "7 placements", dr: "DR 65", fillPct: 100, delay: 550 },
   ];
 
   return (
@@ -83,8 +83,8 @@ export default function SeeItInActionSection() {
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <ScrollReveal>
             <div className="flex items-center justify-center gap-2.5 mb-4">
-              <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-              <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
+              <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+              <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
                 SEE IT IN ACTION
               </span>
             </div>
@@ -92,16 +92,16 @@ export default function SeeItInActionSection() {
 
           <ScrollReveal delay={150}>
             <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px] mb-5">
-              Everything your clients need,{" "}
-              <span className="italic font-serif font-normal text-blue-600">
-                handled for you.
+              Everything your agency needs,{" "}
+              <span className="italic font-serif font-normal text-[#6d28d9]">
+                in one place.
               </span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={250}>
             <p className="text-slate-500 font-normal text-sm sm:text-base leading-relaxed">
-              Order placements and links for every client, track authority as it climbs, and report the wins under your own brand. Watch a quarter of client work come together.
+              Explore publishers, review placement details, choose the right opportunities, and submit content for your clients—all through RankPartner.io.
             </p>
           </ScrollReveal>
         </div>
@@ -113,25 +113,25 @@ export default function SeeItInActionSection() {
             {/* Console Header Row */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 pb-6 border-b border-slate-800/80 mb-6">
               <div>
-                <div className="text-[#4ade80] font-mono text-[11px] font-bold tracking-[0.2em] uppercase mb-1">
+                <div className="text-[#f59e0b] font-mono text-[11px] font-bold tracking-[0.2em] uppercase mb-1">
                   AGENCY CONSOLE
                 </div>
                 <p className="text-slate-400 text-xs sm:text-sm font-normal">
-                  Every client's press and rankings, under your brand.
+                  Your clients’ press and SEO opportunities, managed under your brand.
                 </p>
               </div>
 
-              {/* Quarter Complete Badge */}
-              <div className="bg-[#0a261c] border border-emerald-500/40 text-emerald-400 text-xs font-semibold px-3.5 py-1.5 rounded-full inline-flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
-                <span>Quarter complete</span>
+              {/* Explore Publishers Badge */}
+              <div className="bg-[#0a261c] border border-amber-500/40 text-amber-400 text-xs font-semibold px-3.5 py-1.5 rounded-full inline-flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse" />
+                <span>Explore publishers</span>
               </div>
             </div>
 
             {/* Your Agency Header Bar Box */}
             <div className="bg-[#071738]/80 border border-slate-800/90 rounded-2xl p-4 flex items-center justify-between mb-5">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#9ef08b] text-[#062c19] font-extrabold text-xs flex items-center justify-center shadow-md">
+                <div className="w-9 h-9 rounded-xl bg-[#f59e0b] text-[#062c19] font-extrabold text-xs flex items-center justify-center shadow-md">
                   YA
                 </div>
                 <h4 className="text-white font-bold text-sm sm:text-base">
@@ -165,7 +165,7 @@ export default function SeeItInActionSection() {
                       <span className="text-slate-400 text-xs font-medium">
                         {row.placements}
                       </span>
-                      <span className="bg-[#0c241d] border border-emerald-500/40 text-[#4ade80] text-xs font-extrabold px-2.5 py-1 rounded-md">
+                      <span className="bg-[#0c241d] border border-amber-500/40 text-[#f59e0b] text-xs font-extrabold px-2.5 py-1 rounded-md">
                         {row.dr}
                       </span>
                     </div>
@@ -174,7 +174,7 @@ export default function SeeItInActionSection() {
                   {/* Animated Green Line Track */}
                   <div className="w-full bg-slate-900/90 rounded-full h-2 overflow-hidden relative p-0.5">
                     <div
-                      className="h-full bg-gradient-to-r from-[#4ade80] to-[#9ef08b] rounded-full transition-all duration-1000 ease-out shadow-[0_0_12px_rgba(74,222,128,0.8)]"
+                      className="h-full bg-gradient-to-r from-[#f59e0b] to-[#f59e0b] rounded-full transition-all duration-1000 ease-out shadow-[0_0_12px_rgba(245,158,11,0.8)]"
                       style={{
                         width: isAnimating ? `${row.fillPct}%` : "0%",
                         transitionDelay: `${row.delay}ms`,
@@ -190,33 +190,33 @@ export default function SeeItInActionSection() {
               {/* Bottom 3 Count-Up Stats */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 text-center sm:text-left">
                 
-                {/* Stat 1: 4 Active clients */}
+                {/* Stat 1: 4 Client campaigns */}
                 <div className="space-y-1">
                   <div className="text-4xl font-extrabold text-white tracking-tight">
                     {activeClientsCount}
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-[0.16em] uppercase">
-                    Active clients
+                    Client campaigns
                   </div>
                 </div>
 
-                {/* Stat 2: 43 Placements delivered */}
+                {/* Stat 2: 43 Placements completed */}
                 <div className="space-y-1">
-                  <div className="text-4xl font-extrabold text-[#4ade80] tracking-tight">
+                  <div className="text-4xl font-extrabold text-[#f59e0b] tracking-tight">
                     {placementsCount}
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-[0.16em] uppercase">
-                    Placements delivered
+                    Placements completed
                   </div>
                 </div>
 
-                {/* Stat 3: +15 Avg. DR lift */}
+                {/* Stat 3: +15 Authority growth */}
                 <div className="space-y-1">
-                  <div className="text-4xl font-extrabold text-[#4ade80] tracking-tight">
+                  <div className="text-4xl font-extrabold text-[#f59e0b] tracking-tight">
                     +{avgLiftCount}
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-[0.16em] uppercase">
-                    Avg. DR lift
+                    Authority growth
                   </div>
                 </div>
 
@@ -227,13 +227,13 @@ export default function SeeItInActionSection() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
               <button
                 onClick={startAnimation}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 sm:py-3 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm transition-all duration-300 shadow-[0_0_22px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 sm:py-3 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm transition-all duration-300 shadow-[0_0_22px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95 cursor-pointer"
               >
                 Run it again
               </button>
 
               <p className="text-slate-400 text-xs font-normal max-w-md text-center sm:text-left">
-                Interactive demo. Client names and figures are illustrative; the 3,000+ agency network is real.
+                Interactive demo. Client names, metrics, and figures shown are for illustration purposes only.
               </p>
             </div>
 

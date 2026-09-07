@@ -6,12 +6,12 @@ import { ArrowUpRight, Tag } from "lucide-react";
 // Full List of Publications from Hero Sphere & Media outlets
 const BRAND_DATA = [
   { letter: "W", color: "#38bdf8", bg: "rgba(56, 189, 248, 0.15)", name: "WSJ", dr: 93 },
-  { letter: "E", color: "#4ade80", bg: "rgba(74, 222, 128, 0.15)", name: "Entrepreneur", dr: 91 },
+  { letter: "E", color: "#f59e0b", bg: "rgba(245, 158, 11, 0.15)", name: "Entrepreneur", dr: 91 },
   { letter: "C", color: "#60a5fa", bg: "rgba(96, 165, 250, 0.15)", name: "CNBC", dr: 92 },
   { letter: "F", color: "#f59e0b", bg: "rgba(245, 158, 11, 0.15)", name: "Fast Company", dr: 90 },
   { letter: "R", color: "#ef4444", bg: "rgba(239, 68, 68, 0.15)", name: "Reuters", dr: 95 },
   { letter: "F", color: "#a855f7", bg: "rgba(168, 85, 247, 0.15)", name: "Forbes", dr: 94 },
-  { letter: "M", color: "#3b82f6", bg: "rgba(59, 130, 246, 0.15)", name: "MarketWatch", dr: 92 },
+  { letter: "M", color: "#6d28d9", bg: "rgba(109, 40, 217, 0.15)", name: "MarketWatch", dr: 92 },
   { letter: "B", color: "#ec4899", bg: "rgba(236, 72, 153, 0.15)", name: "Bloomberg", dr: 93 },
   { letter: "T", color: "#10b981", bg: "rgba(16, 185, 129, 0.15)", name: "TIME", dr: 95 },
 ];
@@ -19,14 +19,14 @@ const BRAND_DATA = [
 // 4 Pipeline Stages
 const STAGE_CONFIG = [
   { step: 1, label: "Pitched", color: "text-slate-400", bg: "bg-slate-800/80", border: "border-slate-700/60" },
-  { step: 2, label: "Drafted", color: "text-blue-400", bg: "bg-blue-950/60", border: "border-blue-700/50" },
+  { step: 2, label: "Drafted", color: "text-[#6d28d9]", bg: "bg-violet-950/60", border: "border-violet-700/50" },
   { step: 3, label: "In review", color: "text-amber-400", bg: "bg-amber-950/60", border: "border-amber-700/50" },
-  { step: 4, label: "Published", color: "text-[#4ade80]", bg: "bg-emerald-950/60", border: "border-emerald-500/50" },
+  { step: 4, label: "Published", color: "text-[#f59e0b]", bg: "bg-amber-950/60", border: "border-amber-500/50" },
 ];
 
 export default function PlacementsSection() {
   const [isInView, setIsInView] = useState(false);
-  
+
   // Right Card State: DR Value + Point Reveal States (Re-animates every 4s)
   const [drValue, setDrValue] = useState(48);
   const [isLineDrawing, setIsLineDrawing] = useState(false);
@@ -109,7 +109,7 @@ export default function PlacementsSection() {
         } else {
           // When Stage 4 (Published) is completed, trigger ultra-smooth slide-up
           setIsSliding(true);
-          
+
           setTimeout(() => {
             setQueueIndex((prevIdx) => (prevIdx + 1) % BRAND_DATA.length);
             setTopRowStage(1);
@@ -138,7 +138,7 @@ export default function PlacementsSection() {
   return (
     <section ref={sectionRef} className="w-full bg-white py-12 px-4 sm:px-8 lg:px-12 relative z-10">
       <div className="max-w-[1550px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        
+
         {/* ========================================================================= */}
         {/* LEFT CARD: DARK NAVY PIPELINE (lg:col-span-8)                             */}
         {/* ========================================================================= */}
@@ -146,11 +146,12 @@ export default function PlacementsSection() {
           {/* Header Text */}
           <div className="mb-6">
             <h3 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold text-white tracking-tight leading-[1.15] mb-3">
-              Placements in the outlets your clients{" "}
-              <span className="italic font-serif font-normal text-[#4ade80]">actually know</span>
+              Get featured where your clients want{" "}
+              <span className="italic font-serif font-normal text-[#f59e0b]">to be seen</span>
             </h3>
             <p className="text-slate-400 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
-              You choose the publications. We handle pitching through to publishing, at one flat price per placement.
+              Choose reputable publications aligned with your clients’ goals, with transparent pricing and managed placement support.
+
             </p>
           </div>
 
@@ -161,9 +162,9 @@ export default function PlacementsSection() {
               <span className="text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase">
                 PLACEMENT PIPELINE
               </span>
-              <div className="flex items-center gap-2 bg-[#0d224b] border border-emerald-500/30 px-3 py-1 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse shadow-[0_0_8px_#4ade80]" />
-                <span className="text-xs font-semibold text-[#4ade80]">Live</span>
+              <div className="flex items-center gap-2 bg-[#0d224b] border border-amber-500/30 px-3 py-1 rounded-full">
+                <span className="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse shadow-[0_0_8px_#f59e0b]" />
+                <span className="text-xs font-semibold text-[#f59e0b]">Live</span>
               </div>
             </div>
 
@@ -215,14 +216,13 @@ export default function PlacementsSection() {
                               className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold flex items-center gap-1 sm:gap-1.5 transition-all duration-300 border ${currentStageInfo.bg} ${currentStageInfo.color} ${currentStageInfo.border}`}
                             >
                               <span
-                                className={`w-1.5 h-1.5 rounded-full ${
-                                  topRowStage === 4 ? "bg-[#4ade80] animate-ping" : "bg-current"
-                                }`}
+                                className={`w-1.5 h-1.5 rounded-full ${topRowStage === 4 ? "bg-[#f59e0b] animate-ping" : "bg-current"
+                                  }`}
                               />
                               <span>{currentStageInfo.label}</span>
                             </div>
                             {topRowStage === 4 && (
-                              <ArrowUpRight className="w-4 h-4 text-[#4ade80]" />
+                              <ArrowUpRight className="w-4 h-4 text-[#f59e0b]" />
                             )}
                           </div>
                         </div>
@@ -230,12 +230,12 @@ export default function PlacementsSection() {
                         {/* Bottom Line: Compact 4-Dot Progress Line UNDER Company Name */}
                         <div className="w-full max-w-[180px] sm:max-w-[210px] relative h-2.5 flex items-center justify-between">
                           <div className="absolute left-1 right-1 top-1/2 -translate-y-1/2 h-[1.5px] bg-slate-700/80 z-0" />
-                          
+
                           <div
-                            className="absolute left-1 top-1/2 -translate-y-1/2 h-[1.5px] bg-[#4ade80] transition-all duration-500 ease-in-out z-0"
+                            className="absolute left-1 top-1/2 -translate-y-1/2 h-[1.5px] bg-[#f59e0b] transition-all duration-500 ease-in-out z-0"
                             style={{
                               width: `calc(${linePercent}% - 2px)`,
-                              boxShadow: "0 0 6px rgba(74, 222, 128, 0.8)",
+                              boxShadow: "0 0 6px rgba(245, 158, 11, 0.8)",
                             }}
                           />
 
@@ -246,13 +246,12 @@ export default function PlacementsSection() {
                             return (
                               <div
                                 key={dotStep}
-                                className={`w-2 h-2 rounded-full relative z-10 transition-all duration-300 ${
-                                  isFilled
-                                    ? isCurrentActiveDot
-                                      ? "bg-[#4ade80] ring-2 ring-[#0b1b3d] scale-125 shadow-[0_0_8px_#4ade80]"
-                                      : "bg-[#4ade80] ring-2 ring-[#0b1b3d]"
-                                    : "bg-slate-600 ring-2 ring-[#0b1b3d]"
-                                }`}
+                                className={`w-2 h-2 rounded-full relative z-10 transition-all duration-300 ${isFilled
+                                  ? isCurrentActiveDot
+                                    ? "bg-[#f59e0b] ring-2 ring-[#0b1b3d] scale-125 shadow-[0_0_8px_#f59e0b]"
+                                    : "bg-[#f59e0b] ring-2 ring-[#0b1b3d]"
+                                  : "bg-slate-600 ring-2 ring-[#0b1b3d]"
+                                  }`}
                               />
                             );
                           })}
@@ -295,11 +294,10 @@ export default function PlacementsSection() {
                       {[1, 2, 3, 4].map((dotStep) => (
                         <div
                           key={dotStep}
-                          className={`w-2 h-2 rounded-full relative z-10 ${
-                            dotStep === 1
-                              ? "bg-[#4ade80] ring-2 ring-[#0b1b3d]"
-                              : "bg-slate-600 ring-2 ring-[#0b1b3d]"
-                          }`}
+                          className={`w-2 h-2 rounded-full relative z-10 ${dotStep === 1
+                            ? "bg-[#f59e0b] ring-2 ring-[#0b1b3d]"
+                            : "bg-slate-600 ring-2 ring-[#0b1b3d]"
+                            }`}
                         />
                       ))}
                     </div>
@@ -339,11 +337,10 @@ export default function PlacementsSection() {
                       {[1, 2, 3, 4].map((dotStep) => (
                         <div
                           key={dotStep}
-                          className={`w-2 h-2 rounded-full relative z-10 ${
-                            dotStep === 1
-                              ? "bg-[#4ade80] ring-2 ring-[#0b1b3d]"
-                              : "bg-slate-600 ring-2 ring-[#0b1b3d]"
-                          }`}
+                          className={`w-2 h-2 rounded-full relative z-10 ${dotStep === 1
+                            ? "bg-[#f59e0b] ring-2 ring-[#0b1b3d]"
+                            : "bg-slate-600 ring-2 ring-[#0b1b3d]"
+                            }`}
                         />
                       ))}
                     </div>
@@ -383,11 +380,10 @@ export default function PlacementsSection() {
                       {[1, 2, 3, 4].map((dotStep) => (
                         <div
                           key={dotStep}
-                          className={`w-2 h-2 rounded-full relative z-10 ${
-                            dotStep === 1
-                              ? "bg-[#4ade80] ring-2 ring-[#0b1b3d]"
-                              : "bg-slate-600 ring-2 ring-[#0b1b3d]"
-                          }`}
+                          className={`w-2 h-2 rounded-full relative z-10 ${dotStep === 1
+                            ? "bg-[#f59e0b] ring-2 ring-[#0b1b3d]"
+                            : "bg-slate-600 ring-2 ring-[#0b1b3d]"
+                            }`}
                         />
                       ))}
                     </div>
@@ -415,7 +411,7 @@ export default function PlacementsSection() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-1.5 text-[#4ade80] font-medium mt-2 sm:mt-0">
+              <div className="flex items-center gap-1.5 text-[#f59e0b] font-medium mt-2 sm:mt-0">
                 <Tag className="w-3.5 h-3.5" />
                 <span>One flat price per placement</span>
               </div>
@@ -430,11 +426,12 @@ export default function PlacementsSection() {
           {/* Header Text */}
           <div className="mb-4">
             <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight leading-[1.2] mb-2">
-              Authority that{" "}
-              <span className="italic font-serif font-normal text-blue-600">adds up</span>
+              Build authority that{" "}
+              <span className="italic font-serif font-normal text-[#6d28d9]">Keeps working</span>
             </h3>
             <p className="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-xs">
-              High-authority backlinks with every placement. A year of them compounds like this.
+              Every placement builds exposure, authority, and a stronger backlink profile for lasting SEO growth.
+
             </p>
           </div>
 
@@ -450,7 +447,7 @@ export default function PlacementsSection() {
                   {drValue}
                 </div>
               </div>
-              <div className="flex items-center gap-1 text-blue-600 font-extrabold text-sm pt-1">
+              <div className="flex items-center gap-1 text-[#6d28d9] font-extrabold text-sm pt-1">
                 <span className="text-xs">↗</span>
                 <span>+24</span>
               </div>
@@ -462,8 +459,8 @@ export default function PlacementsSection() {
                 <defs>
                   {/* Blue Gradient Area Fill */}
                   <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25" />
-                    <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
+                    <stop offset="0%" stopColor="#6d28d9" stopOpacity="0.25" />
+                    <stop offset="100%" stopColor="#6d28d9" stopOpacity="0.0" />
                   </linearGradient>
                 </defs>
 
@@ -479,7 +476,7 @@ export default function PlacementsSection() {
                 <path
                   d="M 15,95 C 45,88 50,83 60,82 C 100,75 110,68 130,65 C 170,58 190,52 210,48 C 245,40 270,30 285,25"
                   fill="none"
-                  stroke="#3b82f6"
+                  stroke="#6d28d9"
                   strokeWidth="3.5"
                   strokeLinecap="round"
                   style={{
@@ -492,9 +489,9 @@ export default function PlacementsSection() {
                 {/* Point Circles & Badges (Synchronized with Blue Line Movement) */}
                 {/* 1. USA TODAY */}
                 <g className={`transition-all duration-300 transform ${activePt >= 1 ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-75 translate-y-2"}`}>
-                  <circle cx="60" cy="82" r="4.5" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+                  <circle cx="60" cy="82" r="4.5" fill="#ffffff" stroke="#6d28d9" strokeWidth="2.5" />
                   <foreignObject x="25" y="56" width="70" height="24">
-                    <div className="bg-white border border-slate-200 rounded px-1 py-0.5 text-[8px] font-bold text-blue-600 shadow-sm text-center">
+                    <div className="bg-white border border-slate-200 rounded px-1 py-0.5 text-[8px] font-bold text-[#6d28d9] shadow-sm text-center">
                       USA TODAY
                     </div>
                   </foreignObject>
@@ -502,7 +499,7 @@ export default function PlacementsSection() {
 
                 {/* 2. Benzinga */}
                 <g className={`transition-all duration-300 transform ${activePt >= 2 ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-75 translate-y-2"}`}>
-                  <circle cx="130" cy="65" r="4.5" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+                  <circle cx="130" cy="65" r="4.5" fill="#ffffff" stroke="#6d28d9" strokeWidth="2.5" />
                   <foreignObject x="100" y="38" width="60" height="24">
                     <div className="bg-white border border-slate-200 rounded px-1 py-0.5 text-[8px] font-bold text-slate-800 shadow-sm text-center">
                       Benzinga
@@ -512,7 +509,7 @@ export default function PlacementsSection() {
 
                 {/* 3. INSIDER */}
                 <g className={`transition-all duration-300 transform ${activePt >= 3 ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-75 translate-y-2"}`}>
-                  <circle cx="210" cy="48" r="4.5" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+                  <circle cx="210" cy="48" r="4.5" fill="#ffffff" stroke="#6d28d9" strokeWidth="2.5" />
                   <foreignObject x="180" y="22" width="55" height="24">
                     <div className="bg-white border border-slate-200 rounded px-1 py-0.5 text-[8px] font-bold text-slate-800 shadow-sm text-center">
                       INSIDER
@@ -522,7 +519,7 @@ export default function PlacementsSection() {
 
                 {/* 4. Axios */}
                 <g className={`transition-all duration-300 transform ${activePt >= 4 ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-75 translate-y-2"}`}>
-                  <circle cx="285" cy="25" r="5.5" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                  <circle cx="285" cy="25" r="5.5" fill="#6d28d9" stroke="#ffffff" strokeWidth="2" />
                   <foreignObject x="255" y="0" width="50" height="24">
                     <div className="bg-white border border-slate-200 rounded px-1 py-0.5 text-[8px] font-bold text-slate-800 shadow-sm text-center">
                       Axios

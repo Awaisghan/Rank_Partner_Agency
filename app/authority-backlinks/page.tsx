@@ -18,9 +18,9 @@ export default function AuthorityBacklinksPage() {
       {/* ========================================================= */}
       {/* HERO AMBIENT GLOWS */}
       {/* ========================================================= */}
-      <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-violet-700/12 blur-[180px] rounded-full pointer-events-none" />
 
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 blur-[200px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-500/10 blur-[200px] rounded-full pointer-events-none" />
 
       {/* ========================================================= */}
       {/* HERO */}
@@ -40,9 +40,9 @@ export default function AuthorityBacklinksPage() {
               {/* Tagline */}
               <ScrollReveal>
                 <div className="flex items-center gap-2.5">
-                  <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
+                  <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
 
-                  <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+                  <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
                     AUTHORITY BACKLINKS
                   </span>
                 </div>
@@ -56,8 +56,8 @@ export default function AuthorityBacklinksPage() {
                     fontSize: "clamp(2.2rem, 3.8vw, 4.2rem)",
                   }}
                 >
-                  Build the backlinks that actually move{" "}
-                  <span className="italic font-serif font-normal text-[#4ade80]">
+                  Build authority with backlinks that support{" "}
+                  <span className="italic font-serif font-normal text-[#f59e0b]">
                     rankings.
                   </span>
                 </h1>
@@ -71,10 +71,7 @@ export default function AuthorityBacklinksPage() {
                     fontSize: "clamp(0.85rem, 1.05vw, 1.1rem)",
                   }}
                 >
-                  Get guaranteed, high-authority backlinks from the
-                  publications Google already trusts and ranks. Every link
-                  comes with third-party metrics, so you know exactly what
-                  authority you're getting before you commit.
+                  Strengthen your clients’ SEO with high-authority backlinks from reputable publications. Review key third-party metrics before you order, so you can choose placements that align with your clients’ SEO goals.
                 </p>
               </ScrollReveal>
 
@@ -83,7 +80,7 @@ export default function AuthorityBacklinksPage() {
                 <div className="flex items-center gap-4 pt-2">
                   <Link
                     href="#get-in-touch"
-                    className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
+                    className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
                   >
                     <span>Contact us</span>
 
@@ -124,7 +121,7 @@ export default function AuthorityBacklinksPage() {
                           dx="0"
                           dy="0"
                           stdDeviation="3"
-                          floodColor="#4ade80"
+                          floodColor="#f59e0b"
                           floodOpacity="0.9"
                         />
                       </filter>
@@ -141,7 +138,7 @@ export default function AuthorityBacklinksPage() {
                           dx="0"
                           dy="0"
                           stdDeviation="5"
-                          floodColor="#4ade80"
+                          floodColor="#f59e0b"
                           floodOpacity="1"
                         />
                       </filter>
@@ -156,7 +153,7 @@ export default function AuthorityBacklinksPage() {
                     <path
                       d="M 75 72 L 158 140"
                       fill="none"
-                      stroke="#4ade80"
+                      stroke="#f59e0b"
                       strokeWidth="3"
                       strokeDasharray="12 10"
                       filter="url(#greenGlow)"
@@ -167,7 +164,7 @@ export default function AuthorityBacklinksPage() {
                       cx="75"
                       cy="72"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -175,7 +172,7 @@ export default function AuthorityBacklinksPage() {
                       cx="158"
                       cy="140"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -189,7 +186,7 @@ export default function AuthorityBacklinksPage() {
                     <path
                       d="M 465 72 L 382 140"
                       fill="none"
-                      stroke="#4ade80"
+                      stroke="#f59e0b"
                       strokeWidth="3"
                       strokeDasharray="12 10"
                       filter="url(#greenGlow)"
@@ -200,7 +197,7 @@ export default function AuthorityBacklinksPage() {
                       cx="465"
                       cy="72"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -208,7 +205,7 @@ export default function AuthorityBacklinksPage() {
                       cx="382"
                       cy="140"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -220,7 +217,7 @@ export default function AuthorityBacklinksPage() {
                     <path
                       d="M 465 368 L 382 300"
                       fill="none"
-                      stroke="#4ade80"
+                      stroke="#f59e0b"
                       strokeWidth="3"
                       strokeDasharray="12 10"
                       filter="url(#greenGlow)"
@@ -231,7 +228,7 @@ export default function AuthorityBacklinksPage() {
                       cx="465"
                       cy="368"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -239,7 +236,7 @@ export default function AuthorityBacklinksPage() {
                       cx="382"
                       cy="300"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -251,7 +248,7 @@ export default function AuthorityBacklinksPage() {
                     <path
                       d="M 75 368 L 158 300"
                       fill="none"
-                      stroke="#4ade80"
+                      stroke="#f59e0b"
                       strokeWidth="3"
                       strokeDasharray="12 10"
                       filter="url(#greenGlow)"
@@ -262,7 +259,7 @@ export default function AuthorityBacklinksPage() {
                       cx="75"
                       cy="368"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -270,7 +267,7 @@ export default function AuthorityBacklinksPage() {
                       cx="158"
                       cy="300"
                       r="4"
-                      fill="#4ade80"
+                      fill="#f59e0b"
                       filter="url(#strongGreenGlow)"
                     />
 
@@ -300,7 +297,7 @@ export default function AuthorityBacklinksPage() {
                       relative
                       z-20
                       group
-                      hover:border-[#4ade80]/60
+                      hover:border-[#f59e0b]/60
                       transition-all
                       duration-300
                     "
@@ -314,13 +311,13 @@ export default function AuthorityBacklinksPage() {
                         rounded-xl
                         bg-[#0c2a21]
                         border
-                        border-[#4ade80]/40
-                        text-[#4ade80]
+                        border-[#f59e0b]/40
+                        text-[#f59e0b]
                         flex
                         items-center
                         justify-center
                         mb-3
-                        shadow-[0_0_18px_rgba(74,222,128,0.25)]
+                        shadow-[0_0_18px_rgba(245,158,11,0.25)]
                       "
                     >
                       <Link2 className="w-5 h-5 stroke-[2.5]" />
@@ -346,15 +343,15 @@ export default function AuthorityBacklinksPage() {
                         items-center
                         gap-1.5
                         bg-[#0c2a21]
-                        text-[#4ade80]
+                        text-[#f59e0b]
                         border
-                        border-[#4ade80]/40
+                        border-[#f59e0b]/40
                         px-3.5
                         py-1
                         rounded-full
                         text-xs
                         font-bold
-                        shadow-[0_0_14px_rgba(74,222,128,0.3)]
+                        shadow-[0_0_14px_rgba(245,158,11,0.3)]
                       "
                     >
                       <span>↗</span>
@@ -378,19 +375,19 @@ export default function AuthorityBacklinksPage() {
                         bg-[#0a1836]/90
                         backdrop-blur-md
                         border
-                        border-emerald-500/40
-                        text-emerald-400
+                        border-amber-500/40
+                        text-amber-400
                         text-xs
                         font-bold
                         px-3.5
                         py-1.5
                         rounded-full
-                        shadow-[0_0_20px_rgba(74,222,128,0.25)]
+                        shadow-[0_0_20px_rgba(245,158,11,0.25)]
                         hover:scale-105
                         transition-transform
                       "
                     >
-                      <Globe className="w-3.5 h-3.5 text-[#4ade80]" />
+                      <Globe className="w-3.5 h-3.5 text-[#f59e0b]" />
 
                       <span>DR 92</span>
                     </div>
@@ -414,19 +411,19 @@ export default function AuthorityBacklinksPage() {
                         bg-[#0a1836]/90
                         backdrop-blur-md
                         border
-                        border-emerald-500/40
-                        text-emerald-400
+                        border-amber-500/40
+                        text-amber-400
                         text-xs
                         font-bold
                         px-3.5
                         py-1.5
                         rounded-full
-                        shadow-[0_0_20px_rgba(74,222,128,0.25)]
+                        shadow-[0_0_20px_rgba(245,158,11,0.25)]
                         hover:scale-105
                         transition-transform
                       "
                     >
-                      <Globe className="w-3.5 h-3.5 text-[#4ade80]" />
+                      <Globe className="w-3.5 h-3.5 text-[#f59e0b]" />
 
                       <span>DR 84</span>
                     </div>
@@ -448,19 +445,19 @@ export default function AuthorityBacklinksPage() {
                         bg-[#0a1836]/90
                         backdrop-blur-md
                         border
-                        border-emerald-500/40
-                        text-emerald-400
+                        border-amber-500/40
+                        text-amber-400
                         text-xs
                         font-bold
                         px-3.5
                         py-1.5
                         rounded-full
-                        shadow-[0_0_20px_rgba(74,222,128,0.25)]
+                        shadow-[0_0_20px_rgba(245,158,11,0.25)]
                         hover:scale-105
                         transition-transform
                       "
                     >
-                      <Globe className="w-3.5 h-3.5 text-[#4ade80]" />
+                      <Globe className="w-3.5 h-3.5 text-[#f59e0b]" />
 
                       <span>DR 90</span>
                     </div>
@@ -482,19 +479,19 @@ export default function AuthorityBacklinksPage() {
                         bg-[#0a1836]/90
                         backdrop-blur-md
                         border
-                        border-emerald-500/40
-                        text-emerald-400
+                        border-amber-500/40
+                        text-amber-400
                         text-xs
                         font-bold
                         px-3.5
                         py-1.5
                         rounded-full
-                        shadow-[0_0_20px_rgba(74,222,128,0.25)]
+                        shadow-[0_0_20px_rgba(245,158,11,0.25)]
                         hover:scale-105
                         transition-transform
                       "
                     >
-                      <Globe className="w-3.5 h-3.5 text-[#4ade80]" />
+                      <Globe className="w-3.5 h-3.5 text-[#f59e0b]" />
 
                       <span>DR 79</span>
                     </div>

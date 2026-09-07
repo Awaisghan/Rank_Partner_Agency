@@ -25,8 +25,8 @@ export default function BlogHeroSection() {
         {/* Tagline Badge */}
         <ScrollReveal delay={100}>
           <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-            <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+            <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+            <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
               INSIGHTS
             </span>
           </div>
@@ -36,7 +36,7 @@ export default function BlogHeroSection() {
         <ScrollReveal delay={150}>
           <h1 className="font-extrabold tracking-tight leading-[1.1] text-white text-4xl sm:text-5xl lg:text-[56px] xl:text-[62px] max-w-3xl mb-6">
             Notes on getting featured and{" "}
-            <span className="italic font-serif font-normal text-[#4ade80]">
+            <span className="italic font-serif font-normal text-[#f59e0b]">
               getting ranked.
             </span>
           </h1>

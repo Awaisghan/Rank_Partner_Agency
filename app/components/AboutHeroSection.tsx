@@ -59,7 +59,7 @@ function AnimatedStat({
   return (
     <div ref={ref} className="flex flex-col justify-between p-6 sm:p-8">
       <div>
-        <span className="w-6 h-[2px] bg-[#4ade80] rounded-full block mb-4" />
+        <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full block mb-4" />
         <div className="font-extrabold tracking-tight text-white text-3xl sm:text-4xl lg:text-[40px] leading-none mb-2">
           {prefix}
           {formattedNumber}
@@ -80,8 +80,8 @@ export default function AboutHeroSection() {
     >
       {/* Background Decorative Ambient Glows */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-full" />
-        <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-emerald-500/5 blur-[160px] rounded-full" />
+        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-violet-700/10 blur-[150px] rounded-full" />
+        <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-amber-500/5 blur-[160px] rounded-full" />
       </div>
 
       {/* Right Side 3D Triangle Watermark Graphic */}
@@ -103,7 +103,7 @@ export default function AboutHeroSection() {
               <stop offset="100%" stopColor="#0f172a" stopOpacity="0.2" />
             </linearGradient>
           </defs>
-          
+
           {/* Outer Triangle Frame with 3D Bevel depth */}
           <path
             d="M200 30 L370 380 H280 L200 220 L120 380 H30 L200 30 Z"
@@ -131,8 +131,8 @@ export default function AboutHeroSection() {
           {/* Tagline Badge */}
           <ScrollReveal>
             <div className="flex items-center gap-3 mb-6">
-              <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-              <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+              <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+              <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
                 ABOUT RANK_PARTNER
               </span>
             </div>
@@ -142,8 +142,8 @@ export default function AboutHeroSection() {
           <ScrollReveal delay={100}>
             <h1 className="font-extrabold tracking-tight leading-[1.1] text-white text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] mb-6">
               We help agencies and their clients{" "}
-              <span className="italic font-serif font-normal text-[#4ade80]">
-                ascend.
+              <span className="italic font-serif font-normal text-[#f59e0b]">
+                RANK_PARTNER
               </span>
             </h1>
           </ScrollReveal>

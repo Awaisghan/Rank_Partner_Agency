@@ -18,9 +18,9 @@ export default function TvBookedEndToEndSection() {
             {/* Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-blue-600 rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-blue-600 uppercase text-xs sm:text-sm">
-                  BOOKED END TO END
+                <span className="w-6 h-[2px] bg-violet-700 rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs sm:text-sm">
+                  MEDIA OPPORTUNITIES
                 </span>
               </div>
             </ScrollReveal>
@@ -28,9 +28,9 @@ export default function TvBookedEndToEndSection() {
             {/* Main Headline */}
             <ScrollReveal delay={150}>
               <h2 className="font-extrabold tracking-tight leading-tight text-gray-900 text-3xl sm:text-4xl lg:text-[46px]">
-                Every booking,{" "}
-                <span className="italic font-serif font-normal text-blue-600">
-                  handled for you.
+                Every opportunity,{" "}
+                <span className="italic font-serif font-normal text-[#6d28d9]">
+                  clearly presented.
                 </span>
               </h2>
             </ScrollReveal>
@@ -38,7 +38,7 @@ export default function TvBookedEndToEndSection() {
             {/* Subtitle Paragraph */}
             <ScrollReveal delay={250}>
               <p className="text-slate-500 font-normal text-sm sm:text-base leading-relaxed max-w-xl">
-                Track each segment from pitch to air, with briefs, approvals and status alongside your placements and links.
+                Review program details, requirements, and placement information before choosing an opportunity for your client. Select the right fit with the information you need to make an informed decision.
               </p>
             </ScrollReveal>
 

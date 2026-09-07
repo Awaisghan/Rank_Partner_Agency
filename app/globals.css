@@ -70,5 +70,36 @@ body {
   }
 }
 
+/* ScrollReveal Base Styles */
+.scroll-reveal {
+  opacity: var(--sr-opacity, 1);
+  transform: var(--sr-transform, none);
+  transition: var(--sr-transition, none);
+  will-change: opacity, transform;
+}
 
+/* Disable ScrollReveal on Mobile for instant loading and performance */
+@media (max-width: 768px) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* 
+ * Mobile Performance Fix: Cap all massive background glows at 32px blur.
+ * Heavy blurs (100px+) cause extreme GPU lag on mobile devices.
+ */
+@media (max-width: 768px) {
+  .blur-\[100px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[120px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[130px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[140px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[150px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[160px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[170px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[180px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+  .blur-\[200px\] { --tw-blur: blur(32px) !important; filter: var(--tw-blur) !important; }
+}
 

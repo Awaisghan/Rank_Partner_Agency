@@ -115,7 +115,7 @@ export default function BlogGridSection() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-[#3b82f6] text-white shadow-sm"
+                      ? "bg-[#6d28d9] text-white shadow-sm"
                       : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200/90 hover:border-slate-300"
                   }`}
                 >
@@ -141,7 +141,7 @@ export default function BlogGridSection() {
                 <div>
                   {/* Category Pill + LATEST Label */}
                   <div className="flex items-center gap-3 mb-5">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-[#3b82f6] border border-blue-100">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-[#6d28d9] border border-violet-100">
                       <Search className="w-3.5 h-3.5" />
                       <span>{featuredArticle.category}</span>
                     </span>
@@ -181,7 +181,7 @@ export default function BlogGridSection() {
                   <div>
                     <Link
                       href="/blog/what-domain-authority-and-domain-rating-actually-measure"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#3b82f6] hover:text-blue-700 transition-colors group"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#6d28d9] hover:text-[#6d28d9] transition-colors group"
                     >
                       <span>Read article</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -193,10 +193,10 @@ export default function BlogGridSection() {
               {/* Right Column Dark Graphic Box (5 cols) */}
               <div className="hidden lg:col-span-5 bg-[#040c1e] p-8 lg:p-12 relative overflow-hidden lg:flex flex-col justify-between min-h-[260px] lg:min-h-[360px]">
                 {/* Background Ambient Radial Glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-violet-700/10 blur-[100px] rounded-full pointer-events-none" />
 
                 {/* Top-Left Label */}
-                <span className="relative z-10 text-[10px] font-extrabold tracking-[0.22em] text-[#4ade80] uppercase">
+                <span className="relative z-10 text-[10px] font-extrabold tracking-[0.22em] text-[#f59e0b] uppercase">
                   LATEST INSIGHT
                 </span>
 
@@ -207,10 +207,10 @@ export default function BlogGridSection() {
                     <div className="absolute inset-0 rounded-full border border-slate-800/80" />
                     <div className="absolute inset-5 rounded-full border border-slate-800/90" />
                     <div className="absolute inset-10 rounded-full border border-slate-700/60" />
-                    <div className="absolute inset-16 rounded-full border border-emerald-500/20" />
+                    <div className="absolute inset-16 rounded-full border border-amber-500/20" />
 
                     {/* Center Magnifying Glass Pulse Badge */}
-                    <div className="w-12 h-12 rounded-full bg-[#0a2218] border border-emerald-500/50 text-[#4ade80] flex items-center justify-center shadow-[0_0_20px_rgba(74,222,128,0.3)]">
+                    <div className="w-12 h-12 rounded-full bg-[#0a2218] border border-amber-500/50 text-[#f59e0b] flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)]">
                       <Search className="w-5 h-5 stroke-[2.2]" />
                     </div>
                   </div>
@@ -245,16 +245,16 @@ export default function BlogGridSection() {
                   <div>
                     {/* Top Row: Category Badge + Top-Right Arrow */}
                     <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-[#3b82f6] border border-blue-100/80">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-[#6d28d9] border border-violet-100/80">
                         <CategoryIcon className="w-3.5 h-3.5" />
                         <span>{article.category}</span>
                       </span>
 
-                      <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-[#3b82f6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-[#6d28d9] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </div>
 
                     {/* Article Title */}
-                    <h3 className="font-extrabold text-slate-900 text-lg sm:text-xl leading-snug mb-3 group-hover:text-[#3b82f6] transition-colors">
+                    <h3 className="font-extrabold text-slate-900 text-lg sm:text-xl leading-snug mb-3 group-hover:text-[#6d28d9] transition-colors">
                       {article.title}
                     </h3>
 

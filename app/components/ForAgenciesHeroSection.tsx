@@ -67,8 +67,8 @@ export default function ForAgenciesHeroSection() {
             {/* Tagline Badge */}
             <ScrollReveal>
               <div className="flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-                <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+                <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+                <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
                   FOR AGENCIES
                 </span>
               </div>
@@ -77,8 +77,8 @@ export default function ForAgenciesHeroSection() {
             {/* Main Headline */}
             <ScrollReveal delay={150}>
               <h1 className="font-bold tracking-tight leading-[1.1] text-white text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px]">
-                Scale press and rankings for every{" "}
-                <span className="italic font-serif font-normal text-[#4ade80]">
+                Scale press and SEO authority for every{" "}
+                <span className="italic font-serif font-normal text-[#f59e0b]">
                   client.
                 </span>
               </h1>
@@ -87,7 +87,7 @@ export default function ForAgenciesHeroSection() {
             {/* Subtitle Paragraph */}
             <ScrollReveal delay={250}>
               <p className="text-slate-300 font-normal text-sm sm:text-base leading-relaxed max-w-xl">
-                Join 3,000+ agencies that resell Ascend's press placements and authority backlinks under their own brand, priced per placement and guaranteed on delivery.
+                Give your agency access to quality press placements and authority backlinks you can resell under your own brand, with transparent pricing and a straightforward process.
               </p>
             </ScrollReveal>
 
@@ -96,7 +96,7 @@ export default function ForAgenciesHeroSection() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
                 >
                   <span>Talk to us</span>
                   <ArrowRight className="w-4.5 h-4.5 stroke-[2.5]" />
@@ -130,7 +130,7 @@ export default function ForAgenciesHeroSection() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3.5">
                       {/* Square Green Avatar */}
-                      <div className="w-10 h-10 rounded-xl bg-[#9ef08b] text-[#062c19] font-extrabold text-base flex items-center justify-center shadow-md">
+                      <div className="w-10 h-10 rounded-xl bg-[#f59e0b] text-[#062c19] font-extrabold text-base flex items-center justify-center shadow-md">
                         YA
                       </div>
                       <div>
@@ -144,7 +144,7 @@ export default function ForAgenciesHeroSection() {
                     </div>
 
                     {/* WHITE-LABEL Badge */}
-                    <div className="border border-emerald-500/40 bg-[#0c241d] text-[#4ade80] text-[10px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase">
+                    <div className="border border-amber-500/40 bg-[#0c241d] text-[#f59e0b] text-[10px] font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase">
                       WHITE-LABEL
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default function ForAgenciesHeroSection() {
                     {/* Top Bar Chart Labels */}
                     <div className="flex items-center justify-between text-xs sm:text-[13px] font-semibold">
                       <span className="text-slate-300">Authority growth</span>
-                      <span className="text-[#4ade80] font-mono text-[10px] sm:text-[11px] tracking-wider uppercase">
+                      <span className="text-[#f59e0b] font-mono text-[10px] sm:text-[11px] tracking-wider uppercase">
                         THIS QUARTER
                       </span>
                     </div>
@@ -168,7 +168,7 @@ export default function ForAgenciesHeroSection() {
                           className="flex-1 h-full flex items-end justify-center"
                         >
                           <div
-                            className="w-full bg-gradient-to-t from-[#4ade80]/40 via-[#4ade80]/90 to-[#9ef08b] rounded-xl transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(74,222,128,0.25)]"
+                            className="w-full bg-gradient-to-t from-[#f59e0b]/40 via-[#f59e0b]/90 to-[#f59e0b] rounded-xl transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(245,158,11,0.25)]"
                             style={{
                               height: isLoaded ? `${targetH}%` : "0%",
                               transitionDelay: `${150 + idx * 120}ms`,
@@ -195,7 +195,7 @@ export default function ForAgenciesHeroSection() {
 
                     {/* Stat 2: DR LIFT (0 -> +23) */}
                     <div className="bg-[#051126]/90 border border-slate-700/60 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col justify-center">
-                      <div className="text-2xl sm:text-3xl font-extrabold text-[#4ade80] tracking-tight">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-[#f59e0b] tracking-tight">
                         +{drLift}
                       </div>
                       <div className="text-[10px] font-bold text-slate-400 tracking-[0.16em] uppercase mt-1">
@@ -237,7 +237,7 @@ export default function ForAgenciesHeroSection() {
               
               {/* Metric 1: 3,000+ Agencies */}
               <div className="md:pr-6 flex flex-col justify-center space-y-0.5">
-                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#4ade80] tracking-tight">
+                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#f59e0b] tracking-tight">
                   {agenciesCount.toLocaleString()}+
                 </div>
                 <p className="text-slate-300 font-medium text-xs sm:text-sm">
@@ -247,7 +247,7 @@ export default function ForAgenciesHeroSection() {
 
               {/* Metric 2: 150,000+ Articles published */}
               <div className="pt-4 md:pt-0 md:px-6 flex flex-col justify-center space-y-0.5">
-                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#4ade80] tracking-tight">
+                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#f59e0b] tracking-tight">
                   {articlesCount.toLocaleString()}+
                 </div>
                 <p className="text-slate-300 font-medium text-xs sm:text-sm">
@@ -257,7 +257,7 @@ export default function ForAgenciesHeroSection() {
 
               {/* Metric 3: 100% White-labeled */}
               <div className="pt-4 md:pt-0 md:pl-6 flex flex-col justify-center space-y-0.5">
-                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#4ade80] tracking-tight">
+                <div className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#f59e0b] tracking-tight">
                   {whiteLabelPct}%
                 </div>
                 <p className="text-slate-300 font-medium text-xs sm:text-sm">

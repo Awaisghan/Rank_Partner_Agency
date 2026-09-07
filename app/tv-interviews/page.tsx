@@ -16,8 +16,8 @@ export default function TvInterviewsPage() {
     <main className="min-h-screen bg-[#040d21] text-white overflow-hidden relative font-sans">
 
       {/* Hero Ambient Glows */}
-      <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-blue-600/12 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 blur-[200px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[700px] h-[500px] bg-violet-700/12 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-500/10 blur-[200px] rounded-full pointer-events-none" />
 
       {/* =========================================================== */}
       {/* HERO SECTION — 90vh height, vertically centered               */}
@@ -36,8 +36,8 @@ export default function TvInterviewsPage() {
               {/* Tagline Badge */}
               <ScrollReveal>
                 <div className="flex items-center gap-2.5">
-                  <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-                  <span className="font-bold tracking-[0.2em] text-[#4ade80] uppercase text-xs sm:text-sm">
+                  <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+                  <span className="font-bold tracking-[0.2em] text-[#f59e0b] uppercase text-xs sm:text-sm">
                     TV INTERVIEWS
                   </span>
                 </div>
@@ -49,9 +49,9 @@ export default function TvInterviewsPage() {
                   className="font-extrabold tracking-tight leading-[1.08] text-white"
                   style={{ fontSize: "clamp(2.2rem, 3.8vw, 4.2rem)" }}
                 >
-                  Get your clients booked on the segments their audience{" "}
-                  <span className="italic font-serif font-normal text-[#4ade80]">
-                    watches.
+                  Put your clients in front of audiences that{" "}
+                  <span className="italic font-serif font-normal text-[#f59e0b]">
+                    matter.
                   </span>
                 </h1>
               </ScrollReveal>
@@ -62,7 +62,7 @@ export default function TvInterviewsPage() {
                   className="text-slate-300 font-normal leading-relaxed max-w-xl"
                   style={{ fontSize: "clamp(0.85rem, 1.05vw, 1.1rem)" }}
                 >
-                  Land guest interviews for your clients on broadcast and streaming programs. We book the slot, prep them for it and hand back footage you can use everywhere.
+                  Create valuable media opportunities for your clients through TV and streaming interview placements. Connect your clients with relevant programs and build credible exposure that strengthens their public presence.
                 </p>
               </ScrollReveal>
 
@@ -71,7 +71,7 @@ export default function TvInterviewsPage() {
                 <div className="flex items-center gap-4 pt-2">
                   <Link
                     href="#contact"
-                    className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#9ef08b] hover:bg-[#8ae476] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(158,240,139,0.35)] hover:scale-105 active:scale-95"
+                    className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
                   >
                     <span>Contact us</span>
                     <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -93,13 +93,13 @@ export default function TvInterviewsPage() {
                   <div className="w-full aspect-[16/9.5] min-h-[160px] sm:min-h-[260px] bg-[#040e21] border border-slate-700/80 rounded-2xl relative p-4 sm:p-6 flex flex-col justify-between overflow-hidden group">
 
                     {/* Ambient Green Spotlight Glow in Center */}
-                    <div className="absolute inset-0 bg-emerald-500/12 blur-[100px] rounded-full pointer-events-none" />
+                    <div className="absolute inset-0 bg-amber-500/12 blur-[100px] rounded-full pointer-events-none" />
 
                     {/* Top Status Header */}
                     <div className="flex items-center justify-between relative z-10">
                       {/* LIVE Badge */}
-                      <div className="inline-flex items-center gap-1 sm:gap-2 bg-[#0c241d] border border-emerald-500/40 text-[#4ade80] text-[9px] sm:text-[11px] font-bold px-2 sm:px-3 py-1 rounded-md tracking-wider uppercase shadow-sm">
-                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#4ade80] animate-pulse" />
+                      <div className="inline-flex items-center gap-1 sm:gap-2 bg-[#0c241d] border border-amber-500/40 text-[#f59e0b] text-[9px] sm:text-[11px] font-bold px-2 sm:px-3 py-1 rounded-md tracking-wider uppercase shadow-sm">
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#f59e0b] animate-pulse" />
                         <span>LIVE</span>
                       </div>
 
@@ -111,9 +111,9 @@ export default function TvInterviewsPage() {
 
                     {/* Center Double-Ring Play Button */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-emerald-500/35 flex items-center justify-center p-1 sm:p-1.5 shadow-[0_0_35px_rgba(74,222,128,0.25)] group-hover:scale-110 transition-transform duration-300">
-                        <div className="w-full h-full rounded-full bg-[#0a1b2e]/95 border border-emerald-500/60 text-[#4ade80] flex items-center justify-center cursor-pointer shadow-inner">
-                          <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-[#4ade80] stroke-none ml-1" />
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-amber-500/35 flex items-center justify-center p-1 sm:p-1.5 shadow-[0_0_35px_rgba(245,158,11,0.25)] group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-full h-full rounded-full bg-[#0a1b2e]/95 border border-amber-500/60 text-[#f59e0b] flex items-center justify-center cursor-pointer shadow-inner">
+                          <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-[#f59e0b] stroke-none ml-1" />
                         </div>
                       </div>
                     </div>
@@ -121,12 +121,12 @@ export default function TvInterviewsPage() {
                     {/* Bottom TV Overlay Banner (Lower Third) */}
                     <div className="relative z-10 self-start">
                       <div className="bg-[#061427]/90 backdrop-blur-md border border-slate-700/70 rounded-xl px-4 py-2.5 flex items-center gap-3 shadow-xl">
-                        <span className="w-[3.5px] h-9 bg-[#4ade80] rounded-full" />
+                        <span className="w-[3.5px] h-9 bg-[#f59e0b] rounded-full" />
                         <div>
                           <div className="text-white font-bold text-sm sm:text-base leading-tight">
                             Your client
                           </div>
-                          <div className="text-[#4ade80] text-xs font-normal mt-0.5">
+                          <div className="text-[#f59e0b] text-xs font-normal mt-0.5">
                             Founder and guest expert
                           </div>
                         </div>
@@ -140,7 +140,7 @@ export default function TvInterviewsPage() {
                     {/* Progress Track & Animated Green Bar */}
                     <div className="w-full h-1.5 bg-slate-800/90 rounded-full overflow-hidden relative mb-3">
                       <div
-                        className="h-full bg-[#9ef08b] rounded-full shadow-[0_0_14px_rgba(158,240,139,0.9)]"
+                        className="h-full bg-[#f59e0b] rounded-full shadow-[0_0_14px_rgba(245,158,11,0.9)]"
                         style={{
                           animation: "progressFill 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
                         }}

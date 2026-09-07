@@ -47,32 +47,32 @@ export default function HowItWorksSection() {
     {
       number: "01",
       icon: UserPlus,
-      title: "Sign up",
-      description: "Create your free account to access the platform.",
+      title: "Contact our team",
+      description: "Get in touch with RankPartner.io to request access to the platform.",
     },
     {
       number: "02",
       icon: ClipboardList,
-      title: "Place an order",
-      description: "Browse publications, choose your outlets, and confirm.",
+      title: "Explore publishers",
+      description: "Use your account to browse available publishers, review their details and metrics, and choose the right opportunity.",
     },
     {
       number: "03",
       icon: Upload,
-      title: "Upload content",
-      description: "Share your client's article, or let our team write it.",
+      title: "Submit Your Content via Email",
+      description: "Submit your article via email and required information through the platform for your selected publisher.",
     },
     {
       number: "04",
       icon: SearchCheck,
       title: "Order review",
-      description: "Our editors review every detail before anything is finalized.",
+      description: "Our team reviews your submission, checks the requirements, and coordinates the order with the selected publisher.",
     },
     {
       number: "05",
       icon: Newspaper,
       title: "Article published",
-      description: "The placement goes live and starts performing in search.",
+      description: "Once approved, your article is published on the selected publication with the agreed placement and backlink.",
     },
   ];
 
@@ -102,14 +102,14 @@ export default function HowItWorksSection() {
         <div className="w-full bg-[#050e26] rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-9 md:p-11 lg:p-14 shadow-[0_25px_80px_-15px_rgba(4,12,30,0.55)] border border-slate-800/80 relative overflow-hidden text-white">
 
           {/* Glows */}
-          <div className="absolute top-0 right-1/3 w-[500px] h-[250px] bg-[#4ade80]/5 blur-[130px] pointer-events-none rounded-full" />
-          <div className="absolute bottom-0 left-1/4 w-[450px] h-[250px] bg-blue-600/5 blur-[140px] pointer-events-none rounded-full" />
+          <div className="absolute top-0 right-1/3 w-[500px] h-[250px] bg-[#f59e0b]/5 blur-[130px] pointer-events-none rounded-full" />
+          <div className="absolute bottom-0 left-1/4 w-[450px] h-[250px] bg-violet-700/5 blur-[140px] pointer-events-none rounded-full" />
 
           {/* Tagline */}
           <ScrollReveal>
             <div className="flex items-center gap-2.5 mb-3 sm:mb-4 relative z-10">
-              <span className="w-6 h-[2px] bg-[#4ade80] rounded-full" />
-              <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.2em] text-[#4ade80] uppercase">
+              <span className="w-6 h-[2px] bg-[#f59e0b] rounded-full" />
+              <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.2em] text-[#f59e0b] uppercase">
                 HOW IT WORKS
               </span>
             </div>
@@ -118,15 +118,15 @@ export default function HowItWorksSection() {
           {/* Heading */}
           <ScrollReveal delay={100}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-extrabold text-white tracking-tight leading-[1.12] mb-3 relative z-10">
-              From sign-up to{" "}
-              <span className="italic font-serif font-normal text-[#4ade80]">placement.</span>
+              From choosing a publisher to{" "}
+              <span className="italic font-serif font-normal text-[#f59e0b]">getting published.</span>
             </h2>
           </ScrollReveal>
 
           {/* Subtitle */}
           <ScrollReveal delay={200}>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mb-12 sm:mb-16 font-normal relative z-10">
-              There&apos;s no ambiguity here. Every step is mapped out, and we handle all of the heavy lifting so your team doesn&apos;t have to.
+              Getting your content published through RankPartner.io is simple. Contact our team, access your account, choose the right publisher, and submit your content while we handle the review and publication process.
             </p>
           </ScrollReveal>
 
@@ -141,13 +141,13 @@ export default function HowItWorksSection() {
 
             {/* Animated green progress line */}
             <div
-              className="hidden lg:block absolute top-[28px] h-[2px] bg-[#4ade80] z-0 pointer-events-none transition-all duration-700 ease-out shadow-[0_0_10px_#4ade80]"
+              className="hidden lg:block absolute top-[28px] h-[2px] bg-[#f59e0b] z-0 pointer-events-none transition-all duration-700 ease-out shadow-[0_0_10px_#f59e0b]"
               style={{ left: LINE_LEFT, width: LINE_WIDTHS[activeStep] }}
             />
 
             {/* Glowing pulser dot — translateX(-50%) centers the 12px dot on icon center */}
             <div
-              className="hidden lg:block absolute top-[22px] w-3 h-3 rounded-full bg-[#4ade80] shadow-[0_0_14px_#4ade80] z-10 pointer-events-none transition-all duration-700 ease-out -translate-x-1/2"
+              className="hidden lg:block absolute top-[22px] w-3 h-3 rounded-full bg-[#f59e0b] shadow-[0_0_14px_#f59e0b] z-10 pointer-events-none transition-all duration-700 ease-out -translate-x-1/2"
               style={{ left: DOT_LEFTS[activeStep] }}
             />
 
@@ -168,9 +168,9 @@ export default function HowItWorksSection() {
                     <div
                       className={`w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full flex items-center justify-center sm:mb-4 transition-all duration-500 border ${
                         isActive
-                          ? "bg-[#0c2a1d] border-[#4ade80] text-[#4ade80] shadow-[0_0_24px_rgba(74,222,128,0.5)] scale-110"
+                          ? "bg-[#0c2a1d] border-[#f59e0b] text-[#f59e0b] shadow-[0_0_24px_rgba(245,158,11,0.5)] scale-110"
                           : isPassed
-                          ? "bg-[#071f16] border-emerald-500/70 text-[#4ade80]"
+                          ? "bg-[#071f16] border-amber-500/70 text-[#f59e0b]"
                           : "bg-[#07142a]/90 border-slate-800 text-slate-500 group-hover:border-slate-700"
                       }`}
                     >
@@ -179,12 +179,12 @@ export default function HowItWorksSection() {
 
                     <div className="flex flex-col">
                       {/* Number */}
-                      <span className={`text-[10px] sm:text-xs font-bold tracking-widest mb-1 sm:mb-1.5 transition-colors duration-300 ${isPassed ? "text-[#4ade80]" : "text-slate-500"}`}>
+                      <span className={`text-[10px] sm:text-xs font-bold tracking-widest mb-1 sm:mb-1.5 transition-colors duration-300 ${isPassed ? "text-[#f59e0b]" : "text-slate-500"}`}>
                         {step.number}
                       </span>
 
                       {/* Title */}
-                      <h3 className={`text-base sm:text-lg font-bold mb-1 sm:mb-2 tracking-tight transition-colors duration-300 ${isActive ? "text-[#4ade80]" : isPassed ? "text-white" : "text-slate-300"}`}>
+                      <h3 className={`text-base sm:text-lg font-bold mb-1 sm:mb-2 tracking-tight transition-colors duration-300 ${isActive ? "text-[#f59e0b]" : isPassed ? "text-white" : "text-slate-300"}`}>
                         {step.title}
                       </h3>
 

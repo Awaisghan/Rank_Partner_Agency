@@ -195,7 +195,7 @@ export default function PrintAdminPage() {
             <div className="absolute top-4 right-4 flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
               <button
                 onClick={() => openEdit(mag)}
-                className="p-1 rounded-md bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-400 transition-all cursor-pointer"
+                className="p-1 rounded-md bg-slate-100 hover:bg-violet-50 hover:text-[#6d28d9] text-slate-400 transition-all cursor-pointer"
                 title="Edit"
               >
                 <Pencil className="w-3.5 h-3.5" />
