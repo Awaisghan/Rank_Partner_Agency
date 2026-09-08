@@ -23,7 +23,7 @@ export default function TvInterviewsPage() {
       {/* HERO SECTION — 90vh height, vertically centered               */}
       {/* =========================================================== */}
       <section
-        className="relative z-10 w-full flex items-center overflow-hidden min-h-[100vh] lg:min-h-0 lg:h-[90vh] pt-32 pb-20 lg:py-0"
+        className="relative z-10 w-full flex items-center overflow-hidden min-h-[100vh] lg:min-h-[85vh] lg:h-auto pt-32 pb-20 lg:pt-24 lg:pb-16"
       >
         <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -84,7 +84,7 @@ export default function TvInterviewsPage() {
             {/* ============================================================ */}
             {/* RIGHT COLUMN — TV Broadcast Widescreen Player Mockup Card    */}
             {/* ============================================================ */}
-            <div className="lg:col-span-6 flex justify-center lg:justify-end items-center relative w-full pt-10 lg:pt-0">
+            <div className="lg:col-span-6 flex justify-center lg:justify-end items-center relative w-full pt-10 lg:pt-0 transform lg:scale-[0.85] xl:scale-100 lg:origin-right">
               <ScrollReveal delay={200}>
                 {/* Widescreen TV Window Outer Mockup Container */}
                 <div className="w-full max-w-[680px] sm:max-w-[720px] bg-[#071630]/95 border border-slate-700/70 rounded-[28px] p-5 sm:p-6 shadow-[0_30px_80px_rgba(0,0,0,0.65)] relative overflow-hidden flex flex-col justify-between">

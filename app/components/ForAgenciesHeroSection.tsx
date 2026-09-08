@@ -52,7 +52,7 @@ export default function ForAgenciesHeroSection() {
 
   return (
     <section
-      className="relative z-10 w-full flex flex-col overflow-hidden font-sans pt-36 pb-10 sm:pt-40 sm:pb-12 lg:justify-center lg:pt-14 lg:pb-4 lg:h-[90vh]"
+      className="relative z-10 w-full flex flex-col overflow-hidden font-sans pt-36 pb-10 sm:pt-40 sm:pb-12 lg:justify-center lg:pt-24 lg:pb-16 lg:min-h-[85vh]"
     >
       <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
 
@@ -116,7 +116,7 @@ export default function ForAgenciesHeroSection() {
           {/* ============================================================ */}
           {/* RIGHT COLUMN — Wider White-Label Report Mockup Card          */}
           {/* ============================================================ */}
-          <div className="lg:col-span-7 flex justify-center lg:justify-end relative w-full">
+          <div className="lg:col-span-7 flex justify-center lg:justify-end relative w-full transform lg:scale-[0.85] xl:scale-100 lg:origin-right">
             <ScrollReveal delay={200} className="w-full flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[550px]">
 

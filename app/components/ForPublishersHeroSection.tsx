@@ -38,7 +38,7 @@ export default function ForPublishersHeroSection() {
 
   return (
     <section
-      className="relative z-10 w-full flex flex-col overflow-hidden font-sans pt-36 pb-10 sm:pt-40 sm:pb-12 lg:justify-center lg:pt-14 lg:pb-4 lg:h-[90vh]"
+      className="relative z-10 w-full flex flex-col overflow-hidden font-sans pt-36 pb-10 sm:pt-40 sm:pb-12 lg:justify-center lg:pt-24 lg:pb-16 lg:min-h-[85vh]"
     >
       <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         
@@ -102,7 +102,7 @@ export default function ForPublishersHeroSection() {
           {/* ============================================================ */}
           {/* RIGHT COLUMN — Network Hub Graphic with 7 Animated Lines     */}
           {/* ============================================================ */}
-          <div className="hidden lg:flex lg:col-span-6 justify-end items-center relative w-full pt-6 lg:pt-0">
+          <div className="hidden lg:flex lg:col-span-6 justify-end items-center relative w-full pt-6 lg:pt-0 transform lg:scale-[0.85] xl:scale-100 lg:origin-right">
             <ScrollReveal delay={200}>
               <div className="relative w-[540px] h-[440px] flex items-center justify-center">
 

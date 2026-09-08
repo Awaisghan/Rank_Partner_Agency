@@ -27,7 +27,7 @@ export default function PressPlacementsPage() {
       {/* =========================================================== */}
       {/* HERO SECTION — 100vh, items vertically centered              */}
       {/* =========================================================== */}
-      <section className="relative z-10 w-full flex items-center overflow-hidden min-h-[100vh] lg:min-h-[90vh] pt-32 pb-20 lg:py-0">
+      <section className="relative z-10 w-full flex items-center overflow-hidden min-h-[100vh] lg:min-h-[85vh] pt-32 pb-20 lg:pt-24 lg:pb-16">
         <div className="w-full max-w-[1550px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
@@ -99,7 +99,7 @@ export default function PressPlacementsPage() {
             {/* ============================================================ */}
             {/* RIGHT COLUMN — Featured Story Card (col-span-7)              */}
             {/* ============================================================ */}
-            <div className="lg:col-span-8 flex justify-end items-center relative w-full">
+            <div className="lg:col-span-8 flex justify-end items-center relative w-full transform lg:scale-[0.85] xl:scale-100 lg:origin-right">
               <div className="w-full">
 
                 {/* ── OUTER GLASS CARD ─────────────────────────────────── */}

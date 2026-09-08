@@ -76,7 +76,7 @@ function AnimatedStat({
 export default function AboutHeroSection() {
   return (
     <section
-      className="w-full relative z-10 flex flex-col justify-center font-sans pt-36 pb-12 sm:pt-40 lg:pt-20 lg:pb-0 px-6 sm:px-10 lg:px-16 xl:px-20 overflow-hidden min-h-[100dvh] lg:min-h-0 lg:h-[90vh]"
+      className="w-full relative z-10 flex flex-col justify-center font-sans pt-36 pb-12 sm:pt-40 lg:pt-24 lg:pb-16 px-6 sm:px-10 lg:px-16 xl:px-20 overflow-hidden min-h-[100dvh] lg:min-h-[85vh] lg:h-auto"
     >
       {/* Background Decorative Ambient Glows */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -85,7 +85,7 @@ export default function AboutHeroSection() {
       </div>
 
       {/* Right Side 3D Triangle Watermark Graphic */}
-      <div className="hidden lg:flex absolute right-[-10%] top-[5%] bottom-[5%] w-[55vw] max-w-[850px] pointer-events-none select-none z-0 opacity-20 lg:opacity-30 items-center justify-end">
+      <div className="hidden lg:flex absolute right-[-10%] top-[5%] bottom-[5%] w-[55vw] max-w-[850px] pointer-events-none select-none z-0 opacity-20 lg:opacity-30 items-center justify-end transform lg:scale-[0.85] xl:scale-100 lg:origin-right">
         <svg
           viewBox="0 0 400 450"
           fill="none"
