@@ -47,7 +47,7 @@ export default function WatchInventorySellSection() {
       setFilledRectangles(Math.min(TOTAL_RECTANGLES, Math.round(TOTAL_RECTANGLES * easeProgress)));
       setFilledCircles(Math.min(TOTAL_CIRCLES, Math.round(TOTAL_CIRCLES * easeProgress)));
       setPctSold(Math.min(100, Math.round(100 * easeProgress)));
-      setAgenciesReached(Math.min(3000, Math.round(3000 * easeProgress)));
+      setAgenciesReached(Math.min(50, Math.round(50 * easeProgress)));
       setRevenueBooked(Math.min(14400, Math.round(14400 * easeProgress)));
 
       if (step >= steps) {
@@ -55,7 +55,7 @@ export default function WatchInventorySellSection() {
         setFilledRectangles(TOTAL_RECTANGLES);
         setFilledCircles(TOTAL_CIRCLES);
         setPctSold(100);
-        setAgenciesReached(3000);
+        setAgenciesReached(50);
         setRevenueBooked(14400);
         setIsAnimating(false);
 
@@ -207,7 +207,7 @@ export default function WatchInventorySellSection() {
                   <span>Agency network</span>
                 </div>
                 <div className="text-xs sm:text-sm text-slate-400 font-medium">
-                  3,000+ agencies
+                  50+ agencies
                 </div>
               </div>
 

@@ -32,9 +32,24 @@ export default function Footer() {
 
             {/* 4 Social Icon Buttons */}
             <div className="flex items-center gap-3 pt-2">
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/share/17oJdsj833/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-10 h-10 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center text-slate-200 hover:text-white hover:bg-violet-700 hover:border-violet-700 shadow-sm hover:shadow-[0_0_12px_rgba(109,40,217,0.4)] transition-all duration-300"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.6 13.78 5.6c1.1 0 2.25.2 2.25.2v2.47h-1.27c-1.23 0-1.62.77-1.62 1.56V12h2.78l-.44 3h-2.34v6.8c4.56-.93 8-4.96 8-9.8z" />
+                </svg>
+              </a>
+
               {/* LinkedIn */}
               <a
-                href="#"
+                href="https://www.linkedin.com/company/rank-partner/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="w-10 h-10 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center text-slate-200 hover:text-white hover:bg-violet-700 hover:border-violet-700 shadow-sm hover:shadow-[0_0_12px_rgba(109,40,217,0.4)] transition-all duration-300"
               >
@@ -43,20 +58,11 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Twitter / X */}
-              <a
-                href="#"
-                aria-label="Twitter"
-                className="w-10 h-10 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center text-slate-200 hover:text-white hover:bg-violet-700 hover:border-violet-700 shadow-sm hover:shadow-[0_0_12px_rgba(109,40,217,0.4)] transition-all duration-300"
-              >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-
               {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/rankpartner.io"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="w-10 h-10 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center text-slate-200 hover:text-white hover:bg-violet-700 hover:border-violet-700 shadow-sm hover:shadow-[0_0_12px_rgba(109,40,217,0.4)] transition-all duration-300"
               >
@@ -67,14 +73,16 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Facebook */}
+              {/* Twitter / X */}
               <a
-                href="#"
-                aria-label="Facebook"
-                className="w-10 h-10 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center text-slate-200 hover:text-white hover:bg-violet-700 hover:border-violet-700 shadow-sm hover:shadow-[0_0_12px_rgba(109,40,217,0.4)] transition-all duration-300"
+                href="https://x.com/RankPartnerio"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                className="w-10 h-10 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center text-slate-200 hover:text-white hover:bg-violet-700 hover:border-violet-700 shadow-sm hover:shadow-[0_0_12px_rgba(109,40,217,0.4)] transition-all duration-300"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.6 13.78 5.6c1.1 0 2.25.2 2.25.2v2.47h-1.27c-1.23 0-1.62.77-1.62 1.56V12h2.78l-.44 3h-2.34v6.8c4.56-.93 8-4.96 8-9.8z" />
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
             </div>
