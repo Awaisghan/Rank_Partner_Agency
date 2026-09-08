@@ -18,31 +18,11 @@ export default function Footer() {
             
             {/* Logo matching Navbar exact style */}
             <Link href="/" className="flex items-center gap-2.5 group w-fit">
-              <div className="w-8 h-8 flex items-center justify-center shrink-0">
-                <svg
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-full h-full text-white"
-                >
-                  <path
-                    d="M16 3L3 29H10.5L16 17.5L21.5 29H29L16 3Z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M16 12.5L12 20.5H20L16 12.5Z"
-                    fill="#040b1b"
-                  />
-                </svg>
-              </div>
-              <div className="flex items-center font-sans tracking-tight">
-                <span className="font-black text-xl sm:text-2xl tracking-wider text-white">
-                  RANK_
-                </span>
-                <span className="font-medium text-xl sm:text-2xl tracking-wider ml-0.5 text-slate-300">
-                  PARTNER
-                </span>
-              </div>
+              <img
+                src="/logo-cropped.png"
+                alt="RankPartner.io Logo"
+                className="h-7 sm:h-8 lg:h-[34px] w-auto object-contain transition-all duration-300 brightness-0 invert"
+              />
             </Link>
 
             {/* Description */}
