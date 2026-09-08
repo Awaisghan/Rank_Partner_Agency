@@ -25,15 +25,15 @@ export default function AboutCtaSection() {
 
               {/* Main Headline */}
               <h2 className="font-extrabold tracking-tight leading-[1.2] text-white text-2xl sm:text-3xl lg:text-[40px] my-2">
-                Let&apos;s plan your{" "}
+                Let&apos;s build your{" "}
                 <span className="italic font-serif font-normal text-[#f59e0b]">
-                  ascent.
+                  next opportunity.
                 </span>
               </h2>
 
               {/* Subtitle Paragraph */}
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal mb-6 max-w-md">
-                White-label press and rankings, priced honestly, resold under your own brand.
+                White-label press placements, authority backlinks, and TV interviews—built for agencies that want to offer more under their own brand.
               </p>
 
               {/* Action Buttons */}

@@ -3,7 +3,6 @@ import AboutHeroSection from "../components/AboutHeroSection";
 import HowWeStartedSection from "../components/HowWeStartedSection";
 import WhatWeBelieveSection from "../components/WhatWeBelieveSection";
 import OurTeamSection from "../components/OurTeamSection";
-import RecognizedAwardsSection from "../components/RecognizedAwardsSection";
 import InThePressSection from "../components/InThePressSection";
 import AboutCtaSection from "../components/AboutCtaSection";
 import Footer from "../components/Footer";
@@ -24,8 +23,7 @@ export default function AboutPage() {
       {/* Our Team Leadership Section */}
       <OurTeamSection />
 
-      {/* Recognized Awards Inc Section */}
-      <RecognizedAwardsSection />
+
 
       {/* In The Press Section */}
       <InThePressSection />

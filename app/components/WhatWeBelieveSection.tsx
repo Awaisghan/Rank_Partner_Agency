@@ -8,27 +8,27 @@ export default function WhatWeBelieveSection() {
   const cards = [
     {
       icon: Award,
-      title: "Guaranteed, not gambled",
+      title: "Clear expectations",
       description:
-        "We agree the exact placements and links before any work starts and guarantee delivery. You know what you're getting before you commit, and it holds up as authority compounds.",
+        "Review the publication, key metrics, requirements, pricing, and available placement details before you order. Know what you’re choosing from the start.",
     },
     {
       icon: Tag,
-      title: "Clear pricing",
+      title: "Transparent pricing",
       description:
-        "You see the publication, the metrics and the price before you commit. No surprises on the invoice.",
+        "See the price for each placement upfront, so you can plan your costs and set your own client pricing with confidence.",
     },
     {
       icon: Users,
-      title: "Senior operators only",
+      title: "Built for agencies",
       description:
-        "Every account is run by people who have done the work themselves. Nothing is handed down to a junior team you never meet.",
+        "RankPartner.io is designed around the way agencies work, giving you access to press placements, authority backlinks, and TV interview opportunities through one platform.",
     },
     {
       icon: ShieldCheck,
-      title: "Accountable on every account",
+      title: "Accountable process",
       description:
-        "If something needs fixing, we fix it rather than explain it away, so you can put your own name on our work and stand behind it.",
+        "We keep the process straightforward from submission through publication, with clear requirements and review steps for every selected opportunity.",
     },
   ];
 
@@ -47,11 +47,10 @@ export default function WhatWeBelieveSection() {
 
         <ScrollReveal delay={100}>
           <h2 className="font-extrabold tracking-tight leading-[1.15] text-white text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] max-w-4xl mb-12 sm:mb-16">
-            Make serious press and search visibility something{" "}
+            Make quality press and SEO opportunities something{" "}
             <span className="italic font-serif font-normal text-[#f59e0b]">
-              any agency can resell under their own brand,
-            </span>{" "}
-            at a price you can see.
+              every agency can offer.
+            </span>
           </h2>
         </ScrollReveal>
 

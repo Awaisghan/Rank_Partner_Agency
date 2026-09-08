@@ -7,32 +7,11 @@ import { ArrowUpRight } from "lucide-react";
 export default function InThePressSection() {
   const pressItems = [
     {
-      source: "US WEEKLY",
-      date: "September 2025",
-      title: "Jonathan Jadali Spurs Growth and Accountability at Ascend Agency",
-      url: "#",
+      source: "MASHABLE",
+      date: "September 2023",
+      title: "How RankPartner.io Makes SEO and PR Scalable",
+      url: "https://nl.mashable.com/seo/13313/hoe-rankpartnerio-seo-en-pr-schaalbaar-maakthoe-rankpartnerio-seo-en-pr-schaalbaar-maakt",
       isActive: true,
-    },
-    {
-      source: "ENTREPRENEUR",
-      date: "September 2025",
-      title: "Inside George Nellist's Playbook: Building Digital PR Strategies That Stick",
-      url: "#",
-      isActive: false,
-    },
-    {
-      source: "USA TODAY",
-      date: "April 2024",
-      title: "Visibility and Credibility: PR Expert Brauch Owens Talks Up the Dangers of Attaining One Without the Other",
-      url: "#",
-      isActive: false,
-    },
-    {
-      source: "VARIETY",
-      date: "January 2023",
-      title: "How Jonathan Jadali Is Accelerating the Growth of Ascend Agency",
-      url: "#",
-      isActive: false,
     },
   ];
 
@@ -51,16 +30,13 @@ export default function InThePressSection() {
 
         <ScrollReveal delay={100}>
           <h2 className="font-extrabold tracking-tight leading-[1.15] text-slate-900 text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] max-w-2xl mb-4">
-            When we&apos;re{" "}
-            <span className="italic font-serif font-normal text-[#6d28d9]">
-              the story.
-            </span>
+            When <span className="italic font-serif font-normal text-[#6d28d9]">RankPartner.io</span> gets noticed.
           </h2>
         </ScrollReveal>
 
         <ScrollReveal delay={150}>
           <p className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed font-normal mb-12">
-            Press coverage of Ascend, our leadership, and how we run the agency.
+            Coverage of RankPartner.io, our platform, industry insights, and the work we’re doing to help agencies access better press and SEO opportunities.
           </p>
         </ScrollReveal>
 

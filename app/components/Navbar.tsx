@@ -53,11 +53,10 @@ export default function Navbar() {
         <div ref={dropdownRef} onMouseLeave={() => setActiveDropdown(null)}>
           {/* Main Floating Navbar Container */}
           <nav
-            className={`w-full flex items-center justify-between px-3.5 sm:px-5 lg:px-8 transition-all duration-300 ${
-              isWhiteNav
+            className={`w-full flex items-center justify-between px-3.5 sm:px-5 lg:px-8 transition-all duration-300 ${isWhiteNav
                 ? "bg-[#f4f5f8] border border-slate-200/80 shadow-lg text-slate-900 rounded-t-3xl rounded-b-none border-b-0 py-3"
                 : "bg-[#040d21] border border-[#162d5a] shadow-xl text-white rounded-full py-2.5"
-            }`}
+              }`}
           >
             {/* Logo / Brand */}
             <div className="flex items-center gap-3 shrink-0">
@@ -66,49 +65,20 @@ export default function Navbar() {
                 className="flex items-center gap-2.5 group"
                 onClick={closeMobile}
               >
-                <div className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center shrink-0">
-                  <svg
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`w-full h-full transition-colors duration-300 ${
-                      isWhiteNav ? "text-slate-950" : "text-white"
-                    }`}
-                  >
-                    <path
-                      d="M16 3L3 29H10.5L16 17.5L21.5 29H29L16 3Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M16 12.5L12 20.5H20L16 12.5Z"
-                      fill={isWhiteNav ? "#f4f5f8" : "#040d21"}
-                    />
-                  </svg>
-                </div>
-                <div className="flex items-center font-sans tracking-tight">
-                  <span
-                    className={`font-black text-[15px] sm:text-lg lg:text-xl tracking-wider transition-colors duration-300 ${
-                      isWhiteNav ? "text-slate-950" : "text-white"
-                    }`}
-                  >
-                    RANK_
-                  </span>
-                  <span
-                    className={`font-medium text-[15px] sm:text-lg lg:text-xl tracking-wider ml-0.5 transition-colors duration-300 ${
-                      isWhiteNav ? "text-slate-600" : "text-slate-300"
-                    }`}
-                  >
-                    PARTNER
-                  </span>
-                </div>
+                <img
+                  src="/logo-cropped.png"
+                  alt="RankPartner.io Logo"
+                  className={`h-7 sm:h-8 lg:h-[34px] w-auto object-contain transition-all duration-300 ${
+                    isWhiteNav ? "brightness-0" : "brightness-0 invert"
+                  }`}
+                />
               </Link>
             </div>
 
             {/* Desktop Nav Links (md+) */}
             <div
-              className={`hidden md:flex items-center gap-5 lg:gap-7 text-sm transition-colors duration-300 ${
-                isWhiteNav ? "text-slate-700" : "text-slate-200"
-              }`}
+              className={`hidden md:flex items-center gap-5 lg:gap-7 text-sm transition-colors duration-300 ${isWhiteNav ? "text-slate-700" : "text-slate-200"
+                }`}
             >
               {/* Services Dropdown */}
               <div
@@ -121,15 +91,13 @@ export default function Navbar() {
                       activeDropdown === "services" ? null : "services"
                     )
                   }
-                  className={`flex items-center gap-1.5 font-medium transition-colors cursor-pointer outline-none ${
-                    isWhiteNav ? "hover:text-black" : "hover:text-white"
-                  }`}
+                  className={`flex items-center gap-1.5 font-medium transition-colors cursor-pointer outline-none ${isWhiteNav ? "hover:text-black" : "hover:text-white"
+                    }`}
                 >
                   <span>Services</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      activeDropdown === "services" ? "rotate-180" : ""
-                    } ${isWhiteNav ? "text-slate-600" : "text-slate-300"}`}
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "services" ? "rotate-180" : ""
+                      } ${isWhiteNav ? "text-slate-600" : "text-slate-300"}`}
                   />
                 </button>
               </div>
@@ -145,40 +113,35 @@ export default function Navbar() {
                       activeDropdown === "whoweserve" ? null : "whoweserve"
                     )
                   }
-                  className={`flex items-center gap-1.5 font-medium transition-colors cursor-pointer outline-none ${
-                    isWhiteNav ? "hover:text-black" : "hover:text-white"
-                  }`}
+                  className={`flex items-center gap-1.5 font-medium transition-colors cursor-pointer outline-none ${isWhiteNav ? "hover:text-black" : "hover:text-white"
+                    }`}
                 >
                   <span>Who we serve</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      activeDropdown === "whoweserve" ? "rotate-180" : ""
-                    } ${isWhiteNav ? "text-slate-600" : "text-slate-300"}`}
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "whoweserve" ? "rotate-180" : ""
+                      } ${isWhiteNav ? "text-slate-600" : "text-slate-300"}`}
                   />
                 </button>
               </div>
 
               <Link
                 href="/blog"
-                className={`font-medium transition-colors ${
-                  isWhiteNav ? "hover:text-black" : "hover:text-white"
-                }`}
+                className={`font-medium transition-colors ${isWhiteNav ? "hover:text-black" : "hover:text-white"
+                  }`}
               >
                 Blog
               </Link>
               <Link
                 href="/about"
-                className={`font-medium transition-colors ${
-                  isWhiteNav ? "hover:text-black" : "hover:text-white"
-                }`}
+                className={`font-medium transition-colors ${isWhiteNav ? "hover:text-black" : "hover:text-white"
+                  }`}
               >
                 About Us
               </Link>
               <Link
                 href="/faq"
-                className={`font-medium transition-colors ${
-                  isWhiteNav ? "hover:text-black" : "hover:text-white"
-                }`}
+                className={`font-medium transition-colors ${isWhiteNav ? "hover:text-black" : "hover:text-white"
+                  }`}
               >
                 FAQ
               </Link>
@@ -188,13 +151,12 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-4 sm:gap-5 text-sm shrink-0">
               <Link
                 href="/login"
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
-                className={`font-medium transition-colors ${
-                  isWhiteNav
+                className={`font-medium transition-colors ${isWhiteNav
                     ? "text-slate-800 hover:text-black"
                     : "text-slate-200 hover:text-white"
-                }`}
+                  }`}
               >
                 Agency login
               </Link>
@@ -219,11 +181,10 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-1.5 rounded-lg focus:outline-none transition-colors ${
-                  isWhiteNav
+                className={`p-1.5 rounded-lg focus:outline-none transition-colors ${isWhiteNav
                     ? "text-slate-800 hover:bg-slate-200"
                     : "text-white hover:bg-white/10"
-                }`}
+                  }`}
               >
                 {mobileMenuOpen ? (
                   <X className="w-5 h-5" />
@@ -359,9 +320,8 @@ export default function Navbar() {
                 >
                   <span>Services</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
-                      mobileExpanded === "services" ? "rotate-180" : ""
-                    }`}
+                    className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${mobileExpanded === "services" ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 {mobileExpanded === "services" && (
@@ -408,9 +368,8 @@ export default function Navbar() {
                 >
                   <span>Who we serve</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
-                      mobileExpanded === "whoweserve" ? "rotate-180" : ""
-                    }`}
+                    className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${mobileExpanded === "whoweserve" ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 {mobileExpanded === "whoweserve" && (

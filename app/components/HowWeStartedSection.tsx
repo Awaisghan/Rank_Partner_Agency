@@ -22,15 +22,15 @@ export default function HowWeStartedSection() {
 
               {/* Main Headline */}
               <h2 className="font-extrabold tracking-tight leading-[1.2] text-slate-900 text-2xl sm:text-3xl lg:text-[32px] max-w-sm my-2">
-                Built by operators tired of{" "}
+                Built for agencies that want more from{" "}
                 <span className="italic font-serif font-normal text-[#6d28d9]">
-                  paying for promises.
+                  every placement.
                 </span>
               </h2>
 
               {/* Subtitle Footer */}
               <p className="text-slate-400 font-extrabold tracking-[0.16em] uppercase text-[10px] sm:text-[11px] mt-4">
-                INDEPENDENT SINCE 2019
+                BUILT FOR AGENCIES
               </p>
             </ScrollReveal>
           </div>
@@ -39,31 +39,19 @@ export default function HowWeStartedSection() {
           <div className="lg:col-span-7 space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
             <ScrollReveal delay={100}>
               <p>
-                Ascend started in 2019, after years of watching good companies pour money into PR and SEO and get nothing they could point to. Big invoices, slide decks full of &ldquo;impressions,&rdquo; and very few actual placements.
+                RankPartner.io was created to give agencies a simpler way to access quality press placements, authority backlinks, and TV interview opportunities for their clients.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
               <p>
-                So we flipped the model. You pay per placement, and you see the publication, the metrics and the price before you ever commit. What began as a handful of founders trading favors with editors is now a full press and search team running both motions as one.
+                Instead of managing multiple vendors and searching for suitable publishers, agencies can use one platform to browse opportunities, review publisher details and metrics, compare pricing, and choose the placements that fit their clients’ goals.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
               <p>
-                Today we work exclusively with agencies, who resell our press and search work to their clients under their own name, all on the same simple promise: coverage that runs, rankings that climb and pricing you can see before you commit.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={250}>
-              <p className="pt-1">
-                We believe transparency is the highest form of respect in business. When you partner with us, you gain access to an established network of top-tier tier-1 and authority publications without retainer lock-ins or hidden markups.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={300}>
-              <p>
-                Every article we publish is vetted for high domain rating, genuine organic traffic, and indexation guarantees. That is why over 3,000 agencies trust us as their behind-the-scenes engine for scale.
+                Today, RankPartner.io helps agencies offer professional media and SEO opportunities under their own brand, with a straightforward process and clear information before they order.
               </p>
             </ScrollReveal>
           </div>

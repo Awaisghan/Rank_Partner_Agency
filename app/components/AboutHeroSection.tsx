@@ -143,7 +143,7 @@ export default function AboutHeroSection() {
             <h1 className="font-extrabold tracking-tight leading-[1.1] text-white text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] mb-6">
               We help agencies and their clients{" "}
               <span className="italic font-serif font-normal text-[#f59e0b]">
-                RANK_PARTNER
+                build authority.
               </span>
             </h1>
           </ScrollReveal>
@@ -151,7 +151,7 @@ export default function AboutHeroSection() {
           {/* Subtitle Paragraph */}
           <ScrollReveal delay={150}>
             <p className="text-slate-300 text-base sm:text-lg lg:text-xl leading-relaxed font-normal max-w-2xl">
-              Rank Partner is the white-label PR &amp; SEO platform agencies use to get their clients featured. We deliver guaranteed press placements and authority backlinks, and you pay per placement at a flat price.
+              RankPartner.io is a white-label platform that gives agencies access to press placements, authority backlinks, and TV interview opportunities for their clients. Choose the right opportunities, review the details upfront, and offer professional media and SEO services under your own brand.
             </p>
           </ScrollReveal>
         </div>
@@ -160,23 +160,23 @@ export default function AboutHeroSection() {
         <ScrollReveal delay={200}>
           <div className="w-full bg-[#081730]/60 border border-slate-800/80 backdrop-blur-md rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 shadow-2xl">
             <AnimatedStat
-              numericValue={2019}
+              numericValue={2026}
               label="The year we started"
             />
             <AnimatedStat
-              numericValue={3000}
+              numericValue={50}
               suffix="+"
-              label="Agencies in our network"
+              label="Agencies connected"
             />
             <AnimatedStat
-              numericValue={1500}
+              numericValue={800}
               suffix="+"
-              label="Publications we work with"
+              label="Publishing opportunities"
             />
             <AnimatedStat
-              numericValue={10617}
-              suffix="%"
-              label="Three-year growth on the Inc. 5000"
+              numericValue={5000}
+              suffix="+"
+              label="Placements available"
             />
           </div>
         </ScrollReveal>

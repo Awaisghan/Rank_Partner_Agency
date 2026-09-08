@@ -25,7 +25,7 @@ export default function Home() {
       >
         {/* Content centered */}
         <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center w-full transform lg:scale-[0.85] xl:scale-100">
 
             {/* LEFT SIDE CONTENT */}
             <div className="lg:col-span-7 xl:col-span-6 flex flex-col items-start text-left space-y-5">
