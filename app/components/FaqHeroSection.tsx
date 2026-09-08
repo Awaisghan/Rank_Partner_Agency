@@ -17,7 +17,7 @@ const topics = [
 export default function FaqHeroSection() {
   return (
     <section
-      className="w-full relative z-10 flex flex-col justify-center font-sans min-h-[60vh] lg:min-h-[70vh] py-24 lg:py-0 px-4 sm:px-10 lg:px-16 xl:px-20"
+      className="w-full relative z-10 flex flex-col justify-center font-sans min-h-[60vh] lg:min-h-[70vh] py-24 lg:pt-32 lg:pb-24 px-4 sm:px-10 lg:px-16 xl:px-20"
     >
       <div className="w-full max-w-[1360px] mx-auto">
         {/* Tagline Badge */}
