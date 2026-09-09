@@ -52,7 +52,7 @@ export default function TvGetStartedCTASection() {
           <ScrollReveal delay={300}>
             <div className="relative z-10 flex-shrink-0 pt-2 lg:pt-0">
               <Link
-                href="#contact"
+                href="/#contact"
                 className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-base transition-all duration-300 shadow-[0_0_28px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
               >
                 <span>Contact us</span>

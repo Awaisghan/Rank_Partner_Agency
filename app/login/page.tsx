@@ -51,33 +51,13 @@ export default function LoginPage() {
       <div className="w-full max-w-[370px]">
         
         {/* Brand Logo Header */}
-        <div className="flex items-center justify-center gap-2.5 mb-10">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 flex items-center justify-center shrink-0">
-              <svg
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full text-slate-950"
-              >
-                <path
-                  d="M16 3L3 29H10.5L16 17.5L21.5 29H29L16 3Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M16 12.5L12 20.5H20L16 12.5Z"
-                  fill="#edf1f5"
-                />
-              </svg>
-            </div>
-            <div className="flex items-center font-sans tracking-tight">
-              <span className="font-black text-xl tracking-wider text-slate-950">
-                RANK_
-              </span>
-              <span className="font-bold text-xl tracking-wider text-slate-800">
-                PARTNER
-              </span>
-            </div>
+        <div className="flex items-center justify-center mb-10">
+          <Link href="/" className="flex items-center group">
+            <img
+              src="/logo-cropped.png"
+              alt="RankPartner.io Logo"
+              className="h-10 w-auto object-contain brightness-0"
+            />
           </Link>
         </div>
 
@@ -120,11 +100,11 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Submit Red Button */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-[#e63939] hover:bg-[#d62828] active:scale-[0.99] text-white font-extrabold text-sm py-3 rounded-md mt-6 shadow-sm hover:shadow-md transition-all cursor-pointer disabled:opacity-70"
+            className="w-full bg-slate-950 hover:bg-slate-900 active:scale-[0.99] text-white font-extrabold text-sm py-3 rounded-md mt-6 shadow-sm hover:shadow-md transition-all cursor-pointer disabled:opacity-70"
           >
             {isLoading ? "Signing in..." : "Continue"}
           </button>

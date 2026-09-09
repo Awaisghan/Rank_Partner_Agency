@@ -27,7 +27,7 @@ export default function ForAgenciesPage() {
       {/* 3. Agencies How It Works Section (Dark Rounded Container Card + 4 Numbered Steps) */}
       <AgenciesHowItWorksSection />
 
-      {/* 4. Why Agencies Choose Ascend Section (White BG + 4 Feature Cards) */}
+      {/* 4. Why Agencies Choose RankPartner Section (White BG + 4 Feature Cards) */}
       <WhyAgenciesChooseSection />
 
       {/* 5. What You Can Resell Section (Dark Rounded Banner + 3 Service Cards) */}

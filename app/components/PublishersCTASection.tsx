@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import { ArrowRight } from "lucide-react";
 
@@ -41,13 +42,13 @@ export default function PublishersCTASection() {
 
             {/* Right Action Button */}
             <div className="relative z-10 shrink-0">
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 className="inline-flex items-center gap-2.5 bg-[#f59e0b] hover:bg-[#3ec46f] text-[#062c19] font-bold text-sm sm:text-base px-7 py-4 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(245,158,11,0.3)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] hover:scale-[1.02]"
               >
                 <span>Partner with us</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-              </a>
+              </Link>
             </div>
 
           </div>

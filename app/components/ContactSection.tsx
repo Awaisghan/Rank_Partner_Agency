@@ -43,7 +43,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="get-in-touch" className="w-full bg-white py-12 px-4 sm:px-8 lg:px-12 relative z-10">
+    <section id="get-in-touch" className="w-full bg-white py-12 px-4 sm:px-8 lg:px-12 relative z-10 scroll-mt-20">
+      <div id="contact" className="absolute -top-24 left-0" />
       <div className="max-w-[1550px] mx-auto">
         
         {/* Full-Width Dark Navy Card Container with Large Rounded Corners */}
@@ -365,7 +366,7 @@ export default function ContactSection() {
 
                         {formStep === 3 && (
                           <p className="text-center text-[11px] text-slate-400 font-normal">
-                            By submitting you agree to be contacted about Ascend&apos;s services.
+                            By submitting you agree to be contacted about RankPartner&apos;s services.
                           </p>
                         )}
                       </div>

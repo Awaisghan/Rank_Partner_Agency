@@ -345,9 +345,9 @@ export default function PricingPage() {
         {/* Title Row */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-start gap-4">
           <div className="space-y-1 max-w-3xl">
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-950 uppercase">PRICING (ASCEND PR)</h1>
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-950 uppercase">PRICING (RANKPARTNER PR)</h1>
             <p className="text-xs font-bold text-slate-700 leading-snug">Once we have published the article for you, any further edits may include an extra charge.</p>
-            <p className="text-xs font-normal text-slate-600 leading-snug">Ascend Agency will use reasonable good faith efforts to ensure that such article will remain publicly available in the applicable publication for at least 12 months.</p>
+            <p className="text-xs font-normal text-slate-600 leading-snug">RankPartner will use reasonable good faith efforts to ensure that such article will remain publicly available in the applicable publication for at least 12 months.</p>
           </div>
           <div className="flex flex-wrap items-center gap-2 pt-1">
             {["Video Tutorial", "How To", "Download PR Questionnaire", "Download TV Questionnaire"].map((btn) => (

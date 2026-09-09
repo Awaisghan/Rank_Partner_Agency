@@ -77,7 +77,7 @@ export default function PressPlacementsPage() {
                 <div className="flex flex-wrap items-center gap-3 pt-1">
                   {/* Primary CTA */}
                   <Link
-                    href="#get-in-touch"
+                    href="/#get-in-touch"
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm transition-all duration-300 shadow-[0_0_22px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
                   >
                     <span>Contact us</span>

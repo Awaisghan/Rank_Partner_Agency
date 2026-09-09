@@ -29,7 +29,7 @@ export default function ForPublishersPage() {
       {/* How We Work Together 4-Step Process Section */}
       <PublishersHowItWorksSection />
 
-      {/* Why Publishers Choose Ascend Section */}
+      {/* Why Publishers Choose RankPartner Section */}
       <WhyPublishersChooseSection />
 
       {/* Ready to Sell Your Inventory CTA Banner */}

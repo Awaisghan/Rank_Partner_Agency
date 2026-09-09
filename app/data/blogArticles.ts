@@ -19,10 +19,10 @@ export const blogArticles: BlogArticle[] = [
     id: "1",
     slug: "why-a-single-press-placement-keeps-working-for-years",
     category: "PR",
-    title: "Why a single press placement keeps working for years",
+    title: "The Lasting Impact of a Single Press Feature",
     excerpt:
       "A good placement is not a one-day spike. It is a durable asset that builds trust, earns links, and keeps selling long after the story runs.",
-    author: "Ascend Team",
+    author: "RankPartner Team",
     date: "June 5, 2026",
     readTime: "5 min read",
     sections: [
@@ -56,10 +56,10 @@ export const blogArticles: BlogArticle[] = [
     id: "2",
     slug: "what-domain-authority-and-domain-rating-actually-measure",
     category: "SEO",
-    title: "What Domain Authority and Domain Rating actually measure",
+    title: "The Truth About Domain Authority and Domain Rating",
     excerpt:
       "Two of the most quoted numbers in SEO are widely misread. Here is what they tell you, what they miss, and how to use them without chasing the score.",
-    author: "Ascend Team",
+    author: "RankPartner Team",
     date: "June 12, 2026",
     readTime: "6 min read",
     sections: [
@@ -92,10 +92,10 @@ export const blogArticles: BlogArticle[] = [
     id: "3",
     slug: "how-agencies-offer-pr-and-seo-without-building-a-newsroom",
     category: "Strategy",
-    title: "How agencies offer PR and SEO without building a newsroom",
+    title: "Delivering High-Impact PR and SEO Without an In-House Newsroom",
     excerpt:
       "Clients want coverage and rankings. Most agencies cannot staff for both. White-label delivery lets you sell the outcome and keep the margin.",
-    author: "Ascend Team",
+    author: "RankPartner Team",
     date: "May 28, 2026",
     readTime: "6 min read",
     sections: [
@@ -128,10 +128,10 @@ export const blogArticles: BlogArticle[] = [
     id: "4",
     slug: "authority-backlinks-versus-link-building-the-difference-that-matters",
     category: "SEO",
-    title: "Authority backlinks versus link building: the difference that matters",
+    title: "Authority Backlinks vs. Link Building: Why Quality Wins",
     excerpt:
       "Not all links are equal, and chasing volume can quietly hurt you. The distinction between genuine authority and bulk link building...",
-    author: "Ascend Team",
+    author: "RankPartner Team",
     date: "May 20, 2026",
     readTime: "5 min read",
     sections: [
@@ -156,10 +156,10 @@ export const blogArticles: BlogArticle[] = [
     id: "5",
     slug: "turning-one-tv-interview-into-a-quarter-of-content",
     category: "Broadcast",
-    title: "Turning one TV interview into a quarter of content",
+    title: "How to Turn One TV Interview Into Months of Content",
     excerpt:
       "A broadcast segment is a few minutes on air and months of material everywhere else, if you plan the reuse before you ever sit down.",
-    author: "Ascend Team",
+    author: "RankPartner Team",
     date: "May 12, 2026",
     readTime: "4 min read",
     sections: [
@@ -184,10 +184,10 @@ export const blogArticles: BlogArticle[] = [
     id: "6",
     slug: "pr-and-seo-are-one-motion-not-two-budgets",
     category: "Strategy",
-    title: "PR and SEO are one motion, not two budgets",
+    title: "Merging PR and SEO: One Unified Growth Strategy",
     excerpt:
       "Run separately, press and search quietly undercut each other. Run together, the same placement builds reputation and rankings at...",
-    author: "Ascend Team",
+    author: "RankPartner Team",
     date: "May 2, 2026",
     readTime: "5 min read",
     sections: [

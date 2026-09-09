@@ -2,40 +2,37 @@
 
 import React from "react";
 import ScrollReveal from "./ScrollReveal";
-import { ArrowUpRight } from "lucide-react";
 
 export default function OurTeamSection() {
   const teamMembers = [
     {
-      name: "Jonathan Jadali",
-      role: "FOUNDER & CHIEF EXECUTIVE OFFICER",
+      name: "Joshua Bryan",
+      role: "CUSTOMER SUPPORT",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
     },
     {
-      name: "Brauch Owens",
-      role: "CHIEF STRATEGY OFFICER",
+      name: "Elena Ivy",
+      role: "CUSTOMER SUPPORT",
+      image:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+    },
+    {
+      name: "Betty Tan",
+      role: "CUSTOMER SUPPORT",
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    },
+    {
+      name: "Dylan Thomas",
+      role: "CUSTOMER SUPPORT",
       image:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
     },
-    {
-      name: "George Nellist",
-      role: "CHIEF REVENUE OFFICER",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
-    },
-    {
-      name: "Amir Bakian",
-      role: "CHIEF OPERATING OFFICER",
-      image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
-    },
   ];
 
-
-
   return (
-    <section className="w-full bg-white text-slate-900 py-20 lg:py-24 px-6 sm:px-10 lg:px-16 xl:px-20 font-sans relative z-10">
+    <section className="w-full bg-white text-slate-900 pt-20 lg:pt-24 pb-12 lg:pb-16 px-6 sm:px-10 lg:px-16 xl:px-20 font-sans relative z-10">
       <div className="w-full max-w-[1360px] mx-auto">
         {/* Header Tagline & Title */}
         <ScrollReveal>
@@ -62,19 +59,19 @@ export default function OurTeamSection() {
           </p>
         </ScrollReveal>
 
-        {/* Subsection Tagline: LEADERSHIP */}
+        {/* Subsection Tagline: TEAM SUPPORT */}
         <ScrollReveal delay={180}>
           <div className="flex items-center gap-3 mb-6">
             <span className="w-6 h-[2px] bg-[#6d28d9] rounded-full" />
             <span className="font-bold tracking-[0.2em] text-[#6d28d9] uppercase text-xs">
-              LEADERSHIP
+              TEAM SUPPORT
             </span>
           </div>
         </ScrollReveal>
 
         {/* Leadership Grid */}
         <ScrollReveal delay={220}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, idx) => (
               <div
                 key={idx}
@@ -93,14 +90,9 @@ export default function OurTeamSection() {
                     {member.name}
                   </h3>
 
-                  <p className="text-[#f59e0b] font-extrabold text-[11px] tracking-wider uppercase mb-3">
+                  <p className="text-[#f59e0b] font-extrabold text-[11px] tracking-wider uppercase">
                     {member.role}
                   </p>
-
-                  <div className="flex items-center gap-1 text-slate-400 font-bold text-[11px] tracking-widest uppercase group-hover:text-white transition-colors">
-                    <span>VIEW PROFILE</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </div>
                 </div>
               </div>
             ))}

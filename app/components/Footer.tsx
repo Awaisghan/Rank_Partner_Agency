@@ -27,7 +27,7 @@ export default function Footer() {
 
             {/* Description */}
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm font-normal">
-              The white-label PR &amp; SEO platform agencies use to get their clients featured, get ranked, ascend.
+              The white-label PR &amp; SEO platform agencies use to get their clients featured, get ranked, rank higher.
             </p>
 
             {/* 4 Social Icon Buttons */}
@@ -98,17 +98,17 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm font-medium text-slate-300">
               <li>
-                <Link href="#services" className="hover:text-white transition-colors">
+                <Link href="/press-placements" className="hover:text-white transition-colors">
                   Press Placements
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-white transition-colors">
+                <Link href="/authority-backlinks" className="hover:text-white transition-colors">
                   Authority Backlinks
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-white transition-colors">
+                <Link href="/tv-interviews" className="hover:text-white transition-colors">
                   TV Interviews
                 </Link>
               </li>
@@ -124,12 +124,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm font-medium text-slate-300">
               <li>
-                <Link href="#for-agencies" className="hover:text-white transition-colors">
+                <Link href="/agencies" className="hover:text-white transition-colors">
                   For Agencies
                 </Link>
               </li>
               <li>
-                <Link href="#for-publishers" className="hover:text-white transition-colors">
+                <Link href="/publishers" className="hover:text-white transition-colors">
                   For Publishers
                 </Link>
               </li>
@@ -145,22 +145,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm font-medium text-slate-300">
               <li>
-                <Link href="#about" className="hover:text-white transition-colors">
+                <Link href="/about" className="hover:text-white transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#blog" className="hover:text-white transition-colors">
+                <Link href="/blog" className="hover:text-white transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="#faq" className="hover:text-white transition-colors">
+                <Link href="/faq" className="hover:text-white transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="#get-in-touch" className="hover:text-white transition-colors">
+                <Link href="/#contact" className="hover:text-white transition-colors">
                   Contact
                 </Link>
               </li>

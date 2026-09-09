@@ -95,7 +95,7 @@ export default function ForAgenciesHeroSection() {
             <ScrollReveal delay={350}>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                 <Link
-                  href="#contact"
+                  href="/#get-in-touch"
                   className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_24px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
                 >
                   <span>Talk to us</span>

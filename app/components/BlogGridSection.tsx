@@ -24,10 +24,10 @@ const featuredArticle = {
   id: "featured-1",
   category: "SEO",
   categoryIcon: Search,
-  title: "What Domain Authority and Domain Rating actually measure",
+  title: "The Truth About Domain Authority and Domain Rating",
   excerpt:
     "Two of the most quoted numbers in SEO are widely misread. Here is what they tell you, what they miss, and how to use them without chasing the score.",
-  author: "Ascend Team",
+  author: "RankPartner Team",
   date: "June 12, 2026",
   readTime: "6 min read",
 };
@@ -37,7 +37,7 @@ const gridArticles = [
     id: "1",
     category: "PR",
     categoryIcon: FileText,
-    title: "Why a single press placement keeps working for years",
+    title: "The Lasting Impact of a Single Press Feature",
     excerpt:
       "A good placement is not a one-day spike. It is a durable asset that builds trust, earns links, and keeps selling long after the story runs.",
     date: "June 5, 2026",
@@ -47,7 +47,7 @@ const gridArticles = [
     id: "2",
     category: "Strategy",
     categoryIcon: CheckCircle2,
-    title: "How agencies offer PR and SEO without building a newsroom",
+    title: "Delivering High-Impact PR and SEO Without an In-House Newsroom",
     excerpt:
       "Clients want coverage and rankings. Most agencies cannot staff for both. White-label delivery lets you sell the outcome and keep the margin.",
     date: "May 28, 2026",
@@ -57,7 +57,7 @@ const gridArticles = [
     id: "3",
     category: "SEO",
     categoryIcon: Search,
-    title: "Authority backlinks versus link building: the difference that matters",
+    title: "Authority Backlinks vs. Link Building: Why Quality Wins",
     excerpt:
       "Not all links are equal, and chasing volume can quietly hurt you. The distinction between genuine authority and bulk link building...",
     date: "May 20, 2026",
@@ -67,7 +67,7 @@ const gridArticles = [
     id: "4",
     category: "Broadcast",
     categoryIcon: Tv,
-    title: "Turning one TV interview into a quarter of content",
+    title: "How to Turn One TV Interview Into Months of Content",
     excerpt:
       "A broadcast segment is a few minutes on air and months of material everywhere else, if you plan the reuse before you ever sit down.",
     date: "May 12, 2026",
@@ -77,7 +77,7 @@ const gridArticles = [
     id: "5",
     category: "Strategy",
     categoryIcon: CheckCircle2,
-    title: "PR and SEO are one motion, not two budgets",
+    title: "Merging PR and SEO: One Unified Growth Strategy",
     excerpt:
       "Run separately, press and search quietly undercut each other. Run together, the same placement builds reputation and rankings at...",
     date: "May 2, 2026",
@@ -166,7 +166,7 @@ export default function BlogGridSection() {
                   <div className="flex items-center gap-3">
                     {/* Author Circle Logo */}
                     <div className="w-9 h-9 rounded-full bg-[#040c1e] text-white flex items-center justify-center font-black text-xs shadow-sm">
-                      A
+                      R
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900">

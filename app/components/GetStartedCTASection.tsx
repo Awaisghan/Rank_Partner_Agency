@@ -42,7 +42,7 @@ export default function GetStartedCTASection() {
             {/* Right CTA Button */}
             <div className="flex-shrink-0 relative z-10">
               <Link
-                href="#get-in-touch"
+                href="/#get-in-touch"
                 className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base transition-all duration-300 shadow-[0_0_25px_rgba(245,158,11,0.35)] hover:scale-105 active:scale-95"
               >
                 <span>Contact us</span>

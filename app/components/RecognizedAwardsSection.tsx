@@ -88,7 +88,7 @@ export default function RecognizedAwardsSection() {
 
             <ScrollReveal delay={150}>
               <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal mb-5">
-                Inc. has recognized Ascend on its national and regional growth lists, alongside Industry awards across PR, marketing and digital.
+                Inc. has recognized RankPartner on its national and regional growth lists, alongside Industry awards across PR, marketing and digital.
               </p>
             </ScrollReveal>
 

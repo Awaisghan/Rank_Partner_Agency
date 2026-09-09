@@ -16,7 +16,7 @@ export default function InThePressSection() {
   ];
 
   return (
-    <section className="w-full bg-white text-slate-900 py-20 lg:py-24 px-6 sm:px-10 lg:px-16 xl:px-20 font-sans relative z-10">
+    <section className="w-full bg-white text-slate-900 pt-8 lg:pt-12 pb-20 lg:pb-24 px-6 sm:px-10 lg:px-16 xl:px-20 font-sans relative z-10">
       <div className="w-full max-w-[1360px] mx-auto">
         {/* Tagline & Header */}
         <ScrollReveal>

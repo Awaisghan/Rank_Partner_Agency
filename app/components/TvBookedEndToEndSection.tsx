@@ -63,7 +63,7 @@ export default function TvBookedEndToEndSection() {
                   {/* URL Bar Text */}
                   <div className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
                     <span className="text-xs sm:text-[13px] font-medium text-[#94a3b8] font-sans tracking-tight">
-                      portal.ascendagency.com/order/7367294
+                      portal.rankpartner.io/order/7367294
                     </span>
                   </div>
                 </div>
