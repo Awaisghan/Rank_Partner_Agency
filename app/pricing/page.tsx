@@ -233,13 +233,13 @@ export default function PricingPage() {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
 
   // ─── SWR Data Fetching for all tabs ────────────────────────────────────────
-  const { data: pubData, error: pubError, isLoading: pubLoading } = useSWR<{items: Publication[], pagination: any}>("/api/publications", fetcher);
-  const { data: btvData, error: btvError, isLoading: btvLoading } = useSWR<{items: TVBroadcastItem[], pagination: any}>("/api/broadcast-television", fetcher);
-  const { data: dtvData, error: dtvError, isLoading: dtvLoading } = useSWR<{items: DigitalTVItem[], pagination: any}>("/api/digital-television", fetcher);
-  const { data: listData, error: listError, isLoading: listLoading } = useSWR<{items: ListiclePublication[], pagination: any}>("/api/listicles", fetcher);
-  const { data: bsData, error: bsError, isLoading: bsLoading } = useSWR<{items: BestSellerPublication[], pagination: any}>("/api/best-sellers", fetcher);
-  const { data: printData, error: printError, isLoading: printLoading } = useSWR<{items: PrintMagazine[], pagination: any}>("/api/print-magazines", fetcher);
-  const { data: socialData, error: socialError, isLoading: socialLoading } = useSWR<{items: SocialPostPublication[], pagination: any}>("/api/social-posts", fetcher);
+  const { data: pubData, error: pubError, isLoading: pubLoading } = useSWR<{ items: Publication[], pagination: any }>("/api/publications", fetcher);
+  const { data: btvData, error: btvError, isLoading: btvLoading } = useSWR<{ items: TVBroadcastItem[], pagination: any }>("/api/broadcast-television", fetcher);
+  const { data: dtvData, error: dtvError, isLoading: dtvLoading } = useSWR<{ items: DigitalTVItem[], pagination: any }>("/api/digital-television", fetcher);
+  const { data: listData, error: listError, isLoading: listLoading } = useSWR<{ items: ListiclePublication[], pagination: any }>("/api/listicles", fetcher);
+  const { data: bsData, error: bsError, isLoading: bsLoading } = useSWR<{ items: BestSellerPublication[], pagination: any }>("/api/best-sellers", fetcher);
+  const { data: printData, error: printError, isLoading: printLoading } = useSWR<{ items: PrintMagazine[], pagination: any }>("/api/print-magazines", fetcher);
+  const { data: socialData, error: socialError, isLoading: socialLoading } = useSWR<{ items: SocialPostPublication[], pagination: any }>("/api/social-posts", fetcher);
 
   const publications = pubData?.items || [];
   const broadcastTV = btvData?.items || [];
@@ -323,16 +323,11 @@ export default function PricingPage() {
       {/* ── HEADER ─────────────────────────────────────────────────────────── */}
       <header className="w-full bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between shadow-xs sticky top-0 z-40">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-7 h-7 flex items-center justify-center shrink-0">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-slate-900">
-              <path d="M16 3L3 29H10.5L16 17.5L21.5 29H29L16 3Z" fill="currentColor" />
-              <path d="M16 12.5L12 20.5H20L16 12.5Z" fill="#ffffff" />
-            </svg>
-          </div>
-          <div className="flex items-center tracking-tight">
-            <span className="font-black text-xl tracking-wider text-slate-950 uppercase">RANK_</span>
-            <span className="font-bold text-xl tracking-wider text-slate-800 uppercase">PARTNER</span>
-          </div>
+          <img
+            src="/logo-cropped.png"
+            alt="RankPartner.io Logo"
+            className="h-7 sm:h-8 w-auto object-contain brightness-0"
+          />
         </Link>
         <button onClick={handleLogout} className="text-xs font-black tracking-wider text-[#e63939] hover:text-[#c42b2b] uppercase transition-colors flex items-center gap-1.5 cursor-pointer">
           <span>LOG OUT</span>
@@ -440,11 +435,11 @@ export default function PricingPage() {
                 {activeTab} &mdash;{" "}
                 {activeTab === "PUBLICATIONS" ? `${filteredPublications.length} results` :
                   activeTab === "BROADCAST TELEVISION" ? `${filteredBroadcastTV.length} results` :
-                  activeTab === "DIGITAL TELEVISION" ? `${filteredDigitalTV.length} results` :
-                  activeTab === "LISTICLES" ? `${filteredListicles.length} results` :
-                  activeTab === "BEST SELLERS" ? `${filteredBestSellers.length} results` :
-                  activeTab === "PRINT" ? `${filteredPrintMags.length} results` :
-                  `${filteredSocialPosts.length} results`}
+                    activeTab === "DIGITAL TELEVISION" ? `${filteredDigitalTV.length} results` :
+                      activeTab === "LISTICLES" ? `${filteredListicles.length} results` :
+                        activeTab === "BEST SELLERS" ? `${filteredBestSellers.length} results` :
+                          activeTab === "PRINT" ? `${filteredPrintMags.length} results` :
+                            `${filteredSocialPosts.length} results`}
               </span>
             </div>
 
@@ -458,8 +453,8 @@ export default function PricingPage() {
                       <th className={THL}>PUBLICATION</th>
                       <th className={TH}>GENRES</th>
                       <th className={TH}>PRICE</th>
-                      <th className={TH} style={{width:40}}>DA <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
-                      <th className={TH} style={{width:40}}>DR <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH} style={{ width: 40 }}>DA <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH} style={{ width: 40 }}>DR <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
                       <th className={TH}>TAT <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
                       <th className={TH}>REGION</th>
                       <th className={TH}>SPONSORED</th>
@@ -472,72 +467,72 @@ export default function PricingPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {pubLoading ? <LoadingRow cols={13} /> :
-                     pubError ? <ErrorRow cols={13} /> :
-                     filteredPublications.length === 0 ? <EmptyRow cols={13} label="publications" /> :
-                     filteredPublications.map((pub) => {
-                       const isFav = favorites[pub.id];
-                       return (
-                         <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
-                           <td className="py-2.5 px-3 border-r border-slate-200">
-                             <div className="flex items-center justify-between gap-2">
-                               <div className="flex items-center gap-2.5 min-w-0">
-                                 <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0 shadow-xs overflow-hidden leading-none tracking-tighter"
-                                   style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>
-                                   {pub.logoText}
-                                 </div>
-                                 <div className="flex flex-col min-w-0">
-                                   <div className="flex items-center gap-1.5">
-                                     <span className="font-semibold text-slate-900 text-[13px] leading-tight truncate">{pub.name}</span>
-                                     {pub.isNew && <span className="inline-block bg-[#28a745] text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded w-fit">New</span>}
-                                   </div>
-                                   <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
-                                 </div>
-                               </div>
-                               <button onClick={() => toggleFavorite(pub.id)} className="text-slate-300 hover:text-[#e63939] transition-colors p-0.5 cursor-pointer shrink-0">
-                                 <Star className={`w-4 h-4 ${isFav ? "fill-[#e63939] text-[#e63939]" : "text-slate-300 stroke-[#e63939]"}`} />
-                               </button>
-                             </div>
-                           </td>
-                           <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 text-[12px] font-medium">
-                             {pub.genres?.join(" / ")}
-                           </td>
-                           <td className="py-2.5 px-2 text-center font-bold text-slate-900 text-[13px] border-r border-slate-200">${pub.price?.toLocaleString()}</td>
-                           <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.da}</td>
-                           <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.dr}</td>
-                           <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200 whitespace-nowrap">{pub.tat}</td>
-                           <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                             <div className="flex flex-wrap justify-center gap-1">
-                               {pub.region?.map((reg) => <span key={reg} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[11px] font-medium whitespace-nowrap">{reg}</span>)}
-                             </div>
-                           </td>
-                           <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.sponsored ? "Yes" : "No"}</td>
-                           <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.indexed ? "Yes" : "No"}</td>
-                           <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.doFollow ? "Yes" : "No"}</td>
-                           <td className="py-2.5 px-2 text-center border-r border-slate-200 whitespace-nowrap">
-                             {pub.exampleUrl ? (
-                               <a href={pub.exampleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-[#28a745] hover:underline text-[12px]">
-                                 <span>View</span>
-                                 <ExternalLink className="w-3 h-3 stroke-[2.2]" />
-                               </a>
-                             ) : (
-                               <span className="text-slate-300">—</span>
-                             )}
-                           </td>
-                           <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.llmAeo ? "Yes" : "No"}</td>
-                           <td className="py-2.5 px-2 text-center">
-                             <div className="flex flex-col items-center justify-center gap-1">
-                               <div className="flex items-center justify-center gap-3">
-                                 {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
-                                 {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                 {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                 {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                 {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                               </div>
-                             </div>
-                           </td>
-                         </tr>
-                       );
-                     })}
+                      pubError ? <ErrorRow cols={13} /> :
+                        filteredPublications.length === 0 ? <EmptyRow cols={13} label="publications" /> :
+                          filteredPublications.map((pub) => {
+                            const isFav = favorites[pub.id];
+                            return (
+                              <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
+                                <td className="py-2.5 px-3 border-r border-slate-200">
+                                  <div className="flex items-center justify-between gap-2">
+                                    <div className="flex items-center gap-2.5 min-w-0">
+                                      <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0 shadow-xs overflow-hidden leading-none tracking-tighter"
+                                        style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>
+                                        {pub.logoText}
+                                      </div>
+                                      <div className="flex flex-col min-w-0">
+                                        <div className="flex items-center gap-1.5">
+                                          <span className="font-semibold text-slate-900 text-[13px] leading-tight truncate">{pub.name}</span>
+                                          {pub.isNew && <span className="inline-block bg-[#28a745] text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded w-fit">New</span>}
+                                        </div>
+                                        <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
+                                      </div>
+                                    </div>
+                                    <button onClick={() => toggleFavorite(pub.id)} className="text-slate-300 hover:text-[#e63939] transition-colors p-0.5 cursor-pointer shrink-0">
+                                      <Star className={`w-4 h-4 ${isFav ? "fill-[#e63939] text-[#e63939]" : "text-slate-300 stroke-[#e63939]"}`} />
+                                    </button>
+                                  </div>
+                                </td>
+                                <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 text-[12px] font-medium">
+                                  {pub.genres?.join(" / ")}
+                                </td>
+                                <td className="py-2.5 px-2 text-center font-bold text-slate-900 text-[13px] border-r border-slate-200">${pub.price?.toLocaleString()}</td>
+                                <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.da}</td>
+                                <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.dr}</td>
+                                <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200 whitespace-nowrap">{pub.tat}</td>
+                                <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                  <div className="flex flex-wrap justify-center gap-1">
+                                    {pub.region?.map((reg) => <span key={reg} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[11px] font-medium whitespace-nowrap">{reg}</span>)}
+                                  </div>
+                                </td>
+                                <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.sponsored ? "Yes" : "No"}</td>
+                                <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.indexed ? "Yes" : "No"}</td>
+                                <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.doFollow ? "Yes" : "No"}</td>
+                                <td className="py-2.5 px-2 text-center border-r border-slate-200 whitespace-nowrap">
+                                  {pub.exampleUrl ? (
+                                    <a href={pub.exampleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-[#28a745] hover:underline text-[12px]">
+                                      <span>View</span>
+                                      <ExternalLink className="w-3 h-3 stroke-[2.2]" />
+                                    </a>
+                                  ) : (
+                                    <span className="text-slate-300">—</span>
+                                  )}
+                                </td>
+                                <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.llmAeo ? "Yes" : "No"}</td>
+                                <td className="py-2.5 px-2 text-center">
+                                  <div className="flex flex-col items-center justify-center gap-1">
+                                    <div className="flex items-center justify-center gap-3">
+                                      {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
+                                      {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                      {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                      {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                      {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          })}
                   </tbody>
                 </table>
               )}
@@ -561,22 +556,22 @@ export default function PricingPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {btvLoading ? <LoadingRow cols={10} /> :
-                     btvError ? <ErrorRow cols={10} /> :
-                     filteredBroadcastTV.length === 0 ? <EmptyRow cols={10} label="broadcast TV stations" /> :
-                     filteredBroadcastTV.map((item) => (
-                       <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
-                         <td className="py-2.5 px-3 border-r border-slate-200 font-semibold text-slate-900">{item.affiliate}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.calls}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.state}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.market}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.dma}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.segmentType}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.recordingType}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{item.time}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{item.rate}</td>
-                         <td className="py-2.5 px-2 text-center"><ViewLink url={item.exampleUrl} /></td>
-                       </tr>
-                     ))}
+                      btvError ? <ErrorRow cols={10} /> :
+                        filteredBroadcastTV.length === 0 ? <EmptyRow cols={10} label="broadcast TV stations" /> :
+                          filteredBroadcastTV.map((item) => (
+                            <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
+                              <td className="py-2.5 px-3 border-r border-slate-200 font-semibold text-slate-900">{item.affiliate}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.calls}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.state}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.market}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.dma}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.segmentType}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.recordingType}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{item.time}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{item.rate}</td>
+                              <td className="py-2.5 px-2 text-center"><ViewLink url={item.exampleUrl} /></td>
+                            </tr>
+                          ))}
                   </tbody>
                 </table>
               )}
@@ -601,25 +596,25 @@ export default function PricingPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {dtvLoading ? <LoadingRow cols={11} /> :
-                     dtvError ? <ErrorRow cols={11} /> :
-                     filteredDigitalTV.length === 0 ? <EmptyRow cols={11} label="digital TV stations" /> :
-                     filteredDigitalTV.map((item) => (
-                       <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
-                         <td className="py-2.5 px-3 border-r border-slate-200 font-bold text-slate-900">{item.callSign}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-semibold text-slate-800">{item.station}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{item.rate}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{item.tat}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.sponsored ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.indexed ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{item.segmentLength}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-bold text-slate-900">{item.location}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                           <span className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold whitespace-nowrap">{item.programName}</span>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.interviewType}</td>
-                         <td className="py-2.5 px-2 text-center"><ViewLink url={item.exampleUrl} /></td>
-                       </tr>
-                     ))}
+                      dtvError ? <ErrorRow cols={11} /> :
+                        filteredDigitalTV.length === 0 ? <EmptyRow cols={11} label="digital TV stations" /> :
+                          filteredDigitalTV.map((item) => (
+                            <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
+                              <td className="py-2.5 px-3 border-r border-slate-200 font-bold text-slate-900">{item.callSign}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-semibold text-slate-800">{item.station}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{item.rate}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{item.tat}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.sponsored ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.indexed ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{item.segmentLength}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-bold text-slate-900">{item.location}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                <span className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold whitespace-nowrap">{item.programName}</span>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.interviewType}</td>
+                              <td className="py-2.5 px-2 text-center"><ViewLink url={item.exampleUrl} /></td>
+                            </tr>
+                          ))}
                   </tbody>
                 </table>
               )}
@@ -646,52 +641,52 @@ export default function PricingPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {listLoading ? <LoadingRow cols={13} /> :
-                     listError ? <ErrorRow cols={13} /> :
-                     filteredListicles.length === 0 ? <EmptyRow cols={13} label="listicles" /> :
-                     filteredListicles.map((pub) => (
-                       <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
-                         <td className="py-2.5 px-3 border-r border-slate-200">
-                           <div className="flex items-center gap-2.5 min-w-0">
-                             <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0 shadow-xs leading-none"
-                               style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
-                             <div className="flex flex-col min-w-0">
-                               <span className="font-semibold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
-                               <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
-                               {pub.tag && <span className="bg-black text-white text-[9px] font-bold px-1.5 py-0.5 rounded w-fit mt-1">{pub.tag}</span>}
-                             </div>
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                           <div className="flex flex-col gap-1 items-center">
-                             {pub.genres?.map((g) => <span key={g} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{g}</span>)}
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{pub.top5Price}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{pub.top10Price}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.da}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.dr}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{pub.tat}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                           <div className="flex flex-col gap-1 items-center">
-                             {pub.region?.map((r) => <span key={r} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{r}</span>)}
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.sponsored ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.indexed ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.doFollow ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 whitespace-nowrap">
-                           {pub.exampleUrl ? (
-                             <a href={pub.exampleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-[#28a745] hover:underline text-[12px]">
-                               <span>View</span>
-                               <ExternalLink className="w-3 h-3 stroke-[2.2]" />
-                             </a>
-                           ) : (
-                             <span className="text-slate-300">—</span>
-                           )}
-                         </td>
-                         <td className="py-2.5 px-2 text-center text-slate-700">{pub.llmAeo ? "Yes" : "No"}</td>
-                       </tr>
-                     ))}
+                      listError ? <ErrorRow cols={13} /> :
+                        filteredListicles.length === 0 ? <EmptyRow cols={13} label="listicles" /> :
+                          filteredListicles.map((pub) => (
+                            <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
+                              <td className="py-2.5 px-3 border-r border-slate-200">
+                                <div className="flex items-center gap-2.5 min-w-0">
+                                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0 shadow-xs leading-none"
+                                    style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
+                                  <div className="flex flex-col min-w-0">
+                                    <span className="font-semibold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
+                                    <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
+                                    {pub.tag && <span className="bg-black text-white text-[9px] font-bold px-1.5 py-0.5 rounded w-fit mt-1">{pub.tag}</span>}
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                <div className="flex flex-col gap-1 items-center">
+                                  {pub.genres?.map((g) => <span key={g} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{g}</span>)}
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{pub.top5Price}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900">{pub.top10Price}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.da}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.dr}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{pub.tat}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                <div className="flex flex-col gap-1 items-center">
+                                  {pub.region?.map((r) => <span key={r} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{r}</span>)}
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.sponsored ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.indexed ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.doFollow ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 whitespace-nowrap">
+                                {pub.exampleUrl ? (
+                                  <a href={pub.exampleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-[#28a745] hover:underline text-[12px]">
+                                    <span>View</span>
+                                    <ExternalLink className="w-3 h-3 stroke-[2.2]" />
+                                  </a>
+                                ) : (
+                                  <span className="text-slate-300">—</span>
+                                )}
+                              </td>
+                              <td className="py-2.5 px-2 text-center text-slate-700">{pub.llmAeo ? "Yes" : "No"}</td>
+                            </tr>
+                          ))}
                   </tbody>
                 </table>
               )}
@@ -718,52 +713,52 @@ export default function PricingPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {bsLoading ? <LoadingRow cols={13} /> :
-                     bsError ? <ErrorRow cols={13} /> :
-                     filteredBestSellers.length === 0 ? <EmptyRow cols={13} label="best sellers" /> :
-                     filteredBestSellers.map((pub) => (
-                       <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
-                         <td className="py-2.5 px-3 border-r border-slate-200">
-                           <div className="flex items-center gap-2.5 min-w-0">
-                             <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs leading-none"
-                               style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
-                             <div className="flex flex-col min-w-0">
-                               <span className="font-bold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
-                               <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
-                             </div>
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                           <div className="flex flex-col gap-1 items-center">
-                             {pub.genres?.map((g) => <span key={g} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{g}</span>)}
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900 text-[13px]">{pub.price}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.da}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.dr}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{pub.tat}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                           <div className="flex flex-col gap-1 items-center">
-                             {pub.region?.map((r) => <span key={r} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{r}</span>)}
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-bold text-slate-800">{pub.sponsored ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.indexed ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.doFollow ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200"><ViewLink url={pub.exampleUrl} /></td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.llmAeo ? "Yes" : "No"}</td>
-                         <td className="py-2.5 px-2 text-center">
-                           <div className="flex flex-col items-center justify-center gap-1">
-                             <div className="flex items-center justify-center gap-3">
-                               {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
-                               {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                               {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                               {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                               {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                             </div>
-                           </div>
-                         </td>
-                       </tr>
-                     ))}
+                      bsError ? <ErrorRow cols={13} /> :
+                        filteredBestSellers.length === 0 ? <EmptyRow cols={13} label="best sellers" /> :
+                          filteredBestSellers.map((pub) => (
+                            <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
+                              <td className="py-2.5 px-3 border-r border-slate-200">
+                                <div className="flex items-center gap-2.5 min-w-0">
+                                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs leading-none"
+                                    style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
+                                  <div className="flex flex-col min-w-0">
+                                    <span className="font-bold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
+                                    <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                <div className="flex flex-col gap-1 items-center">
+                                  {pub.genres?.map((g) => <span key={g} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{g}</span>)}
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900 text-[13px]">{pub.price}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.da}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-medium text-slate-700">{pub.dr}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700 whitespace-nowrap">{pub.tat}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                <div className="flex flex-col gap-1 items-center">
+                                  {pub.region?.map((r) => <span key={r} className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium whitespace-nowrap">{r}</span>)}
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-bold text-slate-800">{pub.sponsored ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.indexed ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.doFollow ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200"><ViewLink url={pub.exampleUrl} /></td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{pub.llmAeo ? "Yes" : "No"}</td>
+                              <td className="py-2.5 px-2 text-center">
+                                <div className="flex flex-col items-center justify-center gap-1">
+                                  <div className="flex items-center justify-center gap-3">
+                                    {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
+                                    {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
                   </tbody>
                 </table>
               )}
@@ -784,37 +779,72 @@ export default function PricingPage() {
                       <tbody className="divide-y divide-slate-200"><EmptyRow cols={1} label="print magazines" /></tbody>
                     </table>
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {filteredPrintMags.map((mag) => (
-                        <div key={mag.id} className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group relative">
+                        <div
+                          key={mag.id}
+                          className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs hover:shadow-xl hover:border-red-200 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                        >
+                          {/* Top Card Bar */}
                           <div>
-                            <div className="pr-2">
-                              <a href={mag.websiteUrl || `https://${mag.domain}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-slate-900 hover:text-[#e63939] text-base group/link">
-                                <span>{mag.title}</span>
-                                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover/link:text-[#e63939] transition-colors" />
-                              </a>
-                              <p className="text-[11.5px] text-slate-400 mt-0.5 font-normal">{mag.domain}</p>
+                            <div className="flex items-start justify-between gap-3 mb-4">
+                              <div className="flex items-center gap-3 min-w-0">
+                                <div className="w-10 h-10 rounded-xl bg-red-50 text-[#e63939] border border-red-100 flex items-center justify-center font-black text-sm shrink-0 shadow-xs">
+                                  {mag.title ? mag.title.charAt(0).toUpperCase() : "P"}
+                                </div>
+                                <div className="min-w-0">
+                                  <a
+                                    href={mag.websiteUrl || (mag.domain ? `https://${mag.domain}` : "#")}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="font-extrabold text-slate-900 hover:text-[#e63939] text-base leading-snug flex items-center gap-1.5 group/link truncate"
+                                  >
+                                    <span className="truncate">{mag.title}</span>
+                                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover/link:text-[#e63939] shrink-0 transition-colors" />
+                                  </a>
+                                  {mag.domain && (
+                                    <p className="text-[11.5px] text-slate-400 font-medium truncate mt-0.5">
+                                      {mag.domain}
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
+                              <span className="bg-[#040e21] text-amber-400 font-black text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-full shrink-0">
+                                PRINT
+                              </span>
                             </div>
-                            <div className="my-5 space-y-2 border-t border-b border-slate-100 py-3.5">
+
+                            {/* Rates Container Box */}
+                            <div className="bg-[#f8fafc] border border-slate-100 rounded-xl p-4 my-4 space-y-2.5">
                               {mag.fullPagePrice && (
                                 <div className="flex items-center justify-between text-xs">
-                                  <span className="text-slate-600 font-medium">Full Page</span>
-                                  <span className="font-black text-slate-900 text-sm">{mag.fullPagePrice}</span>
+                                  <span className="text-slate-500 font-semibold">Full Page Rate</span>
+                                  <span className="font-black text-slate-950 text-sm">{mag.fullPagePrice}</span>
                                 </div>
                               )}
                               {mag.spreadPrice && (
-                                <div className="flex items-center justify-between text-xs">
-                                  <span className="text-slate-600 font-medium">2-Page Spread</span>
-                                  <span className="font-black text-slate-900 text-sm">{mag.spreadPrice}</span>
+                                <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-200/60">
+                                  <span className="text-slate-500 font-semibold">2-Page Spread</span>
+                                  <span className="font-black text-slate-950 text-sm">{mag.spreadPrice}</span>
                                 </div>
                               )}
                             </div>
                           </div>
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="bg-[#eef2f6] text-slate-600 text-[10.5px] font-semibold px-2.5 py-1 rounded-md">{mag.turnaround}</span>
-                            {mag.circulation && (
-                              <span className="bg-[#eef2f6] text-slate-600 text-[10.5px] font-semibold px-2.5 py-1 rounded-md">{mag.circulation}</span>
-                            )}
+
+                          {/* Footer Badges (Turnaround & Circulation) */}
+                          <div className="pt-3 flex items-center justify-between gap-2 flex-wrap border-t border-slate-100">
+                            <div className="flex items-center gap-2 flex-wrap w-full justify-between">
+                              {mag.turnaround && (
+                                <span className="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                                  TAT: {mag.turnaround}
+                                </span>
+                              )}
+                              {mag.circulation && (
+                                <span className="bg-emerald-50 text-emerald-700 border border-emerald-100 text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                                  Circulation: {mag.circulation}
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -838,41 +868,41 @@ export default function PricingPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {socialLoading ? <LoadingRow cols={6} /> :
-                     socialError ? <ErrorRow cols={6} /> :
-                     filteredSocialPosts.length === 0 ? <EmptyRow cols={6} label="social posts" /> :
-                     filteredSocialPosts.map((item) => (
-                       <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
-                         <td className="py-2.5 px-3 border-r border-slate-200">
-                           <div className="flex items-center gap-2.5">
-                             <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs leading-none"
-                               style={{ backgroundColor: item.logoBg || "#000", color: item.logoTextColor || "#fff" }}>{item.logoText}</div>
-                             <span className="font-bold text-slate-900 text-[13px]">{item.name}</span>
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                           <span className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium">{item.category}</span>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200">
-                           <div className="flex items-center justify-center gap-1.5">
-                             {item.platforms?.includes("instagram") && (
-                               <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center shadow-xs" title="Instagram"><InstagramIcon /></div>
-                             )}
-                             {item.platforms?.includes("x") && (
-                               <div className="w-5 h-5 rounded-md bg-black text-white flex items-center justify-center font-black text-[9px] shadow-xs" title="X">X</div>
-                             )}
-                             {item.platforms?.includes("facebook") && (
-                               <div className="w-5 h-5 rounded-md bg-[#1877f2] text-white flex items-center justify-center shadow-xs" title="Facebook"><FacebookIcon /></div>
-                             )}
-                             {item.platforms?.includes("linkedin") && (
-                               <div className="w-5 h-5 rounded-md bg-[#0a66c2] text-white flex items-center justify-center shadow-xs" title="LinkedIn"><LinkedinIcon /></div>
-                             )}
-                           </div>
-                         </td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900 text-[13.5px]">{item.price}</td>
-                         <td className="py-2.5 px-2 text-center border-r border-slate-200 font-semibold text-slate-700 whitespace-nowrap">{item.tat}</td>
-                         <td className="py-2.5 px-2 text-center"><ViewLink url={item.exampleUrl} /></td>
-                       </tr>
-                     ))}
+                      socialError ? <ErrorRow cols={6} /> :
+                        filteredSocialPosts.length === 0 ? <EmptyRow cols={6} label="social posts" /> :
+                          filteredSocialPosts.map((item) => (
+                            <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
+                              <td className="py-2.5 px-3 border-r border-slate-200">
+                                <div className="flex items-center gap-2.5">
+                                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs leading-none"
+                                    style={{ backgroundColor: item.logoBg || "#000", color: item.logoTextColor || "#fff" }}>{item.logoText}</div>
+                                  <span className="font-bold text-slate-900 text-[13px]">{item.name}</span>
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                <span className="bg-[#eef2f6] text-slate-700 px-2 py-0.5 rounded text-[10.5px] font-medium">{item.category}</span>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200">
+                                <div className="flex items-center justify-center gap-1.5">
+                                  {item.platforms?.includes("instagram") && (
+                                    <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center shadow-xs" title="Instagram"><InstagramIcon /></div>
+                                  )}
+                                  {item.platforms?.includes("x") && (
+                                    <div className="w-5 h-5 rounded-md bg-black text-white flex items-center justify-center font-black text-[9px] shadow-xs" title="X">X</div>
+                                  )}
+                                  {item.platforms?.includes("facebook") && (
+                                    <div className="w-5 h-5 rounded-md bg-[#1877f2] text-white flex items-center justify-center shadow-xs" title="Facebook"><FacebookIcon /></div>
+                                  )}
+                                  {item.platforms?.includes("linkedin") && (
+                                    <div className="w-5 h-5 rounded-md bg-[#0a66c2] text-white flex items-center justify-center shadow-xs" title="LinkedIn"><LinkedinIcon /></div>
+                                  )}
+                                </div>
+                              </td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-black text-slate-900 text-[13.5px]">{item.price}</td>
+                              <td className="py-2.5 px-2 text-center border-r border-slate-200 font-semibold text-slate-700 whitespace-nowrap">{item.tat}</td>
+                              <td className="py-2.5 px-2 text-center"><ViewLink url={item.exampleUrl} /></td>
+                            </tr>
+                          ))}
                   </tbody>
                 </table>
               )}

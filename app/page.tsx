@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* Hero Section — Responsive height */}
       <section
-        className="relative z-10 w-full overflow-hidden min-h-[100vh] lg:h-[100vh] flex items-center pt-28 pb-16 lg:pt-16 lg:pb-0"
+        className="relative z-10 w-full overflow-hidden h-auto lg:h-[100vh] flex items-center pt-24 pb-4 lg:pt-16 lg:pb-0"
       >
         {/* Content centered */}
         <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12">
@@ -93,11 +93,27 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            {/* RIGHT SIDE 3D BRAND SPHERE */}
-            <div className="lg:col-span-5 xl:col-span-6 hidden lg:block relative">
-              <ScrollReveal delay={400}>
-                <BrandSphere />
-              </ScrollReveal>
+            {/* RIGHT SIDE ANIMATION / BRAND SPHERE */}
+            <div className="lg:col-span-5 xl:col-span-6 relative w-full mt-2 lg:mt-0 flex justify-center items-center pointer-events-none">
+              {/* Mobile View Video Animation (Blended into Hero Background) */}
+              <div className="block lg:hidden w-full max-w-[480px] relative overflow-hidden">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-cover mix-blend-screen opacity-95 [mask-image:radial-gradient(ellipse_at_center,black_65%,transparent_98%)] scale-105"
+                >
+                  <source src="/Screen Recording 2026-09-09 at 12.09.26 AM.webm" type="video/webm" />
+                </video>
+              </div>
+
+              {/* Desktop 3D Brand Sphere (Visible on Desktop >= lg) */}
+              <div className="hidden lg:block w-full pointer-events-auto">
+                <ScrollReveal delay={400}>
+                  <BrandSphere />
+                </ScrollReveal>
+              </div>
             </div>
 
           </div>

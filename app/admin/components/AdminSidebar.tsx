@@ -98,40 +98,11 @@ export default function AdminSidebar() {
                 href="/admin/publications"
                 className="flex items-center gap-3 group"
               >
-                {/* Logo Mark */}
-                <div className="relative">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#e63939] to-[#b91c1c] flex items-center justify-center shadow-lg shadow-red-900/30 group-hover:shadow-red-900/50 transition-shadow duration-300">
-                    <svg
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5 text-white"
-                    >
-                      <path
-                        d="M16 3L3 29H10.5L16 17.5L21.5 29H29L16 3Z"
-                        fill="currentColor"
-                      />
-                      <path d="M16 12.5L12 20.5H20L16 12.5Z" fill="rgba(0,0,0,0.3)" />
-                    </svg>
-                  </div>
-                  {/* Subtle glow */}
-                  <div className="absolute inset-0 rounded-xl bg-[#e63939]/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
-
-                {/* Brand Text */}
-                <div className="flex flex-col">
-                  <div className="flex items-baseline leading-none">
-                    <span className="font-black text-[15px] tracking-[0.08em] text-white">
-                      RANK
-                    </span>
-                    <span className="font-black text-[15px] tracking-[0.08em] text-[#e63939]">
-                      _
-                    </span>
-                    <span className="font-semibold text-[15px] tracking-[0.08em] text-white/50">
-                      PARTNER
-                    </span>
-                  </div>
-                </div>
+                <img
+                  src="/logo-cropped.png"
+                  alt="RankPartner.io Logo"
+                  className="h-7 sm:h-8 w-auto object-contain brightness-0 invert"
+                />
               </Link>
 
               {/* Admin Badge */}
