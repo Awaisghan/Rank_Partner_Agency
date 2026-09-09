@@ -83,13 +83,10 @@ export default function PlatformPublicationsSection() {
 
                   {/* Publications Platform Screenshot Image */}
                   <div className="relative w-full bg-slate-50 overflow-hidden">
-                    <Image
-                      src="/platform-publications.webp"
+                    <img
+                      src="/platform-publications.webp?v=2"
                       alt="Track every placement and authority platform screenshot"
-                      width={1200}
-                      height={800}
                       className="w-full h-auto object-cover object-top transform transition-transform duration-500 group-hover:scale-[1.01]"
-                      priority
                     />
                   </div>
 

@@ -8,26 +8,22 @@ export default function OurTeamSection() {
     {
       name: "Joshua Bryan",
       role: "CUSTOMER SUPPORT",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+      image: "/1.webp",
     },
     {
       name: "Elena Ivy",
       role: "CUSTOMER SUPPORT",
-      image:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+      image: "/2.webp",
     },
     {
       name: "Betty Tan",
       role: "CUSTOMER SUPPORT",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+      image: "/3.webp",
     },
     {
       name: "Dylan Thomas",
       role: "CUSTOMER SUPPORT",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+      image: "/4.webp",
     },
   ];
 

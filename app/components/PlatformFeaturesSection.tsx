@@ -65,13 +65,10 @@ export default function PlatformFeaturesSection() {
                 </span>
               </div>
 
-              <Image
-                src="/platform-order.webp"
+              <img
+                src="/platform-order.webp?v=2"
                 alt="Order tracking platform screenshot"
-                width={900}
-                height={650}
                 className="w-full h-auto object-cover object-top scale-105 origin-top"
-                priority
               />
 
               {/* FLOATING ANIMATED ORDER STATUS BADGE (Compact & Sleek) */}
