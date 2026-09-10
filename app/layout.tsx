@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://rankpartner.com"),
   title: {
     template: "%s | Rank Partner",
-    default: "Rank Partner | Award-Winning PR & SEO Agency",
+    default: "Rank Partner | Get Featured. Build Authority. Rank Higher",
   },
   description: "Rank Partner is an award-winning PR and SEO agency specializing in guaranteed press placements, authority backlinks, and high-tier media mentions.",
   keywords: ["PR Agency", "SEO Agency", "Press Placements", "Authority Backlinks", "Digital PR", "Rank Partner", "Forbes Placement", "Guaranteed PR"],

@@ -2,7 +2,6 @@ import React from "react";
 import AboutHeroSection from "../components/AboutHeroSection";
 import HowWeStartedSection from "../components/HowWeStartedSection";
 import WhatWeBelieveSection from "../components/WhatWeBelieveSection";
-import OurTeamSection from "../components/OurTeamSection";
 import InThePressSection from "../components/InThePressSection";
 import AboutCtaSection from "../components/AboutCtaSection";
 import Footer from "../components/Footer";
@@ -20,8 +19,6 @@ export default function AboutPage() {
       {/* What We Believe Dark Section */}
       <WhatWeBelieveSection />
 
-      {/* Our Team Leadership Section */}
-      <OurTeamSection />
 
 
 
