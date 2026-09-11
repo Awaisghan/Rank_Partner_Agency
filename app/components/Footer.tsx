@@ -7,15 +7,15 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#040b1b] text-white pt-16 pb-12 px-6 sm:px-10 lg:px-16 border-t border-slate-800/60 relative z-10">
       <div className="max-w-[1550px] mx-auto">
-        
+
         {/* Main Footer Content Grid - Evenly Spaced 4 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16">
-          
+
           {/* ========================================================================= */}
           {/* COLUMN 1: BRAND LOGO, BIO & SOCIAL LINKS (lg:col-span-5)                  */}
           {/* ========================================================================= */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
-            
+
             {/* Logo matching Navbar exact style */}
             <Link href="/" className="flex items-center gap-2.5 group w-fit">
               <img
@@ -173,14 +173,14 @@ export default function Footer() {
         <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-normal">
           <p>© 2026 RankPartner. All rights reserved.</p>
           <p>
-            Design By{" "}
+            Designed By{" "}
             <a
               href="https://mrwebhub.online/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#4fa751] font-semibold hover:underline"
+              className="text-[#4fa751] font-bold hover:underline"
             >
-              Mrwebhub
+              MrWebHub
             </a>
           </p>
           <div className="flex items-center gap-6">

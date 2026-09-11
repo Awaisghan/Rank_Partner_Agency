@@ -32,9 +32,11 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  const isPublicApiRoute = path.startsWith("/api/contact");
+
   // --- API ROUTE PROTECTION (Phase 11) ---
-  // If it's a data API (not auth API) and the method modifies data (POST/PUT/DELETE), require ADMIN
-  if (isApiRoute && !isAuthApiRoute) {
+  // If it's a data API (not auth API or public contact API) and the method modifies data (POST/PUT/DELETE), require ADMIN
+  if (isApiRoute && !isAuthApiRoute && !isPublicApiRoute) {
     if (request.method !== "GET") {
       if (!session || session.role !== "ADMIN") {
         return NextResponse.json(

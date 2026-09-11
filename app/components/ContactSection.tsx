@@ -7,6 +7,8 @@ import { CheckCircle2, ArrowRight, ArrowLeft, Pencil, Check } from "lucide-react
 export default function ContactSection() {
   const [formStep, setFormStep] = useState<1 | 2 | 3>(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -24,20 +26,45 @@ export default function ContactSection() {
     "Agency reselling",
   ];
 
-  const handleNext = (e: React.FormEvent) => {
+  const handleNext = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+
     if (formStep === 1) {
-      if (!formData.name || !formData.email) return;
+      if (!formData.name.trim() || !formData.email.trim()) return;
       setFormStep(2);
     } else if (formStep === 2) {
       setFormStep(3);
     } else if (formStep === 3) {
-      setIsSubmitted(true);
+      if (isLoading) return;
+      setIsLoading(true);
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Failed to submit form. Please try again.");
+        }
+
+        setIsSubmitted(true);
+      } catch (err: any) {
+        console.error("Submission error:", err);
+        setErrorMessage(err.message || "An unexpected error occurred. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
   const handleBack = () => {
     if (formStep > 1) {
+      setErrorMessage(null);
       setFormStep((prev) => (prev - 1) as 1 | 2 | 3);
     }
   };
@@ -46,7 +73,7 @@ export default function ContactSection() {
     <section id="get-in-touch" className="w-full bg-white py-12 px-4 sm:px-8 lg:px-12 relative z-10 scroll-mt-20">
       <div id="contact" className="absolute -top-24 left-0" />
       <div className="max-w-[1550px] mx-auto">
-        
+
         {/* Full-Width Dark Navy Card Container with Large Rounded Corners */}
         <div
           className="rounded-[2.5rem] p-5 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-2xl border border-slate-800/80"
@@ -58,12 +85,12 @@ export default function ContactSection() {
           <div className="absolute -bottom-20 left-10 w-[600px] h-[400px] bg-violet-700/10 blur-[170px] rounded-full pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
-            
+
             {/* ========================================================================= */}
             {/* LEFT COLUMN: TEXT & TRUST SIGNALS (lg:col-span-6)                         */}
             {/* ========================================================================= */}
             <div className="lg:col-span-6 flex flex-col justify-between h-full space-y-8">
-              
+
               <div className="space-y-6">
                 {/* Tagline Badge */}
                 <ScrollReveal>
@@ -132,7 +159,9 @@ export default function ContactSection() {
                     A real person reviews every inquiry.{" "}
                     <span className="text-white font-semibold">
                       Our team will get back to you as soon as possible.
-                    </span>
+                    </span>{" "}
+                    You can also reach us directly at
+                    <a href="mailto:Hello@rankpartner.io" className="text-white font-semibold underline">Hello@rankpartner.io</a>.
                   </p>
                 </div>
               </div>
@@ -161,7 +190,7 @@ export default function ContactSection() {
             <div className="lg:col-span-6">
               <ScrollReveal delay={200}>
                 <div className="bg-white rounded-[2rem] p-5 sm:p-10 text-slate-900 shadow-2xl border border-slate-100 relative min-h-[400px] lg:min-h-[480px] flex flex-col justify-between">
-                  
+
                   {isSubmitted ? (
                     /* Submission Success Screen */
                     <div className="my-auto flex flex-col items-center text-center space-y-4 py-8">
@@ -186,7 +215,7 @@ export default function ContactSection() {
                   ) : (
                     /* Multi-Step Form */
                     <form onSubmit={handleNext} className="flex flex-col justify-between h-full space-y-6">
-                      
+
                       <div className="space-y-6">
                         {/* Form Top Header */}
                         <div>
@@ -206,35 +235,32 @@ export default function ContactSection() {
                               {formStep === 1
                                 ? "ABOUT YOU"
                                 : formStep === 2
-                                ? "WHAT YOU NEED"
-                                : "SEND IT"}
+                                  ? "WHAT YOU NEED"
+                                  : "SEND IT"}
                             </span>
                           </div>
 
                           {/* 3 Segment Progress Bars */}
                           <div className="grid grid-cols-3 gap-2">
                             <div
-                              className={`h-1.5 rounded-full transition-all duration-300 ${
-                                formStep === 1
+                              className={`h-1.5 rounded-full transition-all duration-300 ${formStep === 1
                                   ? "bg-[#6d28d9]"
                                   : formStep > 1
-                                  ? "bg-[#0b1b3d]"
-                                  : "bg-slate-200"
-                              }`}
+                                    ? "bg-[#0b1b3d]"
+                                    : "bg-slate-200"
+                                }`}
                             />
                             <div
-                              className={`h-1.5 rounded-full transition-all duration-300 ${
-                                formStep === 2
+                              className={`h-1.5 rounded-full transition-all duration-300 ${formStep === 2
                                   ? "bg-[#6d28d9]"
                                   : formStep > 2
-                                  ? "bg-[#0b1b3d]"
-                                  : "bg-slate-200"
-                              }`}
+                                    ? "bg-[#0b1b3d]"
+                                    : "bg-slate-200"
+                                }`}
                             />
                             <div
-                              className={`h-1.5 rounded-full transition-all duration-300 ${
-                                formStep === 3 ? "bg-[#6d28d9]" : "bg-slate-200"
-                              }`}
+                              className={`h-1.5 rounded-full transition-all duration-300 ${formStep === 3 ? "bg-[#6d28d9]" : "bg-slate-200"
+                                }`}
                             />
                           </div>
                         </div>
@@ -287,11 +313,10 @@ export default function ContactSection() {
                                     key={opt}
                                     type="button"
                                     onClick={() => setFormData({ ...formData, serviceNeeded: opt })}
-                                    className={`w-full py-4 px-5 rounded-2xl text-left text-sm font-semibold transition-all duration-200 border ${
-                                      isSelected
+                                    className={`w-full py-4 px-5 rounded-2xl text-left text-sm font-semibold transition-all duration-200 border ${isSelected
                                         ? "bg-white border-violet-700 text-slate-900 ring-2 ring-violet-700/20 shadow-sm"
                                         : "bg-[#f8fafc] border-slate-200/80 text-slate-700 hover:bg-slate-100/80"
-                                    }`}
+                                      }`}
                                   >
                                     {opt}
                                   </button>
@@ -328,7 +353,6 @@ export default function ContactSection() {
                                 <span>{formData.serviceNeeded}</span>
                               </button>
                             </div>
-
                             {/* Optional Goals Textarea */}
                             <textarea
                               rows={4}
@@ -337,6 +361,13 @@ export default function ContactSection() {
                               onChange={(e) => setFormData({ ...formData, goals: e.target.value })}
                               className="w-full px-4 py-3.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-700/30 focus:border-violet-700 transition-all resize-none"
                             />
+
+                            {/* Error Banner */}
+                            {errorMessage && (
+                              <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold">
+                                {errorMessage}
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
@@ -348,7 +379,8 @@ export default function ContactSection() {
                             <button
                               type="button"
                               onClick={handleBack}
-                              className="px-5 py-3.5 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 transition-colors flex items-center justify-center gap-1.5 shadow-xs"
+                              disabled={isLoading}
+                              className="px-5 py-3.5 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 transition-colors flex items-center justify-center gap-1.5 shadow-xs disabled:opacity-50"
                             >
                               <ArrowLeft className="w-4 h-4 text-slate-600" />
                               <span>Back</span>
@@ -357,10 +389,17 @@ export default function ContactSection() {
 
                           <button
                             type="submit"
-                            className="flex-1 py-3.5 px-6 rounded-2xl bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all duration-200"
+                            disabled={isLoading}
+                            className="flex-1 py-3.5 px-6 rounded-2xl bg-[#f59e0b] hover:bg-[#d97706] text-[#062c19] font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                           >
-                            <span>{formStep === 3 ? "Plan my ascent" : "Next"}</span>
-                            <ArrowRight className="w-4 h-4 text-[#062c19]" />
+                            <span>
+                              {isLoading
+                                ? "Submitting..."
+                                : formStep === 3
+                                  ? "Plan my ascent"
+                                  : "Next"}
+                            </span>
+                            {!isLoading && <ArrowRight className="w-4 h-4 text-[#062c19]" />}
                           </button>
                         </div>
 
