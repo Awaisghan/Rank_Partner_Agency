@@ -4,6 +4,7 @@ export interface Publication {
   logoText: string;
   logoBg: string;
   logoTextColor: string;
+  logoUrl?: string;
   isNew?: boolean;
   isFavorite?: boolean;
   genres: string[];

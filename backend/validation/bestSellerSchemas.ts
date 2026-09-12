@@ -8,9 +8,10 @@ import { z } from "zod";
 export const bestSellerSchema = z.object({
   name: z.string().min(1, "Name is required"),
   domain: z.string().optional().nullable(),
-  logoText: z.string().min(1, "Logo text is required").max(4, "Max 4 characters"),
+  logoText: z.string().default(""),
   logoBg: z.string().default("#000000"),
   logoTextColor: z.string().default("#ffffff"),
+  logoUrl: z.string().optional().nullable(),
   genres: z.array(z.string()).default([]),
   price: z.string().min(1, "Price is required"),
   da: z.number().min(0).max(100, "DA must be between 0 and 100"),

@@ -8,9 +8,10 @@ import { z } from "zod";
 export const socialPostSchema = z.object({
   name: z.string().min(1, "Name is required"),
   category: z.string().min(1, "Category is required"),
-  logoText: z.string().min(1, "Logo text is required").max(4, "Max 4 characters"),
+  logoText: z.string().default(""),
   logoBg: z.string().default("#000000"),
   logoTextColor: z.string().default("#ffffff"),
+  logoUrl: z.string().optional().nullable(),
   platforms: z.array(z.string()).min(1, "At least one platform is required"),
   price: z.string().min(1, "Price is required"),
   tat: z.string().min(1, "Turnaround time is required"),

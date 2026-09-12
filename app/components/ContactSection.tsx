@@ -161,8 +161,9 @@ export default function ContactSection() {
                       Our team will get back to you as soon as possible.
                     </span>{" "}
                     You can also reach us directly at
-                    <a href="mailto:Hello@rankpartner.io" className="text-white font-semibold underline">Hello@rankpartner.io</a>.
+
                   </p>
+                  <a href="mailto:Hello@rankpartner.io" className="text-white font-semibold underline">Hello@rankpartner.io</a>.
                 </div>
               </div>
 
@@ -244,18 +245,18 @@ export default function ContactSection() {
                           <div className="grid grid-cols-3 gap-2">
                             <div
                               className={`h-1.5 rounded-full transition-all duration-300 ${formStep === 1
-                                  ? "bg-[#6d28d9]"
-                                  : formStep > 1
-                                    ? "bg-[#0b1b3d]"
-                                    : "bg-slate-200"
+                                ? "bg-[#6d28d9]"
+                                : formStep > 1
+                                  ? "bg-[#0b1b3d]"
+                                  : "bg-slate-200"
                                 }`}
                             />
                             <div
                               className={`h-1.5 rounded-full transition-all duration-300 ${formStep === 2
-                                  ? "bg-[#6d28d9]"
-                                  : formStep > 2
-                                    ? "bg-[#0b1b3d]"
-                                    : "bg-slate-200"
+                                ? "bg-[#6d28d9]"
+                                : formStep > 2
+                                  ? "bg-[#0b1b3d]"
+                                  : "bg-slate-200"
                                 }`}
                             />
                             <div
@@ -314,8 +315,8 @@ export default function ContactSection() {
                                     type="button"
                                     onClick={() => setFormData({ ...formData, serviceNeeded: opt })}
                                     className={`w-full py-4 px-5 rounded-2xl text-left text-sm font-semibold transition-all duration-200 border ${isSelected
-                                        ? "bg-white border-violet-700 text-slate-900 ring-2 ring-violet-700/20 shadow-sm"
-                                        : "bg-[#f8fafc] border-slate-200/80 text-slate-700 hover:bg-slate-100/80"
+                                      ? "bg-white border-violet-700 text-slate-900 ring-2 ring-violet-700/20 shadow-sm"
+                                      : "bg-[#f8fafc] border-slate-200/80 text-slate-700 hover:bg-slate-100/80"
                                       }`}
                                   >
                                     {opt}
@@ -396,7 +397,7 @@ export default function ContactSection() {
                               {isLoading
                                 ? "Submitting..."
                                 : formStep === 3
-                                  ? "Plan my ascent"
+                                  ? "Plan Submit"
                                   : "Next"}
                             </span>
                             {!isLoading && <ArrowRight className="w-4 h-4 text-[#062c19]" />}

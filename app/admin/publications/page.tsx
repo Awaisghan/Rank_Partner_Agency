@@ -24,9 +24,9 @@ import {
   ImageIcon,
 } from "lucide-react";
 
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 // Types
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 interface PubForm {
   name: string;
   url: string;
@@ -34,6 +34,8 @@ interface PubForm {
   logoText: string;
   logoBg: string;
   logoTextColor: string;
+  logoFile: File | null;
+  logoUrl: string;
   isNew: boolean;
   price: string;
   da: string;
@@ -66,6 +68,8 @@ const EMPTY_FORM: PubForm = {
   logoText: "",
   logoBg: "#000000",
   logoTextColor: "#ffffff",
+  logoFile: null,
+  logoUrl: "",
   isNew: false,
   price: "",
   da: "",
@@ -100,9 +104,9 @@ const TAT_OPTIONS = [
   "3+ Weeks",
 ];
 
-// ─────────────────────────────────────────────────────────────
-// Helper: pub → form
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
+// Helper: pub -> form
+// -------------------------------------------------------------
 function pubToForm(pub: Publication): PubForm {
   return {
     name: pub.name,
@@ -111,6 +115,8 @@ function pubToForm(pub: Publication): PubForm {
     logoText: pub.logoText,
     logoBg: pub.logoBg ?? "#000000",
     logoTextColor: pub.logoTextColor ?? "#ffffff",
+    logoFile: null,
+    logoUrl: (pub as any).logoUrl ?? "",
     isNew: pub.isNew ?? false,
     price: String(pub.price),
     da: String(pub.da),
@@ -119,11 +125,11 @@ function pubToForm(pub: Publication): PubForm {
     region: pub.region.join(", "),
     genres: pub.genres.join(", "),
     genreCount: pub.genreCount ? String(pub.genreCount) : "",
-    sponsored: pub.sponsored,
-    indexed: pub.indexed,
-    doFollow: pub.doFollow,
+    sponsored: pub.sponsored ? "Yes" : "No",
+    indexed: pub.indexed ? "Yes" : "No",
+    doFollow: pub.doFollow ? "Yes" : "No",
     hasExample: pub.hasExample,
-    llmAeo: pub.llmAeo,
+    llmAeo: pub.llmAeo ? "Yes" : "No",
     nicheAge18: (pub as any).nicheAge18 ?? false,
     nicheAge18Multiplier: (pub as any).nicheAge18Multiplier ?? "",
     nicheHeart: (pub as any).nicheHeart ?? false,
@@ -137,9 +143,9 @@ function pubToForm(pub: Publication): PubForm {
   };
 }
 
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 // Sub-components
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 function StatCard({
   label,
   value,
@@ -240,13 +246,13 @@ function FormCheckbox({
   );
 }
 
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 // Main Page
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function AdminPublicationsPage() {
-  // ── State ──────────────────────────────────────────────────
+  // -- State --------------------------------------------------
   const { data: apiResponse, error, isLoading, mutate } = useSWR<{ items: Publication[]; pagination: any }>("/api/publications", fetcher);
   const publications = apiResponse?.items || [];
 
@@ -262,7 +268,7 @@ export default function AdminPublicationsPage() {
   const [formError, setFormError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  // ── Derived ────────────────────────────────────────────────
+  // -- Derived ------------------------------------------------
   const filtered = useMemo(() => {
     let list = [...publications];
     if (search)
@@ -284,7 +290,7 @@ export default function AdminPublicationsPage() {
     publications.reduce((s, p) => s + p.price, 0) / (publications.length || 1)
   );
 
-  // ── Handlers ───────────────────────────────────────────────
+  // -- Handlers -----------------------------------------------
   const openAdd = () => {
     setForm(EMPTY_FORM);
     setFormError("");
@@ -327,6 +333,22 @@ export default function AdminPublicationsPage() {
     setFormError("");
     if (!validateForm()) return;
 
+    // Upload logo file first if present
+    let finalLogoUrl = form.logoUrl;
+    if (form.logoFile) {
+      try {
+        const fd = new FormData();
+        fd.append("file", form.logoFile);
+        const uploadRes = await fetch("/api/upload", { method: "POST", body: fd });
+        if (!uploadRes.ok) throw new Error("Logo upload failed");
+        const uploadData = await uploadRes.json();
+        finalLogoUrl = uploadData.url;
+      } catch (err: any) {
+        setFormError(err.message || "Logo upload failed");
+        return;
+      }
+    }
+
     // Use empty string for id if adding, so the backend generates a real UUID
     const built = {
       id: editingPub?.id ?? "",
@@ -336,6 +358,7 @@ export default function AdminPublicationsPage() {
       logoText: form.logoText.trim().slice(0, 4).toUpperCase(), // Schema max is 4
       logoBg: form.logoBg,
       logoTextColor: form.logoTextColor,
+      logoUrl: finalLogoUrl || undefined,
       isNew: form.isNew,
       price: Number(form.price),
       da: Number(form.da),
@@ -343,10 +366,10 @@ export default function AdminPublicationsPage() {
       tat: form.tat,
       region: form.region.split(",").map((r) => r.trim()).filter(Boolean),
       genres: form.genres.split(",").map((g) => g.trim()).filter(Boolean),
-      sponsored: String(form.sponsored) === "true",
-      indexed: String(form.indexed) === "true",
-      doFollow: String(form.doFollow) === "true",
-      llmAeo: String(form.llmAeo) === "true",
+      sponsored: form.sponsored === "Yes",
+      indexed: form.indexed === "Yes",
+      doFollow: form.doFollow === "Yes",
+      llmAeo: form.llmAeo === "Yes",
       nicheAge18: form.nicheAge18,
       nicheAge18Multiplier: form.nicheAge18Multiplier.trim() || undefined,
       nicheHeart: form.nicheHeart,
@@ -423,12 +446,12 @@ export default function AdminPublicationsPage() {
       <ChevronDown className="w-3 h-3 opacity-30" />
     );
 
-  // ─────────────────────────────────────────────────────────
+  // ---------------------------------------------------------
   // Render
-  // ─────────────────────────────────────────────────────────
+  // ---------------------------------------------------------
   return (
     <div className="p-6 min-h-screen">
-      {/* ── Page Header ── */}
+      {/* -- Page Header -- */}
       <div className="flex items-start justify-between mb-6 gap-4">
         <div>
           <div className="flex items-center gap-2 text-[11px] text-slate-400 font-semibold mb-1">
@@ -453,14 +476,14 @@ export default function AdminPublicationsPage() {
         </button>
       </div>
 
-      {/* ── Stats Row ── */}
+      {/* -- Stats Row -- */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
         <StatCard label="Total Publications" value={publications.length} color="slate" />
         <StatCard label="Marked as New" value={newCount} color="green" />
         <StatCard label="Showing in Table" value={filtered.length} color="slate" />
       </div>
 
-      {/* ── Success Toast ── */}
+      {/* -- Success Toast -- */}
       {successMsg && (
         <div className="mb-4 flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 text-xs font-bold px-4 py-2.5 rounded-lg shadow-xs">
           <Check className="w-3.5 h-3.5 text-green-600" />
@@ -468,7 +491,7 @@ export default function AdminPublicationsPage() {
         </div>
       )}
 
-      {/* ── Search Bar ── */}
+      {/* -- Search Bar -- */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs px-4 py-3 mb-4 flex items-center gap-3">
         <Search className="w-4 h-4 text-slate-400 shrink-0" />
         <input
@@ -488,7 +511,7 @@ export default function AdminPublicationsPage() {
         </span>
       </div>
 
-      {/* ── Table (Matching Screenshot Columns exactly) ── */}
+      {/* -- Table (Matching Screenshot Columns exactly) -- */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
         {isLoading ? (
           <div className="py-20 flex flex-col items-center justify-center">
@@ -569,15 +592,19 @@ export default function AdminPublicationsPage() {
                   {/* 1. PUBLICATION */}
                   <td className="px-3.5 py-3">
                     <div className="flex items-center gap-2.5">
-                      <div
-                        className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs leading-none"
-                        style={{
-                          backgroundColor: pub.logoBg ?? "#000",
-                          color: pub.logoTextColor ?? "#fff",
-                        }}
-                      >
-                        {pub.logoText}
-                      </div>
+                      {(pub as any).logoUrl ? (
+                        <img src={(pub as any).logoUrl} alt={pub.name} className="w-11 h-11 rounded-full object-cover shrink-0 shadow-xs border border-slate-200/60" />
+                      ) : (
+                        <div
+                          className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-xs shrink-0 shadow-xs leading-none"
+                          style={{
+                            backgroundColor: pub.logoBg ?? "#000",
+                            color: pub.logoTextColor ?? "#fff",
+                          }}
+                        >
+                          {pub.logoText}
+                        </div>
+                      )}
                       <div className="flex flex-col min-w-0">
                         <div className="flex items-center gap-1.5">
                           <span className="font-semibold text-slate-900 text-[12.5px] leading-tight">
@@ -672,7 +699,7 @@ export default function AdminPublicationsPage() {
                         <ExternalLink className="w-3 h-3 stroke-[2.2]" />
                       </a>
                     ) : (
-                      <span className="text-slate-300">—</span>
+                      <span className="text-slate-300">-</span>
                     )}
                   </td>
 
@@ -754,9 +781,9 @@ export default function AdminPublicationsPage() {
         )}
       </div>
 
-      {/* ─────────────────────────────────────────────────────
+      {/* -----------------------------------------------------
           ADD / EDIT MODAL
-      ───────────────────────────────────────────────────── */}
+      ----------------------------------------------------- */}
       {modalMode && (
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 backdrop-blur-sm p-4 overflow-y-auto">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-6 overflow-hidden flex flex-col">
@@ -793,7 +820,7 @@ export default function AdminPublicationsPage() {
               {/* Section 1: Identity */}
               <div>
                 <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest mb-3 pb-1 border-b border-slate-100">
-                  1 — Publication Identity & URLs
+                  1 - Publication Identity & URLs
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
@@ -822,7 +849,7 @@ export default function AdminPublicationsPage() {
                   </div>
                   <div className="sm:col-span-2">
                     <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wide mb-1">
-                      Example Article Link URL (For "View ↗" Column)
+                      Example Article Link URL (For "View (ext)" Column)
                     </label>
                     <input
                       type="text"
@@ -831,6 +858,34 @@ export default function AdminPublicationsPage() {
                       placeholder="e.g. https://hoodcriticmagazine.com/sample-article"
                       className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#e63939] focus:ring-1 focus:ring-[#e63939] transition-all"
                     />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wide mb-1">
+                      Publication Logo
+                    </label>
+                    <div className="flex items-center gap-3">
+                      <div className="shrink-0">
+                        {(form.logoFile || form.logoUrl) ? (
+                          <img src={form.logoFile ? URL.createObjectURL(form.logoFile) : form.logoUrl} alt="Logo" className="w-12 h-12 rounded-full object-cover shadow border border-slate-200" />
+                        ) : (
+                          <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200">
+                            <ImageIcon className="w-5 h-5 text-slate-400" />
+                          </div>
+                        )}
+                      </div>
+                      <label className="flex-1 flex items-center gap-2 border border-dashed border-slate-300 rounded-lg px-3 py-2 cursor-pointer hover:border-[#e63939] hover:bg-red-50/30 transition-all">
+                        <ImageIcon className="w-4 h-4 text-slate-400" />
+                        <span className="text-sm text-slate-500">{form.logoFile ? form.logoFile.name : (form.logoUrl ? "Change logo..." : "Upload logo...")}</span>
+                        <input type="file" className="hidden" accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                          onChange={(e) => { const file = e.target.files?.[0]; if (file) setForm({ ...form, logoFile: file }); }} />
+                      </label>
+                      {(form.logoFile || form.logoUrl) && (
+                        <button type="button" onClick={() => setForm({ ...form, logoFile: null, logoUrl: "" })} className="p-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-500 cursor-pointer">
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+                    <p className="text-[10px] text-slate-400 mt-1">PNG, JPG, WEBP, SVG - Max 2MB</p>
                   </div>
                   <div>
                     <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wide mb-1">
@@ -881,12 +936,16 @@ export default function AdminPublicationsPage() {
 
                   {/* Preview */}
                   <div className="sm:col-span-2 flex items-center gap-3 bg-slate-50 rounded-xl p-3 border border-slate-100">
-                    <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0 shadow"
-                      style={{ backgroundColor: form.logoBg, color: form.logoTextColor }}
-                    >
-                      {form.logoText || "?"}
-                    </div>
+                    {(form.logoFile || form.logoUrl) ? (
+                      <img src={form.logoFile ? URL.createObjectURL(form.logoFile) : form.logoUrl} alt="Logo" className="w-11 h-11 rounded-full object-cover shrink-0 shadow border border-slate-200" />
+                    ) : (
+                      <div
+                        className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-xs shrink-0 shadow"
+                        style={{ backgroundColor: form.logoBg, color: form.logoTextColor }}
+                      >
+                        {form.logoText || "?"}
+                      </div>
+                    )}
                     <div>
                       <p className="text-sm font-semibold text-slate-900 leading-tight">
                         {form.name || "Publication Name"}
@@ -909,7 +968,7 @@ export default function AdminPublicationsPage() {
               {/* Section 2: Pricing & Metrics */}
               <div>
                 <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest mb-3 pb-1 border-b border-slate-100">
-                  2 — Pricing & Metrics
+                  2 - Pricing & Metrics
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {[
@@ -950,7 +1009,7 @@ export default function AdminPublicationsPage() {
               {/* Section 3: Coverage */}
               <div>
                 <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest mb-3 pb-1 border-b border-slate-100">
-                  3 — Coverage
+                  3 - Coverage
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
@@ -995,7 +1054,7 @@ export default function AdminPublicationsPage() {
               {/* Section 4: Attributes */}
               <div>
                 <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest mb-3 pb-1 border-b border-slate-100">
-                  4 — Publication Attributes
+                  4 - Publication Attributes
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   <YesNoToggle value={form.sponsored} onChange={(v) => f("sponsored", v)} label="Sponsored" />
@@ -1005,7 +1064,7 @@ export default function AdminPublicationsPage() {
                   <div className="space-y-1">
                     <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wide">Has Example Link</label>
                     <div className="pt-1">
-                      <FormCheckbox checked={form.hasExample} onChange={(v) => f("hasExample", v)} label="Yes, shows View ↗" />
+                      <FormCheckbox checked={form.hasExample} onChange={(v) => f("hasExample", v)} label="Yes, shows View (ext)" />
                     </div>
                   </div>
                 </div>
@@ -1014,7 +1073,7 @@ export default function AdminPublicationsPage() {
               {/* Section 5: Niches */}
               <div>
                 <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest mb-3 pb-1 border-b border-slate-100">
-                  5 — Niches
+                  5 - Niches
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3 mb-3">
                   <div className="flex items-center gap-2">
@@ -1070,9 +1129,9 @@ export default function AdminPublicationsPage() {
         </div>
       )}
 
-      {/* ─────────────────────────────────────────────────────
+      {/* -----------------------------------------------------
           DELETE CONFIRM MODAL
-      ───────────────────────────────────────────────────── */}
+      ----------------------------------------------------- */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">

@@ -18,7 +18,7 @@ import {
   LogOut,
 } from "lucide-react";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// --- Types -------------------------------------------------------------------
 
 interface Publication {
   id: string;
@@ -27,6 +27,7 @@ interface Publication {
   logoText?: string;
   logoBg?: string;
   logoTextColor?: string;
+  logoUrl?: string;
   genres: string[];
   price: number;
   da: number;
@@ -79,6 +80,7 @@ interface ListiclePublication {
   logoText: string;
   logoBg: string;
   logoTextColor: string;
+  logoUrl?: string;
   genres: string[];
   top5Price: string;
   top10Price: string;
@@ -100,6 +102,7 @@ interface BestSellerPublication {
   logoText: string;
   logoBg: string;
   logoTextColor: string;
+  logoUrl?: string;
   genres: string[];
   price: string;
   da: number;
@@ -132,17 +135,18 @@ interface SocialPostPublication {
   logoText: string;
   logoBg: string;
   logoTextColor: string;
+  logoUrl?: string;
   platforms: string[];
   price: string;
   tat: string;
   exampleUrl?: string;
 }
 
-// ─── Fetcher ─────────────────────────────────────────────────────────────────
+// --- Fetcher -----------------------------------------------------------------
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-// ─── Loading Spinner ─────────────────────────────────────────────────────────
+// --- Loading Spinner ---------------------------------------------------------
 
 const LoadingRow = ({ cols }: { cols: number }) => (
   <tr>
@@ -171,7 +175,7 @@ const EmptyRow = ({ cols, label }: { cols: number; label: string }) => (
   </tr>
 );
 
-// ─── Social Icons ─────────────────────────────────────────────────────────────
+// --- Social Icons -------------------------------------------------------------
 
 const InstagramIcon = () => (
   <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
@@ -191,7 +195,7 @@ const LinkedinIcon = () => (
   </svg>
 );
 
-// ─── Shared Link Cell ─────────────────────────────────────────────────────────
+// --- Shared Link Cell ---------------------------------------------------------
 
 const ViewLink = ({ url }: { url?: string }) =>
   url ? (
@@ -201,10 +205,10 @@ const ViewLink = ({ url }: { url?: string }) =>
       <ExternalLink className="w-3 h-3" />
     </a>
   ) : (
-    <span className="text-slate-300">—</span>
+    <span className="text-slate-300">--</span>
   );
 
-// ─── Niche Icon with Multiplier Badge ──────────────────────────────────────────
+// --- Niche Icon with Multiplier Badge ------------------------------------------
 const NicheIcon = ({ children, multiplier }: { children: React.ReactNode, multiplier?: string }) => (
   <div className="relative inline-flex items-center justify-center p-0.5">
     {children}
@@ -216,7 +220,7 @@ const NicheIcon = ({ children, multiplier }: { children: React.ReactNode, multip
   </div>
 );
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+// --- Main Page ----------------------------------------------------------------
 
 export default function PricingPage() {
   const router = useRouter();
@@ -232,7 +236,7 @@ export default function PricingPage() {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
 
-  // ─── SWR Data Fetching for all tabs ────────────────────────────────────────
+  // --- SWR Data Fetching for all tabs ----------------------------------------
   const { data: pubData, error: pubError, isLoading: pubLoading } = useSWR<{ items: Publication[], pagination: any }>("/api/publications", fetcher);
   const { data: btvData, error: btvError, isLoading: btvLoading } = useSWR<{ items: TVBroadcastItem[], pagination: any }>("/api/broadcast-television", fetcher);
   const { data: dtvData, error: dtvError, isLoading: dtvLoading } = useSWR<{ items: DigitalTVItem[], pagination: any }>("/api/digital-television", fetcher);
@@ -320,7 +324,7 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen w-full bg-[#f4f6f8] text-slate-800 font-sans selection:bg-red-100">
-      {/* ── HEADER ─────────────────────────────────────────────────────────── */}
+      {/* -- HEADER ----------------------------------------------------------- */}
       <header className="w-full bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between shadow-xs sticky top-0 z-40">
         <Link href="/" className="flex items-center gap-2.5 group">
           <img
@@ -335,7 +339,7 @@ export default function PricingPage() {
         </button>
       </header>
 
-      {/* ── MAIN ────────────────────────────────────────────────────────────── */}
+      {/* -- MAIN -------------------------------------------------------------- */}
       <main className="w-full px-3 sm:px-5 py-4 space-y-4">
         {/* Title Row */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-start gap-4">
@@ -364,7 +368,7 @@ export default function PricingPage() {
           })}
         </div>
 
-        {/* ── SIDEBAR + TABLE ─────────────────────────────────────────────── */}
+        {/* -- SIDEBAR + TABLE ----------------------------------------------- */}
         <div className="flex flex-col lg:flex-row gap-3.5 items-start w-full">
           {/* Sidebar */}
           <aside className="w-full lg:w-[190px] xl:w-[200px] shrink-0 space-y-3 bg-[#f8fafc] p-3 rounded-md border border-slate-200 shadow-xs">
@@ -445,7 +449,7 @@ export default function PricingPage() {
 
             <div className="bg-white border border-slate-200 shadow-xs overflow-x-auto w-full">
 
-              {/* ── PUBLICATIONS ─────────────────────────────────────────── */}
+              {/* -- PUBLICATIONS ------------------------------------------- */}
               {activeTab === "PUBLICATIONS" && (
                 <table className="w-full text-left border-collapse text-xs border border-slate-200">
                   <thead>
@@ -476,10 +480,14 @@ export default function PricingPage() {
                                 <td className="py-2.5 px-3 border-r border-slate-200">
                                   <div className="flex items-center justify-between gap-2">
                                     <div className="flex items-center gap-2.5 min-w-0">
-                                      <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0 shadow-xs overflow-hidden leading-none tracking-tighter"
-                                        style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>
-                                        {pub.logoText}
-                                      </div>
+                                      {pub.logoUrl ? (
+                                        <img src={pub.logoUrl} alt={pub.name} className="w-11 h-11 rounded-full object-cover shrink-0 shadow-xs border border-slate-200/60" />
+                                      ) : (
+                                        <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-xs shrink-0 shadow-xs overflow-hidden leading-none tracking-tighter"
+                                          style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>
+                                          {pub.logoText}
+                                        </div>
+                                      )}
                                       <div className="flex flex-col min-w-0">
                                         <div className="flex items-center gap-1.5">
                                           <span className="font-semibold text-slate-900 text-[13px] leading-tight truncate">{pub.name}</span>
@@ -515,7 +523,7 @@ export default function PricingPage() {
                                       <ExternalLink className="w-3 h-3 stroke-[2.2]" />
                                     </a>
                                   ) : (
-                                    <span className="text-slate-300">—</span>
+                                    <span className="text-slate-300">--</span>
                                   )}
                                 </td>
                                 <td className="py-2.5 px-2 text-center font-medium text-slate-700 text-[12px] border-r border-slate-200">{pub.llmAeo ? "Yes" : "No"}</td>
@@ -537,7 +545,7 @@ export default function PricingPage() {
                 </table>
               )}
 
-              {/* ── BROADCAST TELEVISION ─────────────────────────────────── */}
+              {/* -- BROADCAST TELEVISION ----------------------------------- */}
               {activeTab === "BROADCAST TELEVISION" && (
                 <table className="w-full text-left border-collapse text-xs border border-slate-200">
                   <thead>
@@ -576,7 +584,7 @@ export default function PricingPage() {
                 </table>
               )}
 
-              {/* ── DIGITAL TELEVISION ───────────────────────────────────── */}
+              {/* -- DIGITAL TELEVISION ------------------------------------- */}
               {activeTab === "DIGITAL TELEVISION" && (
                 <table className="w-full text-left border-collapse text-xs border border-slate-200">
                   <thead>
@@ -619,7 +627,7 @@ export default function PricingPage() {
                 </table>
               )}
 
-              {/* ── LISTICLES ─────────────────────────────────────────────── */}
+              {/* -- LISTICLES ----------------------------------------------- */}
               {activeTab === "LISTICLES" && (
                 <table className="w-full text-left border-collapse text-xs border border-slate-200">
                   <thead>
@@ -647,8 +655,12 @@ export default function PricingPage() {
                             <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
                               <td className="py-2.5 px-3 border-r border-slate-200">
                                 <div className="flex items-center gap-2.5 min-w-0">
-                                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0 shadow-xs leading-none"
-                                    style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
+                                  {pub.logoUrl ? (
+                                    <img src={pub.logoUrl} alt={pub.name} className="w-11 h-11 rounded-full object-cover shrink-0 shadow-xs border border-slate-200/60" />
+                                  ) : (
+                                    <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-xs shrink-0 shadow-xs leading-none"
+                                      style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
+                                  )}
                                   <div className="flex flex-col min-w-0">
                                     <span className="font-semibold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
                                     <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
@@ -681,7 +693,7 @@ export default function PricingPage() {
                                     <ExternalLink className="w-3 h-3 stroke-[2.2]" />
                                   </a>
                                 ) : (
-                                  <span className="text-slate-300">—</span>
+                                  <span className="text-slate-300">--</span>
                                 )}
                               </td>
                               <td className="py-2.5 px-2 text-center text-slate-700">{pub.llmAeo ? "Yes" : "No"}</td>
@@ -691,7 +703,7 @@ export default function PricingPage() {
                 </table>
               )}
 
-              {/* ── BEST SELLERS ─────────────────────────────────────────── */}
+              {/* -- BEST SELLERS ------------------------------------------- */}
               {activeTab === "BEST SELLERS" && (
                 <table className="w-full text-left border-collapse text-xs border border-slate-200">
                   <thead>
@@ -719,8 +731,12 @@ export default function PricingPage() {
                             <tr key={pub.id} className="hover:bg-slate-50/80 transition-colors">
                               <td className="py-2.5 px-3 border-r border-slate-200">
                                 <div className="flex items-center gap-2.5 min-w-0">
-                                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs leading-none"
-                                    style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
+                                  {pub.logoUrl ? (
+                                    <img src={pub.logoUrl} alt={pub.name} className="w-11 h-11 rounded-full object-cover shrink-0 shadow-xs border border-slate-200/60" />
+                                  ) : (
+                                    <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-xs shrink-0 shadow-xs leading-none"
+                                      style={{ backgroundColor: pub.logoBg || "#000", color: pub.logoTextColor || "#fff" }}>{pub.logoText}</div>
+                                  )}
                                   <div className="flex flex-col min-w-0">
                                     <span className="font-bold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
                                     <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
@@ -763,7 +779,7 @@ export default function PricingPage() {
                 </table>
               )}
 
-              {/* ── PRINT ────────────────────────────────────────────────── */}
+              {/* -- PRINT -------------------------------------------------- */}
               {activeTab === "PRINT" && (
                 <>
                   {printLoading ? (
@@ -853,7 +869,7 @@ export default function PricingPage() {
                 </>
               )}
 
-              {/* ── SOCIAL POST ──────────────────────────────────────────── */}
+              {/* -- SOCIAL POST -------------------------------------------- */}
               {activeTab === "SOCIAL POST" && (
                 <table className="w-full text-left border-collapse text-xs border border-slate-200">
                   <thead>
@@ -874,8 +890,12 @@ export default function PricingPage() {
                             <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
                               <td className="py-2.5 px-3 border-r border-slate-200">
                                 <div className="flex items-center gap-2.5">
-                                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs leading-none"
-                                    style={{ backgroundColor: item.logoBg || "#000", color: item.logoTextColor || "#fff" }}>{item.logoText}</div>
+                                  {item.logoUrl ? (
+                                    <img src={item.logoUrl} alt={item.name} className="w-11 h-11 rounded-full object-cover shrink-0 shadow-xs border border-slate-200/60" />
+                                  ) : (
+                                    <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-xs shrink-0 shadow-xs leading-none"
+                                      style={{ backgroundColor: item.logoBg || "#000", color: item.logoTextColor || "#fff" }}>{item.logoText}</div>
+                                  )}
                                   <span className="font-bold text-slate-900 text-[13px]">{item.name}</span>
                                 </div>
                               </td>

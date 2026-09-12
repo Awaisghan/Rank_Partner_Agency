@@ -19,8 +19,8 @@ interface DigitalTVItem {
   station: string;
   rate: string;
   tat: string;
-  sponsored: "Yes" | "No";
-  indexed: "Yes" | "No";
+  sponsored: boolean;
+  indexed: boolean;
   segmentLength: string;
   location: string;
   programName: string;
@@ -85,8 +85,8 @@ export default function DigitalTelevisionAdminPage() {
       station: item.station,
       rate: item.rate,
       tat: item.tat,
-      sponsored: item.sponsored,
-      indexed: item.indexed,
+      sponsored: item.sponsored ? "Yes" : "No",
+      indexed: item.indexed ? "Yes" : "No",
       segmentLength: item.segmentLength,
       location: item.location,
       programName: item.programName,
@@ -105,8 +105,8 @@ export default function DigitalTelevisionAdminPage() {
       station: form.station,
       rate: form.rate,
       tat: form.tat,
-      sponsored: String(form.sponsored) === "true",
-      indexed: String(form.indexed) === "true",
+      sponsored: form.sponsored === "Yes",
+      indexed: form.indexed === "Yes",
       segmentLength: form.segmentLength,
       location: form.location,
       programName: form.programName,

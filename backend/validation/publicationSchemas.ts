@@ -8,9 +8,10 @@ import { z } from "zod";
 export const publicationSchema = z.object({
   name: z.string().min(1, "Name is required"),
   domain: z.string().optional().nullable(),
-  logoText: z.string().min(1, "Logo text is required").max(4, "Max 4 characters"),
+  logoText: z.string().default(""),
   logoBg: z.string().default("#000000"),
   logoTextColor: z.string().default("#ffffff"),
+  logoUrl: z.string().optional().nullable(),
   isNew: z.boolean().default(false),
   tag: z.string().optional().nullable(),
   price: z.number().min(0, "Price must be positive"),

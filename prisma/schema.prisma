@@ -47,9 +47,10 @@ model Publication {
   id             String   @id @default(uuid())
   name           String
   domain         String?
-  logoText       String
+  logoText       String   @default("")
   logoBg         String   @default("#000000")
   logoTextColor  String   @default("#ffffff")
+  logoUrl        String?
   isNew          Boolean  @default(false)
   tag            String?
   price          Int
@@ -140,9 +141,10 @@ model Listicle {
   name          String
   domain        String
   tag           String?
-  logoText      String
+  logoText      String   @default("")
   logoBg        String   @default("#000000")
   logoTextColor String   @default("#ffffff")
+  logoUrl       String?
   genres        String[]
   top5Price     String
   top10Price    String
@@ -171,9 +173,10 @@ model BestSeller {
   id             String   @id @default(uuid())
   name           String
   domain         String
-  logoText       String
+  logoText       String   @default("")
   logoBg         String   @default("#000000")
   logoTextColor  String   @default("#ffffff")
+  logoUrl        String?
   genres         String[]
   price          String
   da             Int
@@ -232,9 +235,10 @@ model SocialPost {
   id            String   @id @default(uuid())
   name          String
   category      String
-  logoText      String
+  logoText      String   @default("")
   logoBg        String   @default("#000000")
   logoTextColor String   @default("#ffffff")
+  logoUrl       String?
   platforms     String[]
   price         String
   tat           String
