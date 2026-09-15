@@ -14,6 +14,7 @@ import {
   AlertTriangle,
   ImageIcon,
 } from "lucide-react";
+import IconTooltip from "../../components/IconTooltip";
 
 // Inline Social Icon Components
 const InstagramIcon = () => (
@@ -286,7 +287,7 @@ export default function SocialPostAdminPage() {
                 <th className="px-4 py-3 text-center">PRICE</th>
                 <th className="px-3.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    TAT <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    TAT <IconTooltip title="Turn Around Time." subtitle="Estimated time to deliver"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-4 py-3 text-center">EXAMPLE LINK</th>

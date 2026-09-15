@@ -10,6 +10,7 @@ import {
   Star,
   HelpCircle,
   ExternalLink,
+  ArrowUpRight,
   Heart,
   Copyright,
   Dices,
@@ -17,6 +18,25 @@ import {
   ChevronDown,
   LogOut,
 } from "lucide-react";
+import IconTooltip from "../components/IconTooltip";
+
+const DomainLink = ({ domain, name }: { domain?: string; name?: string }) => {
+  const domainStr = domain || (name ? `${name.toLowerCase().replace(/\s+/g, "")}.com` : "");
+  if (!domainStr) return null;
+  const href = domainStr.startsWith("http://") || domainStr.startsWith("https://") ? domainStr : `https://${domainStr}`;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-0.5 text-[10.5px] text-slate-400 hover:text-slate-700 hover:underline font-normal truncate mt-0.5"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <span className="truncate">{domainStr}</span>
+      <ArrowUpRight className="w-3 h-3 shrink-0 text-slate-400" />
+    </a>
+  );
+};
 
 // --- Types -------------------------------------------------------------------
 
@@ -24,6 +44,7 @@ interface Publication {
   id: string;
   name: string;
   url?: string;
+  domain?: string;
   logoText?: string;
   logoBg?: string;
   logoTextColor?: string;
@@ -76,6 +97,7 @@ interface ListiclePublication {
   id: string;
   name: string;
   url: string;
+  domain?: string;
   tag?: string;
   logoText: string;
   logoBg: string;
@@ -99,6 +121,7 @@ interface BestSellerPublication {
   id: string;
   name: string;
   url: string;
+  domain?: string;
   logoText: string;
   logoBg: string;
   logoTextColor: string;
@@ -208,17 +231,52 @@ const ViewLink = ({ url }: { url?: string }) =>
     <span className="text-slate-300">--</span>
   );
 
-// --- Niche Icon with Multiplier Badge ------------------------------------------
-const NicheIcon = ({ children, multiplier }: { children: React.ReactNode, multiplier?: string }) => (
-  <div className="relative inline-flex items-center justify-center p-0.5">
-    {children}
-    {multiplier && (
-      <span className="absolute -top-1.5 -right-2 bg-[#f8d7da] text-[#a94442] text-[8.5px] font-black px-1.5 py-0.5 rounded-full leading-none shadow-xs z-10">
-        {multiplier}
-      </span>
-    )}
-  </div>
-);
+// --- Niche Icon with Multiplier Badge & Price Calculation Tooltip --------------
+const NicheIcon = ({
+  children,
+  multiplier,
+  label,
+  basePrice,
+}: {
+  children: React.ReactNode;
+  multiplier?: string;
+  label?: string;
+  basePrice?: string | number;
+}) => {
+  let numPrice = 0;
+  if (typeof basePrice === "number") {
+    numPrice = basePrice;
+  } else if (typeof basePrice === "string") {
+    const cleaned = basePrice.replace(/[^0-9.]/g, "");
+    numPrice = parseFloat(cleaned) || 0;
+  }
+
+  let mult = 1;
+  if (multiplier) {
+    const cleanedMult = multiplier.replace(/[^0-9.]/g, "");
+    const parsedMult = parseFloat(cleanedMult);
+    if (!isNaN(parsedMult) && parsedMult > 0) {
+      mult = parsedMult;
+    }
+  }
+
+  const finalPrice = Math.round(numPrice * mult);
+  const formattedPrice = `$${finalPrice.toLocaleString()}`;
+  const tooltipText = label ? `${label} : ${formattedPrice}` : formattedPrice;
+
+  return (
+    <IconTooltip title={tooltipText} position="top" maxWidth="max-w-[240px]">
+      <div className="relative inline-flex items-center justify-center p-0.5">
+        {children}
+        {multiplier && (
+          <span className="absolute -top-1.5 -right-2 bg-[#f8d7da] text-[#a94442] text-[8.5px] font-black px-1.5 py-0.5 rounded-full leading-none shadow-xs z-10">
+            {multiplier}
+          </span>
+        )}
+      </div>
+    </IconTooltip>
+  );
+};
 
 // --- Main Page ----------------------------------------------------------------
 
@@ -457,15 +515,15 @@ export default function PricingPage() {
                       <th className={THL}>PUBLICATION</th>
                       <th className={TH}>GENRES</th>
                       <th className={TH}>PRICE</th>
-                      <th className={TH} style={{ width: 40 }}>DA <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
-                      <th className={TH} style={{ width: 40 }}>DR <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
-                      <th className={TH}>TAT <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH} style={{ width: 40 }}>DA <IconTooltip title="Domain Authority" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
+                      <th className={TH} style={{ width: 40 }}>DR <IconTooltip title="Domain Rating" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
+                      <th className={TH}>TAT <IconTooltip title="Turn Around Time." subtitle="Estimated time to deliver"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className={TH}>REGION</th>
                       <th className={TH}>SPONSORED</th>
                       <th className={TH}>INDEXED</th>
-                      <th className={TH}>DO FOLLOW <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>DO FOLLOW <IconTooltip title="Disclaimer" subtitle="1. We guarantee do-follow backlinks when the article is published but not for the life time of the article due to google policy changes. 2. Do Follow stating that if it labeled as No we do not guarantee the type of code in the back end for the links." maxWidth="max-w-[280px]"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className={TH}>EXAMPLE LINK</th>
-                      <th className={TH}>LLM/AEO <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>LLM/AEO <IconTooltip title="LLM/AEO" subtitle="If Yes then the publication can be cited and read by AEO's"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className="py-2.5 px-2 text-center">NICHES</th>
                     </tr>
                   </thead>
@@ -493,7 +551,7 @@ export default function PricingPage() {
                                           <span className="font-semibold text-slate-900 text-[13px] leading-tight truncate">{pub.name}</span>
                                           {pub.isNew && <span className="inline-block bg-[#28a745] text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded w-fit">New</span>}
                                         </div>
-                                        <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
+                                        <DomainLink domain={pub.url || pub.domain} name={pub.name} />
                                       </div>
                                     </div>
                                     <button onClick={() => toggleFavorite(pub.id)} className="text-slate-300 hover:text-[#e63939] transition-colors p-0.5 cursor-pointer shrink-0">
@@ -530,11 +588,11 @@ export default function PricingPage() {
                                 <td className="py-2.5 px-2 text-center">
                                   <div className="flex flex-col items-center justify-center gap-1">
                                     <div className="flex items-center justify-center gap-3">
-                                      {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
-                                      {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                      {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                      {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                      {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                      {(pub as any).nicheAge18 && <NicheIcon label="Erotic Content Price" basePrice={pub.price} multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
+                                      {(pub as any).nicheHeart && <NicheIcon label="Health Content Price" basePrice={pub.price} multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                      {(pub as any).nicheCannabis && <NicheIcon label="CBD Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                      {(pub as any).nicheCopyright && <NicheIcon label="Crypto Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                      {(pub as any).nicheCasino && <NicheIcon label="Gambling Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
                                     </div>
                                   </div>
                                 </td>
@@ -568,7 +626,27 @@ export default function PricingPage() {
                         filteredBroadcastTV.length === 0 ? <EmptyRow cols={10} label="broadcast TV stations" /> :
                           filteredBroadcastTV.map((item) => (
                             <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
-                              <td className="py-2.5 px-3 border-r border-slate-200 font-semibold text-slate-900">{item.affiliate}</td>
+                               <td className="py-2.5 px-3 border-r border-slate-200">
+                                 <div className="flex flex-col">
+                                   <span className="font-bold text-slate-900 text-[13px] leading-tight">
+                                     {item.affiliate}
+                                   </span>
+                                   {item.exampleUrl ? (
+                                     <a
+                                       href={item.exampleUrl}
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       className="inline-flex items-center gap-1 font-bold text-slate-700 hover:text-[#e63939] underline text-[11px] mt-0.5"
+                                       onClick={(e) => e.stopPropagation()}
+                                     >
+                                       <span>Example</span>
+                                       <ExternalLink className="w-3 h-3" />
+                                     </a>
+                                   ) : (
+                                     <span className="text-[11px] text-slate-400 mt-0.5">Example ↗</span>
+                                   )}
+                                 </div>
+                               </td>
                               <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.calls}</td>
                               <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.state}</td>
                               <td className="py-2.5 px-2 text-center border-r border-slate-200 text-slate-700">{item.market}</td>
@@ -636,15 +714,15 @@ export default function PricingPage() {
                       <th className={TH}>GENRES</th>
                       <th className={TH}>TOP 5 PRICE</th>
                       <th className={TH}>TOP 10 PRICE</th>
-                      <th className={TH}>DA <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
-                      <th className={TH}>DR <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
-                      <th className={TH}>TAT <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>DA <IconTooltip title="Domain Authority" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
+                      <th className={TH}>DR <IconTooltip title="Domain Rating" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
+                      <th className={TH}>TAT <IconTooltip title="Turn Around Time." subtitle="Estimated time to deliver"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className={TH}>REGION</th>
                       <th className={TH}>SPONSORED</th>
                       <th className={TH}>INDEXED</th>
-                      <th className={TH}>DO FOLLOW <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>DO FOLLOW <IconTooltip title="Disclaimer" subtitle="1. We guarantee do-follow backlinks when the article is published but not for the life time of the article due to google policy changes. 2. Do Follow stating that if it labeled as No we do not guarantee the type of code in the back end for the links." maxWidth="max-w-[280px]"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className={TH}>EXAMPLE LINK</th>
-                      <th className="py-2.5 px-2 text-center">LLM/AEO <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className="py-2.5 px-2 text-center">LLM/AEO <IconTooltip title="LLM/AEO" subtitle="If Yes then the publication can be cited and read by AEO's"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200">
@@ -663,7 +741,7 @@ export default function PricingPage() {
                                   )}
                                   <div className="flex flex-col min-w-0">
                                     <span className="font-semibold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
-                                    <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
+                                    <DomainLink domain={pub.url || pub.domain} name={pub.name} />
                                     {pub.tag && <span className="bg-black text-white text-[9px] font-bold px-1.5 py-0.5 rounded w-fit mt-1">{pub.tag}</span>}
                                   </div>
                                 </div>
@@ -711,15 +789,15 @@ export default function PricingPage() {
                       <th className={THL}>PUBLICATION</th>
                       <th className={TH}>GENRES</th>
                       <th className={TH}>PRICE</th>
-                      <th className={TH}>DA <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
-                      <th className={TH}>DR <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
-                      <th className={TH}>TAT <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>DA <IconTooltip title="Domain Authority" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
+                      <th className={TH}>DR <IconTooltip title="Domain Rating" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
+                      <th className={TH}>TAT <IconTooltip title="Turn Around Time." subtitle="Estimated time to deliver"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className={TH}>REGION</th>
                       <th className={TH}>SPONSORED</th>
                       <th className={TH}>INDEXED</th>
-                      <th className={TH}>DO FOLLOW <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>DO FOLLOW <IconTooltip title="Disclaimer" subtitle="1. We guarantee do-follow backlinks when the article is published but not for the life time of the article due to google policy changes. 2. Do Follow stating that if it labeled as No we do not guarantee the type of code in the back end for the links." maxWidth="max-w-[280px]"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className={TH}>EXAMPLE LINK</th>
-                      <th className={TH}>LLM/AEO <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>LLM/AEO <IconTooltip title="LLM/AEO" subtitle="If Yes then the publication can be cited and read by AEO's"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className="py-2.5 px-2 text-center">NICHES</th>
                     </tr>
                   </thead>
@@ -739,7 +817,7 @@ export default function PricingPage() {
                                   )}
                                   <div className="flex flex-col min-w-0">
                                     <span className="font-bold text-slate-900 text-[12.5px] leading-tight">{pub.name}</span>
-                                    <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">{pub.url}</span>
+                                    <DomainLink domain={pub.url || pub.domain} name={pub.name} />
                                   </div>
                                 </div>
                               </td>
@@ -765,11 +843,11 @@ export default function PricingPage() {
                               <td className="py-2.5 px-2 text-center">
                                 <div className="flex flex-col items-center justify-center gap-1">
                                   <div className="flex items-center justify-center gap-3">
-                                    {(pub as any).nicheAge18 && <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
-                                    {(pub as any).nicheHeart && <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                    {(pub as any).nicheCannabis && <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                    {(pub as any).nicheCopyright && <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
-                                    {(pub as any).nicheCasino && <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    {(pub as any).nicheAge18 && <NicheIcon label="Erotic Content Price" basePrice={pub.price} multiplier={(pub as any).nicheAge18Multiplier}><span className="text-[10px] font-bold border-1.5 border-slate-700 rounded-full w-4 h-4 flex items-center justify-center text-slate-800">18</span></NicheIcon>}
+                                    {(pub as any).nicheHeart && <NicheIcon label="Health Content Price" basePrice={pub.price} multiplier={(pub as any).nicheHeartMultiplier}><Heart className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    {(pub as any).nicheCannabis && <NicheIcon label="CBD Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCannabisMultiplier}><Leaf className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    {(pub as any).nicheCopyright && <NicheIcon label="Crypto Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCopyrightMultiplier}><Copyright className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
+                                    {(pub as any).nicheCasino && <NicheIcon label="Gambling Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCasinoMultiplier}><Dices className="w-4 h-4 stroke-[2] text-slate-800" /></NicheIcon>}
                                   </div>
                                 </div>
                               </td>
@@ -878,7 +956,7 @@ export default function PricingPage() {
                       <th className={TH}>CATEGORY</th>
                       <th className={TH}>PLATFORMS</th>
                       <th className={TH}>PRICE</th>
-                      <th className={TH}>TAT <HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></th>
+                      <th className={TH}>TAT <IconTooltip title="Turn Around Time." subtitle="Estimated time to deliver"><HelpCircle className="w-3 h-3 inline ml-0.5 text-slate-400" /></IconTooltip></th>
                       <th className="py-2.5 px-2 text-center">EXAMPLE LINK</th>
                     </tr>
                   </thead>

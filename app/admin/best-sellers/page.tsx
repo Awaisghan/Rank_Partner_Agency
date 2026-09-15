@@ -10,6 +10,7 @@ import {
   Trash2,
   X,
   ExternalLink,
+  ArrowUpRight,
   HelpCircle,
   Info,
   Heart,
@@ -19,6 +20,7 @@ import {
   AlertTriangle,
   ImageIcon,
 } from "lucide-react";
+import IconTooltip from "../../components/IconTooltip";
 
 interface BestSellerPublication {
   id: string;
@@ -52,16 +54,39 @@ interface BestSellerPublication {
   };
 }
 
-function NicheIcon({ children, multiplier }: { children: React.ReactNode; multiplier?: string }) {
+function NicheIcon({ children, multiplier, label, basePrice }: { children: React.ReactNode; multiplier?: string; label?: string; basePrice?: string | number }) {
+  let numPrice = 0;
+  if (typeof basePrice === "number") {
+    numPrice = basePrice;
+  } else if (typeof basePrice === "string") {
+    const cleaned = basePrice.replace(/[^0-9.]/g, "");
+    numPrice = parseFloat(cleaned) || 0;
+  }
+
+  let mult = 1;
+  if (multiplier) {
+    const cleanedMult = multiplier.replace(/[^0-9.]/g, "");
+    const parsedMult = parseFloat(cleanedMult);
+    if (!isNaN(parsedMult) && parsedMult > 0) {
+      mult = parsedMult;
+    }
+  }
+
+  const finalPrice = Math.round(numPrice * mult);
+  const formattedPrice = `$${finalPrice.toLocaleString()}`;
+  const tooltipText = label ? `${label} : ${formattedPrice}` : formattedPrice;
+
   return (
-    <div className="relative inline-flex items-center justify-center">
-      {children}
-      {multiplier && (
-        <div className="absolute -top-1.5 -right-2 bg-[#f8d7da] border border-[#f5c2c7] text-[#842029] text-[7px] font-black tracking-wide px-1 rounded-full shadow-sm z-10 leading-[10px]">
-          {multiplier}
-        </div>
-      )}
-    </div>
+    <IconTooltip title={tooltipText} position="top" maxWidth="max-w-[240px]">
+      <div className="relative inline-flex items-center justify-center">
+        {children}
+        {multiplier && (
+          <div className="absolute -top-1.5 -right-2 bg-[#f8d7da] border border-[#f5c2c7] text-[#842029] text-[7px] font-black tracking-wide px-1 rounded-full shadow-sm z-10 leading-[10px]">
+            {multiplier}
+          </div>
+        )}
+      </div>
+    </IconTooltip>
   );
 }
 
@@ -330,17 +355,17 @@ export default function BestSellersAdminPage() {
                 <th className="px-3.5 py-3 text-center">PRICE</th>
                 <th className="px-2.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    DA <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    DA <IconTooltip title="Domain Authority" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-2.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    DR <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    DR <IconTooltip title="Domain Rating" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    TAT <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    TAT <IconTooltip title="Turn Around Time." subtitle="Estimated time to deliver"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3.5 py-3 text-center">REGION</th>
@@ -348,13 +373,13 @@ export default function BestSellersAdminPage() {
                 <th className="px-3 py-3 text-center">INDEXED</th>
                 <th className="px-3.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    DO FOLLOW <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    DO FOLLOW <IconTooltip title="Disclaimer" subtitle="1. We guarantee do-follow backlinks when the article is published but not for the life time of the article due to google policy changes. 2. Do Follow stating that if it labeled as No we do not guarantee the type of code in the back end for the links." maxWidth="max-w-[280px]"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3.5 py-3 text-center">EXAMPLE LINK</th>
                 <th className="px-3.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    LLM/AEO <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    LLM/AEO <IconTooltip title="LLM/AEO" subtitle="If Yes then the publication can be cited and read by AEO's"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3.5 py-3 text-center">NICHES</th>
@@ -387,9 +412,22 @@ export default function BestSellersAdminPage() {
                           </span>
                           <Info className="w-3.5 h-3.5 text-slate-400 shrink-0 cursor-pointer" />
                         </div>
-                        <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">
-                          {pub.domain}
-                        </span>
+                        {(() => {
+                          const domainStr = pub.domain || (pub as any).url || `${pub.name.toLowerCase().replace(/\s+/g, "")}.com`;
+                          const href = domainStr.startsWith("http://") || domainStr.startsWith("https://") ? domainStr : `https://${domainStr}`;
+                          return (
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-0.5 text-[10.5px] text-slate-400 hover:text-slate-700 hover:underline font-normal truncate mt-0.5"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span className="truncate">{domainStr}</span>
+                              <ArrowUpRight className="w-3 h-3 shrink-0 text-slate-400" />
+                            </a>
+                          );
+                        })()}
                       </div>
                     </div>
                   </td>
@@ -483,29 +521,29 @@ export default function BestSellersAdminPage() {
                   <td className="px-3.5 py-3 text-center">
                     <div className="flex items-center justify-center gap-1">
                       {(pub as any).nicheAge18 && (
-                        <NicheIcon multiplier={(pub as any).nicheAge18Multiplier}>
+                        <NicheIcon label="Erotic Content Price" basePrice={pub.price} multiplier={(pub as any).nicheAge18Multiplier}>
                           <span className="w-4 h-4 rounded-full border border-slate-400 flex items-center justify-center text-[7px] font-bold text-slate-600 shrink-0" title="18+">
                             18+
                           </span>
                         </NicheIcon>
                       )}
                       {(pub as any).nicheHeart && (
-                        <NicheIcon multiplier={(pub as any).nicheHeartMultiplier}>
+                        <NicheIcon label="Health Content Price" basePrice={pub.price} multiplier={(pub as any).nicheHeartMultiplier}>
                           <span title="Dating"><Heart className="w-4 h-4 text-slate-600 stroke-2" /></span>
                         </NicheIcon>
                       )}
                       {(pub as any).nicheCannabis && (
-                        <NicheIcon multiplier={(pub as any).nicheCannabisMultiplier}>
+                        <NicheIcon label="CBD Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCannabisMultiplier}>
                           <span title="Cannabis"><Leaf className="w-4 h-4 text-slate-600 stroke-2" /></span>
                         </NicheIcon>
                       )}
                       {(pub as any).nicheCopyright && (
-                        <NicheIcon multiplier={(pub as any).nicheCopyrightMultiplier}>
+                        <NicheIcon label="Crypto Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCopyrightMultiplier}>
                           <span title="Copyright"><Copyright className="w-4 h-4 text-slate-600 stroke-2" /></span>
                         </NicheIcon>
                       )}
                       {(pub as any).nicheCasino && (
-                        <NicheIcon multiplier={(pub as any).nicheCasinoMultiplier}>
+                        <NicheIcon label="Gambling Content Price" basePrice={pub.price} multiplier={(pub as any).nicheCasinoMultiplier}>
                           <span title="Casino"><Dices className="w-4 h-4 text-slate-600 stroke-2" /></span>
                         </NicheIcon>
                       )}

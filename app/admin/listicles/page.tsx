@@ -10,10 +10,12 @@ import {
   Trash2,
   X,
   ExternalLink,
+  ArrowUpRight,
   HelpCircle,
   AlertTriangle,
   ImageIcon,
 } from "lucide-react";
+import IconTooltip from "../../components/IconTooltip";
 
 interface ListiclePublication {
   id: string;
@@ -269,17 +271,17 @@ export default function ListiclesAdminPage() {
                 <th className="px-4 py-3 text-center">PRICE</th>
                 <th className="px-2.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    DA <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    DA <IconTooltip title="Domain Authority" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-2.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    DR <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    DR <IconTooltip title="Domain Rating" subtitle="Search engine Ranking score (1-100)"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    TAT <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    TAT <IconTooltip title="Turn Around Time." subtitle="Estimated time to deliver"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3.5 py-3 text-center">REGION</th>
@@ -287,13 +289,13 @@ export default function ListiclesAdminPage() {
                 <th className="px-3 py-3 text-center">INDEXED</th>
                 <th className="px-3.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    DO FOLLOW <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    DO FOLLOW <IconTooltip title="Disclaimer" subtitle="1. We guarantee do-follow backlinks when the article is published but not for the life time of the article due to google policy changes. 2. Do Follow stating that if it labeled as No we do not guarantee the type of code in the back end for the links." maxWidth="max-w-[280px]"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3.5 py-3 text-center">EXAMPLE LINK</th>
                 <th className="px-3.5 py-3 text-center">
                   <span className="inline-flex items-center justify-center gap-0.5">
-                    LLM/AEO <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+                    LLM/AEO <IconTooltip title="LLM/AEO" subtitle="If Yes then the publication can be cited and read by AEO's"><HelpCircle className="w-3.5 h-3.5 text-slate-400" /></IconTooltip>
                   </span>
                 </th>
                 <th className="px-3 py-3 text-center">ACTIONS</th>
@@ -322,9 +324,22 @@ export default function ListiclesAdminPage() {
                         <span className="font-semibold text-slate-900 text-[12.5px] leading-tight">
                           {pub.name}
                         </span>
-                        <span className="text-[10.5px] text-slate-400 font-normal truncate mt-0.5">
-                          {(pub as any).domain}
-                        </span>
+                        {(() => {
+                          const domainStr = (pub as any).domain || (pub as any).url || `${pub.name.toLowerCase().replace(/\s+/g, "")}.com`;
+                          const href = domainStr.startsWith("http://") || domainStr.startsWith("https://") ? domainStr : `https://${domainStr}`;
+                          return (
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-0.5 text-[10.5px] text-slate-400 hover:text-slate-700 hover:underline font-normal truncate mt-0.5"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span className="truncate">{domainStr}</span>
+                              <ArrowUpRight className="w-3 h-3 shrink-0 text-slate-400" />
+                            </a>
+                          );
+                        })()}
                         {pub.tag && (
                           <span className="bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-md w-fit mt-1">
                             {pub.tag}
