@@ -32,7 +32,8 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  const isPublicApiRoute = path.startsWith("/api/contact");
+  const isPublicApiRoute = path.startsWith("/api/contact") || (process.env.NODE_ENV === "development" && path.startsWith("/api/blog"));
+
 
   // --- API ROUTE PROTECTION (Phase 11) ---
   // If it's a data API (not auth API or public contact API) and the method modifies data (POST/PUT/DELETE), require ADMIN

@@ -13,6 +13,7 @@ import {
   Share2,
   LogOut,
   Users,
+  BookOpen,
   Menu,
   X,
   ChevronRight,
@@ -27,11 +28,18 @@ const NAV_ITEMS = [
     description: "Manage press publications",
   },
   {
+    label: "Blog Posts",
+    href: "/admin/blog",
+    icon: BookOpen,
+    description: "Manage blog articles & insights",
+  },
+  {
     label: "Broadcast TV",
     href: "/admin/broadcast-television",
     icon: Tv,
     description: "Television segments",
   },
+
   {
     label: "Digital TV",
     href: "/admin/digital-television",

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import useSWR from "swr";
 import {
   Search,
   FileText,
@@ -20,10 +21,10 @@ const filterTabs = [
   { label: "Broadcast", id: "Broadcast" },
 ];
 
-const featuredArticle = {
+const fallbackFeaturedArticle = {
   id: "featured-1",
+  slug: "what-domain-authority-and-domain-rating-actually-measure",
   category: "SEO",
-  categoryIcon: Search,
   title: "The Truth About Domain Authority and Domain Rating",
   excerpt:
     "Two of the most quoted numbers in SEO are widely misread. Here is what they tell you, what they miss, and how to use them without chasing the score.",
@@ -32,63 +33,99 @@ const featuredArticle = {
   readTime: "6 min read",
 };
 
-const gridArticles = [
+const fallbackGridArticles = [
   {
     id: "1",
+    slug: "why-a-single-press-placement-keeps-working-for-years",
     category: "PR",
-    categoryIcon: FileText,
     title: "The Lasting Impact of a Single Press Feature",
     excerpt:
       "A good placement is not a one-day spike. It is a durable asset that builds trust, earns links, and keeps selling long after the story runs.",
+    author: "RankPartner Team",
     date: "June 5, 2026",
     readTime: "5 min read",
   },
   {
     id: "2",
+    slug: "how-agencies-offer-pr-and-seo-without-building-a-newsroom",
     category: "Strategy",
-    categoryIcon: CheckCircle2,
     title: "Delivering High-Impact PR and SEO Without an In-House Newsroom",
     excerpt:
       "Clients want coverage and rankings. Most agencies cannot staff for both. White-label delivery lets you sell the outcome and keep the margin.",
+    author: "RankPartner Team",
     date: "May 28, 2026",
     readTime: "6 min read",
   },
   {
     id: "3",
+    slug: "authority-backlinks-versus-link-building-the-difference-that-matters",
     category: "SEO",
-    categoryIcon: Search,
     title: "Authority Backlinks vs. Link Building: Why Quality Wins",
     excerpt:
       "Not all links are equal, and chasing volume can quietly hurt you. The distinction between genuine authority and bulk link building...",
+    author: "RankPartner Team",
     date: "May 20, 2026",
     readTime: "5 min read",
   },
   {
     id: "4",
+    slug: "turning-one-tv-interview-into-a-quarter-of-content",
     category: "Broadcast",
-    categoryIcon: Tv,
     title: "How to Turn One TV Interview Into Months of Content",
     excerpt:
       "A broadcast segment is a few minutes on air and months of material everywhere else, if you plan the reuse before you ever sit down.",
+    author: "RankPartner Team",
     date: "May 12, 2026",
     readTime: "4 min read",
   },
   {
     id: "5",
+    slug: "pr-and-seo-are-one-motion-not-two-budgets",
     category: "Strategy",
-    categoryIcon: CheckCircle2,
     title: "Merging PR and SEO: One Unified Growth Strategy",
     excerpt:
       "Run separately, press and search quietly undercut each other. Run together, the same placement builds reputation and rankings at...",
+    author: "RankPartner Team",
     date: "May 2, 2026",
     readTime: "5 min read",
   },
 ];
 
+const getCategoryIcon = (category: string) => {
+  switch (category) {
+    case "PR":
+      return FileText;
+    case "SEO":
+      return Search;
+    case "Strategy":
+      return CheckCircle2;
+    case "Broadcast":
+      return Tv;
+    default:
+      return FileText;
+  }
+};
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 export default function BlogGridSection() {
   const [activeTab, setActiveTab] = useState("All");
 
-  const filteredGridArticles = gridArticles.filter((item) => {
+  const { data: apiData } = useSWR<{ items: any[] }>("/api/blog", fetcher);
+  const fetchedArticles = apiData?.items || [];
+
+  // Identify featured article vs grid articles
+  const featuredArticle =
+    fetchedArticles.find((a) => a.isFeatured) ||
+    fetchedArticles[0] ||
+    fallbackFeaturedArticle;
+
+  const rawGridArticles =
+    fetchedArticles.length > 0
+      ? fetchedArticles.filter((a) => a.id !== featuredArticle.id)
+      : fallbackGridArticles;
+
+  const filteredGridArticles = rawGridArticles.filter((item) => {
     if (activeTab === "All") return true;
     return item.category === activeTab;
   });
@@ -98,6 +135,8 @@ export default function BlogGridSection() {
 
   const totalArticles =
     (isFeaturedVisible ? 1 : 0) + filteredGridArticles.length;
+
+  const FeaturedCategoryIcon = getCategoryIcon(featuredArticle.category);
 
   return (
     <section className="w-full bg-[#fcfdfe] py-12 sm:py-16 relative z-10 font-sans border-t border-slate-200/60">
@@ -142,7 +181,7 @@ export default function BlogGridSection() {
                   {/* Category Pill + LATEST Label */}
                   <div className="flex items-center gap-3 mb-5">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-[#6d28d9] border border-violet-100">
-                      <Search className="w-3.5 h-3.5" />
+                      <FeaturedCategoryIcon className="w-3.5 h-3.5" />
                       <span>{featuredArticle.category}</span>
                     </span>
                     <span className="text-[11px] font-bold tracking-widest text-slate-400 uppercase">
@@ -170,7 +209,7 @@ export default function BlogGridSection() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900">
-                        {featuredArticle.author}
+                        {featuredArticle.author || "RankPartner Team"}
                       </div>
                       <div className="text-[11px] text-slate-400 font-medium">
                         {featuredArticle.date} · {featuredArticle.readTime}
@@ -180,7 +219,7 @@ export default function BlogGridSection() {
 
                   <div>
                     <Link
-                      href="/blog/what-domain-authority-and-domain-rating-actually-measure"
+                      href={`/blog/${featuredArticle.slug}`}
                       className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#6d28d9] hover:text-[#6d28d9] transition-colors group"
                     >
                       <span>Read article</span>
@@ -221,20 +260,11 @@ export default function BlogGridSection() {
           </ScrollReveal>
         )}
 
-        {/* 5 Article Cards Grid */}
+        {/* Article Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredGridArticles.map((article, idx) => {
-            const CategoryIcon = article.categoryIcon;
-            const slug =
-              article.id === "1"
-                ? "why-a-single-press-placement-keeps-working-for-years"
-                : article.id === "2"
-                ? "how-agencies-offer-pr-and-seo-without-building-a-newsroom"
-                : article.id === "3"
-                ? "authority-backlinks-versus-link-building-the-difference-that-matters"
-                : article.id === "4"
-                ? "turning-one-tv-interview-into-a-quarter-of-content"
-                : "pr-and-seo-are-one-motion-not-two-budgets";
+            const CategoryIcon = getCategoryIcon(article.category);
+            const slug = article.slug || article.id;
 
             return (
               <ScrollReveal key={article.id} delay={100 + idx * 80}>

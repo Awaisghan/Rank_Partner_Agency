@@ -3,21 +3,140 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import useSWR from "swr";
 import Footer from "../../components/Footer";
 import { ChevronRight, FileText, Search, CheckCircle2, Tv } from "lucide-react";
 import { getArticleBySlug } from "../../data/blogArticles";
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+function parseContentToSections(content: string) {
+  if (!content) return [];
+  const lines = content.split("\n");
+  const sections: { id: string; heading: string; paragraphs: string[] }[] = [];
+  let currentSection = {
+    id: "overview",
+    heading: "Overview",
+    paragraphs: [] as string[],
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    if (trimmed.startsWith("## ") || trimmed.startsWith("### ")) {
+      if (currentSection.paragraphs.length > 0) {
+        sections.push(currentSection);
+      }
+      const headingText = trimmed.replace(/^#{2,3}\s+/, "");
+      const sectionId = headingText
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+
+      currentSection = {
+        id: sectionId || `sec-${sections.length + 1}`,
+        heading: headingText,
+        paragraphs: [],
+      };
+    } else {
+      currentSection.paragraphs.push(trimmed);
+    }
+  }
+
+  if (currentSection.paragraphs.length > 0) {
+    sections.push(currentSection);
+  }
+
+  return sections.length > 0
+    ? sections
+    : [{ id: "main-article", heading: "Article Content", paragraphs: [content] }];
+}
+
+function formatInlineMarkdown(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={idx} className="font-bold text-slate-900">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return (
+        <em key={idx} className="italic text-slate-800">
+          {part.slice(1, -1)}
+        </em>
+      );
+    }
+    return part;
+  });
+}
+
+function renderParagraphText(text: string) {
+  if (text.startsWith("- ") || text.startsWith("* ")) {
+    const items = text.split("\n").filter(Boolean);
+    return (
+      <ul className="list-disc pl-5 my-3 space-y-1.5 text-slate-700">
+        {items.map((item, i) => (
+          <li key={i}>{formatInlineMarkdown(item.replace(/^[-*]\s+/, ""))}</li>
+        ))}
+      </ul>
+    );
+  }
+  if (text.startsWith("> ")) {
+    return (
+      <blockquote className="my-4 border-l-4 border-[#6d28d9] bg-violet-50/50 p-4 rounded-r-xl italic text-slate-700 font-medium">
+        {formatInlineMarkdown(text.replace(/^>\s+/, ""))}
+      </blockquote>
+    );
+  }
+  return <p>{formatInlineMarkdown(text)}</p>;
+}
+
 export default function ArticleDetailPage() {
   const params = useParams();
   const slugParam = typeof params?.slug === "string" ? params.slug : "why-a-single-press-placement-keeps-working-for-years";
-  const article = getArticleBySlug(slugParam);
+
+  const fallbackArticle = getArticleBySlug(slugParam);
+  const { data: apiData } = useSWR<{ blogPost: any }>(`/api/blog/${slugParam}`, fetcher);
+
+  const rawPost = apiData?.blogPost;
+
+  let formattedSections = fallbackArticle.sections;
+  if (rawPost) {
+    if (rawPost.sections && Array.isArray(rawPost.sections) && rawPost.sections.length > 0) {
+      formattedSections = rawPost.sections;
+    } else if (rawPost.content) {
+      formattedSections = parseContentToSections(rawPost.content);
+    }
+  }
+
+  const article = rawPost
+    ? {
+        id: rawPost.id,
+        slug: rawPost.slug,
+        category: rawPost.category || fallbackArticle.category,
+        title: rawPost.title || fallbackArticle.title,
+        excerpt: rawPost.excerpt || fallbackArticle.excerpt,
+        author: rawPost.author || fallbackArticle.author,
+        date: rawPost.date || fallbackArticle.date,
+        readTime: rawPost.readTime || fallbackArticle.readTime,
+        content: rawPost.content,
+        sections: formattedSections,
+      }
+    : fallbackArticle;
 
   const [activeSection, setActiveSection] = useState<string>(
-    article.sections[0]?.id || ""
+    article.sections?.[0]?.id || ""
   );
 
   // Scroll Spy to update ON THIS PAGE active item based on scroll position
   useEffect(() => {
+    if (!article.sections || article.sections.length === 0) return;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
 
@@ -114,7 +233,7 @@ export default function ArticleDetailPage() {
       {/* Main Article Section with Sticky Table of Contents */}
       <section className="w-full bg-white py-16 sm:py-24 px-6 sm:px-10 lg:px-16 xl:px-20 font-sans">
         <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* Left Column: Sticky ON THIS PAGE Sidebar (4 cols) */}
           <aside className="lg:col-span-4 hidden lg:block sticky top-28 self-start h-fit pr-6 z-20">
             <div>
@@ -124,7 +243,7 @@ export default function ArticleDetailPage() {
 
               {/* Table of Contents List */}
               <nav className="relative border-l border-slate-200 pl-4 space-y-4 text-xs sm:text-sm font-medium">
-                {article.sections.map((section) => {
+                {article.sections?.map((section: any) => {
                   const isCurrent = activeSection === section.id;
                   return (
                     <a
@@ -155,7 +274,7 @@ export default function ArticleDetailPage() {
 
           {/* Right Column: Main Article Body Content (8 cols) */}
           <article className="lg:col-span-8 max-w-3xl">
-            
+
             {/* Lead Excerpt */}
             <p className="text-slate-700 text-lg sm:text-xl font-medium leading-relaxed mb-10 pb-8 border-b border-slate-100">
               {article.excerpt}
@@ -163,14 +282,16 @@ export default function ArticleDetailPage() {
 
             {/* Article Sections */}
             <div className="space-y-12">
-              {article.sections.map((sec) => (
+              {article.sections?.map((sec: any) => (
                 <div key={sec.id} id={sec.id} className="scroll-mt-32">
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug mb-4">
                     {sec.heading}
                   </h2>
                   <div className="space-y-5 text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
-                    {sec.paragraphs.map((p, pIdx) => (
-                      <p key={pIdx}>{p}</p>
+                    {sec.paragraphs?.map((p: string, pIdx: number) => (
+                      <React.Fragment key={pIdx}>
+                        {renderParagraphText(p)}
+                      </React.Fragment>
                     ))}
                   </div>
                 </div>

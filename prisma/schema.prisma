@@ -250,3 +250,24 @@ model SocialPost {
   @@index([isActive])
   @@index([category])
 }
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  category    String   @default("SEO")
+  excerpt     String
+  author      String   @default("RankPartner Team")
+  date        String
+  readTime    String   @default("5 min read")
+  isFeatured  Boolean  @default(false)
+  content     String?
+  sections    Json?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([slug])
+  @@index([category])
+}

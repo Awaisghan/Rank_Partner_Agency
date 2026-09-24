@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     const uniqueName = `logo_${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext}`;
 
     // 6. Ensure logos directory exists
-    const logosDir = path.join(process.cwd(), "public", "logos");
+    const logosDir = "/var/www/uploads/logos";
     await mkdir(logosDir, { recursive: true });
 
     // 7. Write file to disk

@@ -368,9 +368,59 @@ async function main() {
   });
   console.log("✅ Social Posts seeded");
 
+  // ----------------------------------------------------------
+  // 9. BLOG POSTS (Sample)
+  // ----------------------------------------------------------
+  await (prisma as any).blogPost.createMany({
+    data: [
+      {
+        slug: "the-truth-about-domain-authority-and-domain-rating",
+        title: "The Truth About Domain Authority and Domain Rating",
+        category: "SEO",
+        excerpt: "Two of the most quoted numbers in SEO are widely misread. Here is what they tell you, what they miss, and how to use them without chasing the score.",
+        author: "RankPartner Team",
+        date: "June 12, 2026",
+        readTime: "6 min read",
+        isFeatured: true,
+        content: "Third-party metrics like Ahrefs Domain Rating (DR) or Moz Domain Authority (DA) are logarithmic estimates of link profile strength, not direct ranking factors used by Google. Chasing higher numbers for their own sake often leads to poor link decisions.\n\nA website with a DR 70 built on spammy link directories will perform far worse in search than a DR 40 website with clean, contextual editorial references from recognized news publications.\n\nUse Domain Rating as a relative filter to evaluate potential media outlets and competitors, rather than a final KPI.",
+        sections: [
+          {
+            id: "the-metric-misconception",
+            heading: "The metric misconception",
+            paragraphs: [
+              "Third-party metrics like Ahrefs Domain Rating (DR) or Moz Domain Authority (DA) are logarithmic estimates of link profile strength, not direct ranking factors used by Google. Chasing higher numbers for their own sake often leads to poor link decisions.",
+              "A website with a DR 70 built on spammy link directories will perform far worse in search than a DR 40 website with clean, contextual editorial references from recognized news publications."
+            ]
+          },
+          {
+            id: "how-to-use-dr-effectively",
+            heading: "How to use DR effectively",
+            paragraphs: [
+              "Use Domain Rating as a relative filter to evaluate potential media outlets and competitors, rather than a final KPI. Prioritize publication audience alignment and editorial standards above raw metric scores."
+            ]
+          }
+        ]
+      },
+      {
+        slug: "how-to-scale-agency-growth-with-guaranteed-media-placements",
+        title: "How to Scale Agency Growth with Guaranteed Media Placements",
+        category: "Strategy",
+        excerpt: "Learn how top-tier agencies combine digital PR and search engine optimization to deliver 10x ROI for high-value clients.",
+        author: "RankPartner Team",
+        date: "June 20, 2026",
+        readTime: "4 min read",
+        isFeatured: false,
+        content: "Scaling a digital agency requires consistent client results without inflating headcount overhead.\n\nBy integrating white-label media placements into your core search strategies, you provide clients with the trust signals and organic authority required to dominate competitive markets.\n\nEvery tier-one publication feature acts as a permanent digital asset that continues driving brand search queries and conversions month after month.",
+      }
+    ],
+    skipDuplicates: true,
+  });
+  console.log("✅ Blog Posts seeded");
+
   console.log("\n🎉 Database seeding complete!");
   console.log("📧 Admin Login: rankpartner@gmail.com");
   console.log("🔑 Admin Password: Rank@Partner");
+
 }
 
 main()
