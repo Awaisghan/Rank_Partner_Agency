@@ -19,6 +19,9 @@ import {
   Italic,
   List,
   Quote,
+  Upload,
+  Image,
+  Link2,
 } from "lucide-react";
 
 
@@ -32,6 +35,8 @@ interface BlogPost {
   date: string;
   readTime: string;
   isFeatured: boolean;
+  featuredImage?: string | null;
+  imageAlt?: string | null;
   content?: string | null;
   sections?: any;
   isActive: boolean;
@@ -49,6 +54,8 @@ interface BlogForm {
   date: string;
   readTime: string;
   isFeatured: boolean;
+  featuredImage: string;
+  imageAlt: string;
   content: string;
 }
 
@@ -61,6 +68,8 @@ const EMPTY_FORM: BlogForm = {
   date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
   readTime: "5 min read",
   isFeatured: false,
+  featuredImage: "",
+  imageAlt: "",
   content: "",
 };
 
@@ -80,6 +89,134 @@ export default function AdminBlogPage() {
   const [form, setForm] = useState<BlogForm>(EMPTY_FORM);
   const [formError, setFormError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [uploadingCover, setUploadingCover] = useState(false);
+  const [uploadingInline, setUploadingInline] = useState(false);
+  const [linkModalOpen, setLinkModalOpen] = useState(false);
+  const [linkForm, setLinkForm] = useState({
+    text: "",
+    url: "",
+    openInNewTab: true,
+    relType: "dofollow" as "dofollow" | "nofollow",
+  });
+
+  const featuredInputRef = React.useRef<HTMLInputElement>(null);
+  const inlineInputRef = React.useRef<HTMLInputElement>(null);
+  const contentTextareaRef = React.useRef<HTMLTextAreaElement>(null);
+
+  const handleOpenLinkModal = () => {
+    const textarea = contentTextareaRef.current;
+    let selectedText = "";
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      if (start !== end) {
+        selectedText = textarea.value.substring(start, end).trim();
+      }
+    }
+    setLinkForm({
+      text: selectedText || "",
+      url: "",
+      openInNewTab: true,
+      relType: "dofollow",
+    });
+    setLinkModalOpen(true);
+  };
+
+  const handleApplyLinkModal = () => {
+    if (!linkForm.url.trim()) return;
+    let rawUrl = linkForm.url.trim();
+    if (
+      !rawUrl.startsWith("http://") &&
+      !rawUrl.startsWith("https://") &&
+      !rawUrl.startsWith("/") &&
+      !rawUrl.startsWith("#") &&
+      !rawUrl.startsWith("mailto:")
+    ) {
+      if (rawUrl.startsWith("www.") || rawUrl.includes(".")) {
+        rawUrl = `https://${rawUrl}`;
+      }
+    }
+
+    let finalUrl = rawUrl;
+    if (linkForm.relType === "nofollow") {
+      finalUrl += "|nofollow";
+    }
+    if (linkForm.openInNewTab) {
+      finalUrl += "|blank";
+    } else {
+      finalUrl += "|self";
+    }
+    const linkText = linkForm.text.trim() || "Link";
+    const markdownTag = ` [${linkText}](${finalUrl}) `;
+    insertTextAtCursor(markdownTag);
+    setLinkModalOpen(false);
+  };
+
+  const insertTextAtCursor = (textToInsert: string) => {
+    const textarea = contentTextareaRef.current;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const current = form.content;
+      const updated = current.substring(0, start) + textToInsert + current.substring(end);
+      setForm((prev) => ({ ...prev, content: updated }));
+      setTimeout(() => {
+        textarea.focus();
+        const nextPos = start + textToInsert.length;
+        textarea.setSelectionRange(nextPos, nextPos);
+      }, 50);
+    } else {
+      setForm((prev) => ({ ...prev, content: prev.content + textToInsert }));
+    }
+  };
+
+  const uploadFileToApi = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await fetch("/api/upload/blog", {
+      method: "POST",
+      body: formData,
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Upload failed");
+    }
+    const data = await res.json();
+    return data.url;
+  };
+
+  const handleCoverUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingCover(true);
+    setFormError("");
+    try {
+      const url = await uploadFileToApi(file);
+      setForm((prev) => ({ ...prev, featuredImage: url }));
+    } catch (err: any) {
+      setFormError(err.message || "Failed to upload cover image.");
+    } finally {
+      setUploadingCover(false);
+      if (e.target) e.target.value = "";
+    }
+  };
+
+  const handleInlineUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingInline(true);
+    setFormError("");
+    try {
+      const url = await uploadFileToApi(file);
+      const markdownTag = `\n\n![](${url})\n\n`;
+      insertTextAtCursor(markdownTag);
+    } catch (err: any) {
+      setFormError(err.message || "Failed to upload image.");
+    } finally {
+      setUploadingInline(false);
+      if (e.target) e.target.value = "";
+    }
+  };
 
   const filteredPosts = useMemo(() => {
     let list = [...posts];
@@ -119,6 +256,8 @@ export default function AdminBlogPage() {
       date: post.date,
       readTime: post.readTime,
       isFeatured: post.isFeatured,
+      featuredImage: post.featuredImage || "",
+      imageAlt: post.imageAlt || "",
       content: post.content || (post.sections ? JSON.stringify(post.sections, null, 2) : ""),
     });
     setFormError("");
@@ -181,6 +320,8 @@ export default function AdminBlogPage() {
         date: form.date,
         readTime: form.readTime.trim() || "5 min read",
         isFeatured: form.isFeatured,
+        featuredImage: form.featuredImage.trim() || null,
+        imageAlt: form.imageAlt.trim() || null,
         content: parsedSections ? null : form.content,
         sections: parsedSections,
       };
@@ -507,17 +648,92 @@ export default function AdminBlogPage() {
                 </label>
               </div>
 
+              {/* Featured Cover Image Section */}
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+                <label className="block text-xs font-bold text-slate-800">
+                  Featured Cover Image (Computer Local Upload)
+                </label>
+
+                <input
+                  type="file"
+                  ref={featuredInputRef}
+                  onChange={handleCoverUpload}
+                  accept="image/png,image/jpeg,image/webp,image/jpg"
+                  className="hidden"
+                />
+
+                {form.featuredImage ? (
+                  <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-white p-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <img
+                      src={form.featuredImage}
+                      alt="Cover Preview"
+                      className="w-full sm:w-44 h-32 object-contain bg-slate-900/5 rounded-lg border border-slate-200"
+                    />
+                    <div className="flex-1 min-w-0 w-full">
+                      <p className="text-xs font-bold text-slate-800 truncate">{form.featuredImage}</p>
+                      <p className="text-[11px] text-green-600 font-semibold mt-0.5">✓ Image Uploaded & Ready</p>
+                      <button
+                        type="button"
+                        onClick={() => featuredInputRef.current?.click()}
+                        className="mt-2 text-[11px] font-bold text-[#6d28d9] hover:underline cursor-pointer block"
+                      >
+                        Change Image
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setForm((prev) => ({ ...prev, featuredImage: "" }))}
+                      className="px-3 py-1.5 text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors cursor-pointer shrink-0"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    disabled={uploadingCover}
+                    onClick={() => featuredInputRef.current?.click()}
+                    className="w-full py-3 px-4 border-2 border-dashed border-slate-300 hover:border-[#6d28d9] rounded-xl flex items-center justify-center gap-2 bg-white text-slate-600 hover:text-[#6d28d9] font-bold text-xs transition-all cursor-pointer"
+                  >
+                    <Upload className="w-4 h-4" />
+                    <span>{uploadingCover ? "Uploading Image..." : "Upload Cover Image from Computer"}</span>
+                  </button>
+                )}
+
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">
+                    Image Alt Description (for SEO)
+                  </label>
+                  <input
+                    type="text"
+                    value={form.imageAlt}
+                    onChange={(e) => setForm((prev) => ({ ...prev, imageAlt: e.target.value }))}
+                    placeholder="Descriptive alt text for search engines..."
+                    className="w-full px-3 py-1.5 text-xs text-slate-900 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-[#6d28d9]"
+                  />
+                </div>
+              </div>
+
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="block text-xs font-bold text-slate-700">
                     Full Article Body / Content *
                   </label>
 
+                  {/* Hidden file input for inline body images */}
+                  <input
+                    type="file"
+                    ref={inlineInputRef}
+                    onChange={handleInlineUpload}
+                    accept="image/png,image/jpeg,image/webp,image/jpg"
+                    className="hidden"
+                  />
+
                   {/* Formatting Toolbar */}
                   <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
                     <button
                       type="button"
-                      onClick={() => setForm((prev) => ({ ...prev, content: `${prev.content}\n\n## Section Heading Title\n` }))}
+                      onClick={() => insertTextAtCursor("\n\n## Section Heading Title\n")}
                       className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 rounded text-[11px] font-bold text-slate-800 flex items-center gap-1 cursor-pointer"
                       title="Add Heading (H2)"
                     >
@@ -527,7 +743,7 @@ export default function AdminBlogPage() {
 
                     <button
                       type="button"
-                      onClick={() => setForm((prev) => ({ ...prev, content: `${prev.content}\n\n### Subheading Title\n` }))}
+                      onClick={() => insertTextAtCursor("\n\n### Subheading Title\n")}
                       className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 rounded text-[11px] font-bold text-slate-800 flex items-center gap-1 cursor-pointer"
                       title="Add Subheading (H3)"
                     >
@@ -537,7 +753,7 @@ export default function AdminBlogPage() {
 
                     <button
                       type="button"
-                      onClick={() => setForm((prev) => ({ ...prev, content: `${prev.content} **bold text** ` }))}
+                      onClick={() => insertTextAtCursor(" **bold text** ")}
                       className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 rounded text-[11px] font-bold text-slate-800 flex items-center gap-1 cursor-pointer"
                       title="Add Bold Text (**bold**)"
                     >
@@ -547,7 +763,7 @@ export default function AdminBlogPage() {
 
                     <button
                       type="button"
-                      onClick={() => setForm((prev) => ({ ...prev, content: `${prev.content} *italic text* ` }))}
+                      onClick={() => insertTextAtCursor(" *italic text* ")}
                       className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 rounded text-[11px] font-bold text-slate-800 flex items-center gap-1 cursor-pointer"
                       title="Add Italic Text (*italic*)"
                     >
@@ -557,7 +773,18 @@ export default function AdminBlogPage() {
 
                     <button
                       type="button"
-                      onClick={() => setForm((prev) => ({ ...prev, content: `${prev.content}\n- Bullet item 1\n- Bullet item 2\n` }))}
+                      disabled={uploadingInline}
+                      onClick={() => inlineInputRef.current?.click()}
+                      className="px-2 py-1 bg-white hover:bg-violet-100 border border-violet-200 rounded text-[11px] font-bold text-[#6d28d9] flex items-center gap-1 cursor-pointer"
+                      title="Upload & Insert Image at Cursor Position"
+                    >
+                      <Image className="w-3.5 h-3.5 text-[#6d28d9]" />
+                      <span>{uploadingInline ? "Uploading..." : "Insert Image"}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor("\n\n- Bullet item 1\n- Bullet item 2\n")}
                       className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 rounded text-[11px] font-bold text-slate-800 flex items-center gap-1 cursor-pointer"
                       title="Add Bulleted List (- item)"
                     >
@@ -567,7 +794,17 @@ export default function AdminBlogPage() {
 
                     <button
                       type="button"
-                      onClick={() => setForm((prev) => ({ ...prev, content: `${prev.content}\n> Important quote text here\n` }))}
+                      onClick={handleOpenLinkModal}
+                      className="px-2 py-1 bg-white hover:bg-violet-100 border border-violet-200 rounded text-[11px] font-bold text-[#6d28d9] flex items-center gap-1 cursor-pointer"
+                      title="Open Interactive Link Modal Popup (URL, New Tab, DoFollow/NoFollow)"
+                    >
+                      <Link2 className="w-3.5 h-3.5 text-[#6d28d9]" />
+                      <span>Link</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor("\n\n> Important quote text here\n")}
                       className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 rounded text-[11px] font-bold text-slate-800 flex items-center gap-1 cursor-pointer"
                       title="Add Quote Block (> quote)"
                     >
@@ -578,10 +815,11 @@ export default function AdminBlogPage() {
                 </div>
 
                 <textarea
-                  rows={8}
+                  ref={contentTextareaRef}
+                  rows={10}
                   value={form.content}
                   onChange={(e) => setForm((prev) => ({ ...prev, content: e.target.value }))}
-                  placeholder="Enter main article body. Click buttons above to insert Headings (## H2), Bold (**text**), Lists (- item), etc."
+                  placeholder="Enter main article body. Click buttons above to insert Headings (## H2), Images at cursor position, Bold (**text**), Lists (- item), etc."
                   className="w-full px-3.5 py-2.5 text-sm text-slate-900 bg-white text-black border border-slate-300 rounded-lg font-mono focus:outline-none focus:border-[#6d28d9] shadow-xs"
                 />
               </div>
@@ -627,6 +865,131 @@ export default function AdminBlogPage() {
                 className="px-5 py-2 rounded-lg text-xs font-bold bg-red-600 hover:bg-red-700 text-white shadow-sm cursor-pointer"
               >
                 Delete Article
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Interactive Link Popup Modal (Client SEO Requirement) */}
+      {linkModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-lg p-6 space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-violet-50 text-[#6d28d9] flex items-center justify-center">
+                  <Link2 className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900">Insert / Edit Hyperlink</h3>
+                  <p className="text-[11px] text-slate-400">Configure destination URL, target tab, and SEO link authority.</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setLinkModalOpen(false)}
+                className="text-slate-400 hover:text-slate-600 cursor-pointer p-1"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Display Text (Clickable Anchor Text) *
+                </label>
+                <input
+                  type="text"
+                  value={linkForm.text}
+                  onChange={(e) => setLinkForm((prev) => ({ ...prev, text: e.target.value }))}
+                  placeholder="e.g. Read Our Full Guide"
+                  className="w-full px-3 py-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-[#6d28d9]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Destination URL *
+                </label>
+                <input
+                  type="text"
+                  value={linkForm.url}
+                  onChange={(e) => setLinkForm((prev) => ({ ...prev, url: e.target.value }))}
+                  placeholder="e.g. https://forbes.com/article or /pricing"
+                  className="w-full px-3 py-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-[#6d28d9]"
+                />
+              </div>
+
+              <div className="pt-1">
+                <label className="flex items-center gap-2 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={linkForm.openInNewTab}
+                    onChange={(e) => setLinkForm((prev) => ({ ...prev, openInNewTab: e.target.checked }))}
+                    className="w-4 h-4 text-[#6d28d9] rounded border-slate-300 focus:ring-[#6d28d9]"
+                  />
+                  <span className="text-xs font-bold text-slate-800">
+                    Open link in a new browser tab (<code className="text-[10.5px] font-mono text-[#6d28d9]">target="_blank"</code>)
+                  </span>
+                </label>
+              </div>
+
+              {/* SEO Relationship (DoFollow vs NoFollow) */}
+              <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-2.5">
+                <label className="block text-xs font-extrabold text-slate-800">
+                  SEO Link Attribute (Search Engine Authority)
+                </label>
+
+                <div className="space-y-2">
+                  <label className="flex items-start gap-2.5 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="relType"
+                      value="dofollow"
+                      checked={linkForm.relType === "dofollow"}
+                      onChange={() => setLinkForm((prev) => ({ ...prev, relType: "dofollow" }))}
+                      className="mt-0.5 w-4 h-4 text-[#6d28d9] border-slate-300 focus:ring-[#6d28d9]"
+                    />
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 block">DoFollow Link (Standard)</span>
+                      <span className="text-[11px] text-slate-500 block">Passes SEO authority & PageRank. Recommended for trustworthy references and internal pages.</span>
+                    </div>
+                  </label>
+
+                  <label className="flex items-start gap-2.5 cursor-pointer pt-1">
+                    <input
+                      type="radio"
+                      name="relType"
+                      value="nofollow"
+                      checked={linkForm.relType === "nofollow"}
+                      onChange={() => setLinkForm((prev) => ({ ...prev, relType: "nofollow" }))}
+                      className="mt-0.5 w-4 h-4 text-[#6d28d9] border-slate-300 focus:ring-[#6d28d9]"
+                    />
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 block">NoFollow Link (<code className="text-[10.5px] font-mono text-amber-700">rel="nofollow"</code>)</span>
+                      <span className="text-[11px] text-slate-500 block">Tells Google not to pass authority. Required for paid, sponsored, affiliate, or unverified links.</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setLinkModalOpen(false)}
+                className="px-4 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                disabled={!linkForm.url.trim()}
+                onClick={handleApplyLinkModal}
+                className="px-5 py-2 rounded-lg text-xs font-bold bg-[#6d28d9] hover:bg-[#5b21b6] disabled:opacity-50 text-white shadow-sm cursor-pointer"
+              >
+                Insert Link
               </button>
             </div>
           </div>

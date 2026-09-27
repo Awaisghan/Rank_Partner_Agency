@@ -9,6 +9,8 @@ export const blogPostSchema = z.object({
   date: z.string().default(() => new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })),
   readTime: z.string().default("5 min read"),
   isFeatured: z.boolean().default(false),
+  featuredImage: z.string().optional().nullable(),
+  imageAlt: z.string().optional().nullable(),
   content: z.string().optional(),
   sections: z.any().optional(),
   isActive: z.boolean().default(true),

@@ -55,7 +55,7 @@ function parseContentToSections(content: string) {
 }
 
 function formatInlineMarkdown(text: string) {
-  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|\[.*?\]\(.*?\))/g);
   return parts.map((part, idx) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
@@ -71,11 +71,103 @@ function formatInlineMarkdown(text: string) {
         </em>
       );
     }
+    const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
+    if (linkMatch) {
+      const linkText = linkMatch[1];
+      const fullUrl = linkMatch[2];
+
+      const urlParts = fullUrl.split("|");
+      let cleanUrl = urlParts[0].trim();
+
+      const hasAllowedScheme =
+        cleanUrl.startsWith("http://") ||
+        cleanUrl.startsWith("https://") ||
+        cleanUrl.startsWith("/") ||
+        cleanUrl.startsWith("#") ||
+        cleanUrl.startsWith("mailto:");
+
+      const hasUnsafeScheme = /^[a-z][a-z0-9+.-]*:/i.test(cleanUrl);
+
+      if (hasUnsafeScheme && !hasAllowedScheme) {
+        return null;
+      }
+
+      if (!hasAllowedScheme && (cleanUrl.startsWith("www.") || cleanUrl.includes("."))) {
+        cleanUrl = `https://${cleanUrl}`;
+      }
+
+      const isNoFollow = fullUrl.includes("|nofollow");
+      const isForceBlank = fullUrl.includes("|blank");
+      const isForceSelf = fullUrl.includes("|self");
+      const isExternal = cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://");
+
+      const openInNewTab = isForceBlank || (isExternal && !isForceSelf);
+
+      let relAttribute: string | undefined = undefined;
+      if (isNoFollow) {
+        relAttribute = openInNewTab ? "nofollow noopener noreferrer" : "nofollow";
+      } else if (openInNewTab) {
+        relAttribute = "noopener noreferrer";
+      }
+
+      if (openInNewTab || isNoFollow || isExternal) {
+        return (
+          <a
+            key={idx}
+            href={cleanUrl}
+            target={openInNewTab ? "_blank" : undefined}
+            rel={relAttribute}
+            className="text-[#6d28d9] font-bold underline hover:text-[#5b21b6] transition-colors"
+          >
+            {linkText}
+          </a>
+        );
+      }
+
+      return (
+        <Link
+          key={idx}
+          href={cleanUrl}
+          className="text-[#6d28d9] font-bold underline hover:text-[#5b21b6] transition-colors"
+        >
+          {linkText}
+        </Link>
+      );
+    }
     return part;
   });
 }
 
 function renderParagraphText(text: string) {
+  // Check for Markdown Image format: ![alt](url)
+  const imgMatch = text.match(/^!\[(.*?)\]\((.*?)\)$/);
+  if (imgMatch) {
+    const rawAlt = imgMatch[1] ? imgMatch[1].trim() : "";
+    const src = imgMatch[2];
+    const showCaption = Boolean(
+      rawAlt &&
+      rawAlt !== "image" &&
+      rawAlt !== "Blog image" &&
+      !rawAlt.includes(".") &&
+      !rawAlt.startsWith("img_")
+    );
+
+    return (
+      <figure className="my-8 rounded-2xl overflow-hidden border border-slate-200/80 shadow-md bg-slate-900/5 p-1.5 flex flex-col items-center">
+        <img
+          src={src}
+          alt={rawAlt || "Blog content image"}
+          className="w-full h-auto max-h-[650px] object-contain rounded-xl"
+        />
+        {showCaption && (
+          <figcaption className="text-center text-xs text-slate-500 py-2.5 px-4 italic border-t border-slate-100 bg-white font-medium w-full mt-1.5 rounded-b-xl">
+            {rawAlt}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
   if (text.startsWith("- ") || text.startsWith("* ")) {
     const items = text.split("\n").filter(Boolean);
     return (
@@ -102,6 +194,7 @@ export default function ArticleDetailPage() {
 
   const fallbackArticle = getArticleBySlug(slugParam);
   const { data: apiData } = useSWR<{ blogPost: any }>(`/api/blog/${slugParam}`, fetcher);
+  const { data: allPostsData } = useSWR<{ items: any[] }>("/api/blog", fetcher);
 
   const rawPost = apiData?.blogPost;
 
@@ -124,10 +217,16 @@ export default function ArticleDetailPage() {
         author: rawPost.author || fallbackArticle.author,
         date: rawPost.date || fallbackArticle.date,
         readTime: rawPost.readTime || fallbackArticle.readTime,
+        featuredImage: rawPost.featuredImage || null,
+        imageAlt: rawPost.imageAlt || rawPost.title,
         content: rawPost.content,
         sections: formattedSections,
       }
-    : fallbackArticle;
+    : {
+        ...fallbackArticle,
+        featuredImage: null,
+        imageAlt: fallbackArticle.title,
+      };
 
   const [activeSection, setActiveSection] = useState<string>(
     article.sections?.[0]?.id || ""
@@ -275,6 +374,44 @@ export default function ArticleDetailPage() {
           {/* Right Column: Main Article Body Content (8 cols) */}
           <article className="lg:col-span-8 max-w-3xl">
 
+            {/* JSON-LD Article Schema for Google SEO */}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "BlogPosting",
+                  headline: article.title,
+                  description: article.excerpt,
+                  image: article.featuredImage ? [article.featuredImage] : undefined,
+                  datePublished: article.date,
+                  author: {
+                    "@type": "Person",
+                    name: article.author,
+                  },
+                  publisher: {
+                    "@type": "Organization",
+                    name: "RankPartner",
+                  },
+                  mainEntityOfPage: {
+                    "@type": "WebPage",
+                    "@id": `https://rankpartner.io/blog/${article.slug}`,
+                  },
+                }),
+              }}
+            />
+
+            {/* Featured Cover Image */}
+            {article.featuredImage && (
+              <div className="mb-10 rounded-2xl overflow-hidden border border-slate-200/80 shadow-lg bg-slate-900/5 relative group p-1 flex items-center justify-center">
+                <img
+                  src={article.featuredImage}
+                  alt={article.imageAlt || article.title}
+                  className="w-full h-auto max-h-[650px] object-contain rounded-xl transition-transform duration-500 group-hover:scale-[1.005]"
+                />
+              </div>
+            )}
+
             {/* Lead Excerpt */}
             <p className="text-slate-700 text-lg sm:text-xl font-medium leading-relaxed mb-10 pb-8 border-b border-slate-100">
               {article.excerpt}
@@ -309,7 +446,7 @@ export default function ArticleDetailPage() {
             </div>
 
             {/* Author Footer Card */}
-            <div className="pt-8 border-t border-slate-200/80 flex items-center justify-between gap-4">
+            <div className="pt-8 border-t border-slate-200/80 flex items-center justify-between gap-4 mb-16">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-[#040d21] text-white flex items-center justify-center font-black text-sm shadow-sm">
                   A
@@ -334,6 +471,97 @@ export default function ArticleDetailPage() {
 
           </article>
 
+        </div>
+      </section>
+
+      {/* Related Articles Section (SEO Internal Links & User Retention) */}
+      <section className="w-full bg-slate-50 py-16 px-6 sm:px-10 lg:px-16 xl:px-20 border-t border-slate-200/60">
+        <div className="max-w-[1360px] mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <span className="text-xs font-bold tracking-[0.2em] text-[#6d28d9] uppercase block mb-1">
+                CONTINUE READING
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Recommended Articles
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              className="text-xs font-bold text-[#6d28d9] hover:underline hidden sm:block"
+            >
+              View all insights →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {((allPostsData?.items && allPostsData.items.length > 0)
+              ? allPostsData.items.filter((p: any) => p.slug !== article.slug).slice(0, 3)
+              : [
+                  {
+                    id: "2",
+                    slug: "what-domain-authority-and-domain-rating-actually-measure",
+                    category: "SEO",
+                    title: "The Truth About Domain Authority and Domain Rating",
+                    excerpt: "Two of the most quoted numbers in SEO are widely misread. Here is what they tell you.",
+                    author: "RankPartner Team",
+                    date: "June 12, 2026",
+                    readTime: "6 min read",
+                  },
+                  {
+                    id: "3",
+                    slug: "how-agencies-offer-pr-and-seo-without-building-a-newsroom",
+                    category: "Strategy",
+                    title: "Delivering High-Impact PR and SEO Without an In-House Newsroom",
+                    excerpt: "Clients want coverage and rankings. Most agencies cannot staff for both.",
+                    author: "RankPartner Team",
+                    date: "May 28, 2026",
+                    readTime: "6 min read",
+                  },
+                  {
+                    id: "5",
+                    slug: "turning-one-tv-interview-into-a-quarter-of-content",
+                    category: "Broadcast",
+                    title: "How to Turn One TV Interview Into Months of Content",
+                    excerpt: "A broadcast segment is a few minutes on air and months of material everywhere else.",
+                    author: "RankPartner Team",
+                    date: "May 12, 2026",
+                    readTime: "4 min read",
+                  },
+                ].filter((p) => p.slug !== article.slug).slice(0, 3)
+            ).map((relPost: any) => (
+              <Link
+                key={relPost.id || relPost.slug}
+                href={`/blog/${relPost.slug}`}
+                className="group bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              >
+                <div>
+                  {relPost.featuredImage && (
+                    <div className="w-full h-40 rounded-xl overflow-hidden mb-4 bg-slate-100">
+                      <img
+                        src={relPost.featuredImage}
+                        alt={relPost.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-violet-50 text-[#6d28d9] mb-3">
+                    {relPost.category}
+                  </span>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#6d28d9] transition-colors line-clamp-2 mb-2">
+                    {relPost.title}
+                  </h3>
+                  <p className="text-slate-600 text-xs line-clamp-2 mb-4">
+                    {relPost.excerpt}
+                  </p>
+                </div>
+                <div className="text-[11px] text-slate-400 font-medium border-t border-slate-100 pt-3 flex items-center justify-between">
+                  <span>{relPost.date}</span>
+                  <span>{relPost.readTime}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

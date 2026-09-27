@@ -43,3 +43,6 @@ next-env.d.ts
 # Uploads / Dynamic Media
 /public/logos/*
 !/public/logos/.gitkeep
+
+/public/uploads/*
+!/public/uploads/.gitkeep

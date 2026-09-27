@@ -260,8 +260,10 @@ model BlogPost {
   author      String   @default("RankPartner Team")
   date        String
   readTime    String   @default("5 min read")
-  isFeatured  Boolean  @default(false)
-  content     String?
+  isFeatured    Boolean  @default(false)
+  featuredImage String?
+  imageAlt      String?
+  content       String?
   sections    Json?
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())

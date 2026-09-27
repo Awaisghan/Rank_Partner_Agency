@@ -54,6 +54,8 @@ export async function createBlogPost(data: BlogPostInput) {
       date: data.date,
       readTime: data.readTime,
       isFeatured: data.isFeatured,
+      featuredImage: data.featuredImage ?? null,
+      imageAlt: data.imageAlt ?? null,
       content: data.content,
       sections: data.sections,
       isActive: data.isActive,
